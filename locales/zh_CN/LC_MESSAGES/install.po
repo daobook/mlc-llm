@@ -21,7 +21,7 @@ msgstr ""
 
 #: ../../install/conda.rst:2
 msgid "Install Conda"
-msgstr ""
+msgstr "安装 Conda"
 
 #: ../../install/conda.rst:4
 msgid ""

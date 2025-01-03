@@ -21,23 +21,23 @@ msgstr ""
 
 #: ../../index.rst:24
 msgid "Get Started"
-msgstr ""
+msgstr "快速上手"
 
 #: ../../index.rst:32
 msgid "Build and Deploy Apps"
-msgstr ""
+msgstr "构建和部署 Apps"
 
 #: ../../index.rst:46
 msgid "Compile Models"
-msgstr ""
+msgstr "编译模型"
 
 #: ../../index.rst:57
 msgid "Dependency Installation"
-msgstr ""
+msgstr "依赖安装"
 
 #: ../../index.rst:68
 msgid "Community"
-msgstr ""
+msgstr "社区"
 
 #: ../../index.rst:77
 msgid "Privacy"
@@ -45,7 +45,7 @@ msgstr ""
 
 #: ../../index.rst:2
 msgid "👋 Welcome to MLC LLM"
-msgstr ""
+msgstr "👋 欢迎来到 MLC LLM"
 
 #: ../../index.rst:4
 msgid ""
@@ -60,22 +60,23 @@ msgid ""
 "enable everyone to develop, optimize, and deploy AI models natively on "
 "everyone's platforms."
 msgstr ""
+"MLC LLM 是机器学习编译器和高性能部署引擎，专为大型语言模型设计。该项目的使命是让每个人都能在自己的平台上原生地开发、优化和部署 AI 模型。"
 
 #: ../../index.rst:14
 msgid "Quick Start"
-msgstr ""
+msgstr "快速入门"
 
 #: ../../index.rst:16
 msgid "Check out :ref:`quick-start` for quick start examples of using MLC LLM."
-msgstr ""
+msgstr "查看 :ref:`quick-start` 部分，获取使用 MLC LLM 的快速入门示例。"
 
 #: ../../index.rst:19
 msgid "Introduction to MLC LLM"
-msgstr ""
+msgstr "MLC LLM 简介"
 
 #: ../../index.rst:21
 msgid ""
 "Check out :ref:`introduction-to-mlc-llm` for the introduction and "
 "tutorial of a complete workflow in MLC LLM."
 msgstr ""
-
+"查看 :ref:`introduction-to-mlc-llm` 部分，了解 MLC LLM 的完整工作流程介绍和教程。"
