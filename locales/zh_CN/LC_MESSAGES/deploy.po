@@ -1,0 +1,2488 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023-2024, MLC LLM Contributors
+# This file is distributed under the same license as the mlc-llm package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mlc-llm 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-03 18:39+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../deploy/android.rst:4
+msgid "Android SDK"
+msgstr ""
+
+#: ../../deploy/android.rst:8 ../../deploy/cli.rst:10
+#: ../../deploy/ide_integration.rst:8 ../../deploy/ios.rst:8
+#: ../../deploy/python_engine.rst:12 ../../deploy/rest.rst:8
+#: ../../deploy/webllm.rst:8
+msgid "Table of Contents"
+msgstr ""
+
+#: ../../deploy/android.rst:11
+msgid "Demo App"
+msgstr ""
+
+#: ../../deploy/android.rst:13
+msgid "The demo APK below is built for Samsung S23 with Snapdragon 8 Gen 2 chip."
+msgstr ""
+
+#: ../../deploy/android.rst:20
+msgid "Prerequisite"
+msgstr ""
+
+#: ../../deploy/android.rst:22
+msgid ""
+"**Rust** (`install <https://www.rust-lang.org/tools/install>`__) is "
+"needed to cross-compile HuggingFace tokenizers to Android. Make sure "
+"rustc, cargo, and rustup are available in ``$PATH``."
+msgstr ""
+
+#: ../../deploy/android.rst:24
+msgid ""
+"**Android Studio** (`install <https://developer.android.com/studio>`__) "
+"with NDK and CMake. To install NDK and CMake, on the Android Studio "
+"welcome page, click \"Projects → SDK Manager → SDK Tools\". If you have "
+"already installed NDK in your development environment, please update your"
+" NDK to avoid build android package fail(`#2696 <https://github.com/mlc-"
+"ai/mlc-llm/issues/2696>`__). The current demo Android APK is built with "
+"NDK 27.0.11718014. Once you have installed or updated the NDK, set up the"
+" following environment variables:"
+msgstr ""
+
+#: ../../deploy/android.rst:27
+msgid ""
+"``ANDROID_NDK`` so that "
+"``$ANDROID_NDK/build/cmake/android.toolchain.cmake`` is available."
+msgstr ""
+
+#: ../../deploy/android.rst:28
+msgid "``TVM_NDK_CC`` that points to NDK's clang compiler."
+msgstr ""
+
+#: ../../deploy/android.rst:42
+msgid ""
+"**JDK**, such as OpenJDK >= 17, to compile Java bindings of TVM Unity "
+"runtime. We strongly recommend setting the ``JAVA_HOME`` to the JDK "
+"bundled with Android Studio. e.g. ``export "
+"JAVA_HOME=/Applications/Android\\ Studio.app/Contents/jbr/Contents/Home``"
+" for macOS. ``export JAVA_HOME=/opt/android-studio/jbr`` for Linux. Using"
+" Android Studio's JBR bundle as recommended `here "
+"https://developer.android.com/build/jdks` will reduce the chances of "
+"potential errors in JNI compilation. Set up the following environment "
+"variable:"
+msgstr ""
+
+#: ../../deploy/android.rst:51
+msgid ""
+"``export JAVA_HOME=/path/to/java_home`` you can then cross check and make"
+" sure ``$JAVA_HOME/bin/java`` exists."
+msgstr ""
+
+#: ../../deploy/android.rst:53
+msgid ""
+"Please ensure that the JDK versions for Android Studio and JAVA_HOME are "
+"the same."
+msgstr ""
+
+#: ../../deploy/android.rst:55
+msgid ""
+"**TVM Unity runtime** is placed under `3rdparty/tvm <https://github.com"
+"/mlc-ai/mlc-llm/tree/main/3rdparty>`__ in MLC LLM, so there is no need to"
+" install anything extra. Set up the following environment variable:"
+msgstr ""
+
+#: ../../deploy/android.rst:57
+msgid "``export TVM_SOURCE_DIR=/path/to/mlc-llm/3rdparty/tvm``."
+msgstr ""
+
+#: ../../deploy/android.rst:59
+msgid ""
+"Please follow :doc:`/install/mlc_llm` to obtain a binary build of mlc_llm"
+" package. Note that this is independent from mlc-llm source code that we "
+"use for android package build in the following up section. Once you "
+"installed this package, you do not need to build mlc llm from source."
+msgstr ""
+
+#: ../../deploy/android.rst:64
+msgid ""
+"❗ Whenever using Python, it is highly recommended to use **conda** to "
+"manage an isolated Python environment to avoid missing dependencies, "
+"incompatible versions, and package conflicts."
+msgstr ""
+
+#: ../../deploy/android.rst:66
+msgid ""
+"Check if **environment variable** are properly set as the last check. One"
+" way to ensure this is to place them in ``$HOME/.zshrc``, "
+"``$HOME/.bashrc`` or environment management tools."
+msgstr ""
+
+#: ../../deploy/android.rst:77
+msgid "Additional Guides for Windows Users"
+msgstr ""
+
+#: ../../deploy/android.rst:79
+msgid ""
+"Building under Windows for Android is still experimental; please make "
+"sure you first finish the above guides, then read and follow the "
+"instructions in this section If you are using Windows, make sure you use "
+"conda to install cmake and Ninja."
+msgstr ""
+
+#: ../../deploy/android.rst:87
+msgid ""
+"Windows Java findings have issues with environment variables that come "
+"with space. Make sure you get a copy of Java in a path without space. The"
+" simplest way to do that is to copy the Android Studio's JBR bundle to a "
+"directory without any space. If your Android studio's installation is at "
+"``C:\\Program Files\\Android\\Android Studio\\`` you can try to do the "
+"following"
+msgstr ""
+
+#: ../../deploy/android.rst:98
+msgid "You can continue the next steps after you have set these steps correctly."
+msgstr ""
+
+#: ../../deploy/android.rst:101
+msgid "Build Android App from Source"
+msgstr ""
+
+#: ../../deploy/android.rst:103 ../../deploy/ios.rst:26
+msgid "This section shows how we can build the app from the source."
+msgstr ""
+
+#: ../../deploy/android.rst:106 ../../deploy/ios.rst:29
+msgid "Step 1. Install Build Dependencies"
+msgstr ""
+
+#: ../../deploy/android.rst:108
+msgid ""
+"First and foremost, please clone the `MLC LLM GitHub repository "
+"<https://github.com/mlc-ai/mlc-llm>`_. After cloning, go to the "
+"``android/`` directory."
+msgstr ""
+
+#: ../../deploy/android.rst:122 ../../deploy/ios.rst:55
+msgid "Step 2. Build Runtime and Model Libraries"
+msgstr ""
+
+#: ../../deploy/android.rst:124
+msgid ""
+"The models to be built for the Android app are specified in ``MLCChat"
+"/mlc-package-config.json``: in the ``model_list``, ``model`` points to "
+"the Hugging Face repository which"
+msgstr ""
+
+#: ../../deploy/android.rst:127
+msgid ""
+"``model`` points to the Hugging Face repository which contains the pre-"
+"converted model weights. The Android app will download model weights from"
+" the Hugging Face URL."
+msgstr ""
+
+#: ../../deploy/android.rst:128 ../../deploy/ios.rst:61
+msgid "``model_id`` is a unique model identifier."
+msgstr ""
+
+#: ../../deploy/android.rst:129 ../../deploy/ios.rst:62
+msgid ""
+"``estimated_vram_bytes`` is an estimation of the vRAM the model takes at "
+"runtime."
+msgstr ""
+
+#: ../../deploy/android.rst:130 ../../deploy/ios.rst:63
+msgid ""
+"``\"bundle_weight\": true`` means the model weights of the model will be "
+"bundled into the app when building."
+msgstr ""
+
+#: ../../deploy/android.rst:131 ../../deploy/ios.rst:64
+msgid "``overrides`` specifies some model config parameter overrides."
+msgstr ""
+
+#: ../../deploy/android.rst:134 ../../deploy/ios.rst:67
+msgid "We have a one-line command to build and prepare all the model libraries:"
+msgstr ""
+
+#: ../../deploy/android.rst:142 ../../deploy/ios.rst:75
+msgid "This command mainly executes the following two steps:"
+msgstr ""
+
+#: ../../deploy/android.rst:144 ../../deploy/ios.rst:77
+msgid ""
+"**Compile models.** We compile each model in ``model_list`` of ``MLCChat"
+"/mlc-package-config.json`` into a binary model library."
+msgstr ""
+
+#: ../../deploy/android.rst:145 ../../deploy/ios.rst:78
+msgid ""
+"**Build runtime and tokenizer.** In addition to the model itself, a "
+"lightweight runtime and tokenizer are required to actually run the LLM."
+msgstr ""
+
+#: ../../deploy/android.rst:147
+msgid ""
+"The command creates a ``./dist/`` directory that contains the runtime and"
+" model build output. Please make sure all the following files exist in "
+"``./dist/``."
+msgstr ""
+
+#: ../../deploy/android.rst:170
+msgid ""
+"The model execution logic in mobile GPUs is incorporated into "
+"``libtvm4j_runtime_packed.so``, while ``tvm4j_core.jar`` is a lightweight"
+" (~60 kb) `Java binding "
+"<https://tvm.apache.org/docs/reference/api/javadoc/>`_ to it. "
+"``dist/lib/mlc4j`` is a gradle subproject that you should include in your"
+" app so the Android project can reference the mlc4j (MLC LLM java "
+"library). This library packages the dependent model libraries and "
+"necessary runtime to execute the model."
+msgstr ""
+
+#: ../../deploy/android.rst:184 ../../deploy/ios.rst:100
+msgid ""
+"We leverage a local JIT cache to avoid repetitive compilation of the same"
+" input. However, sometimes it is helpful to force rebuild when we have a "
+"new compiler update or when something goes wrong with the cached library."
+" You can do so by setting the environment variable "
+"``MLC_JIT_POLICY=REDO``"
+msgstr ""
+
+#: ../../deploy/android.rst:195
+msgid "Step 3. Build Android App"
+msgstr ""
+
+#: ../../deploy/android.rst:197
+msgid ""
+"Open folder ``./android/MLCChat`` as an Android Studio Project. Connect "
+"your Android device to your machine. In the menu bar of Android Studio, "
+"click **\"Build → Make Project\"**. Once the build is finished, click "
+"**\"Run → Run 'app'\"** and you will see the app launched on your phone."
+msgstr ""
+
+#: ../../deploy/android.rst:203
+msgid ""
+"❗ This app cannot be run in an emulator and thus a physical phone is "
+"required, because MLC LLM needs an actual mobile GPU to meaningfully run "
+"at an accelerated speed."
+msgstr ""
+
+#: ../../deploy/android.rst:207 ../../deploy/ios.rst:170
+msgid "Customize the App"
+msgstr ""
+
+#: ../../deploy/android.rst:209
+msgid ""
+"We can customize the models built in the Android app by customizing "
+"`MLCChat/mlc-package-config.json <https://github.com/mlc-ai/mlc-"
+"llm/blob/main/android/MLCChat/mlc-package-config.json>`_. We introduce "
+"each field of the JSON file here."
+msgstr ""
+
+#: ../../deploy/android.rst:212 ../../deploy/ios.rst:175
+msgid ""
+"Each entry in ``\"model_list\"`` of the JSON file has the following "
+"fields:"
+msgstr ""
+
+#: ../../deploy/android.rst:214 ../../deploy/ios.rst:177
+msgid "``model``"
+msgstr ""
+
+#: ../../deploy/android.rst:215
+msgid ""
+"(Required) The path to the MLC-converted model to be built into the app. "
+"It is a Hugging Face URL (e.g., ``\"model\": \"HF://mlc-"
+"ai/phi-2-q4f16_1-MLC\"```) that contains the pre-converted model weights."
+msgstr ""
+
+#: ../../deploy/android.rst:219 ../../deploy/ios.rst:184
+msgid "``model_id``"
+msgstr ""
+
+#: ../../deploy/android.rst:220 ../../deploy/ios.rst:185
+msgid ""
+"(Required) A unique local identifier to identify the model. It can be an "
+"arbitrary one."
+msgstr ""
+
+#: ../../deploy/android.rst:223 ../../deploy/ios.rst:188
+msgid "``estimated_vram_bytes``"
+msgstr ""
+
+#: ../../deploy/android.rst:224 ../../deploy/ios.rst:189
+msgid "(Required) Estimated requirements of vRAM to run the model."
+msgstr ""
+
+#: ../../deploy/android.rst:226 ../../deploy/ios.rst:191
+msgid "``bundle_weight``"
+msgstr ""
+
+#: ../../deploy/android.rst:227
+msgid ""
+"(Optional) A boolean flag indicating whether to bundle model weights into"
+" the app. See :ref:`android-bundle-model-weights` below."
+msgstr ""
+
+#: ../../deploy/android.rst:229 ../../deploy/ios.rst:194
+msgid "``overrides``"
+msgstr ""
+
+#: ../../deploy/android.rst:230 ../../deploy/ios.rst:195
+msgid ""
+"(Optional) A dictionary to override the default model context window size"
+" (to limit the KV cache size) and prefill chunk size (to limit the model "
+"temporary execution memory). Example:"
+msgstr ""
+
+#: ../../deploy/android.rst:250 ../../deploy/ios.rst:215
+msgid "``model_lib``"
+msgstr ""
+
+#: ../../deploy/android.rst:251 ../../deploy/ios.rst:216
+msgid ""
+"(Optional) A string specifying the system library prefix to use for the "
+"model. Usually this is used when you want to build multiple model "
+"variants with the same architecture into the app. **This field does not "
+"affect any app functionality.** The "
+"``\"model_lib_path_for_prepare_libs\"`` introduced below is also related."
+" Example:"
+msgstr ""
+
+#: ../../deploy/android.rst:272 ../../deploy/ios.rst:237
+msgid ""
+"Besides ``model_list`` in ``MLCChat/mlc-package-config.json``, you can "
+"also **optionally** specify a dictionary of "
+"``\"model_lib_path_for_prepare_libs\"``, **if you want to use model "
+"libraries that are manually compiled**. The keys of this dictionary "
+"should be the ``model_lib`` that specified in model list, and the values "
+"of this dictionary are the paths (absolute, or relative) to the manually "
+"compiled model libraries. The model libraries specified in "
+"``\"model_lib_path_for_prepare_libs\"`` will be built into the app when "
+"running ``mlc_llm package``. Example:"
+msgstr ""
+
+#: ../../deploy/android.rst:300
+msgid "Bundle Model Weights"
+msgstr ""
+
+#: ../../deploy/android.rst:302
+msgid ""
+"Instructions have been provided to build an Android App with MLC LLM in "
+"previous sections, but it requires run-time weight downloading from "
+"HuggingFace, as configured in ``MLCChat/mlc-package-config.json``. "
+"However, it could be desirable to bundle weights together into the app to"
+" avoid downloading over the network. In this section, we provide a simple"
+" ADB-based walkthrough that hopefully helps with further development."
+msgstr ""
+
+#: ../../deploy/android.rst:308
+msgid ""
+"**Enable weight bundle**. Set the field ``\"bundle_weight\": true`` for "
+"any model you want to bundle weights in ``MLCChat/mlc-package-"
+"config.json``, and run ``mlc_llm package`` again. Below is an example:"
+msgstr ""
+
+#: ../../deploy/android.rst:327 ../../deploy/ios.rst:137
+msgid "The outcome of running ``mlc_llm package`` should be as follows:"
+msgstr ""
+
+#: ../../deploy/android.rst:338
+msgid ""
+"**Generating APK**. Enter Android Studio, and click **\"Build → Generate "
+"Signed Bundle/APK\"** to build an APK for release. If it is the first "
+"time you generate an APK, you will need to create a key according to `the"
+" official guide from Android "
+"<https://developer.android.com/studio/publish/app-signing#generate-"
+"key>`_. This APK will be placed under ``android/MLCChat/app/release/app-"
+"release.apk``."
+msgstr ""
+
+#: ../../deploy/android.rst:341
+msgid ""
+"**Install ADB and USB debugging**. Enable \"USB debugging\" in the "
+"developer mode in your phone settings. In \"SDK manager - SDK Tools\", "
+"install `Android SDK Platform-Tools "
+"<https://developer.android.com/studio/releases/platform-tools>`_. Add the"
+" path to platform-tool path to the environment variable ``PATH`` (on "
+"macOS, it is ``$HOME/Library/Android/sdk/platform-tools``). Run the "
+"following commands, and if ADB is installed correctly, your phone will "
+"appear as a device:"
+msgstr ""
+
+#: ../../deploy/android.rst:350
+msgid ""
+"**Install the APK and weights to your phone**. Run the commands below to "
+"install the app, and push the local weights to the app data directory on "
+"your device. Once it finishes, you can start the MLCChat app on your "
+"device. The models with ``bundle_weight`` set to true will have their "
+"weights already on device."
+msgstr ""
+
+#: ../../deploy/cli.rst:4
+msgid "CLI"
+msgstr ""
+
+#: ../../deploy/cli.rst:6
+msgid ""
+"MLC Chat CLI is the command line tool to run MLC-compiled LLMs out of the"
+" box interactively."
+msgstr ""
+
+#: ../../deploy/cli.rst:13 ../../deploy/rest.rst:14
+msgid "Install MLC-LLM Package"
+msgstr ""
+
+#: ../../deploy/cli.rst:15
+msgid ""
+"Chat CLI is a part of the MLC-LLM package. To use the chat CLI, first "
+"install MLC LLM by following the instructions :ref:`here <install-mlc-"
+"packages>`. Once you have install the MLC-LLM package, you can run the "
+"following command to check if the installation was successful:"
+msgstr ""
+
+#: ../../deploy/cli.rst:23 ../../deploy/rest.rst:22
+msgid "You should see serve help message if the installation was successful."
+msgstr ""
+
+#: ../../deploy/cli.rst:26 ../../deploy/rest.rst:25
+msgid "Quick Start"
+msgstr ""
+
+#: ../../deploy/cli.rst:28
+msgid ""
+"This section provides a quick start guide to work with MLC-LLM chat CLI. "
+"To launch the CLI session, run the following command:"
+msgstr ""
+
+#: ../../deploy/cli.rst:35
+msgid ""
+"where ``MODEL`` is the model folder after compiling with :ref:`MLC-LLM "
+"build process <compile-model-libraries>`. Information about other "
+"arguments can be found in the next section."
+msgstr ""
+
+#: ../../deploy/cli.rst:37
+msgid ""
+"Once the chat CLI is ready, you can enter the prompt to interact with the"
+" model."
+msgstr ""
+
+#: ../../deploy/cli.rst:56 ../../deploy/rest.rst:57
+msgid "Run CLI with Multi-GPU"
+msgstr ""
+
+#: ../../deploy/cli.rst:58 ../../deploy/rest.rst:59
+msgid ""
+"If you want to enable tensor parallelism to run LLMs on multiple GPUs, "
+"please specify argument ``--overrides \"tensor_parallel_shards=$NGPU\"``."
+" For example,"
+msgstr ""
+
+#: ../../deploy/cli.rst:66
+msgid "The ``mlc_llm chat`` Command"
+msgstr ""
+
+#: ../../deploy/cli.rst:68
+msgid "We provide the list of chat CLI interface for reference."
+msgstr ""
+
+#: ../../deploy/cli.rst:75 ../../deploy/rest.rst:91
+msgid ""
+"MODEL                  The model folder after compiling with MLC-LLM "
+"build process. The parameter"
+msgstr ""
+
+#: ../../deploy/cli.rst:76 ../../deploy/rest.rst:92
+msgid ""
+"can either be the model name with its quantization scheme (e.g. ``Llama-2"
+"-7b-chat-hf-q4f16_1``), or a full path to the model folder. In the former"
+" case, we will use the provided name to search for the model folder over "
+"possible paths."
+msgstr ""
+
+#: ../../deploy/cli.rst:81 ../../deploy/rest.rst:97
+msgid ""
+"A field to specify the full path to the model library file to use (e.g. a"
+" ``.so`` file)."
+msgstr ""
+
+#: ../../deploy/cli.rst:82 ../../deploy/rest.rst:98
+msgid ""
+"The description of the device to run on. User should provide a string in "
+"the form of ``device_name:device_id`` or ``device_name``, where "
+"``device_name`` is one of ``cuda``, ``metal``, ``vulkan``, ``rocm``, "
+"``opencl``, ``auto`` (automatically detect the local device), and "
+"``device_id`` is the device id to run on. The default value is ``auto``, "
+"with the device id set to 0 for default."
+msgstr ""
+
+#: ../../deploy/cli.rst:87
+msgid ""
+"Model configuration override. Supports overriding "
+"``context_window_size``, ``prefill_chunk_size``, ``sliding_window_size``,"
+" ``attention_sink_size``, and ``tensor_parallel_shards``. The overrides "
+"could be explicitly specified via details knobs, e.g. --overrides "
+"``context_window_size=1024;prefill_chunk_size=128``."
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:4
+msgid "IDE Integration"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:10
+msgid ""
+"MLC LLM has now support for code completion on multiple IDEs. This means "
+"you can easily integrate an LLM with coding capabilities with your IDE "
+"through the MLC LLM :ref:`deploy-rest-api`. Here we provide a step-by-"
+"step guide on how to do this."
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:13
+msgid "Convert Your Model Weights"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:15
+msgid ""
+"To run a model with MLC LLM in any platform, you need to convert your "
+"model weights to the MLC format (e.g. `CodeLlama-7b-hf-q4f16_1-MLC "
+"<https://huggingface.co/mlc-ai/CodeLlama-7b-hf-q4f16_1-MLC>`__). You can "
+"always refer to :ref:`convert-weights-via-MLC` for in-depth details on "
+"how to convert your model weights. If you are using your own model "
+"weights, i.e., you finetuned the model on your personal codebase, it is "
+"important to follow these steps to convert the respective weights "
+"properly. However, it is also possible to download precompiled weights "
+"from the original models, available in the MLC format. See the full list "
+"of all precompiled weights `here <https://huggingface.co/mlc-ai>`__."
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:17 ../../deploy/ide_integration.rst:31
+#: ../../deploy/ide_integration.rst:45 ../../deploy/ide_integration.rst:109
+msgid "**Example:**"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:27
+msgid "Compile Your Model"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:29
+msgid ""
+"Compiling the model architecture is the crucial step to optimize "
+"inference for a given platform. However, compilation relies on multiple "
+"settings that will impact the runtime. This configuration is specified "
+"inside the ``mlc-chat-config.json`` file, which can be generated by the "
+"``gen_config`` command. You can learn more about the ``gen_config`` "
+"command `here </docs/compilation/compile_models.html#generate-mlc-chat-"
+"config>`__."
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:41
+msgid ""
+"Make sure to set the ``--conv-template`` flag to ``LM``. This template is"
+" specifically tailored to perform vanilla LLM completion, generally "
+"adopted by code completion models."
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:43
+msgid ""
+"After generating the MLC model configuration file, we are all set to "
+"compile and create the model library. You can learn more about the "
+"``compile`` command `here </docs/compilation/compile_models.html#compile-"
+"model-library>`__"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:49
+msgid "Linux - CUDA"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:57
+msgid "Metal"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:59
+msgid "For M-chip Mac:"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:67
+msgid "Cross-Compiling for Intel Mac on M-chip Mac:"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:75
+msgid "For Intel Mac:"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:83
+msgid "Vulkan"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:85
+msgid "For Linux:"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:93
+msgid "For Windows:"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:102
+msgid ""
+"The generated model library can be shared across multiple model variants,"
+" as long as the architecture and number of parameters does not change, "
+"e.g., same architecture, but different weights (your finetuned model)."
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:105
+msgid "Setting up the Inference Entrypoint"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:107
+msgid ""
+"You can now locally deploy your compiled model with the MLC serve module."
+" To find more details about the MLC LLM API visit our :ref:`deploy-rest-"
+"api` page."
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:118
+msgid "Configure the IDE Extension"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:120
+msgid ""
+"After deploying the LLM we can easily connect the IDE with the MLC Rest "
+"API. In this guide, we will be using the Hugging Face Code Completion "
+"extension `llm-ls <https://github.com/huggingface/llm-ls>`__ which has "
+"support across multiple IDEs (e.g., `vscode "
+"<https://github.com/huggingface/llm-vscode>`__, `intellij "
+"<https://github.com/huggingface/llm-intellij>`__ and `nvim "
+"<https://github.com/huggingface/llm.nvim>`__) to connect to an external "
+"OpenAI compatible API (i.e., our MLC LLM :ref:`deploy-rest-api`)."
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:122
+msgid ""
+"After installing the extension on your IDE, open the ``settings.json`` "
+"extension configuration file:"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:124
+msgid "settings.json"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:131
+msgid ""
+"Then, make sure to replace the following settings with the respective "
+"values:"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:139
+msgid ""
+"This will enable the extension to send OpenAI compatible requests to the "
+"MLC Serve API. Also, feel free to tune the API parameters. Please refer "
+"to our :ref:`deploy-rest-api` documentation for more details about these "
+"API parameters."
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:158
+msgid ""
+"The llm-ls extension supports a variety of different model code "
+"completion templates. Choose the one that best matches your model, i.e., "
+"the template with the correct tokenizer and Fill in the Middle tokens."
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:160
+msgid "llm-ls templates"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:167
+msgid ""
+"After everything is all set, the extension will be ready to use the "
+"responses from the MLC Serve API to provide off-the-shelf code completion"
+" on your IDE."
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:169
+msgid "IDE Code Completion"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:177
+msgid "Conclusion"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:179
+msgid ""
+"Please, let us know if you have any questions. Feel free to open an issue"
+" on the `MLC LLM repo <https://github.com/mlc-ai/mlc-llm/issues>`__!"
+msgstr ""
+
+#: ../../deploy/ios.rst:4
+msgid "iOS Swift SDK"
+msgstr ""
+
+#: ../../deploy/ios.rst:10
+msgid ""
+"The MLC LLM iOS app can be installed in two ways: through the pre-built "
+"package or by building from the source. If you are an iOS user looking to"
+" try out the models, the pre-built package is recommended. If you are a "
+"developer seeking to integrate new features into the package, building "
+"the iOS package from the source is required."
+msgstr ""
+
+#: ../../deploy/ios.rst:15
+msgid "Use Pre-built iOS App"
+msgstr ""
+
+#: ../../deploy/ios.rst:16
+msgid ""
+"The MLC Chat app is now available in App Store at no cost. You can "
+"download and explore it by simply clicking the button below:"
+msgstr ""
+
+#: ../../deploy/ios.rst:24
+msgid "Build iOS App from Source"
+msgstr ""
+
+#: ../../deploy/ios.rst:31
+msgid ""
+"First and foremost, please clone the `MLC LLM GitHub repository "
+"<https://github.com/mlc-ai/mlc-llm>`_. After cloning, go to the ``ios/`` "
+"directory."
+msgstr ""
+
+#: ../../deploy/ios.rst:42
+msgid ""
+"Please follow :doc:`/install/mlc_llm` to obtain a binary build of mlc_llm"
+" package. Note that this is independent from the above source code that "
+"we use for iOS package build. You do not need to build mlc_llm for your "
+"host and we can use the prebuilt package for that purpose."
+msgstr ""
+
+#: ../../deploy/ios.rst:46
+msgid "We also need to have the following build dependencies:"
+msgstr ""
+
+#: ../../deploy/ios.rst:48
+msgid "CMake >= 3.24,"
+msgstr ""
+
+#: ../../deploy/ios.rst:49
+msgid "Git and Git-LFS,"
+msgstr ""
+
+#: ../../deploy/ios.rst:50
+msgid ""
+"`Rust and Cargo <https://www.rust-lang.org/tools/install>`_, which are "
+"required by Hugging Face's tokenizer."
+msgstr ""
+
+#: ../../deploy/ios.rst:57
+msgid ""
+"The models to be built for the iOS app are specified in ``MLCChat/mlc-"
+"package-config.json``: in the ``model_list``,"
+msgstr ""
+
+#: ../../deploy/ios.rst:60
+msgid ""
+"``model`` points to the Hugging Face repository which contains the pre-"
+"converted model weights. The iOS app will download model weights from the"
+" Hugging Face URL."
+msgstr ""
+
+#: ../../deploy/ios.rst:80
+msgid ""
+"The command creates a ``./dist/`` directory that contains the runtime and"
+" model build output. Please make sure ``dist/`` follows the structure "
+"below, except the optional model weights."
+msgstr ""
+
+#: ../../deploy/ios.rst:112
+msgid "Step 3. (Optional) Bundle model weights into the app"
+msgstr ""
+
+#: ../../deploy/ios.rst:114
+msgid ""
+"By default, we download the model weights from Hugging Face when running "
+"the app. **As an option,**, we bundle model weights into the app: set the"
+" field ``\"bundle_weight\": true`` for any model you want to bundle "
+"weights in ``MLCChat/mlc-package-config.json``, and run ``mlc_llm "
+"package`` again. Below is an example:"
+msgstr ""
+
+#: ../../deploy/ios.rst:150
+msgid "Step 4. Build iOS App"
+msgstr ""
+
+#: ../../deploy/ios.rst:152
+msgid ""
+"Open ``./ios/MLCChat/MLCChat.xcodeproj`` using Xcode. Note that you will "
+"need an Apple Developer Account to use Xcode, and you may be prompted to "
+"use your own developer team credential and product bundle identifier."
+msgstr ""
+
+#: ../../deploy/ios.rst:156
+msgid ""
+"Ensure that all the necessary dependencies and configurations are "
+"correctly set up in the Xcode project."
+msgstr ""
+
+#: ../../deploy/ios.rst:159
+msgid ""
+"Once you have made the necessary changes, build the iOS app using Xcode. "
+"If you have an Apple Silicon Mac, you can select target \"My Mac "
+"(designed for iPad)\" to run on your Mac. You can also directly run it on"
+" your iPad or iPhone."
+msgstr ""
+
+#: ../../deploy/ios.rst:172
+msgid ""
+"We can customize the models built in the iOS app by customizing `MLCChat"
+"/mlc-package-config.json <https://github.com/mlc-ai/mlc-"
+"llm/blob/main/ios/MLCChat/mlc-package-config.json>`_. We introduce each "
+"field of the JSON file here."
+msgstr ""
+
+#: ../../deploy/ios.rst:178
+msgid "(Required) The path to the MLC-converted model to be built into the app."
+msgstr ""
+
+#: ../../deploy/ios.rst:180
+msgid ""
+"It can be either a Hugging Face URL (e.g., ``\"model\": \"HF://mlc-"
+"ai/phi-2-q4f16_1-MLC\"```), or a path to a local model directory which "
+"contains converted model weights (e.g., ``\"model\": \"../dist/gemma-2b-"
+"q4f16_1\"``). Please check out :ref:`convert-weights-via-MLC` if you want"
+" to build local model into the app."
+msgstr ""
+
+#: ../../deploy/ios.rst:182
+msgid ""
+"*Note: the local path (if relative) is relative to the* ``ios/`` "
+"*directory.*"
+msgstr ""
+
+#: ../../deploy/ios.rst:192
+msgid ""
+"(Optional) A boolean flag indicating whether to bundle model weights into"
+" the app. See :ref:`ios-bundle-model-weights`."
+msgstr ""
+
+#: ../../deploy/ios.rst:264
+msgid "Bring Your Own Model"
+msgstr ""
+
+#: ../../deploy/ios.rst:266
+msgid ""
+"This section introduces how to build your own model into the iOS app. We "
+"use the example of `NeuralHermes "
+"<https://huggingface.co/mlabonne/NeuralHermes-2.5-Mistral-7B>`_ model, "
+"which a variant of Mistral model."
+msgstr ""
+
+#: ../../deploy/ios.rst:271 ../../deploy/webllm.rst:137
+msgid ""
+"This section largely replicates :ref:`convert-weights-via-MLC`. See that "
+"page for more details. Note that the weights are shared across all "
+"platforms in MLC."
+msgstr ""
+
+#: ../../deploy/ios.rst:275 ../../deploy/webllm.rst:259
+msgid "**Step 1. Clone from HF and convert_weight**"
+msgstr ""
+
+#: ../../deploy/ios.rst:277 ../../deploy/webllm.rst:143
+msgid ""
+"You can be under the mlc-llm repo, or your own working directory. Note "
+"that all platforms can share the same compiled/quantized weights. See "
+":ref:`compile-command-specification` for specification of "
+"``convert_weight``."
+msgstr ""
+
+#: ../../deploy/ios.rst:294
+msgid "**Step 2. Generate MLC Chat Config**"
+msgstr ""
+
+#: ../../deploy/ios.rst:296 ../../deploy/webllm.rst:162
+msgid ""
+"Use ``mlc_llm gen_config`` to generate ``mlc-chat-config.json`` and "
+"process tokenizers. See :ref:`compile-command-specification` for "
+"specification of ``gen_config``."
+msgstr ""
+
+#: ../../deploy/ios.rst:305
+msgid ""
+"For the ``conv-template``, `conversation_template.py <https://github.com"
+"/mlc-ai/mlc-llm/blob/main/python/mlc_llm/conversation_template.py>`__ "
+"contains a full list of conversation templates that MLC provides."
+msgstr ""
+
+#: ../../deploy/ios.rst:308
+msgid ""
+"If the model you are adding requires a new conversation template, you "
+"would need to add your own. Follow `this PR <https://github.com/mlc-ai"
+"/mlc-llm/pull/2163>`__ as an example. We look up the template to use with"
+" the ``conv_template`` field in ``mlc-chat-config.json``."
+msgstr ""
+
+#: ../../deploy/ios.rst:312
+msgid "For more details, please see :ref:`configure-mlc-chat-json`."
+msgstr ""
+
+#: ../../deploy/ios.rst:314
+msgid "**Step 3. Upload weights to HF**"
+msgstr ""
+
+#: ../../deploy/ios.rst:327
+msgid ""
+"After successfully following all steps, you should end up with a "
+"Huggingface repo similar to `NeuralHermes-2.5-Mistral-7B-q3f16_1-MLC "
+"<https://huggingface.co/mlc-ai/NeuralHermes-2.5-Mistral-7B-"
+"q3f16_1-MLC>`__, which includes the converted/quantized weights, the "
+"``mlc-chat-config.json``, and tokenizer files."
+msgstr ""
+
+#: ../../deploy/ios.rst:332
+msgid "**Step 4. Register in Model List**"
+msgstr ""
+
+#: ../../deploy/ios.rst:334
+msgid ""
+"Finally, we add the model into the ``model_list`` of `MLCChat/mlc-"
+"package-config.json <https://github.com/mlc-ai/mlc-"
+"llm/blob/main/ios/MLCChat/mlc-package-config.json>`_ by specifying the "
+"Hugging Face link as ``model``:"
+msgstr ""
+
+#: ../../deploy/ios.rst:351
+msgid ""
+"Now, go through :ref:`ios-build-runtime-and-model-libraries` and :ref"
+":`ios-build-app` again. The app will use the ``NeuralHermes-Mistral`` "
+"model you just added."
+msgstr ""
+
+#: ../../deploy/ios.rst:356
+msgid "Build Apps with MLC Swift API"
+msgstr ""
+
+#: ../../deploy/ios.rst:358
+msgid ""
+"We also provide a Swift package that you can use to build your own app. "
+"The package is located under ``ios/MLCSwift``."
+msgstr ""
+
+#: ../../deploy/ios.rst:361
+msgid ""
+"First, create ``mlc-package-config.json`` in your project folder. You do "
+"so by copying the files in MLCChat folder. Run ``mlc_llm package``. This "
+"will give us the necessary libraries under ``/path/to/project/dist``."
+msgstr ""
+
+#: ../../deploy/ios.rst:365
+msgid ""
+"Under \"Build phases\", add ``/path/to/project/dist/bundle`` this will "
+"copying this folder into your app to include bundled weights and configs."
+msgstr ""
+
+#: ../../deploy/ios.rst:367
+msgid ""
+"Add ``ios/MLCSwift`` package to your app in Xcode. Under \"Frameworks, "
+"Libraries, and Embedded Content\", click add package dependencies and add"
+" local package that points to ``ios/MLCSwift``."
+msgstr ""
+
+#: ../../deploy/ios.rst:370
+msgid "Finally, we need to add the libraries dependencies. Under build settings:"
+msgstr ""
+
+#: ../../deploy/ios.rst:372
+msgid "Add library search path ``/path/to/project/dist/lib``."
+msgstr ""
+
+#: ../../deploy/ios.rst:373
+msgid "Add the following items to \"other linker flags\"."
+msgstr ""
+
+#: ../../deploy/ios.rst:385
+msgid ""
+"You can then import the `MLCSwift` package into your app. The following "
+"code shows an illustrative example of how to use the chat module."
+msgstr ""
+
+#: ../../deploy/ios.rst:412
+msgid ""
+"Checkout `MLCEngineExample <https://github.com/mlc-ai/mlc-"
+"llm/blob/main/ios/MLCEngineExample>`_ for a minimal starter example."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:4
+msgid "Customize MLC Chat Config"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:6
+msgid ""
+"``mlc-chat-config.json`` is required for both compile-time and runtime, "
+"hence serving two purposes:"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:8
+msgid ""
+"Specify how we compile a model (shown in :ref:`compile-model-libraries`),"
+" and"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:9
+msgid "Specify conversation behavior in runtime."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:11
+msgid ""
+"**This page focuses on the second purpose.** We explain the components of"
+" a chat configuration and how to customize them by modifying the file. "
+"Additionally, the runtimes also provide APIs to optionally override some "
+"of the configurations."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:15
+msgid ""
+"In runtime, this file is stored under the directory of each compiled "
+"model (e.g. `RedPajama chat config <https://huggingface.co/mlc-ai/mlc-"
+"chat-RedPajama-INCITE-Chat-3B-v1-q4f16_1/blob/main/mlc-chat-"
+"config.json>`__)."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:22
+msgid "Structure of MLCChat Configuration"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:24
+msgid "Below is the ``mlc-chat-config.json`` file corresponding to Llama2 model:"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:70
+msgid ""
+"Fields in the first part of ``mlc-chat-config.json`` (e.g. ``context-"
+"window-size``) is only for compile-time. Changing them during runtime may"
+" lead to unexpected behavior."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:73
+msgid ""
+"**As shown above, the file is divided into three parts. We focus on the "
+"third part, which can be customized to change the behavior of the "
+"model.**"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:76
+msgid "``conv_template``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:78
+msgid ""
+"Legacy ``mlc-chat-config.json`` may specify a string for this field to "
+"look up a registered conversation template. It will be deprecated in the "
+"future. Re-generate config using the latest version of mlc_llm to make "
+"sure this field is a complete JSON object."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:82
+msgid ""
+"The conversation template that this chat uses. For more information, "
+"please refer to :ref:`conversation structure <struct-conv>`."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:84
+msgid "``temperature``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:85
+msgid ""
+"The temperature applied to logits before sampling. The default value is "
+"``0.7``. A higher temperature encourages more diverse outputs, while a "
+"lower temperature produces more deterministic outputs."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:87
+msgid "``repetition_penalty``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:88
+msgid ""
+"The repetition penalty controls the likelihood of the model generating "
+"repeated texts. The default value is set to ``1.0``, indicating that no "
+"repetition penalty is applied. Increasing the value reduces the "
+"likelihood of repeat text generation. However, setting a high "
+"``repetition_penalty`` may result in the model generating meaningless "
+"texts. The ideal choice of repetition penalty may vary among models."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:90
+msgid ""
+"For more details on how repetition penalty controls text generation, "
+"please check out the `CTRL paper "
+"<https://arxiv.org/pdf/1909.05858.pdf>`_."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:92
+msgid "``top_p``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:93
+msgid ""
+"This parameter determines the set of tokens from which we sample during "
+"decoding. The default value is set to ``0.95``. At each step, we select "
+"tokens from the minimal set that has a cumulative probability exceeding "
+"the ``top_p`` parameter."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:95
+msgid ""
+"For additional information on top-p sampling, please refer to this `blog "
+"post <https://huggingface.co/blog/how-to-generate#top-p-nucleus-"
+"sampling>`_."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:101
+msgid "Conversation Structure"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:103
+msgid ""
+"MLC-LLM provided a set of pre-defined conversation templates, which you "
+"can directly use by specifying ``--conv-template [name]`` when generating"
+" config. Below is a list (not complete) of supported conversation "
+"templates:"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:107
+msgid "``llama-2``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:108
+msgid "``mistral_default``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:109
+msgid "``chatml``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:110
+msgid "``phi-2``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:111
+msgid "..."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:113
+msgid ""
+"Please refer to `conversation_template <https://github.com/mlc-ai/mlc-"
+"llm/blob/main/python/mlc_llm/conversation_template>`_ directory for the "
+"full list of supported templates and their implementations."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:115
+msgid ""
+"Below is a generic structure of a JSON conversation configuration (we use"
+" vicuna as an example):"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:153
+msgid "``name``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:154
+msgid "Name of the conversation."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:155
+msgid "``system_template``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:156
+msgid ""
+"The system prompt template, it optionally contains the system message "
+"placeholder, and the placeholder will be replaced with the system message"
+" below."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:159
+msgid "``system_message``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:160
+msgid "The content of the system prompt (without the template format)."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:161
+msgid "``system_prefix_token_ids``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:162
+msgid ""
+"The system token ids to be prepended at the beginning of tokenized "
+"generated prompt."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:164
+msgid "``roles``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:165
+msgid "The conversation roles"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:166
+msgid "``role_templates``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:167
+msgid ""
+"The roles prompt template, it optionally contains the defaults message "
+"placeholders and will be replaced by actual content"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:169
+msgid "``messages``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:170
+msgid ""
+"The conversation history messages. Each message is a pair of strings, "
+"denoting \"(role, content)\". The content can be None."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:173
+msgid "``seps``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:174
+msgid ""
+"An array of strings indicating the separators to be used after a user "
+"message and a model message respectively."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:176
+msgid "``role_content_sep``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:177
+msgid "The separator between the role and the content in a message."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:178
+msgid "``role_empty_sep``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:179
+msgid "The separator between the role and empty contents."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:180
+msgid "``stop_str``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:181
+msgid ""
+"When the ``stop_str`` is encountered, the model will stop generating "
+"output."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:182
+msgid "``stop_token_ids``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:183
+msgid "A list of token IDs that act as stop tokens."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:184
+msgid "``function_string``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:185
+msgid "The function calling string."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:186
+msgid "``use_function_calling``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:187
+msgid ""
+"Whether using function calling or not, helps check for output message "
+"format in API call."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:190
+msgid ""
+"Given a conversation template, the corresponding prompt generated out "
+"from it is in the following format:"
+msgstr ""
+
+#: ../../deploy/python_engine.rst:4
+msgid "Python API"
+msgstr ""
+
+#: ../../deploy/python_engine.rst:7
+msgid "This page introduces the Python API with MLCEngine in MLC LLM."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:14
+msgid ""
+"MLC LLM provides Python API through classes :class:`mlc_llm.MLCEngine` "
+"and :class:`mlc_llm.AsyncMLCEngine` which **support full OpenAI API "
+"completeness** for easy integration into other Python projects."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:17
+msgid ""
+"This page introduces how to use the engines in MLC LLM. The Python API is"
+" a part of the MLC-LLM package, which we have prepared pre-built pip "
+"wheels via the :ref:`installation page <install-mlc-packages>`."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:23
+msgid "Verify Installation"
+msgstr ""
+
+#: ../../deploy/python_engine.rst:29
+msgid ""
+"You are expected to see the output of ``<class "
+"'mlc_llm.serve.engine.MLCEngine'>``."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:31
+msgid ""
+"If the command above results in error, follow :ref:`install-mlc-packages`"
+" to install prebuilt pip packages or build MLC LLM from source."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:36
+msgid "Run MLCEngine"
+msgstr ""
+
+#: ../../deploy/python_engine.rst:38
+msgid ""
+":class:`mlc_llm.MLCEngine` provides the interface of OpenAI chat "
+"completion synchronously. :class:`mlc_llm.MLCEngine` does not batch "
+"concurrent request due to the synchronous design, and please use "
+":ref:`AsyncMLCEngine <python-engine-async-llm-engine>` for request "
+"batching process."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:42
+msgid ""
+"**Stream Response.** In :ref:`quick-start` and :ref:`introduction-to-mlc-"
+"llm`, we introduced the basic use of :class:`mlc_llm.MLCEngine`."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:65
+msgid ""
+"This code example first creates an :class:`mlc_llm.MLCEngine` instance "
+"with the 8B Llama-3 model. **We design the Python API** "
+":class:`mlc_llm.MLCEngine` **to align with OpenAI API**, which means you "
+"can use :class:`mlc_llm.MLCEngine` in the same way of using `OpenAI's "
+"Python package <https://github.com/openai/openai-python?tab=readme-ov-"
+"file#usage>`_ for both synchronous and asynchronous generation."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:71
+msgid ""
+"**Non-stream Response.** The code example above uses the synchronous chat"
+" completion interface and iterate over all the stream responses. If you "
+"want to run without streaming, you can run"
+msgstr ""
+
+#: ../../deploy/python_engine.rst:84 ../../deploy/python_engine.rst:186
+msgid ""
+"Please refer to `OpenAI's Python package <https://github.com/openai"
+"/openai-python?tab=readme-ov-file#usage>`_ and `OpenAI chat completion "
+"API <https://platform.openai.com/docs/api-reference/chat/create>`_ for "
+"the complete chat completion interface."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:90
+msgid ""
+"If you want to enable tensor parallelism to run LLMs on multiple GPUs, "
+"please specify argument ``model_config_overrides`` in MLCEngine "
+"constructor. For example,"
+msgstr ""
+
+#: ../../deploy/python_engine.rst:109
+msgid "Run AsyncMLCEngine"
+msgstr ""
+
+#: ../../deploy/python_engine.rst:111
+msgid ""
+":class:`mlc_llm.AsyncMLCEngine` provides the interface of OpenAI chat "
+"completion with asynchronous features. **We recommend using** "
+":class:`mlc_llm.AsyncMLCEngine` **to batch concurrent request for better "
+"throughput.**"
+msgstr ""
+
+#: ../../deploy/python_engine.rst:115
+msgid ""
+"**Stream Response.** The core use of :class:`mlc_llm.AsyncMLCEngine` for "
+"stream responses is as follows."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:174
+msgid ""
+"**Non-stream Response.** Similarly, :class:`mlc_llm.AsyncEngine` provides"
+" the non-stream response interface."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:192
+msgid ""
+"If you want to enable tensor parallelism to run LLMs on multiple GPUs, "
+"please specify argument ``model_config_overrides`` in AsyncMLCEngine "
+"constructor. For example,"
+msgstr ""
+
+#: ../../deploy/python_engine.rst:209
+msgid "Engine Mode"
+msgstr ""
+
+#: ../../deploy/python_engine.rst:211
+msgid ""
+"To ease the engine configuration, the constructors of "
+":class:`mlc_llm.MLCEngine` and :class:`mlc_llm.AsyncMLCEngine` have an "
+"optional argument ``mode``, which falls into one of the three options "
+"``\"local\"``, ``\"interactive\"`` or ``\"server\"``. The default mode is"
+" ``\"local\"``."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:216
+msgid ""
+"Each mode denotes a pre-defined configuration of the engine to satisfy "
+"different use cases. The choice of the mode controls the request "
+"concurrency of the engine, as well as engine's KV cache token capacity "
+"(or in other words, the maximum number of tokens that the engine's KV "
+"cache can hold), and further affects the GPU memory usage of the engine."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:222
+msgid "In short,"
+msgstr ""
+
+#: ../../deploy/python_engine.rst:224
+msgid ""
+"mode ``\"local\"`` uses low request concurrency and low KV cache "
+"capacity, which is suitable for cases where **concurrent requests are not"
+" too many, and the user wants to save GPU memory usage**."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:225
+msgid ""
+"mode ``\"interactive\"`` uses 1 as the request concurrency and low KV "
+"cache capacity, which is designed for **interactive use cases** such as "
+"chats and conversations."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:226
+msgid ""
+"mode ``\"server\"`` uses as much request concurrency and KV cache "
+"capacity as possible. This mode aims to **fully utilize the GPU memory "
+"for large server scenarios** where concurrent requests may be many."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:228
+msgid ""
+"**For system benchmark, please select mode** ``\"server\"``. Please refer"
+" to :ref:`python-engine-api-reference` for detailed documentation of the "
+"engine mode."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:233
+msgid "Deploy Your Own Model with Python API"
+msgstr ""
+
+#: ../../deploy/python_engine.rst:235
+msgid ""
+"The :ref:`introduction page <introduction-deploy-your-own-model>` "
+"introduces how we can deploy our own models with MLC LLM. This section "
+"introduces how you can use the model weights you convert and the model "
+"library you build in :class:`mlc_llm.MLCEngine` and "
+":class:`mlc_llm.AsyncMLCEngine`."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:240
+msgid ""
+"We use the `Phi-2 <https://huggingface.co/microsoft/phi-2>`_ as the "
+"example model."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:242
+msgid ""
+"**Specify Model Weight Path.** Assume you have converted the model "
+"weights for your own model, you can construct a "
+":class:`mlc_llm.MLCEngine` as follows:"
+msgstr ""
+
+#: ../../deploy/python_engine.rst:253
+msgid ""
+"**Specify Model Library Path.** Further, if you build the model library "
+"on your own, you can use it in :class:`mlc_llm.MLCEngine` by passing the "
+"library path through argument ``model_lib``."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:265
+msgid "The same applies to :class:`mlc_llm.AsyncMLCEngine`."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:271
+msgid "API Reference"
+msgstr ""
+
+#: ../../deploy/python_engine.rst:273
+msgid ""
+"The :class:`mlc_llm.MLCEngine` and :class:`mlc_llm.AsyncMLCEngine` "
+"classes provide the following constructors."
+msgstr ""
+
+#: ../../deploy/python_engine.rst:275
+msgid ""
+"The MLCEngine and AsyncMLCEngine have full OpenAI API completeness. "
+"Please refer to `OpenAI's Python package <https://github.com/openai"
+"/openai-python?tab=readme-ov-file#usage>`_ and `OpenAI chat completion "
+"API <https://platform.openai.com/docs/api-reference/chat/create>`_ for "
+"the complete chat completion interface."
+msgstr ""
+
+#: ../../deploy/rest.rst:4
+msgid "REST API"
+msgstr ""
+
+#: ../../deploy/rest.rst:10
+#, python-format
+msgid ""
+"We provide `REST API <https://www.ibm.com/topics/rest-"
+"apis#:~:text=the%20next%20step-,What%20is%20a%20REST%20API%3F,representational%20state%20transfer%20architectural%20style.>`_"
+" for a user to interact with MLC-LLM in their own programs."
+msgstr ""
+
+#: ../../deploy/rest.rst:16
+msgid ""
+"SERVE is a part of the MLC-LLM package, installation instruction for "
+"which can be found :ref:`here <install-mlc-packages>`. Once you have "
+"install the MLC-LLM package, you can run the following command to check "
+"if the installation was successful:"
+msgstr ""
+
+#: ../../deploy/rest.rst:27
+msgid ""
+"This section provides a quick start guide to work with MLC-LLM REST API. "
+"To launch a server, run the following command:"
+msgstr ""
+
+#: ../../deploy/rest.rst:33
+msgid ""
+"where ``MODEL`` is the model folder after compiling with :ref:`MLC-LLM "
+"build process <compile-model-libraries>`. Information about other "
+"arguments can be found under :ref:`Launch the server "
+"<rest_launch_server>` section."
+msgstr ""
+
+#: ../../deploy/rest.rst:35
+msgid ""
+"Once you have launched the Server, you can use the API in your own "
+"program to send requests. Below is an example of using the API to "
+"interact with MLC-LLM in Python without Streaming (suppose the server is "
+"running on ``http://127.0.0.1:8080/``):"
+msgstr ""
+
+#: ../../deploy/rest.rst:72
+msgid "Launch the Server"
+msgstr ""
+
+#: ../../deploy/rest.rst:74
+msgid ""
+"To launch the MLC Server for MLC-LLM, run the following command in your "
+"terminal."
+msgstr ""
+
+#: ../../deploy/rest.rst:103
+msgid ""
+"The engine mode in MLC LLM. We provide three preset modes: ``local``, "
+"``interactive`` and ``server``. The default mode is ``local``."
+msgstr ""
+
+#: ../../deploy/rest.rst:107
+msgid ""
+"The choice of mode decides the values of \"max_num_sequence\", "
+"\"max_total_sequence_length\" and \"prefill_chunk_size\" when they are "
+"not explicitly specified."
+msgstr ""
+
+#: ../../deploy/rest.rst:110
+msgid ""
+"1. Mode \"local\" refers to the local server deployment which has low "
+"request concurrency. So the max batch size will be set to 4, and max "
+"total sequence length and prefill chunk size are set to the context "
+"window size (or sliding window size) of the model."
+msgstr ""
+
+#: ../../deploy/rest.rst:115
+msgid ""
+"2. Mode \"interactive\" refers to the interactive use of server, which "
+"has at most 1 concurrent request. So the max batch size will be set to 1,"
+" and max total sequence length and prefill chunk size are set to the "
+"context window size (or sliding window size) of the model."
+msgstr ""
+
+#: ../../deploy/rest.rst:120
+msgid ""
+"3. Mode \"server\" refers to the large server use case which may handle "
+"many concurrent request and want to use GPU memory as much as possible. "
+"In this mode, we will automatically infer the largest possible max batch "
+"size and max total sequence length."
+msgstr ""
+
+#: ../../deploy/rest.rst:125
+msgid ""
+"You can manually specify arguments \"max_num_sequence\", "
+"\"max_total_seq_length\" and \"prefill_chunk_size\" via ``--overrides`` "
+"to override the automatic inferred values. For example: ``--overrides "
+"\"max_num_sequence=32;max_total_seq_length=4096\"``."
+msgstr ""
+
+#: ../../deploy/rest.rst:128
+msgid ""
+"The model paths and (optional) model library paths of additional models "
+"(other than the main model)."
+msgstr ""
+
+#: ../../deploy/rest.rst:131
+msgid ""
+"When engine is enabled with speculative decoding, additional models are "
+"needed. **We only support one additional model for speculative decoding "
+"now.** The way of specifying the additional model is: ``--additional-"
+"models model_path_1`` or ``--additional-models "
+"model_path_1,model_lib_1``."
+msgstr ""
+
+#: ../../deploy/rest.rst:137
+msgid ""
+"When the model lib of a model is not given, JIT model compilation will be"
+" activated to compile the model automatically."
+msgstr ""
+
+#: ../../deploy/rest.rst:139
+msgid "The speculative decoding mode. Right now four options are supported:"
+msgstr ""
+
+#: ../../deploy/rest.rst:141
+msgid "``disable``, where speculative decoding is not enabled,"
+msgstr ""
+
+#: ../../deploy/rest.rst:143
+msgid ""
+"``small_draft``, denoting the normal speculative decoding (small draft) "
+"style,"
+msgstr ""
+
+#: ../../deploy/rest.rst:145
+msgid "``eagle``, denoting the eagle-style speculative decoding."
+msgstr ""
+
+#: ../../deploy/rest.rst:147
+msgid "``medusa``, denoting the medusa-style speculative decoding."
+msgstr ""
+
+#: ../../deploy/rest.rst:148
+msgid "Overriding extra configurable fields of EngineConfig."
+msgstr ""
+
+#: ../../deploy/rest.rst:150
+msgid ""
+"Supporting fields that can be be overridden: ``tensor_parallel_shards``, "
+"``max_num_sequence``, ``max_total_seq_length``, ``prefill_chunk_size``, "
+"``max_history_size``, ``gpu_memory_utilization``, ``spec_draft_length``, "
+"``prefix_cache_max_num_recycling_seqs``, ``context_window_size``, "
+"``sliding_window_size``, ``attention_sink_size``."
+msgstr ""
+
+#: ../../deploy/rest.rst:155
+msgid ""
+"Please check out the documentation of EngineConfig in "
+"``mlc_llm/serve/config.py`` for detailed docstring of each field. "
+"Example: ``--overrides "
+"\"max_num_sequence=32;max_total_seq_length=4096;tensor_parallel_shards=2\"``"
+msgstr ""
+
+#: ../../deploy/rest.rst:158
+msgid "A boolean indicating if to enable event logging for requests."
+msgstr ""
+
+#: ../../deploy/rest.rst:159
+msgid "The host at which the server should be started, defaults to ``127.0.0.1``."
+msgstr ""
+
+#: ../../deploy/rest.rst:160
+msgid "The port on which the server should be started, defaults to ``8000``."
+msgstr ""
+
+#: ../../deploy/rest.rst:161
+msgid ""
+"A flag to indicate whether the server should allow credentials. If set, "
+"the server will include the ``CORS`` header in the response"
+msgstr ""
+
+#: ../../deploy/rest.rst:163
+msgid ""
+"Specifies the allowed origins. It expects a JSON list of strings, with "
+"the default value being ``[\"*\"]``, allowing all origins."
+msgstr ""
+
+#: ../../deploy/rest.rst:164
+msgid ""
+"Specifies the allowed methods. It expects a JSON list of strings, with "
+"the default value being ``[\"*\"]``, allowing all methods."
+msgstr ""
+
+#: ../../deploy/rest.rst:165
+msgid ""
+"Specifies the allowed headers. It expects a JSON list of strings, with "
+"the default value being ``[\"*\"]``, allowing all headers."
+msgstr ""
+
+#: ../../deploy/rest.rst:167
+msgid ""
+"You can access ``http://127.0.0.1:PORT/docs`` (replace ``PORT`` with the "
+"port number you specified) to see the list of supported endpoints."
+msgstr ""
+
+#: ../../deploy/rest.rst:171
+msgid "API Endpoints"
+msgstr ""
+
+#: ../../deploy/rest.rst:173
+msgid "The REST API provides the following endpoints:"
+msgstr ""
+
+#: ../../deploy/rest.rst:179
+msgid "Get a list of models available for MLC-LLM."
+msgstr ""
+
+#: ../../deploy/rest.rst:181 ../../deploy/rest.rst:307
+msgid "**Example**"
+msgstr ""
+
+#: ../../deploy/rest.rst:203
+msgid ""
+"Get a response from MLC-LLM using a prompt, either with or without "
+"streaming."
+msgstr ""
+
+#: ../../deploy/rest.rst:205
+msgid "**Chat Completion Request Object**"
+msgstr ""
+
+#: ../../deploy/rest.rst:207
+msgid ""
+"**messages** (*List[ChatCompletionMessage]*, required): A sequence of "
+"messages that have been exchanged in the conversation so far. Each "
+"message in the conversation is represented by a `ChatCompletionMessage` "
+"object, which includes the following fields:"
+msgstr ""
+
+#: ../../deploy/rest.rst:208
+msgid ""
+"**content** (*Optional[Union[str, List[Dict[str, str]]]]*): The text "
+"content of the message or structured data in case of tool-generated "
+"messages."
+msgstr ""
+
+#: ../../deploy/rest.rst:209
+msgid ""
+"**role** (*Literal[\"system\", \"user\", \"assistant\", \"tool\"]*): The "
+"role of the message sender, indicating whether the message is from the "
+"system, user, assistant, or a tool."
+msgstr ""
+
+#: ../../deploy/rest.rst:210
+msgid ""
+"**name** (*Optional[str]*): An optional name for the sender of the "
+"message."
+msgstr ""
+
+#: ../../deploy/rest.rst:211
+msgid ""
+"**tool_calls** (*Optional[List[ChatToolCall]]*): A list of calls to "
+"external tools or functions made within this message, applicable when the"
+" role is `tool`."
+msgstr ""
+
+#: ../../deploy/rest.rst:212
+msgid ""
+"**tool_call_id** (*Optional[str]*): A unique identifier for the tool "
+"call, relevant when integrating external tools or services."
+msgstr ""
+
+#: ../../deploy/rest.rst:214
+msgid ""
+"**model** (*str*, required): The model to be used for generating "
+"responses."
+msgstr ""
+
+#: ../../deploy/rest.rst:216
+msgid ""
+"**frequency_penalty** (*float*, optional, default=0.0): Positive values "
+"penalize new tokens based on their existing frequency in the text so far,"
+" decreasing the model’s likelihood to repeat tokens."
+msgstr ""
+
+#: ../../deploy/rest.rst:218
+msgid ""
+"**presence_penalty** (*float*, optional, default=0.0): Positive values "
+"penalize new tokens if they are already present in the text so far, "
+"decreasing the model’s likelihood to repeat tokens."
+msgstr ""
+
+#: ../../deploy/rest.rst:220
+msgid ""
+"**logprobs** (*bool*, optional, default=False): Indicates whether to "
+"include log probabilities for each token in the response."
+msgstr ""
+
+#: ../../deploy/rest.rst:222
+msgid ""
+"**top_logprobs** (*int*, optional, default=0): An integer ranging from 0 "
+"to 20. It determines the number of tokens, most likely to appear at each "
+"position, to be returned. Each token is accompanied by a log probability."
+" If this parameter is used, 'logprobs' must be set to true."
+msgstr ""
+
+#: ../../deploy/rest.rst:224
+msgid ""
+"**logit_bias** (*Optional[Dict[int, float]]*): Allows specifying biases "
+"for or against specific tokens during generation."
+msgstr ""
+
+#: ../../deploy/rest.rst:226
+msgid ""
+"**max_tokens** (*Optional[int]*): The maximum number of tokens to "
+"generate in the response(s)."
+msgstr ""
+
+#: ../../deploy/rest.rst:228
+msgid ""
+"**n** (*int*, optional, default=1): Number of responses to generate for "
+"the given prompt."
+msgstr ""
+
+#: ../../deploy/rest.rst:230
+msgid ""
+"**seed** (*Optional[int]*): A seed for deterministic generation. Using "
+"the same seed and inputs will produce the same output."
+msgstr ""
+
+#: ../../deploy/rest.rst:232
+msgid ""
+"**stop** (*Optional[Union[str, List[str]]]*): One or more strings that, "
+"if encountered, will cause generation to stop."
+msgstr ""
+
+#: ../../deploy/rest.rst:234
+msgid ""
+"**stream** (*bool*, optional, default=False): If `True`, responses are "
+"streamed back as they are generated."
+msgstr ""
+
+#: ../../deploy/rest.rst:236
+msgid ""
+"**temperature** (*float*, optional, default=1.0): Controls the randomness"
+" of the generation. Lower values lead to less random completions."
+msgstr ""
+
+#: ../../deploy/rest.rst:238
+msgid ""
+"**top_p** (*float*, optional, default=1.0): Nucleus sampling parameter "
+"that controls the diversity of the generated responses."
+msgstr ""
+
+#: ../../deploy/rest.rst:240
+msgid ""
+"**tools** (*Optional[List[ChatTool]]*): Specifies external tools or "
+"functions that can be called as part of the chat."
+msgstr ""
+
+#: ../../deploy/rest.rst:242
+msgid ""
+"**tool_choice** (*Optional[Union[Literal[\"none\", \"auto\"], Dict]]*): "
+"Controls how tools are selected for use in responses."
+msgstr ""
+
+#: ../../deploy/rest.rst:244
+msgid ""
+"**user** (*Optional[str]*): An optional identifier for the user "
+"initiating the request."
+msgstr ""
+
+#: ../../deploy/rest.rst:246
+msgid ""
+"**response_format** (*RequestResponseFormat*, optional): Specifies the "
+"format of the response. Can be either \"text\" or \"json_object\", with "
+"optional schema definition for JSON responses."
+msgstr ""
+
+#: ../../deploy/rest.rst:248
+msgid "**Returns**"
+msgstr ""
+
+#: ../../deploy/rest.rst:250
+msgid ""
+"If `stream` is `False`, a `ChatCompletionResponse` object containing the "
+"generated response(s)."
+msgstr ""
+
+#: ../../deploy/rest.rst:251
+msgid ""
+"If `stream` is `True`, a stream of `ChatCompletionStreamResponse` "
+"objects, providing a real-time feed of generated responses."
+msgstr ""
+
+#: ../../deploy/rest.rst:254
+msgid "**ChatCompletionResponseChoice**"
+msgstr ""
+
+#: ../../deploy/rest.rst:256
+msgid ""
+"**finish_reason** (*Optional[Literal[\"stop\", \"length\", "
+"\"tool_calls\", \"error\"]]*, optional): The reason the completion "
+"process was terminated. It can be due to reaching a stop condition, the "
+"maximum length, output of tool calls, or an error."
+msgstr ""
+
+#: ../../deploy/rest.rst:258 ../../deploy/rest.rst:268
+msgid ""
+"**index** (*int*, required, default=0): Indicates the position of this "
+"choice within the list of choices."
+msgstr ""
+
+#: ../../deploy/rest.rst:260
+msgid ""
+"**message** (*ChatCompletionMessage*, required): The message part of the "
+"chat completion, containing the content of the chat response."
+msgstr ""
+
+#: ../../deploy/rest.rst:262 ../../deploy/rest.rst:272
+msgid ""
+"**logprobs** (*Optional[LogProbs]*, optional): Optionally includes log "
+"probabilities for each output token"
+msgstr ""
+
+#: ../../deploy/rest.rst:264
+msgid "**ChatCompletionStreamResponseChoice**"
+msgstr ""
+
+#: ../../deploy/rest.rst:266
+msgid ""
+"**finish_reason** (*Optional[Literal[\"stop\", \"length\", "
+"\"tool_calls\"]]*, optional): Specifies why the streaming completion "
+"process ended. Valid reasons are \"stop\", \"length\", and "
+"\"tool_calls\"."
+msgstr ""
+
+#: ../../deploy/rest.rst:270
+msgid ""
+"**delta** (*ChatCompletionMessage*, required): Represents the incremental"
+" update or addition to the chat completion message in the stream."
+msgstr ""
+
+#: ../../deploy/rest.rst:274
+msgid "**ChatCompletionResponse**"
+msgstr ""
+
+#: ../../deploy/rest.rst:276
+msgid ""
+"**id** (*str*, required): A unique identifier for the chat completion "
+"session."
+msgstr ""
+
+#: ../../deploy/rest.rst:278
+msgid ""
+"**choices** (*List[ChatCompletionResponseChoice]*, required): A "
+"collection of `ChatCompletionResponseChoice` objects, representing the "
+"potential responses generated by the model."
+msgstr ""
+
+#: ../../deploy/rest.rst:280
+msgid ""
+"**created** (*int*, required, default=current time): The UNIX timestamp "
+"representing when the response was generated."
+msgstr ""
+
+#: ../../deploy/rest.rst:282
+msgid ""
+"**model** (*str*, required): The name of the model used to generate the "
+"chat completions."
+msgstr ""
+
+#: ../../deploy/rest.rst:284
+msgid ""
+"**system_fingerprint** (*str*, required): A system-generated fingerprint "
+"that uniquely identifies the computational environment."
+msgstr ""
+
+#: ../../deploy/rest.rst:286
+msgid ""
+"**object** (*Literal[\"chat.completion\"]*, required, "
+"default=\"chat.completion\"): A string literal indicating the type of "
+"object, here always \"chat.completion\"."
+msgstr ""
+
+#: ../../deploy/rest.rst:288
+msgid ""
+"**usage** (*UsageInfo*, required, default=empty `UsageInfo` object): "
+"Contains information about the API usage for this specific request."
+msgstr ""
+
+#: ../../deploy/rest.rst:290
+msgid "**ChatCompletionStreamResponse**"
+msgstr ""
+
+#: ../../deploy/rest.rst:292
+msgid ""
+"**id** (*str*, required): A unique identifier for the streaming chat "
+"completion session."
+msgstr ""
+
+#: ../../deploy/rest.rst:294
+msgid ""
+"**choices** (*List[ChatCompletionStreamResponseChoice]*, required): A "
+"list of `ChatCompletionStreamResponseChoice` objects, each representing a"
+" part of the streaming chat response."
+msgstr ""
+
+#: ../../deploy/rest.rst:296
+msgid ""
+"**created** (*int*, required, default=current time): The creation time of"
+" the streaming response, represented as a UNIX timestamp."
+msgstr ""
+
+#: ../../deploy/rest.rst:298
+msgid ""
+"**model** (*str*, required): Specifies the model that was used for "
+"generating the streaming chat completions."
+msgstr ""
+
+#: ../../deploy/rest.rst:300
+msgid ""
+"**system_fingerprint** (*str*, required): A unique identifier for the "
+"system generating the streaming completions."
+msgstr ""
+
+#: ../../deploy/rest.rst:302
+msgid ""
+"**object** (*Literal[\"chat.completion.chunk\"]*, required, "
+"default=\"chat.completion.chunk\"): A literal indicating that this object"
+" represents a chunk of a streaming chat completion."
+msgstr ""
+
+#: ../../deploy/rest.rst:309
+msgid ""
+"Below is an example of using the API to interact with MLC-LLM in Python "
+"with Streaming."
+msgstr ""
+
+#: ../../deploy/rest.rst:334
+msgid ""
+"There is also support for function calling similar to OpenAI "
+"(https://platform.openai.com/docs/guides/function-calling). Below is an "
+"example on how to use function calling in Python."
+msgstr ""
+
+#: ../../deploy/rest.rst:381
+msgid ""
+"Function Calling with streaming is also supported. Below is an example on"
+" how to use function calling with streaming in Python."
+msgstr ""
+
+#: ../../deploy/rest.rst:435
+msgid ""
+"The API is a uniform interface that supports multiple languages. You can "
+"also utilize these functionalities in languages other than Python."
+msgstr ""
+
+#: ../../deploy/webllm.rst:4
+msgid "WebLLM Javascript SDK"
+msgstr ""
+
+#: ../../deploy/webllm.rst:10
+msgid ""
+"`WebLLM <https://www.npmjs.com/package/@mlc-ai/web-llm>`_ is a high-"
+"performance in-browser LLM inference engine, aiming to be the backend of "
+"AI-powered web applications and agents."
+msgstr ""
+
+#: ../../deploy/webllm.rst:13
+msgid ""
+"It provides a specialized runtime for the web backend of MLCEngine, "
+"leverages `WebGPU <https://www.w3.org/TR/webgpu/>`_ for local "
+"acceleration, offers OpenAI-compatible API, and provides built-in support"
+" for web workers to separate heavy computation from the UI flow."
+msgstr ""
+
+#: ../../deploy/webllm.rst:17
+msgid ""
+"Please checkout the `WebLLM repo <https://github.com/mlc-ai/web-llm>`__ "
+"on how to use WebLLM to build web application in Javascript/Typescript. "
+"Here we only provide a high-level idea and discuss how to use MLC-LLM to "
+"compile your own model to run with WebLLM."
+msgstr ""
+
+#: ../../deploy/webllm.rst:22
+msgid "Getting Started"
+msgstr ""
+
+#: ../../deploy/webllm.rst:24
+msgid ""
+"To get started, try out `WebLLM Chat <https://chat.webllm.ai/>`__, which "
+"provides a great example of integrating WebLLM into a full web "
+"application."
+msgstr ""
+
+#: ../../deploy/webllm.rst:27
+msgid ""
+"A WebGPU-compatible browser is needed to run WebLLM-powered web "
+"applications. You can download the latest Google Chrome and use `WebGPU "
+"Report <https://webgpureport.org/>`__ to verify the functionality of "
+"WebGPU on your browser."
+msgstr ""
+
+#: ../../deploy/webllm.rst:31
+msgid ""
+"WebLLM is available as an `npm package <https://www.npmjs.com/package"
+"/@mlc-ai/web-llm>`_ and is also CDN-delivered. Try a simple chatbot "
+"example in `this JSFiddle example "
+"<https://jsfiddle.net/neetnestor/4nmgvsa2/>`__ without setup."
+msgstr ""
+
+#: ../../deploy/webllm.rst:35
+msgid ""
+"You can also checkout `existing examples <https://github.com/mlc-ai/web-"
+"llm/tree/main/examples>`__ on more advanced usage of WebLLM such as JSON "
+"mode, streaming, and more."
+msgstr ""
+
+#: ../../deploy/webllm.rst:39
+msgid "Model Records in WebLLM"
+msgstr ""
+
+#: ../../deploy/webllm.rst:41
+msgid ""
+"Each of the model in `WebLLM Chat <https://chat.webllm.ai>`__ is "
+"registered as an instance of ``ModelRecord`` and can be accessed at "
+"`webllm.prebuiltAppConfig.model_list <https://github.com/mlc-ai/web-"
+"llm/blob/main/src/config.ts#L293>`__."
+msgstr ""
+
+#: ../../deploy/webllm.rst:45
+msgid ""
+"Looking at the most straightforward example `get-started "
+"<https://github.com/mlc-ai/web-llm/blob/main/examples/get-"
+"started/src/get_started.ts>`__, there are two ways to run a model."
+msgstr ""
+
+#: ../../deploy/webllm.rst:48
+msgid ""
+"One can either use the prebuilt model by simply calling ``reload()`` with"
+" the ``model_id``:"
+msgstr ""
+
+#: ../../deploy/webllm.rst:55
+msgid "Or one can specify their own model to run by creating a model record:"
+msgstr ""
+
+#: ../../deploy/webllm.rst:78
+msgid ""
+"Looking at the code above, we find that, just like any other platforms "
+"supported by MLC-LLM, to run a model on WebLLM, you need:"
+msgstr ""
+
+#: ../../deploy/webllm.rst:81
+msgid ""
+"**Model weights** converted to MLC format (e.g. `Llama-3-8B-Instruct-"
+"q4f32_1-MLC <https://huggingface.co/mlc-ai/Llama-3-8B-Instruct-"
+"q4f32_1-MLC/tree/main>`_.): downloaded through the url "
+"``ModelRecord.model``"
+msgstr ""
+
+#: ../../deploy/webllm.rst:83
+msgid ""
+"**Model library** that comprises the inference logic (see repo `binary-"
+"mlc-llm-libs <https://github.com/mlc-ai/binary-mlc-llm-libs/tree/main"
+"/web-llm-models>`__): downloaded through the url "
+"``ModelRecord.model_lib``."
+msgstr ""
+
+#: ../../deploy/webllm.rst:85
+msgid ""
+"In sections below, we walk you through two examples on how to add your "
+"own model besides the ones in `webllm.prebuiltAppConfig.model_list "
+"<https://github.com/mlc-ai/web-llm/blob/main/src/config.ts#L293>`__. "
+"Before proceeding, please verify installation of ``mlc_llm`` and ``tvm``."
+msgstr ""
+
+#: ../../deploy/webllm.rst:90
+msgid "Verify Installation for Adding Models"
+msgstr ""
+
+#: ../../deploy/webllm.rst:92
+msgid "**Step 1. Verify mlc_llm**"
+msgstr ""
+
+#: ../../deploy/webllm.rst:94
+msgid ""
+"We use the python package ``mlc_llm`` to compile models. This can be "
+"installed by following :ref:`install-mlc-packages`, either by building "
+"from source, or by installing the prebuilt package. Verify ``mlc_llm`` "
+"installation in command line via:"
+msgstr ""
+
+#: ../../deploy/webllm.rst:105
+msgid ""
+"If it runs into error ``command not found: mlc_llm``, try ``python -m "
+"mlc_llm --help``."
+msgstr ""
+
+#: ../../deploy/webllm.rst:107
+msgid "**Step 2. Verify TVM**"
+msgstr ""
+
+#: ../../deploy/webllm.rst:109
+msgid ""
+"To compile models, you also need to follow :ref:`install-tvm-unity`. Here"
+" we verify ``tvm`` quickly with command line (for full verification, see "
+":ref:`tvm-unity-validate`):"
+msgstr ""
+
+#: ../../deploy/webllm.rst:121
+msgid "Bring Your Own Model Variant"
+msgstr ""
+
+#: ../../deploy/webllm.rst:123
+msgid ""
+"In cases where the model you are adding is simply a variant of an "
+"existing model, we only need to convert weights and reuse existing model "
+"library. For instance:"
+msgstr ""
+
+#: ../../deploy/webllm.rst:126
+msgid "Adding ``OpenMistral`` when MLC supports ``Mistral``"
+msgstr ""
+
+#: ../../deploy/webllm.rst:127
+msgid ""
+"Adding a ``Llama3`` fine-tuned on a domain-specific task when MLC "
+"supports ``Llama3``"
+msgstr ""
+
+#: ../../deploy/webllm.rst:130
+msgid ""
+"In this section, we walk you through adding ``WizardMath-"
+"7B-V1.1-q4f16_1`` to the `get-started <https://github.com/mlc-ai/web-"
+"llm/tree/main/examples/get-started>`__ example. According to the model's "
+"``config.json`` on `its Huggingface repo <https://huggingface.co/WizardLM"
+"/WizardMath-7B-V1.1/blob/main/config.json>`_, it reuses the Mistral model"
+" architecture."
+msgstr ""
+
+#: ../../deploy/webllm.rst:141
+msgid "**Step 1 Clone from HF and convert_weight**"
+msgstr ""
+
+#: ../../deploy/webllm.rst:160
+msgid "**Step 2 Generate MLC Chat Config**"
+msgstr ""
+
+#: ../../deploy/webllm.rst:171
+msgid ""
+"For the ``conv-template``, `conversation_template.py <https://github.com"
+"/mlc-ai/mlc-llm/tree/main/python/mlc_llm/conversation_template>`__ "
+"contains a full list of conversation templates that MLC provides. You can"
+" also manually modify the ``mlc-chat-config.json`` to add your customized"
+" conversation template."
+msgstr ""
+
+#: ../../deploy/webllm.rst:175
+msgid "**Step 3 Upload weights to HF**"
+msgstr ""
+
+#: ../../deploy/webllm.rst:188
+msgid ""
+"After successfully following all steps, you should end up with a "
+"Huggingface repo similar to `WizardMath-7B-V1.1-q4f16_1-MLC "
+"<https://huggingface.co/mlc-ai/WizardMath-7B-V1.1-q4f16_1-MLC>`__, which "
+"includes the converted/quantized weights, the ``mlc-chat-config.json``, "
+"and tokenizer files."
+msgstr ""
+
+#: ../../deploy/webllm.rst:193
+msgid "**Step 4 Register as a ModelRecord**"
+msgstr ""
+
+#: ../../deploy/webllm.rst:195
+msgid ""
+"Finally, we modify the code snippet for `get-started <https://github.com"
+"/mlc-ai/web-llm/blob/main/examples/get-started/src/get_started.ts>`__ "
+"pasted above."
+msgstr ""
+
+#: ../../deploy/webllm.rst:199
+msgid ""
+"We simply specify the Huggingface link as ``model``, while reusing the "
+"``model_lib`` for ``Mistral-7B``."
+msgstr ""
+
+#: ../../deploy/webllm.rst:224
+msgid ""
+"Now, running the ``get-started`` example will use the ``WizardMath`` "
+"model you just added. See `get-started's README <https://github.com/mlc-"
+"ai/web-llm/tree/main/examples/get-started#webllm-get-started-app>`__ on "
+"how to run it."
+msgstr ""
+
+#: ../../deploy/webllm.rst:230
+msgid "Bring Your Own Model Library"
+msgstr ""
+
+#: ../../deploy/webllm.rst:232 ../../deploy/webllm.rst:279
+msgid "A model library is specified by:"
+msgstr ""
+
+#: ../../deploy/webllm.rst:234
+msgid "The model architecture (e.g. ``llama-3``, ``gpt-neox``, ``phi-3``)"
+msgstr ""
+
+#: ../../deploy/webllm.rst:235 ../../deploy/webllm.rst:282
+msgid "Quantization (e.g. ``q4f16_1``, ``q0f32``)"
+msgstr ""
+
+#: ../../deploy/webllm.rst:236
+msgid ""
+"Metadata (e.g. ``context_window_size``, ``sliding_window_size``, "
+"``prefill-chunk-size``), which affects memory planning (currently only "
+"``prefill-chunk-size`` affects the compiled model)"
+msgstr ""
+
+#: ../../deploy/webllm.rst:237 ../../deploy/webllm.rst:284
+msgid "Platform (e.g. ``cuda``, ``webgpu``, ``iOS``)"
+msgstr ""
+
+#: ../../deploy/webllm.rst:239
+msgid ""
+"In cases where the model you want to run is not compatible with the "
+"provided MLC prebuilt model libraries (e.g. having a different "
+"quantization, a different metadata spec, or even a different model "
+"architecture), you need to build your own model library."
+msgstr ""
+
+#: ../../deploy/webllm.rst:244
+msgid ""
+"In this section, we walk you through adding ``RedPajama-INCITE-Chat-"
+"3B-v1`` to the `get-started <https://github.com/mlc-ai/web-"
+"llm/tree/main/examples/get-started>`__ example."
+msgstr ""
+
+#: ../../deploy/webllm.rst:247
+msgid ""
+"This section largely replicates :ref:`compile-model-libraries`. See that "
+"page for more details, specifically the ``WebGPU`` option."
+msgstr ""
+
+#: ../../deploy/webllm.rst:250
+msgid "**Step 0. Install dependencies**"
+msgstr ""
+
+#: ../../deploy/webllm.rst:252
+msgid ""
+"To compile model libraries for webgpu, you need to :ref:`build mlc_llm "
+"from source <mlcchat_build_from_source>`. Besides, you also need to "
+"follow :ref:`install-web-build`. Otherwise, it would run into error:"
+msgstr ""
+
+#: ../../deploy/webllm.rst:261
+msgid ""
+"You can be under the mlc-llm repo, or your own working directory. Note "
+"that all platforms can share the same compiled/quantized weights."
+msgstr ""
+
+#: ../../deploy/webllm.rst:277
+msgid "**Step 2. Generate mlc-chat-config and compile**"
+msgstr ""
+
+#: ../../deploy/webllm.rst:281
+msgid "The model architecture (e.g. ``llama-2``, ``gpt-neox``)"
+msgstr ""
+
+#: ../../deploy/webllm.rst:283
+msgid ""
+"Metadata (e.g. ``context_window_size``, ``sliding_window_size``, "
+"``prefill-chunk-size``), which affects memory planning"
+msgstr ""
+
+#: ../../deploy/webllm.rst:286
+msgid ""
+"All these knobs are specified in ``mlc-chat-config.json`` generated by "
+"``gen_config``."
+msgstr ""
+
+#: ../../deploy/webllm.rst:299
+msgid ""
+"When compiling larger models like ``Llama-3-8B``, you may want to add "
+"``--prefill_chunk_size 1024`` to decrease memory usage. Otherwise, during"
+" runtime, you may run into issues like:"
+msgstr ""
+
+#: ../../deploy/webllm.rst:308
+msgid "**Step 3. Distribute model library and model weights**"
+msgstr ""
+
+#: ../../deploy/webllm.rst:310
+msgid "After following the steps above, you should end up with:"
+msgstr ""
+
+#: ../../deploy/webllm.rst:326
+msgid ""
+"Upload the ``RedPajama-INCITE-Chat-3B-v1-q4f16_1-webgpu.wasm`` to a "
+"github repository (for us, it is in `binary-mlc-llm-libs "
+"<https://github.com/mlc-ai/binary-mlc-llm-libs>`__). Then upload the "
+"``RedPajama-INCITE-Chat-3B-v1-q4f16_1-MLC`` to a Huggingface repo:"
+msgstr ""
+
+#: ../../deploy/webllm.rst:341
+msgid ""
+"This would result in something like `RedPajama-INCITE-Chat-"
+"3B-v1-q4f16_1-MLC <https://huggingface.co/mlc-ai/RedPajama-INCITE-Chat-"
+"3B-v1-q4f16_1-MLC/tree/main>`_."
+msgstr ""
+
+#: ../../deploy/webllm.rst:344
+msgid "**Step 4. Register as a ModelRecord**"
+msgstr ""
+
+#: ../../deploy/webllm.rst:346
+msgid ""
+"Finally, we are able to run the model we added in WebLLM's `get-started "
+"<https://github.com/mlc-ai/web-llm/tree/main/examples/get-started>`__:"
+msgstr ""
+
+#: ../../deploy/webllm.rst:368
+msgid ""
+"Now, running the ``get-started`` example will use the ``RedPajama`` model"
+" you just added. See `get-started's README <https://github.com/mlc-ai"
+"/web-llm/tree/main/examples/get-started#webllm-get-started-app>`__ on how"
+" to run it."
+msgstr ""
+

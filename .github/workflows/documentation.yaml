@@ -3,7 +3,7 @@ name: Build Docs
 on:
   push:
     branches:
-      - main
+      - main_test
 
 jobs:
   test_linux:

@@ -33,7 +33,8 @@ redirects = {"get_started/try_out": "../index.html#getting-started"}
 
 source_suffix = [".rst"]
 
-language = "en"
+language = "zh_CN"
+locale_dirs = ['../locales/']  # po files will be created in this directory
 
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 

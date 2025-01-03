@@ -1,0 +1,645 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023-2024, MLC LLM Contributors
+# This file is distributed under the same license as the mlc-llm package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mlc-llm 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-03 18:39+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../get_started/introduction.rst:4
+msgid "Introduction to MLC LLM"
+msgstr ""
+
+#: ../../get_started/introduction.rst:8
+msgid "Table of Contents"
+msgstr ""
+
+#: ../../get_started/introduction.rst:10
+msgid ""
+"MLC LLM is a machine learning compiler and high-performance deployment "
+"engine for large language models.  The mission of this project is to "
+"enable everyone to develop, optimize, and deploy AI models natively on "
+"everyone's platforms."
+msgstr ""
+
+#: ../../get_started/introduction.rst:14
+msgid ""
+"This page is a quick tutorial to introduce how to try out MLC LLM, and "
+"the steps to deploy your own models with MLC LLM."
+msgstr ""
+
+#: ../../get_started/introduction.rst:18
+msgid "Installation"
+msgstr ""
+
+#: ../../get_started/introduction.rst:20
+msgid ""
+":ref:`MLC LLM <install-mlc-packages>` is available via pip. It is always "
+"recommended to install it in an isolated conda virtual environment."
+msgstr ""
+
+#: ../../get_started/introduction.rst:23
+msgid "To verify the installation, activate your virtual environment, run"
+msgstr ""
+
+#: ../../get_started/introduction.rst:29
+msgid "You are expected to see the installation path of MLC LLM Python package."
+msgstr ""
+
+#: ../../get_started/introduction.rst:33
+msgid "Chat CLI"
+msgstr ""
+
+#: ../../get_started/introduction.rst:35
+msgid ""
+"As the first example, we try out the chat CLI in MLC LLM with 4-bit "
+"quantized 8B Llama-3 model. You can run MLC chat through a one-liner "
+"command:"
+msgstr ""
+
+#: ../../get_started/introduction.rst:42
+msgid ""
+"It may take 1-2 minutes for the first time running this command. After "
+"waiting, this command launch a chat interface where you can enter your "
+"prompt and chat with the model."
+msgstr ""
+
+#: ../../get_started/introduction.rst:64
+msgid ""
+"The figure below shows what run under the hood of this chat CLI command. "
+"For the first time running the command, there are three major phases."
+msgstr ""
+
+#: ../../get_started/introduction.rst:67
+msgid ""
+"**Phase 1. Pre-quantized weight download.** This phase automatically "
+"downloads pre-quantized Llama-3 model from `Hugging Face "
+"<https://huggingface.co/mlc-ai/Llama-3-8B-Instruct-q4f16_1-MLC>`_ and "
+"saves it to your local cache directory."
+msgstr ""
+
+#: ../../get_started/introduction.rst:68
+msgid ""
+"**Phase 2. Model compilation.** This phase automatically optimizes the "
+"Llama-3 model to accelerate model inference on GPU with techniques of "
+"machine learning compilation in `Apache TVM "
+"<https://llm.mlc.ai/docs/install/tvm.html>`_ compiler, and generate the "
+"binary model library that enables the execution language models on your "
+"local GPU."
+msgstr ""
+
+#: ../../get_started/introduction.rst:69
+msgid ""
+"**Phase 3. Chat runtime.** This phase consumes the model library built in"
+" phase 2 and the model weights downloaded in phase 1, launches a "
+"platform-native chat runtime to drive the execution of Llama-3 model."
+msgstr ""
+
+#: ../../get_started/introduction.rst:71
+msgid ""
+"We cache the pre-quantized model weights and compiled model library "
+"locally. Therefore, phase 1 and 2 will only execute **once** over "
+"multiple runs."
+msgstr ""
+
+#: ../../get_started/introduction.rst:74
+msgid "Project Workflow"
+msgstr ""
+
+#: ../../get_started/introduction.rst:79
+msgid "Workflow in MLC LLM"
+msgstr ""
+
+#: ../../get_started/introduction.rst:83 ../../get_started/introduction.rst:198
+msgid ""
+"If you want to enable tensor parallelism to run LLMs on multiple GPUs, "
+"please specify argument ``--overrides \"tensor_parallel_shards=$NGPU\"``."
+" For example,"
+msgstr ""
+
+#: ../../get_started/introduction.rst:94
+msgid "Python API"
+msgstr ""
+
+#: ../../get_started/introduction.rst:96
+msgid ""
+"In the second example, we run the Llama-3 model with the chat completion "
+"Python API of MLC LLM. You can save the code below into a Python file and"
+" run it."
+msgstr ""
+
+#: ../../get_started/introduction.rst:123 ../../get_started/quick_start.rst:49
+msgid "MLC LLM Python API"
+msgstr ""
+
+#: ../../get_started/introduction.rst:125
+msgid ""
+"This code example first creates an :class:`mlc_llm.MLCEngine` instance "
+"with the 4-bit quantized Llama-3 model. **We design the Python API** "
+":class:`mlc_llm.MLCEngine` **to align with OpenAI API**, which means you "
+"can use :class:`mlc_llm.MLCEngine` in the same way of using `OpenAI's "
+"Python package <https://github.com/openai/openai-python?tab=readme-ov-"
+"file#usage>`_ for both synchronous and asynchronous generation."
+msgstr ""
+
+#: ../../get_started/introduction.rst:131
+msgid ""
+"In this code example, we use the synchronous chat completion interface "
+"and iterate over all the stream responses. If you want to run without "
+"streaming, you can run"
+msgstr ""
+
+#: ../../get_started/introduction.rst:144
+msgid ""
+"You can also try different arguments supported in `OpenAI chat completion"
+" API <https://platform.openai.com/docs/api-reference/chat/create>`_. If "
+"you would like to do concurrent asynchronous generation, you can use "
+":class:`mlc_llm.AsyncMLCEngine` instead."
+msgstr ""
+
+#: ../../get_started/introduction.rst:149
+msgid ""
+"If you want to enable tensor parallelism to run LLMs on multiple GPUs, "
+"please specify argument ``model_config_overrides`` in MLCEngine "
+"constructor. For example,"
+msgstr ""
+
+#: ../../get_started/introduction.rst:166 ../../get_started/quick_start.rst:51
+msgid "REST Server"
+msgstr ""
+
+#: ../../get_started/introduction.rst:168
+msgid ""
+"For the third example, we launch a REST server to serve the 4-bit "
+"quantized Llama-3 model for OpenAI chat completion requests. The server "
+"can be launched in command line with"
+msgstr ""
+
+#: ../../get_started/introduction.rst:175
+msgid ""
+"The server is hooked at ``http://127.0.0.1:8000`` by default, and you can"
+" use ``--host`` and ``--port`` to set a different host and port. When the"
+" server is ready (showing ``INFO: Uvicorn running on "
+"http://127.0.0.1:8000 (Press CTRL+C to quit)``), we can open a new shell "
+"and send a cURL request via the following command:"
+msgstr ""
+
+#: ../../get_started/introduction.rst:192
+msgid ""
+"The server will process this request and send back the response. Similar "
+"to :ref:`introduction-to-mlc-llm-python-api`, you can pass argument "
+"``\"stream\": true`` to request for stream responses."
+msgstr ""
+
+#: ../../get_started/introduction.rst:209
+msgid "Deploy Your Own Model"
+msgstr ""
+
+#: ../../get_started/introduction.rst:211
+msgid ""
+"So far we have been using pre-converted models weights from Hugging Face."
+" This section introduces the core workflow regarding how you can *run "
+"your own models with MLC LLM*."
+msgstr ""
+
+#: ../../get_started/introduction.rst:214
+msgid ""
+"We use the `Phi-2 <https://huggingface.co/microsoft/phi-2>`_ as the "
+"example model. Assuming the Phi-2 model is downloaded and placed under "
+"``models/phi-2``, there are two major steps to prepare your own models."
+msgstr ""
+
+#: ../../get_started/introduction.rst:218
+msgid ""
+"**Step 1. Generate MLC config.** The first step is to generate the "
+"configuration file of MLC LLM."
+msgstr ""
+
+#: ../../get_started/introduction.rst:231
+msgid ""
+"The config generation command takes in the local model path, the target "
+"path of MLC output, the conversation template name in MLC and the "
+"quantization name in MLC. Here the quantization ``q0f16`` means float16 "
+"without quantization, and the conversation template ``phi-2`` is the "
+"Phi-2 model's template in MLC."
+msgstr ""
+
+#: ../../get_started/introduction.rst:236
+msgid ""
+"If you want to enable tensor parallelism on multiple GPUs, add argument "
+"``--tensor-parallel-shards $NGPU`` to the config generation command."
+msgstr ""
+
+#: ../../get_started/introduction.rst:239
+msgid ""
+"`The full list of supported quantization in MLC <https://github.com/mlc-"
+"ai/mlc-llm/blob/main/python/mlc_llm/quantization/quantization.py#L29>`_. "
+"You can try different quantization methods with MLC LLM. Typical "
+"quantization methods are ``q4f16_1`` for 4-bit group quantization, "
+"``q4f16_ft`` for 4-bit FasterTransformer format quantization."
+msgstr ""
+
+#: ../../get_started/introduction.rst:240
+msgid ""
+"`The full list of conversation template in MLC <https://github.com/mlc-ai"
+"/mlc-llm/blob/main/python/mlc_llm/interface/gen_config.py#L276>`_."
+msgstr ""
+
+#: ../../get_started/introduction.rst:242
+msgid ""
+"**Step 2. Convert model weights.** In this step, we convert the model "
+"weights to MLC format."
+msgstr ""
+
+#: ../../get_started/introduction.rst:250
+msgid ""
+"This step consumes the raw model weights and converts them to for MLC "
+"format. The converted weights will be stored under ``$MLC_MODEL_PATH``, "
+"which is the same directory where the config file generated in Step 1 "
+"resides."
+msgstr ""
+
+#: ../../get_started/introduction.rst:254
+msgid "Now, we can try to run your own model with chat CLI:"
+msgstr ""
+
+#: ../../get_started/introduction.rst:260
+msgid ""
+"For the first run, model compilation will be triggered automatically to "
+"optimize the model for GPU accelerate and generate the binary model "
+"library. The chat interface will be displayed after model JIT compilation"
+" finishes. You can also use this model in Python API, MLC serve and other"
+" use scenarios."
+msgstr ""
+
+#: ../../get_started/introduction.rst:266
+msgid "(Optional) Compile Model Library"
+msgstr ""
+
+#: ../../get_started/introduction.rst:268
+msgid ""
+"In previous sections, model libraries are compiled when the "
+":class:`mlc_llm.MLCEngine` launches, which is what we call \"JIT (Just-"
+"in-Time) model compilation\". In some cases, it is beneficial to "
+"explicitly compile the model libraries. We can deploy LLMs with reduced "
+"dependencies by shipping the library for deployment without going through"
+" compilation. It will also enable advanced options such as cross-"
+"compiling the libraries for web and mobile deployments."
+msgstr ""
+
+#: ../../get_started/introduction.rst:275
+msgid "Below is an example command of compiling model libraries in MLC LLM:"
+msgstr ""
+
+#: ../../get_started/introduction.rst:285
+msgid ""
+"At runtime, we need to specify this model library path to use it. For "
+"example,"
+msgstr ""
+
+#: ../../get_started/introduction.rst:303
+msgid ""
+":ref:`compile-model-libraries` introduces the model compilation command "
+"in detail, where you can find instructions and example commands to "
+"compile model to different hardware backends, such as WebGPU, iOS and "
+"Android."
+msgstr ""
+
+#: ../../get_started/introduction.rst:308
+msgid "Universal Deployment"
+msgstr ""
+
+#: ../../get_started/introduction.rst:310
+msgid ""
+"MLC LLM is a high-performance universal deployment solution for large "
+"language models, to enable native deployment of any large language models"
+" with native APIs with compiler acceleration So far, we have gone through"
+" several examples running on a local GPU environment. The project "
+"supports multiple kinds of GPU backends."
+msgstr ""
+
+#: ../../get_started/introduction.rst:315
+msgid ""
+"You can use `--device` option in compilation and runtime to pick a "
+"specific GPU backend. For example, if you have an NVIDIA or AMD GPU, you "
+"can try to use the option below to run chat through the vulkan backend. "
+"Vulkan-based LLM applications run in less typical environments (e.g. "
+"SteamDeck)."
+msgstr ""
+
+#: ../../get_started/introduction.rst:324
+msgid ""
+"The same core LLM runtime engine powers all the backends, enabling the "
+"same model to be deployed across backends as long as they fit within the "
+"memory and computing budget of the corresponding hardware backend. We "
+"also leverage machine learning compilation to build backend-specialized "
+"optimizations to get out the best performance on the targetted backend "
+"when possible, and reuse key insights and optimizations across backends "
+"we support."
+msgstr ""
+
+#: ../../get_started/introduction.rst:330
+msgid ""
+"Please checkout the what to do next sections below to find out more about"
+" different deployment scenarios, such as WebGPU-based browser deployment,"
+" mobile and other settings."
+msgstr ""
+
+#: ../../get_started/introduction.rst:334
+msgid "Summary and What to Do Next"
+msgstr ""
+
+#: ../../get_started/introduction.rst:336
+msgid "To briefly summarize this page,"
+msgstr ""
+
+#: ../../get_started/introduction.rst:338
+msgid ""
+"We went through three examples (chat CLI, Python API, and REST server) of"
+" MLC LLM,"
+msgstr ""
+
+#: ../../get_started/introduction.rst:339
+msgid ""
+"we introduced how to convert model weights for your own models to run "
+"with MLC LLM, and (optionally) how to compile your models."
+msgstr ""
+
+#: ../../get_started/introduction.rst:340
+msgid "We also discussed the universal deployment capability of MLC LLM."
+msgstr ""
+
+#: ../../get_started/introduction.rst:342
+msgid ""
+"Next, please feel free to check out the pages below for quick start "
+"examples and more detailed information on specific platforms"
+msgstr ""
+
+#: ../../get_started/introduction.rst:345
+msgid ""
+":ref:`Quick start examples <quick-start>` for Python API, chat CLI, REST "
+"server, web browser, iOS and Android."
+msgstr ""
+
+#: ../../get_started/introduction.rst:346 ../../get_started/quick_start.rst:178
+msgid ""
+"Depending on your use case, check out our API documentation and tutorial "
+"pages:"
+msgstr ""
+
+#: ../../get_started/introduction.rst:348 ../../get_started/quick_start.rst:180
+msgid ":ref:`webllm-runtime`"
+msgstr ""
+
+#: ../../get_started/introduction.rst:349 ../../get_started/quick_start.rst:181
+msgid ":ref:`deploy-rest-api`"
+msgstr ""
+
+#: ../../get_started/introduction.rst:350 ../../get_started/quick_start.rst:182
+msgid ":ref:`deploy-cli`"
+msgstr ""
+
+#: ../../get_started/introduction.rst:351 ../../get_started/quick_start.rst:183
+msgid ":ref:`deploy-python-engine`"
+msgstr ""
+
+#: ../../get_started/introduction.rst:352 ../../get_started/quick_start.rst:184
+msgid ":ref:`deploy-ios`"
+msgstr ""
+
+#: ../../get_started/introduction.rst:353 ../../get_started/quick_start.rst:185
+msgid ":ref:`deploy-android`"
+msgstr ""
+
+#: ../../get_started/introduction.rst:354 ../../get_started/quick_start.rst:186
+msgid ":ref:`deploy-ide-integration`"
+msgstr ""
+
+#: ../../get_started/introduction.rst:356
+msgid ""
+":ref:`Convert model weight to MLC format <convert-weights-via-MLC>`, if "
+"you want to run your own models."
+msgstr ""
+
+#: ../../get_started/introduction.rst:357
+msgid ""
+":ref:`Compile model libraries <compile-model-libraries>`, if you want to "
+"deploy to web/iOS/Android or control the model optimizations."
+msgstr ""
+
+#: ../../get_started/introduction.rst:358 ../../get_started/quick_start.rst:190
+msgid ""
+"Report any problem or ask any question: open new issues in our `GitHub "
+"repo <https://github.com/mlc-ai/mlc-llm/issues>`_."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:4
+msgid "Quick Start"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:7
+msgid "Examples"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:9
+msgid ""
+"To begin with, try out MLC LLM support for int4-quantized Llama3 8B. It "
+"is recommended to have at least 6GB free VRAM to run it."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:14
+msgid "Python"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:16 ../../get_started/quick_start.rst:53
+#: ../../get_started/quick_start.rst:88
+msgid ""
+"**Install MLC LLM**. :ref:`MLC LLM <install-mlc-packages>` is available "
+"via pip. It is always recommended to install it in an isolated conda "
+"virtual environment."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:19
+msgid ""
+"**Run chat completion in Python.** The following Python script showcases "
+"the Python API of MLC LLM:"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:43
+msgid ""
+"**Documentation and tutorial.** Python API reference and its tutorials "
+"are :ref:`available online <deploy-python-engine>`."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:56
+msgid ""
+"**Launch a REST server.** Run the following command from command line to "
+"launch a REST server at ``http://127.0.0.1:8000``."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:62
+msgid ""
+"**Send requests to server.** When the server is ready (showing ``INFO: "
+"Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)``), open "
+"a new shell and send a request via the following command:"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:77
+msgid ""
+"**Documentation and tutorial.** Check out :ref:`deploy-rest-api` for the "
+"REST API reference and tutorial. Our REST API has complete OpenAI API "
+"support."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:84
+msgid "Send HTTP request to REST server in MLC LLM"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:86
+msgid "Command Line"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:91
+msgid ""
+"For Windows/Linux users, make sure to have latest :ref:`Vulkan driver "
+"<vulkan_driver>` installed."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:93
+msgid "**Run in command line**."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:100
+msgid ""
+"If you are using windows/linux/steamdeck and would like to use vulkan, we"
+" recommend installing necessary vulkan loader dependency via conda to "
+"avoid vulkan not found issues."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:109
+msgid "Web Browser"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:111
+msgid ""
+"`WebLLM <https://webllm.mlc.ai/#chat-demo>`__. MLC LLM generates "
+"performant code for WebGPU and WebAssembly, so that LLMs can be run "
+"locally in a web browser without server resources."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:114
+msgid "**Download pre-quantized weights**. This step is self-contained in WebLLM."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:116
+msgid ""
+"**Download pre-compiled model library**. WebLLM automatically downloads "
+"WebGPU code to execute."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:118
+msgid ""
+"**Check browser compatibility**. The latest Google Chrome provides WebGPU"
+" runtime and `WebGPU Report <https://webgpureport.org/>`__ as a useful "
+"tool to verify WebGPU capabilities of your browser."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:124
+msgid "MLC LLM on Web"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:126
+msgid "iOS"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:128
+msgid "**Install MLC Chat iOS**. It is available on AppStore:"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:136
+msgid ""
+"**Note**. The larger model might take more VRAM, try start with smaller "
+"models first."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:138
+msgid ""
+"**Tutorial and source code**. The source code of the iOS app is fully "
+"`open source <https://github.com/mlc-ai/mlc-llm/tree/main/ios>`__, and a "
+":ref:`tutorial <deploy-ios>` is included in documentation."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:145
+msgid "MLC Chat on iOS"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:147
+msgid "Android"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:149
+msgid "**Install MLC Chat Android**. A prebuilt is available as an APK:"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:157
+msgid ""
+"**Note**. The larger model might take more VRAM, try start with smaller "
+"models first. The demo is tested on"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:160
+msgid "Samsung S23 with Snapdragon 8 Gen 2 chip"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:161
+msgid "Redmi Note 12 Pro with Snapdragon 685"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:162
+msgid "Google Pixel phones"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:164
+msgid ""
+"**Tutorial and source code**. The source code of the android app is fully"
+" `open source <https://github.com/mlc-ai/mlc-llm/tree/main/android>`__, "
+"and a :ref:`tutorial <deploy-android>` is included in documentation."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:171
+msgid "MLC LLM on Android"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:175
+msgid "What to Do Next"
+msgstr ""
+
+#: ../../get_started/quick_start.rst:177
+msgid ""
+"Check out :ref:`introduction-to-mlc-llm` for the introduction of a "
+"complete workflow in MLC LLM."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:188
+msgid ":ref:`convert-weights-via-MLC`, if you want to run your own models."
+msgstr ""
+
+#: ../../get_started/quick_start.rst:189
+msgid ""
+":ref:`compile-model-libraries`, if you want to deploy to web/iOS/Android "
+"or control the model optimizations."
+msgstr ""
+

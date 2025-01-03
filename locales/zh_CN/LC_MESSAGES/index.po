@@ -1,0 +1,81 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023-2024, MLC LLM Contributors
+# This file is distributed under the same license as the mlc-llm package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mlc-llm 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-03 18:39+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../index.rst:24
+msgid "Get Started"
+msgstr ""
+
+#: ../../index.rst:32
+msgid "Build and Deploy Apps"
+msgstr ""
+
+#: ../../index.rst:46
+msgid "Compile Models"
+msgstr ""
+
+#: ../../index.rst:57
+msgid "Dependency Installation"
+msgstr ""
+
+#: ../../index.rst:68
+msgid "Community"
+msgstr ""
+
+#: ../../index.rst:77
+msgid "Privacy"
+msgstr ""
+
+#: ../../index.rst:2
+msgid "👋 Welcome to MLC LLM"
+msgstr ""
+
+#: ../../index.rst:4
+msgid ""
+"`Discord <https://discord.gg/9Xpy2HGBuD>`_ | `GitHub <https://github.com"
+"/mlc-ai/mlc-llm>`_"
+msgstr ""
+
+#: ../../index.rst:9
+msgid ""
+"MLC LLM is a machine learning compiler and high-performance deployment "
+"engine for large language models.  The mission of this project is to "
+"enable everyone to develop, optimize, and deploy AI models natively on "
+"everyone's platforms."
+msgstr ""
+
+#: ../../index.rst:14
+msgid "Quick Start"
+msgstr ""
+
+#: ../../index.rst:16
+msgid "Check out :ref:`quick-start` for quick start examples of using MLC LLM."
+msgstr ""
+
+#: ../../index.rst:19
+msgid "Introduction to MLC LLM"
+msgstr ""
+
+#: ../../index.rst:21
+msgid ""
+"Check out :ref:`introduction-to-mlc-llm` for the introduction and "
+"tutorial of a complete workflow in MLC LLM."
+msgstr ""
+
