@@ -21,7 +21,7 @@ msgstr ""
 
 #: ../../compilation/compile_models.rst:4
 msgid "Compile Model Libraries"
-msgstr ""
+msgstr "编译模型库"
 
 #: ../../compilation/compile_models.rst:6
 msgid "To run a model with MLC LLM in any platform, we need:"
