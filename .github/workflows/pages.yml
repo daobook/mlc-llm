@@ -44,8 +44,9 @@ jobs:
         run: |
           apt-get update && sudo apt-get upgrade
           pip install --upgrade pip
+          cd xinetzone
           pip install taolib[flows] sentencepiece
-          pip install -r docs/requirements.txt
+          invoke install
           invoke doc
       - name: Setup Pages
         uses: actions/configure-pages@main
