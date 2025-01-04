@@ -20,7 +20,7 @@ def make(ctx):
 @task
 def install(ctx):
     """安装 mlc_llm Python 包"""
-    ctx.run("cp -rf ../build/tvm ../3rdparty/tvm/build && pip install -e .[doc,dev]")
+    ctx.run("pip install -e .[doc,dev]")
 
 namespace = sites('../docs', target='../docs/_build/html')
 namespace.add_task(make)

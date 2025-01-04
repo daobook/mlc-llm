@@ -11,10 +11,7 @@ license = {file = "../LICENSE"}
 maintainers = [
   {name = "xinetzone", email = "735613050@qq.com"},
 ]
-dependencies = [
-  # "../3rdparty/tvm/python",
-  "tvm @ file:///${PROJECT_ROOT}/../3rdparty/tvm/python"
-]
+dependencies = []
 
 [project.urls]
 Repository = "https://github.com/daobook/mlc-llm"
@@ -36,6 +33,14 @@ dev = [
   "decorator",
   "psutil",
   "onnx",
+  "shortuuid",
+  "pydantic",
+  "uvicorn",
+  "fastapi",
+  "openai",
+  "prompt_toolkit",
+  "safetensors",
+  "tiktoken",
 ]
 
 doc = [
@@ -47,17 +52,7 @@ doc = [
   "sphinxcontrib_httpdomain",
   "sphinxcontrib-napoleon",
   "sphinx-reredirects",
-  "shortuuid",
-  "pydantic",
-  "uvicorn",
-  "fastapi",
-  "openai",
-  "prompt_toolkit",
-  "safetensors",
-  "tiktoken",
   "torch",
-  # "--find-links https://mlc.ai/wheels",
-  # "mlc-ai-nightly",
 ]
 
 [build-system]
