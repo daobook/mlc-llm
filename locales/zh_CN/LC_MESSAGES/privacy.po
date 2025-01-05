@@ -21,11 +21,11 @@ msgstr ""
 
 #: ../../privacy.rst:2
 msgid "MLC Chat App Privacy"
-msgstr ""
+msgstr "MLC 聊天应用隐私"
 
 #: ../../privacy.rst:4
 msgid ""
 "MLC Chat run all generation locally. All data stays in users' device and "
 "is not collected by the app."
 msgstr ""
-
+"MLC 聊天应用在本地运行所有生成过程。所有数据都保留在用户的设备上，不会被应用收集。"

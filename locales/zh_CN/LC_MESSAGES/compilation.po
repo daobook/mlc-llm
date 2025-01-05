@@ -25,7 +25,7 @@ msgstr "编译模型库"
 
 #: ../../compilation/compile_models.rst:6
 msgid "To run a model with MLC LLM in any platform, we need:"
-msgstr ""
+msgstr "要在任何平台上使用 MLC LLM 运行模型，需要："
 
 #: ../../compilation/compile_models.rst:8
 msgid ""
@@ -33,10 +33,11 @@ msgid ""
 "3B-v1-q4f16_1-MLC <https://huggingface.co/mlc-ai/RedPajama-INCITE-Chat-"
 "3B-v1-q4f16_1-MLC/tree/main>`__.)"
 msgstr ""
+"**模型权重** 转换为 MLC 格式（例如 `RedPajama-INCITE-Chat-3B-v1-q4f16_1-MLC <https://huggingface.co/mlc-ai/RedPajama-INCITE-Chat-3B-v1-q4f16_1-MLC/tree/main>`__。）"
 
 #: ../../compilation/compile_models.rst:9
 msgid "**Model library** that comprises the inference logic"
-msgstr ""
+msgstr "**模型库** 包含推理逻辑"
 
 #: ../../compilation/compile_models.rst:11
 msgid ""
@@ -45,16 +46,18 @@ msgid ""
 "users bring their own new model architecture, use different quantization "
 "modes, and customize the overall model optimization flow."
 msgstr ""
+"本页描述了如何使用 MLC LLM 编译模型库。模型编译针对给定平台优化模型推理，允许用户引入自己的新模型架构，使用不同的量化模式，并自定义整体模型优化流程。"
 
 #: ../../compilation/compile_models.rst:18
 msgid "Notably, in many cases you do not need to explicit call compile."
-msgstr ""
+msgstr "值得注意的是，在许多情况下，您不需要显式调用编译。"
 
 #: ../../compilation/compile_models.rst:20
 msgid ""
 "If you are using the Python API, you can skip specifying ``model_lib`` "
 "and the system will JIT compile the library."
 msgstr ""
+"如果您使用的是Python API，您可以跳过指定 ``model_lib``，系统将即时编译库。"
 
 #: ../../compilation/compile_models.rst:23
 msgid ""
@@ -62,6 +65,7 @@ msgid ""
 "libraries-and-weights`, which provides a simpler high-level command that "
 "leverages the compile behind the scheme."
 msgstr ""
+"如果您正在构建iOS/Android包，请查看 :ref:`package-libraries-and-weights`，它提供了更简单的高级命令，利用方案背后的编译。"
 
 #: ../../compilation/compile_models.rst:27
 msgid ""

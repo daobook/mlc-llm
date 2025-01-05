@@ -28,7 +28,7 @@ msgstr ""
 #: ../../deploy/python_engine.rst:12 ../../deploy/rest.rst:8
 #: ../../deploy/webllm.rst:8
 msgid "Table of Contents"
-msgstr ""
+msgstr "目录"
 
 #: ../../deploy/android.rst:11
 msgid "Demo App"
@@ -36,11 +36,11 @@ msgstr ""
 
 #: ../../deploy/android.rst:13
 msgid "The demo APK below is built for Samsung S23 with Snapdragon 8 Gen 2 chip."
-msgstr ""
+msgstr "下面的演示 APK 是为搭载骁龙 8 Gen 2 芯片的三星 S23 构建的。"
 
 #: ../../deploy/android.rst:20
 msgid "Prerequisite"
-msgstr ""
+msgstr "准备"
 
 #: ../../deploy/android.rst:22
 msgid ""
@@ -48,6 +48,7 @@ msgid ""
 "needed to cross-compile HuggingFace tokenizers to Android. Make sure "
 "rustc, cargo, and rustup are available in ``$PATH``."
 msgstr ""
+"**Rust** (`安装 <https://www.rust-lang.org/tools/install>`__) 是必要的，用于将 HuggingFace 分词器交叉编译到 Android。确保 rustc、cargo 和 rustup 在 ``$PATH`` 中可用。"
 
 #: ../../deploy/android.rst:24
 msgid ""
@@ -60,16 +61,21 @@ msgid ""
 "NDK 27.0.11718014. Once you have installed or updated the NDK, set up the"
 " following environment variables:"
 msgstr ""
+"**Android Studio**  (`安装 <https://developer.android.com/studio>`__) 需要安装 NDK 和 CMake。"
+"要安装 NDK 和 CMake，在 Android Studio 欢迎页面，点击  \"Projects → SDK Manager → SDK Tools\"。"
+"如果您已经在开发环境中安装了 NDK，请更新您的 NDK 以避免构建 Android 包失败(`#2696 <https://github.com/mlc-ai/mlc-llm/issues/2696>`__)。"
+"当前的演示 Android APK 是用 NDK 27.0.11718014 构建的。一旦您安装或更新了 NDK，请设置以下环境变量："
 
 #: ../../deploy/android.rst:27
 msgid ""
 "``ANDROID_NDK`` so that "
 "``$ANDROID_NDK/build/cmake/android.toolchain.cmake`` is available."
 msgstr ""
+"``ANDROID_NDK`` 以便 ``$ANDROID_NDK/build/cmake/android.toolchain.cmake`` 可用。"
 
 #: ../../deploy/android.rst:28
 msgid "``TVM_NDK_CC`` that points to NDK's clang compiler."
-msgstr ""
+msgstr "``TVM_NDK_CC`` 指向NDK的clang编译器。"
 
 #: ../../deploy/android.rst:42
 msgid ""
@@ -83,18 +89,23 @@ msgid ""
 "potential errors in JNI compilation. Set up the following environment "
 "variable:"
 msgstr ""
+"**JDK**，如OpenJDK >= 17，用于编译TVM Unity运行时的Java绑定。强烈建议将 ``JAVA_HOME`` 设置为Android Studio捆绑的JDK。"
+"例如，对于macOS，``export JAVA_HOME=/Applications/Android\\ Studio.app/Contents/jbr/Contents/Home``。对于Linux，``export JAVA_HOME=/opt/android-studio/jbr``。"
+"按照 `这里 <https://developer.android.com/build/jdks>` 的推荐使用Android Studio的JBR捆绑包将减少JNI编译中潜在错误的机会。设置以下环境变量："
 
 #: ../../deploy/android.rst:51
 msgid ""
 "``export JAVA_HOME=/path/to/java_home`` you can then cross check and make"
 " sure ``$JAVA_HOME/bin/java`` exists."
 msgstr ""
+"``export JAVA_HOME=/path/to/java_home`` 然后您可以交叉检查并确保 ``$JAVA_HOME/bin/java`` 存在。"
 
 #: ../../deploy/android.rst:53
 msgid ""
 "Please ensure that the JDK versions for Android Studio and JAVA_HOME are "
 "the same."
 msgstr ""
+"请确保Android Studio和JAVA_HOME的JDK版本相同。"
 
 #: ../../deploy/android.rst:55
 msgid ""
@@ -102,6 +113,7 @@ msgid ""
 "/mlc-ai/mlc-llm/tree/main/3rdparty>`__ in MLC LLM, so there is no need to"
 " install anything extra. Set up the following environment variable:"
 msgstr ""
+"**TVM Unity运行时** 位于MLC LLM的 `3rdparty/tvm <https://github.com/mlc-ai/mlc-llm/tree/main/3rdparty>`__ 下，因此无需额外安装任何东西。设置以下环境变量："
 
 #: ../../deploy/android.rst:57
 msgid "``export TVM_SOURCE_DIR=/path/to/mlc-llm/3rdparty/tvm``."
@@ -114,6 +126,7 @@ msgid ""
 "use for android package build in the following up section. Once you "
 "installed this package, you do not need to build mlc llm from source."
 msgstr ""
+"请按照 :doc:`/install/mlc_llm` 获取mlc_llm包的二进制构建。请注意，这与我们用于Android包构建的mlc-llm源代码是独立的。一旦您安装了这个包，您就不需要从源代码构建mlc llm。"
 
 #: ../../deploy/android.rst:64
 msgid ""
@@ -121,6 +134,7 @@ msgid ""
 "manage an isolated Python environment to avoid missing dependencies, "
 "incompatible versions, and package conflicts."
 msgstr ""
+"❗ 每当使用Python时，强烈建议使用 **conda** 来管理隔离的Python环境，以避免缺少依赖、版本不兼容和包冲突。"
 
 #: ../../deploy/android.rst:66
 msgid ""
@@ -128,10 +142,11 @@ msgid ""
 " way to ensure this is to place them in ``$HOME/.zshrc``, "
 "``$HOME/.bashrc`` or environment management tools."
 msgstr ""
+"检查 **环境变量** 是否已正确设置为最后的检查。确保这一点的一种方法是将它们放在 ``$HOME/.zshrc``、``$HOME/.bashrc`` 或环境管理工具中。"
 
 #: ../../deploy/android.rst:77
 msgid "Additional Guides for Windows Users"
-msgstr ""
+msgstr "Windows用户的额外指南"
 
 #: ../../deploy/android.rst:79
 msgid ""
@@ -140,6 +155,7 @@ msgid ""
 "instructions in this section If you are using Windows, make sure you use "
 "conda to install cmake and Ninja."
 msgstr ""
+"在Windows下为Android构建仍然是实验性的；请确保您首先完成了上述指南，然后阅读并遵循本节中的说明。如果您使用的是Windows，请确保使用conda安装cmake和Ninja。"
 
 #: ../../deploy/android.rst:87
 msgid ""
@@ -150,22 +166,25 @@ msgid ""
 "``C:\\Program Files\\Android\\Android Studio\\`` you can try to do the "
 "following"
 msgstr ""
+"Windows Java发现带有空格的环境变量存在问题。请确保您获取的Java副本位于没有空格的路径中。"
+"最简单的方法是将Android Studio的JBR捆绑包复制到没有任何空格的目录中。"
+"如果您的Android Studio安装在 ``C:\\Program Files\\Android\\Android Studio\\``，您可以尝试执行以下操作"
 
 #: ../../deploy/android.rst:98
 msgid "You can continue the next steps after you have set these steps correctly."
-msgstr ""
+msgstr "你可以在正确设置这些步骤后继续接下来的步骤。"
 
 #: ../../deploy/android.rst:101
 msgid "Build Android App from Source"
-msgstr ""
+msgstr "从源代码构建安卓应用"
 
 #: ../../deploy/android.rst:103 ../../deploy/ios.rst:26
 msgid "This section shows how we can build the app from the source."
-msgstr ""
+msgstr "本节展示了如何从源代码构建应用程序。"
 
 #: ../../deploy/android.rst:106 ../../deploy/ios.rst:29
 msgid "Step 1. Install Build Dependencies"
-msgstr ""
+msgstr "第一步：安装构建依赖项"
 
 #: ../../deploy/android.rst:108
 msgid ""
@@ -173,10 +192,11 @@ msgid ""
 "<https://github.com/mlc-ai/mlc-llm>`_. After cloning, go to the "
 "``android/`` directory."
 msgstr ""
+"首先，请克隆 `MLC LLM GitHub 仓库 <https://github.com/mlc-ai/mlc-llm>`_。克隆完成后，进入 ``android/`` 目录。"
 
 #: ../../deploy/android.rst:122 ../../deploy/ios.rst:55
 msgid "Step 2. Build Runtime and Model Libraries"
-msgstr ""
+msgstr "第二步：构建运行时和模型库"
 
 #: ../../deploy/android.rst:124
 msgid ""
@@ -184,6 +204,7 @@ msgid ""
 "/mlc-package-config.json``: in the ``model_list``, ``model`` points to "
 "the Hugging Face repository which"
 msgstr ""
+"为安卓应用程序构建的模型在 ``MLCChat/mlc-package-config.json`` 中指定：在 ``model_list`` 中，``model`` 指向 Hugging Face 仓库，该仓库..."
 
 #: ../../deploy/android.rst:127
 msgid ""
@@ -191,46 +212,51 @@ msgid ""
 "converted model weights. The Android app will download model weights from"
 " the Hugging Face URL."
 msgstr ""
+"``model`` 指向包含预转换模型权重的 Hugging Face 仓库。安卓应用程序将从 Hugging Face 的 URL 下载模型权重。"
 
 #: ../../deploy/android.rst:128 ../../deploy/ios.rst:61
 msgid "``model_id`` is a unique model identifier."
-msgstr ""
+msgstr "``model_id`` 是模型的唯一标识符。"
 
 #: ../../deploy/android.rst:129 ../../deploy/ios.rst:62
 msgid ""
 "``estimated_vram_bytes`` is an estimation of the vRAM the model takes at "
 "runtime."
 msgstr ""
+"``estimated_vram_bytes`` 是对模型在运行时占用的 vRAM 的估计。"
 
 #: ../../deploy/android.rst:130 ../../deploy/ios.rst:63
 msgid ""
 "``\"bundle_weight\": true`` means the model weights of the model will be "
 "bundled into the app when building."
 msgstr ""
+"``\"bundle_weight\": true`` 表示在构建时，模型的权重将被捆绑到应用程序中。"
 
 #: ../../deploy/android.rst:131 ../../deploy/ios.rst:64
 msgid "``overrides`` specifies some model config parameter overrides."
-msgstr ""
+msgstr "``overrides`` 指定了一些模型配置参数的覆盖值。"
 
 #: ../../deploy/android.rst:134 ../../deploy/ios.rst:67
 msgid "We have a one-line command to build and prepare all the model libraries:"
-msgstr ""
+msgstr "有一行命令可以构建并准备所有模型库："
 
 #: ../../deploy/android.rst:142 ../../deploy/ios.rst:75
 msgid "This command mainly executes the following two steps:"
-msgstr ""
+msgstr "该命令主要执行以下两个步骤："
 
 #: ../../deploy/android.rst:144 ../../deploy/ios.rst:77
 msgid ""
 "**Compile models.** We compile each model in ``model_list`` of ``MLCChat"
 "/mlc-package-config.json`` into a binary model library."
 msgstr ""
+"**编译模型。** 将 ``MLCChat/mlc-package-config.json`` 中 ``model_list`` 的每个模型编译成二进制模型库。"
 
 #: ../../deploy/android.rst:145 ../../deploy/ios.rst:78
 msgid ""
 "**Build runtime and tokenizer.** In addition to the model itself, a "
 "lightweight runtime and tokenizer are required to actually run the LLM."
 msgstr ""
+"**构建运行时和分词器。** 除了模型本身外，还需要轻量级的运行时和分词器来实际运行大语言模型。"
 
 #: ../../deploy/android.rst:147
 msgid ""
@@ -238,6 +264,7 @@ msgid ""
 " model build output. Please make sure all the following files exist in "
 "``./dist/``."
 msgstr ""
+"该命令会创建包含运行时和模型构建输出的 ``./dist/`` 目录。请确保以下所有文件都存在于 ``./dist/`` 中。"
 
 #: ../../deploy/android.rst:170
 msgid ""
@@ -250,6 +277,9 @@ msgid ""
 "library). This library packages the dependent model libraries and "
 "necessary runtime to execute the model."
 msgstr ""
+"移动 GPU 中的模型执行逻辑被整合到 ``libtvm4j_runtime_packed.so`` 中，而 ``tvm4j_core.jar`` 是轻量级（约 60 kb）的 "
+"`Java 绑定 <https://tvm.apache.org/docs/reference/api/javadoc/>`_。``dist/lib/mlc4j`` 是 gradle 子项目，"
+"您应将其包含在您的应用程序中，以便 Android 项目可以引用 mlc4j（MLC LLM Java 库）。该库打包了依赖的模型库和运行模型所需的运行时。"
 
 #: ../../deploy/android.rst:184 ../../deploy/ios.rst:100
 msgid ""
@@ -259,10 +289,12 @@ msgid ""
 " You can do so by setting the environment variable "
 "``MLC_JIT_POLICY=REDO``"
 msgstr ""
+"利用本地 JIT 缓存来避免重复编译相同的输入。"
+"然而，有时当我们有新的编译器更新或缓存库出现问题时，强制重新构建是有帮助的。您可以通过设置环境变量 ``MLC_JIT_POLICY=REDO`` 来实现这一点。"
 
 #: ../../deploy/android.rst:195
 msgid "Step 3. Build Android App"
-msgstr ""
+msgstr "第三步：构建安卓应用程序"
 
 #: ../../deploy/android.rst:197
 msgid ""
@@ -271,6 +303,8 @@ msgid ""
 "click **\"Build → Make Project\"**. Once the build is finished, click "
 "**\"Run → Run 'app'\"** and you will see the app launched on your phone."
 msgstr ""
+"打开文件夹 ``./android/MLCChat`` 作为 Android Studio 项目。将您的安卓设备连接到计算机。"
+"在 Android Studio 的菜单栏中，点击 **\"Build → Make Project\"**。构建完成后，点击 **\"Run → Run 'app'\"**，您将看到应用程序在手机上启动。"
 
 #: ../../deploy/android.rst:203
 msgid ""
@@ -278,10 +312,11 @@ msgid ""
 "required, because MLC LLM needs an actual mobile GPU to meaningfully run "
 "at an accelerated speed."
 msgstr ""
+"❗ 此应用程序无法在模拟器中运行，因此需要一部实体手机，因为 MLC LLM 需要实际的移动 GPU 才能以加速的速度有意义地运行。"
 
 #: ../../deploy/android.rst:207 ../../deploy/ios.rst:170
 msgid "Customize the App"
-msgstr ""
+msgstr "自定义 App"
 
 #: ../../deploy/android.rst:209
 msgid ""
@@ -290,12 +325,15 @@ msgid ""
 "llm/blob/main/android/MLCChat/mlc-package-config.json>`_. We introduce "
 "each field of the JSON file here."
 msgstr ""
+"可以通过自定义 `MLCChat/mlc-package-config.json <https://github.com/mlc-ai/mlc-llm/blob/main/android/MLCChat/mlc-package-config.json>`_ 来定制安卓应用程序中构建的模型。"
+"在此介绍 JSON 文件的每个字段。"
 
 #: ../../deploy/android.rst:212 ../../deploy/ios.rst:175
 msgid ""
 "Each entry in ``\"model_list\"`` of the JSON file has the following "
 "fields:"
 msgstr ""
+"JSON 文件的 ``\"model_list\"`` 中的每个条目包含以下字段："
 
 #: ../../deploy/android.rst:214 ../../deploy/ios.rst:177
 msgid "``model``"
@@ -307,6 +345,7 @@ msgid ""
 "It is a Hugging Face URL (e.g., ``\"model\": \"HF://mlc-"
 "ai/phi-2-q4f16_1-MLC\"```) that contains the pre-converted model weights."
 msgstr ""
+"（必填）要构建到应用程序中的 MLC 转换模型的路径。它是 Hugging Face URL（例如 ``\"model\": \"HF://mlc-ai/phi-2-q4f16_1-MLC\"```），其中包含预转换的模型权重。"
 
 #: ../../deploy/android.rst:219 ../../deploy/ios.rst:184
 msgid "``model_id``"
@@ -317,6 +356,7 @@ msgid ""
 "(Required) A unique local identifier to identify the model. It can be an "
 "arbitrary one."
 msgstr ""
+"（必需）用于标识模型的唯一本地标识符。它可以是任意值。"
 
 #: ../../deploy/android.rst:223 ../../deploy/ios.rst:188
 msgid "``estimated_vram_bytes``"
@@ -324,7 +364,7 @@ msgstr ""
 
 #: ../../deploy/android.rst:224 ../../deploy/ios.rst:189
 msgid "(Required) Estimated requirements of vRAM to run the model."
-msgstr ""
+msgstr "（必需）运行模型所需的 vRAM 估计值。"
 
 #: ../../deploy/android.rst:226 ../../deploy/ios.rst:191
 msgid "``bundle_weight``"
@@ -335,6 +375,7 @@ msgid ""
 "(Optional) A boolean flag indicating whether to bundle model weights into"
 " the app. See :ref:`android-bundle-model-weights` below."
 msgstr ""
+"（可选）布尔标志，指示是否将模型权重捆绑到应用程序中。请参阅下面的 :ref:`android-bundle-model-weights`。"
 
 #: ../../deploy/android.rst:229 ../../deploy/ios.rst:194
 msgid "``overrides``"
@@ -346,6 +387,7 @@ msgid ""
 " (to limit the KV cache size) and prefill chunk size (to limit the model "
 "temporary execution memory). Example:"
 msgstr ""
+"（可选）字典，用于覆盖默认的模型上下文窗口大小（以限制 KV 缓存大小）和预填充块大小（以限制模型的临时执行内存）。例如："
 
 #: ../../deploy/android.rst:250 ../../deploy/ios.rst:215
 msgid "``model_lib``"
@@ -360,6 +402,7 @@ msgid ""
 "``\"model_lib_path_for_prepare_libs\"`` introduced below is also related."
 " Example:"
 msgstr ""
+"（可选）字符串，指定用于模型的系统库前缀。通常，当您希望将具有相同架构的多个模型变体构建到应用程序中时，会使用此字段。**此字段不会影响任何应用程序功能。** 下面介绍的 ``\"model_lib_path_for_prepare_libs\"`` 也与此相关。例如："
 
 #: ../../deploy/android.rst:272 ../../deploy/ios.rst:237
 msgid ""
@@ -373,10 +416,13 @@ msgid ""
 "``\"model_lib_path_for_prepare_libs\"`` will be built into the app when "
 "running ``mlc_llm package``. Example:"
 msgstr ""
+"除了 ``MLCChat/mlc-package-config.json`` 中的 ``model_list`` 外，您还可以 **选择性地** 指定 ``\"model_lib_path_for_prepare_libs\"`` 字典，**如果您希望使用手动编译的模型库**。"
+"此字典的键应为模型列表中指定的 ``model_lib``，而字典的值是手动编译的模型库的路径（绝对路径或相对路径）。"
+"在运行 ``mlc_llm package`` 时，``\"model_lib_path_for_prepare_libs\"`` 中指定的模型库将被构建到应用程序中。例如："
 
 #: ../../deploy/android.rst:300
 msgid "Bundle Model Weights"
-msgstr ""
+msgstr "捆绑模型权重"
 
 #: ../../deploy/android.rst:302
 msgid ""
@@ -387,6 +433,8 @@ msgid ""
 " avoid downloading over the network. In this section, we provide a simple"
 " ADB-based walkthrough that hopefully helps with further development."
 msgstr ""
+"前面的部分已经提供了使用 MLC LLM 构建安卓应用程序的说明，但根据 ``MLCChat/mlc-package-config.json`` 中的配置，它需要从 HuggingFace 下载运行时权重。"
+"然而，将权重捆绑到应用程序中以避免通过网络下载可能是更理想的选择。在本节中，我们提供了基于 ADB 的简单教程，希望能对进一步开发有所帮助。"
 
 #: ../../deploy/android.rst:308
 msgid ""
@@ -394,10 +442,11 @@ msgid ""
 "any model you want to bundle weights in ``MLCChat/mlc-package-"
 "config.json``, and run ``mlc_llm package`` again. Below is an example:"
 msgstr ""
+"**启用权重捆绑**。对于您希望在 ``MLCChat/mlc-package-config.json`` 中捆绑权重的任何模型，设置字段 ``\"bundle_weight\": true``，然后再次运行 ``mlc_llm package``。以下是示例："
 
 #: ../../deploy/android.rst:327 ../../deploy/ios.rst:137
 msgid "The outcome of running ``mlc_llm package`` should be as follows:"
-msgstr ""
+msgstr "运行 ``mlc_llm package`` 的结果应如下所示："
 
 #: ../../deploy/android.rst:338
 msgid ""
@@ -409,6 +458,9 @@ msgid ""
 "key>`_. This APK will be placed under ``android/MLCChat/app/release/app-"
 "release.apk``."
 msgstr ""
+"**生成 APK**。进入 Android Studio，点击 **\"Build → Generate Signed Bundle/APK\"** 以构建用于发布的 APK。"
+"如果这是您第一次生成 APK，您需要根据 `Android 官方指南 <https://developer.android.com/studio/publish/app-signing#generate-key>`_ 创建密钥。"
+"此 APK 将放置在 ``android/MLCChat/app/release/app-release.apk`` 下。"
 
 #: ../../deploy/android.rst:341
 msgid ""
@@ -421,6 +473,8 @@ msgid ""
 "following commands, and if ADB is installed correctly, your phone will "
 "appear as a device:"
 msgstr ""
+"**安装 ADB 并启用 USB 调试**。在手机设置的开发者模式中启用“USB 调试”。在“SDK 管理器 - SDK 工具”中，安装 `Android SDK 平台工具 <https://developer.android.com/studio/releases/platform-tools>`_。"
+"将平台工具的路径添加到环境变量 ``PATH`` 中（在 macOS 上，路径为 ``$HOME/Library/Android/sdk/platform-tools``）。运行以下命令，如果 ADB 安装正确，您的手机将显示为设备："
 
 #: ../../deploy/android.rst:350
 msgid ""
@@ -430,6 +484,7 @@ msgid ""
 "device. The models with ``bundle_weight`` set to true will have their "
 "weights already on device."
 msgstr ""
+"**将 APK 和权重安装到您的手机**。运行以下命令以安装应用程序，并将本地权重推送到设备上的应用程序数据目录。完成后，您可以在设备上启动 MLCChat 应用程序。将 ``bundle_weight`` 设置为 true 的模型的权重将已经存在于设备上。"
 
 #: ../../deploy/cli.rst:4
 msgid "CLI"
@@ -440,10 +495,11 @@ msgid ""
 "MLC Chat CLI is the command line tool to run MLC-compiled LLMs out of the"
 " box interactively."
 msgstr ""
+"MLC Chat CLI 是命令行工具，用于开箱即用地交互式运行 MLC 编译的大语言模型。"
 
 #: ../../deploy/cli.rst:13 ../../deploy/rest.rst:14
 msgid "Install MLC-LLM Package"
-msgstr ""
+msgstr "安装 MLC-LLM 包"
 
 #: ../../deploy/cli.rst:15
 msgid ""
@@ -452,20 +508,22 @@ msgid ""
 "packages>`. Once you have install the MLC-LLM package, you can run the "
 "following command to check if the installation was successful:"
 msgstr ""
+"Chat CLI 是 MLC-LLP 包的一部分。要使用 Chat CLI，首先按照 :ref:`此处 <install-mlc-packages>` 的说明安装 MLC LLM。安装 MLC-LLM 包后，您可以运行以下命令来检查安装是否成功："
 
 #: ../../deploy/cli.rst:23 ../../deploy/rest.rst:22
 msgid "You should see serve help message if the installation was successful."
-msgstr ""
+msgstr "如果安装成功，您应该会看到服务帮助信息。"
 
 #: ../../deploy/cli.rst:26 ../../deploy/rest.rst:25
 msgid "Quick Start"
-msgstr ""
+msgstr "快速上手"
 
 #: ../../deploy/cli.rst:28
 msgid ""
 "This section provides a quick start guide to work with MLC-LLM chat CLI. "
 "To launch the CLI session, run the following command:"
 msgstr ""
+"本节提供了使用 MLC-LLM Chat CLI 的快速入门指南。要启动 CLI 会话，请运行以下命令："
 
 #: ../../deploy/cli.rst:35
 msgid ""
@@ -473,16 +531,18 @@ msgid ""
 "build process <compile-model-libraries>`. Information about other "
 "arguments can be found in the next section."
 msgstr ""
+"其中 ``MODEL`` 是使用 :ref:`MLC-LLM 构建过程 <compile-model-libraries>` 编译后的模型文件夹。有关其他参数的信息可以在下一部分找到。"
 
 #: ../../deploy/cli.rst:37
 msgid ""
 "Once the chat CLI is ready, you can enter the prompt to interact with the"
 " model."
 msgstr ""
+"一旦 Chat CLI 准备就绪，您可以输入提示与模型进行交互。"
 
 #: ../../deploy/cli.rst:56 ../../deploy/rest.rst:57
 msgid "Run CLI with Multi-GPU"
-msgstr ""
+msgstr "使用多 GPU 运行 CLI"
 
 #: ../../deploy/cli.rst:58 ../../deploy/rest.rst:59
 msgid ""
@@ -490,20 +550,22 @@ msgid ""
 "please specify argument ``--overrides \"tensor_parallel_shards=$NGPU\"``."
 " For example,"
 msgstr ""
+"如果您希望启用张量并行以在多个 GPU 上运行大语言模型，请指定参数 ``--overrides \"tensor_parallel_shards=$NGPU\"``。例如，"
 
 #: ../../deploy/cli.rst:66
 msgid "The ``mlc_llm chat`` Command"
-msgstr ""
+msgstr "``mlc_llm chat`` 命令"
 
 #: ../../deploy/cli.rst:68
 msgid "We provide the list of chat CLI interface for reference."
-msgstr ""
+msgstr "提供了 Chat CLI 接口的列表以供参考。"
 
 #: ../../deploy/cli.rst:75 ../../deploy/rest.rst:91
 msgid ""
 "MODEL                  The model folder after compiling with MLC-LLM "
 "build process. The parameter"
 msgstr ""
+"MODEL                  使用 MLC-LLM 构建过程编译后的模型文件夹。该参数"
 
 #: ../../deploy/cli.rst:76 ../../deploy/rest.rst:92
 msgid ""
@@ -512,12 +574,14 @@ msgid ""
 " case, we will use the provided name to search for the model folder over "
 "possible paths."
 msgstr ""
+"可以是带有量化方案的模型名称（例如 ``Llama-2-7b-chat-hf-q4f16_1``），也可以是模型文件夹的完整路径。在前一种情况下，我们将使用提供的名称在可能的路径中搜索模型文件夹。"
 
 #: ../../deploy/cli.rst:81 ../../deploy/rest.rst:97
 msgid ""
 "A field to specify the full path to the model library file to use (e.g. a"
 " ``.so`` file)."
 msgstr ""
+"字段，用于指定要使用的模型库文件的完整路径（例如 ``.so`` 文件）。"
 
 #: ../../deploy/cli.rst:82 ../../deploy/rest.rst:98
 msgid ""
@@ -528,6 +592,7 @@ msgid ""
 "``device_id`` is the device id to run on. The default value is ``auto``, "
 "with the device id set to 0 for default."
 msgstr ""
+"运行设备的描述。用户应提供格式为 ``device_name:device_id`` 或 ``device_name`` 的字符串，其中 ``device_name`` 是 ``cuda``、``metal``、``vulkan``、``rocm``、``opencl``、``auto``（自动检测本地设备）之一，``device_id`` 是要运行的设备 ID。默认值为 ``auto``，设备 ID 默认为 0。"
 
 #: ../../deploy/cli.rst:87
 msgid ""
@@ -537,10 +602,11 @@ msgid ""
 "could be explicitly specified via details knobs, e.g. --overrides "
 "``context_window_size=1024;prefill_chunk_size=128``."
 msgstr ""
+"模型配置覆盖。支持覆盖 ``context_window_size``、``prefill_chunk_size``、``sliding_window_size``、``attention_sink_size`` 和 ``tensor_parallel_shards``。可以通过详细参数显式指定覆盖，例如 --overrides ``context_window_size=1024;prefill_chunk_size=128``。"
 
 #: ../../deploy/ide_integration.rst:4
 msgid "IDE Integration"
-msgstr ""
+msgstr "IDE 集成"
 
 #: ../../deploy/ide_integration.rst:10
 msgid ""
@@ -549,10 +615,11 @@ msgid ""
 "through the MLC LLM :ref:`deploy-rest-api`. Here we provide a step-by-"
 "step guide on how to do this."
 msgstr ""
+"MLC LLM 现在支持在多个 IDE 上进行代码补全。这意味着您可以通过 MLC LLM 的 :ref:`deploy-rest-api` 轻松将具有编码能力的大语言模型集成到您的 IDE 中。这里我们提供了如何实现这一点的逐步指南。"
 
 #: ../../deploy/ide_integration.rst:13
 msgid "Convert Your Model Weights"
-msgstr ""
+msgstr "转换模型权重"
 
 #: ../../deploy/ide_integration.rst:15
 msgid ""
@@ -567,15 +634,18 @@ msgid ""
 "from the original models, available in the MLC format. See the full list "
 "of all precompiled weights `here <https://huggingface.co/mlc-ai>`__."
 msgstr ""
+"要在任何平台上使用 MLC LLM 运行模型，您需要将模型权重转换为 MLC 格式（例如 `CodeLlama-7b-hf-q4f16_1-MLC <https://huggingface.co/mlc-ai/CodeLlama-7b-hf-q4f16_1-MLC>`__）。"
+"您可以随时参考 :ref:`convert-weights-via-MLC` 以获取有关如何转换模型权重的详细说明。如果您使用的是自己的模型权重，即您在个人代码库上微调了模型，那么按照这些步骤正确转换相应的权重非常重要。"
+"然而，也可以从原始模型下载预编译的权重，这些权重以 MLC 格式提供。查看所有预编译权重的完整列表 `此处 <https://huggingface.co/mlc-ai>`__。"
 
 #: ../../deploy/ide_integration.rst:17 ../../deploy/ide_integration.rst:31
 #: ../../deploy/ide_integration.rst:45 ../../deploy/ide_integration.rst:109
 msgid "**Example:**"
-msgstr ""
+msgstr "**示例**"
 
 #: ../../deploy/ide_integration.rst:27
 msgid "Compile Your Model"
-msgstr ""
+msgstr "编译模型"
 
 #: ../../deploy/ide_integration.rst:29
 msgid ""
@@ -587,6 +657,8 @@ msgid ""
 "command `here </docs/compilation/compile_models.html#generate-mlc-chat-"
 "config>`__."
 msgstr ""
+"编译模型架构是优化给定平台推理的关键步骤。然而，编译依赖于多个会影响运行时的设置。此配置在 ``mlc-chat-config.json`` 文件中指定，该文件可以通过 ``gen_config`` 命令生成。"
+"您可以了解更多关于 ``gen_config`` 命令的信息 `此处 </docs/compilation/compile_models.html#generate-mlc-chat-config>`__。"
 
 #: ../../deploy/ide_integration.rst:41
 msgid ""
@@ -594,6 +666,7 @@ msgid ""
 " specifically tailored to perform vanilla LLM completion, generally "
 "adopted by code completion models."
 msgstr ""
+"请确保将 ``--conv-template`` 标志设置为 ``LM``。此模板专门用于执行普通的 LLM 补全，通常被代码补全模型采用。"
 
 #: ../../deploy/ide_integration.rst:43
 msgid ""
@@ -602,6 +675,7 @@ msgid ""
 "``compile`` command `here </docs/compilation/compile_models.html#compile-"
 "model-library>`__"
 msgstr ""
+"生成 MLC 模型配置文件后，我们就可以编译并创建模型库了。您可以了解更多关于 ``compile`` 命令的信息 `此处 </docs/compilation/compile_models.html#compile-model-library>`__。"
 
 #: ../../deploy/ide_integration.rst:49
 msgid "Linux - CUDA"
@@ -613,11 +687,11 @@ msgstr ""
 
 #: ../../deploy/ide_integration.rst:59
 msgid "For M-chip Mac:"
-msgstr ""
+msgstr "对于 M 芯片的 Mac："
 
 #: ../../deploy/ide_integration.rst:67
 msgid "Cross-Compiling for Intel Mac on M-chip Mac:"
-msgstr ""
+msgstr "在 M 芯片的 Mac 上为 Intel Mac 进行交叉编译："
 
 #: ../../deploy/ide_integration.rst:75
 msgid "For Intel Mac:"
@@ -641,10 +715,11 @@ msgid ""
 " as long as the architecture and number of parameters does not change, "
 "e.g., same architecture, but different weights (your finetuned model)."
 msgstr ""
+"生成的模型库可以在多个模型变体之间共享，只要架构和参数数量不变，例如相同的架构但不同的权重（您的微调模型）。"
 
 #: ../../deploy/ide_integration.rst:105
 msgid "Setting up the Inference Entrypoint"
-msgstr ""
+msgstr "设置推理入口点"
 
 #: ../../deploy/ide_integration.rst:107
 msgid ""
@@ -652,6 +727,7 @@ msgid ""
 " To find more details about the MLC LLM API visit our :ref:`deploy-rest-"
 "api` page."
 msgstr ""
+"您现在可以使用 MLC serve 模块在本地部署编译后的模型。要了解更多关于 MLC LLM API 的详细信息，请访问我们的 :ref:`deploy-rest-api` 页面。"
 
 #: ../../deploy/ide_integration.rst:118
 msgid "Configure the IDE Extension"
@@ -668,12 +744,16 @@ msgid ""
 "<https://github.com/huggingface/llm.nvim>`__) to connect to an external "
 "OpenAI compatible API (i.e., our MLC LLM :ref:`deploy-rest-api`)."
 msgstr ""
+"部署 LLM 后，我们可以轻松地将 IDE 与 MLC Rest API 连接。在本指南中，我们将使用 Hugging Face 代码补全扩展 `llm-ls <https://github.com/huggingface/llm-ls>`__，"
+"它支持多个 IDE（例如 `vscode <https://github.com/huggingface/llm-vscode>`__、`intellij <https://github.com/huggingface/llm-intellij>`__ "
+"和 `nvim <https://github.com/huggingface/llm.nvim>`__）以连接到外部 OpenAI 兼容 API（即我们的 MLC LLM :ref:`deploy-rest-api`）。"
 
 #: ../../deploy/ide_integration.rst:122
 msgid ""
 "After installing the extension on your IDE, open the ``settings.json`` "
 "extension configuration file:"
 msgstr ""
+"在您的 IDE 上安装扩展后，打开 ``settings.json`` 扩展配置文件："
 
 #: ../../deploy/ide_integration.rst:124
 msgid "settings.json"
@@ -684,6 +764,7 @@ msgid ""
 "Then, make sure to replace the following settings with the respective "
 "values:"
 msgstr ""
+"然后，确保将以下设置替换为相应的值："
 
 #: ../../deploy/ide_integration.rst:139
 msgid ""
@@ -692,6 +773,7 @@ msgid ""
 "to our :ref:`deploy-rest-api` documentation for more details about these "
 "API parameters."
 msgstr ""
+"这将使扩展能够向 MLC Serve API 发送 OpenAI 兼容请求。此外，您可以随意调整 API 参数。请参阅 :ref:`deploy-rest-api` 文档以获取有关这些 API 参数的更多详细信息。"
 
 #: ../../deploy/ide_integration.rst:158
 msgid ""
@@ -699,10 +781,11 @@ msgid ""
 "completion templates. Choose the one that best matches your model, i.e., "
 "the template with the correct tokenizer and Fill in the Middle tokens."
 msgstr ""
+"llm-ls 扩展支持多种不同的模型代码补全模板。选择最适合您模型的模板，即具有正确分词器和中间填充标记的模板。"
 
 #: ../../deploy/ide_integration.rst:160
 msgid "llm-ls templates"
-msgstr ""
+msgstr "llm-ls 模板"
 
 #: ../../deploy/ide_integration.rst:167
 msgid ""
@@ -710,20 +793,22 @@ msgid ""
 "responses from the MLC Serve API to provide off-the-shelf code completion"
 " on your IDE."
 msgstr ""
+"一切设置完成后，扩展将准备好使用来自 MLC Serve API 的响应，在您的 IDE 上提供开箱即用的代码补全功能。"
 
 #: ../../deploy/ide_integration.rst:169
 msgid "IDE Code Completion"
-msgstr ""
+msgstr "IDE 代码补全"
 
 #: ../../deploy/ide_integration.rst:177
 msgid "Conclusion"
-msgstr ""
+msgstr "结论"
 
 #: ../../deploy/ide_integration.rst:179
 msgid ""
 "Please, let us know if you have any questions. Feel free to open an issue"
 " on the `MLC LLM repo <https://github.com/mlc-ai/mlc-llm/issues>`__!"
 msgstr ""
+"如果您有任何问题，请告诉我们。欢迎在 `MLC LLM 仓库 <https://github.com/mlc-ai/mlc-llm/issues>`__ 上提出问题！"
 
 #: ../../deploy/ios.rst:4
 msgid "iOS Swift SDK"
@@ -894,10 +979,11 @@ msgid ""
 "page for more details. Note that the weights are shared across all "
 "platforms in MLC."
 msgstr ""
+"本节大部分内容复制自 :ref:`convert-weights-via-MLC`。请参阅该页面以获取更多详细信息。请注意，权重在 MLC 中跨所有平台共享。"
 
 #: ../../deploy/ios.rst:275 ../../deploy/webllm.rst:259
 msgid "**Step 1. Clone from HF and convert_weight**"
-msgstr ""
+msgstr "**第一步：从 HF 克隆并转换权重**"
 
 #: ../../deploy/ios.rst:277 ../../deploy/webllm.rst:143
 msgid ""
@@ -906,6 +992,7 @@ msgid ""
 ":ref:`compile-command-specification` for specification of "
 "``convert_weight``."
 msgstr ""
+"您可以在 mlc-llm 仓库下，或您自己的工作目录中。请注意，所有平台可以共享相同的编译/量化权重。有关 ``convert_weight`` 的规范，请参阅 :ref:`compile-command-specification`。"
 
 #: ../../deploy/ios.rst:294
 msgid "**Step 2. Generate MLC Chat Config**"
@@ -917,6 +1004,7 @@ msgid ""
 "process tokenizers. See :ref:`compile-command-specification` for "
 "specification of ``gen_config``."
 msgstr ""
+"使用 ``mlc_llm gen_config`` 生成 ``mlc-chat-config.json`` 并处理分词器。有关 ``gen_config`` 的规范，请参阅 :ref:`compile-command-specification`。"
 
 #: ../../deploy/ios.rst:305
 msgid ""
@@ -1025,19 +1113,21 @@ msgstr ""
 
 #: ../../deploy/mlc_chat_config.rst:4
 msgid "Customize MLC Chat Config"
-msgstr ""
+msgstr "自定义 MLC Chat 配置"
 
 #: ../../deploy/mlc_chat_config.rst:6
 msgid ""
 "``mlc-chat-config.json`` is required for both compile-time and runtime, "
 "hence serving two purposes:"
 msgstr ""
+"``mlc-chat-config.json`` 在编译时和运行时都是必需的，因此有两个用途："
 
 #: ../../deploy/mlc_chat_config.rst:8
 msgid ""
 "Specify how we compile a model (shown in :ref:`compile-model-libraries`),"
 " and"
 msgstr ""
+"指定我们如何编译模型（如 :ref:`compile-model-libraries` 所示），以及"
 
 #: ../../deploy/mlc_chat_config.rst:9
 msgid "Specify conversation behavior in runtime."
