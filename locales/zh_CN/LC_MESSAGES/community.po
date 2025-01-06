@@ -21,17 +21,18 @@ msgstr ""
 
 #: ../../community/faq.rst:4
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "常见问题解答"
 
 #: ../../community/faq.rst:6
 msgid ""
 "This is a list of Frequently Asked Questions (FAQ) about the MLC-LLM. "
 "Feel free to suggest new entries!"
 msgstr ""
+"这是一份关于MLC-LLM的常见问题解答（FAQ）列表。欢迎提出新的条目建议！"
 
 #: ../../community/faq.rst:8
 msgid "... How can I customize the temperature, and repetition penalty of models?"
-msgstr ""
+msgstr "... 如何自定义模型的 temperature 和重复惩罚？"
 
 #: ../../community/faq.rst:9
 msgid "Please check our :ref:`configure-mlc-chat-json` tutorial."
@@ -62,7 +63,7 @@ msgstr ""
 
 #: ../../community/guideline.rst:4
 msgid "Community Guideline"
-msgstr ""
+msgstr "社区指南"
 
 #: ../../community/guideline.rst:10
 msgid ""
