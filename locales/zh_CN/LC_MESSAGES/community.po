@@ -28,7 +28,7 @@ msgid ""
 "This is a list of Frequently Asked Questions (FAQ) about the MLC-LLM. "
 "Feel free to suggest new entries!"
 msgstr ""
-"这是一份关于MLC-LLM的常见问题解答（FAQ）列表。欢迎提出新的条目建议！"
+"这是关于 MLC-LLM 的常见问题解答（FAQ）列表。欢迎提出新的条目建议！"
 
 #: ../../community/faq.rst:8
 msgid "... How can I customize the temperature, and repetition penalty of models?"
@@ -36,21 +36,22 @@ msgstr "... 如何自定义模型的 temperature 和重复惩罚？"
 
 #: ../../community/faq.rst:9
 msgid "Please check our :ref:`configure-mlc-chat-json` tutorial."
-msgstr ""
+msgstr "请查看 :ref:`configure-mlc-chat-json` 教程。"
 
 #: ../../community/faq.rst:11
 msgid "... What's the quantization algorithm MLC-LLM using?"
-msgstr ""
+msgstr "... MLC-LLM 使用的量化算法是什么？"
 
 #: ../../community/faq.rst:12
 msgid "Please check our :doc:`/compilation/configure_quantization` tutorial."
-msgstr ""
+msgstr "请查看 :doc:`/compilation/configure_quantization` 教程。"
 
 #: ../../community/faq.rst:14
 msgid ""
 "... Why do I encounter an error ``free(): invalid pointer, Aborted (core "
 "dumped)`` at the end of model compilation?"
 msgstr ""
+"... 为什么我在模型编译结束时遇到错误 ``free(): invalid pointer, Aborted (core dumped)``？"
 
 #: ../../community/faq.rst:15
 msgid ""
@@ -60,6 +61,8 @@ msgid ""
 "tutorial to compile TVM-Unity which hides LLVM symbols, or use our pre-"
 "built MLC-LLM :doc:`pip wheels <../install/mlc_llm>`."
 msgstr ""
+"如果您从源代码编译了 TVM-Unity 并且没有在 cmake 配置中隐藏 LLVM 符号，就会发生这种情况。"
+"请按照在 :ref:`Building TVM Unity from Source <tvm-unity-build-from-source>` 教程中的说明编译隐藏 LLVM 符号的 TVM-Unity，或者使用预构建的 MLC-LLM :doc:`pip wheels <../install/mlc_llm>`。"
 
 #: ../../community/guideline.rst:4
 msgid "Community Guideline"
@@ -74,10 +77,12 @@ msgid ""
 "various devices. We are thrilled to have you as part of our community and"
 " eagerly anticipate your valuable contributions."
 msgstr ""
+"欢迎来到 MLC-LLM 社区！和您一样，所有人都对大型语言模型的巨大能力感到惊叹。"
+"对 MLC-LLM 的目标是推动一个由开源社区驱动的项目，共同努力使这项技术民主化，并使其在各种设备上可访问。很高兴您成为我们社区的一员，并热切期待您的宝贵贡献。"
 
 #: ../../community/guideline.rst:19
 msgid "Participate in Community Discussions"
-msgstr ""
+msgstr "参与社区讨论"
 
 #: ../../community/guideline.rst:21
 msgid ""
@@ -87,6 +92,8 @@ msgid ""
 "the issue with labels such as \"bug,\" \"feature request,\" or \"iOS\" so"
 " that the relevant developers can quickly notice your concern."
 msgstr ""
+"我们鼓励公开讨论。如果您遇到错误或有功能请求，请在 MLC-LLM 的 GitHub `问题跟踪器 <https://github.com/mlc-ai/mlc-llm/issues>`__ 中提交问题。"
+"鼓励您为问题添加标签，例如“bug”、“功能请求”或“iOS”，以便相关开发人员能够快速注意到您的问题。"
 
 #: ../../community/guideline.rst:25
 msgid ""
@@ -96,20 +103,22 @@ msgid ""
 " a GitHub issue even if the topic has been discussed there. This ensures "
 "that the discussion is archived and searchable for future reference."
 msgstr ""
+"此外，还建立了 `discord 服务器 <https://discord.gg/9Xpy2HGBuD>`__ 用于在线讨论。虽然我们鼓励参与 Discord 服务器，但我们仍建议即使在那里讨论过，也要创建 GitHub 问题。这样可以确保讨论被存档并可搜索，以供将来参考。"
 
 #: ../../community/guideline.rst:29
 msgid ""
 "Before submitting an issue, we kindly ask you to check our "
 ":doc:`/community/faq` to see if your question has already been answered."
 msgstr ""
+"在提交问题之前，请您查看 :doc:`/community/faq`，看看您的问题是否已经得到解答。"
 
 #: ../../community/guideline.rst:34
 msgid "Contribute to MLC-LLM"
-msgstr ""
+msgstr "为 MLC-LLM 做贡献"
 
 #: ../../community/guideline.rst:39
 msgid "Fork and Create Pull Requests"
-msgstr ""
+msgstr "Fork 并创建 Pull Requests"
 
 #: ../../community/guideline.rst:41
 msgid ""
@@ -119,6 +128,8 @@ msgid ""
 "/mlc-ai/mlc-llm/pulls>`__, and we will review your code and merge it to "
 "the code base when it is ready."
 msgstr ""
+"准备好为 MLC-LLM 做贡献了吗？太棒了！很高兴看到您准备好贡献代码。"
+"对 MLC-LLM 代码库进行更改的标准方法是通过创建 `pull-request <https://github.com/mlc-ai/mlc-llm/pulls>`__，我们将审查您的代码并在准备就绪时将其合并到代码库中。"
 
 #: ../../community/guideline.rst:45
 msgid ""
@@ -127,6 +138,7 @@ msgid ""
 "will notice a repository under ``https://github.com/username/mlc-llm`` "
 "where ``username`` is your github user name."
 msgstr ""
+"成为开发者的第一步是 `fork <https://github.com/mlc-ai/mlc-llm/fork>`__ 仓库到您自己的 GitHub 账户，您会注意到位于 ``https://github.com/username/mlc-llm`` 的仓库，其中 ``username`` 是您的 GitHub 用户名。"
 
 #: ../../community/guideline.rst:48
 msgid ""
@@ -135,10 +147,11 @@ msgid ""
 "GitHub directly. Once your update is complete, you can click the "
 "``contribute`` button and open a pull request to the main repository."
 msgstr ""
+"您可以将您的 fork 克隆到本地机器并提交更改，或者直接在 GitHub 上编辑您的 fork 内容（如果您只是修复拼写错误）。一旦您的更新完成，您可以点击 ``contribute`` 按钮并打开 pull request 到主仓库。"
 
 #: ../../community/guideline.rst:54
 msgid "Contribute New Models to MLC-LLM"
-msgstr ""
+msgstr "为 MLC-LLM 贡献新模型"
 
 #: ../../community/guideline.rst:56
 msgid ""
@@ -147,6 +160,7 @@ msgid ""
 "to the internet (e.g., Hugging Face) by following :ref:`distribute-"
 "compiled-models` tutorial."
 msgstr ""
+"如果您已经使用我们的 :doc:`/compilation/compile_models` 教程为现有模型架构编译了模型，请按照 :ref:`distribute-compiled-models` 教程将您的模型上传到互联网（例如 Hugging Face）。"
 
 #: ../../community/guideline.rst:58
 msgid ""
@@ -156,10 +170,12 @@ msgid ""
 " placed under `relax_models <https://github.com/mlc-ai/mlc-"
 "llm/tree/main/mlc_llm/relax_model>`__ folder)."
 msgstr ""
+"如果您按照我们的 :doc:`/compilation/define_new_models` 教程向 MLC-LLM 添加了新模型变体。"
+"请创建 pull request 来添加您的模型架构（目前模型架构位于 `relax_models <https://github.com/mlc-ai/mlc-llm/tree/main/mlc_llm/relax_model>`__ 文件夹下）。"
 
 #: ../../community/guideline.rst:65
 msgid "Coding Styles"
-msgstr ""
+msgstr "编码风格"
 
 #: ../../community/guideline.rst:67
 msgid ""
@@ -171,6 +187,8 @@ msgid ""
 "<https://pypi.org/project/black/>`__ to automatically format your python "
 "code."
 msgstr ""
+"对于 Python 代码，我们通常遵循 `PEP8 风格指南 <https://peps.python.org/pep-0008/>`__。Python 注释遵循 `NumPy 风格 <https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html>`__ Python 文档字符串。"
+"为了方便，您可以使用 `black <https://pypi.org/project/black/>`__ 自动格式化您的 Python 代码。"
 
 #: ../../community/guideline.rst:76
 msgid ""
@@ -182,10 +200,12 @@ msgid ""
 "<https://clang.llvm.org/docs/ClangFormat.html>`__ to automatically format"
 " your C++ code."
 msgstr ""
+"对于 C++ 代码，我们通常遵循 `Google C++ 风格指南 <https://google.github.io/styleguide/cppguide.html>`__。C++ 注释应该是 `Doxygen 兼容 <http://www.doxygen.nl/manual/docblocks.html#cppblock>`__。"
+"为了方便，您可以使用 `clang-format <https://clang.llvm.org/docs/ClangFormat.html>`__ 自动格式化您的 C++ 代码。"
 
 #: ../../community/guideline.rst:87
 msgid "General Development Process"
-msgstr ""
+msgstr "一般开发流程"
 
 #: ../../community/guideline.rst:89
 msgid ""
@@ -196,6 +216,7 @@ msgid ""
 "channels, so that everyone in the community can participate and get "
 "informed in developments."
 msgstr ""
+"欢迎社区中的每个人发送补丁、文档并提出项目的新方向。这里的关键指导原则是让社区中的每个人都能参与并参与决策和开发。我们鼓励在不同渠道进行公开讨论，以便社区中的每个人都能参与并了解开发进展。"
 
 #: ../../community/guideline.rst:94
 msgid ""
@@ -212,6 +233,9 @@ msgid ""
 "code contribution, you could get your code quickly reviewed if you do "
 "others the same favor."
 msgstr ""
+"代码审查是确保代码质量的关键方法之一。高质量的代码审查可以防止长期的技术债务，对项目的成功至关重要。"
+"在合并之前，需要审查 pull request。具有相应领域专业知识的提交者将主持 pull request 并在准备就绪时合并代码。相应的提交者可以请求熟悉代码领域的多个审查者。"
+"鼓励贡献者自己请求代码审查并帮助审查彼此的代码——记住每个人都在为社区贡献自己的时间，高质量的代码审查本身与实际代码贡献一样重要，如果您为他人提供同样的帮助，您的代码可以快速得到审查。"
 
 #: ../../community/guideline.rst:102
 msgid ""
@@ -220,10 +244,11 @@ msgid ""
 "discussions in a diplomatic way, and provide suggestions with clear "
 "technical reasoning when necessary."
 msgstr ""
+"社区应努力通过讨论达成技术决策的共识。我们期望提交者以外交方式主持技术讨论，并在必要时提供具有明确技术理由的建议。"
 
 #: ../../community/guideline.rst:109
 msgid "Committers"
-msgstr ""
+msgstr "提交者"
 
 #: ../../community/guideline.rst:111
 msgid ""
@@ -238,10 +263,12 @@ msgid ""
 "contributors. Each existing committer can nominate new committers to MLC "
 "projects."
 msgstr ""
+"提交者是被授予项目写权限的个人。提交者通常负责代码的某个或某些领域，他们监督代码审查过程。贡献领域可以采取各种形式，包括代码贡献和代码审查、文档、教育和推广。pull request 的审查将分配给最近为该 PR 所属领域做出贡献的提交者。"
+"提交者对于高质量和健康的项目至关重要。社区积极从贡献者中寻找新的提交者。每个现有提交者都可以提名新的提交者到 MLC 项目。"
 
 #: ../../community/guideline.rst:121
 msgid "Contributors"
-msgstr ""
+msgstr "贡献者"
 
 #: ../../community/guideline.rst:122
 msgid ""
@@ -252,4 +279,5 @@ msgid ""
 "acknowledge contributors, please let us know if you contribute to the "
 "project and if your name is not included in the list."
 msgstr ""
-
+"我们也欢迎贡献者，即使您还没有准备好成为提交者。每个以代码、错误修复、文档、教程等形式为项目做出贡献的人都是贡献者。"
+"我们维护了一个 `页面 <https://github.com/mlc-ai/mlc-llm/blob/main/CONTRIBUTORS.md>`__ 来感谢贡献者，如果您为项目做出了贡献并且您的名字不在列表中，请告诉我们。"
