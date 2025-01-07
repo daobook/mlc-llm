@@ -1,5 +1,5 @@
 [project]
-name = "mlc-llm"
+name = "mlc_llm"
 dynamic = ["version"]
 description = "道可道，非恒道"
 authors = [
@@ -65,8 +65,14 @@ distribution = true
 [tool.pdm.build]
 package-dir = "../python"
 # includes = ["../build/tvm/*.so"]
-excludes = ["old/", "doc", "locales",]
+excludes = ["old/", "doc", "locales", ".gitignore"]
 
 [tool.pdm.version]
 source = "file"
 path = "../version.py"
+
+# [tool.pdm.scripts]
+# mlc_llm = "mlc_llm.__main__:main" # 命令行脚本
+
+[project.scripts]
+mycli = "mlc_llm.__main__:main" # 命令行脚本
