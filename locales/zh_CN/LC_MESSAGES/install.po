@@ -1,0 +1,1024 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023-2024, MLC LLM Contributors
+# This file is distributed under the same license as the mlc-llm package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mlc-llm 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-03 18:39+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../install/conda.rst:2
+msgid "Install Conda"
+msgstr "安装 Conda"
+
+#: ../../install/conda.rst:4
+msgid ""
+"MLC LLM does not depend on, but generally recommends conda as a generic "
+"dependency manager, primarily because it creates unified cross-platform "
+"experience to make windows/Linux/macOS development equally easy. "
+"Moreover, conda is python-friendly and provides all the python packages "
+"needed for MLC LLM, such as numpy."
+msgstr ""
+"MLC LLM 不依赖但通常推荐 conda 作为通用依赖管理器，主要是因为它创建了统一的跨平台体验，使 Windows/Linux/macOS 开发同样简单。"
+"此外，conda 对 Python 友好，并提供了 MLC LLM 所需的所有 Python 包，例如 numpy。"
+
+#: ../../install/conda.rst:8 ../../install/gpu.rst:5
+#: ../../install/mlc_llm.rst:8 ../../install/tvm.rst:8
+msgid "Table of Contents"
+msgstr "目录"
+
+#: ../../install/conda.rst:11
+msgid "Install Miniconda"
+msgstr "安装 Miniconda"
+
+#: ../../install/conda.rst:13
+msgid ""
+"**Use installer.** Miniconda, a minimal distribution of conda, comes with"
+" out-of-box installer across Windows/macOS/Linux. Please refer to its "
+"`official website <https://docs.conda.io/en/latest/miniconda.html#latest-"
+"miniconda-installer-links>`_ link for detailed instructions."
+msgstr ""
+"**使用安装程序。** Miniconda 是 conda 的最小发行版，附带适用于 Windows/macOS/Linux 的开箱即用安装程序。"
+"请参阅其 `官方网站 <https://docs.conda.io/en/latest/miniconda.html#latest-miniconda-installer-links>`_ 链接以获取详细说明。"
+
+#: ../../install/conda.rst:15
+msgid ""
+"**Set libmamba as the dependency solver.** The default dependency solver "
+"in conda could be slow in certain scenarios, and it is always recommended"
+" to upgrade it to libmamba, a faster solver."
+msgstr ""
+"**将 libmamba 设置为依赖解析器。** conda 中的默认依赖解析器在某些情况下可能很慢，建议始终将其升级为更快的解析器 libmamba。"
+
+#: ../../install/conda.rst:17
+msgid "Set libmamba as the default solver"
+msgstr "将 libmamba 设置为默认解析器"
+
+#: ../../install/conda.rst:28
+msgid ""
+"Conda is a generic dependency manager, which is not necessarily related "
+"to any Python distributions. In fact, some of our tutorials recommends to"
+" use conda to install cmake, git and rust for its unified experience "
+"across OS platforms."
+msgstr ""
+"Conda 是通用的依赖管理器，不一定与任何 Python 发行版相关。事实上，一些教程建议使用 conda 来安装 cmake、git 和 rust，以在操作系统平台上获得统一的体验。"
+
+#: ../../install/conda.rst:33 ../../install/mlc_llm.rst:241
+msgid "Validate installation"
+msgstr "验证安装"
+
+#: ../../install/conda.rst:35
+msgid ""
+"**Step 1. Check conda-arch mismatch.** Nowadays macOS runs on two "
+"different architectures: arm64 and x86_64, which could particularly lead "
+"to many misuses in MLC LLM, where the error message hints about "
+"\"architecture mismatch\". Use the following command to make sure "
+"particular conda architecture is installed accordingly:"
+msgstr ""
+"**步骤 1. 检查 conda 架构不匹配。** "
+"如今 macOS 运行在两种不同的架构上：arm64 和 x86_64，这尤其可能导致 MLC LLM 中的许多误用，错误消息提示“架构不匹配”。使用以下命令确保相应地安装了特定的 conda 架构："
+
+#: ../../install/conda.rst:37
+msgid "Check conda architecture"
+msgstr "检查 conda 架构"
+
+#: ../../install/conda.rst:46
+msgid ""
+"**Step 2. Check conda virtual environment.** If you have installed python"
+" in your conda virtual environment, make sure conda, Python and pip are "
+"all from this environment:"
+msgstr ""
+"**步骤 2. 检查 conda 虚拟环境。** 如果您在 conda 虚拟环境中安装了 python，请确保 conda、Python 和 pip 都来自此环境："
+
+#: ../../install/conda.rst:48
+msgid "Check conda virtual environment (macOS, Linux)"
+msgstr "检查 conda 虚拟环境（macOS、Linux）"
+
+#: ../../install/conda.rst:58
+msgid "Check conda virtual environment (Windows)"
+msgstr "检查 conda 虚拟环境（Windows）"
+
+#: ../../install/emcc.rst:4
+msgid "Install Wasm Build Environment"
+msgstr "安装 Wasm 构建环境"
+
+#: ../../install/emcc.rst:6
+msgid ""
+"This page describes the steps to setup build environment for WebAssembly "
+"and WebGPU builds."
+msgstr ""
+"本页面描述了为 WebAssembly 和 WebGPU 构建设置构建环境的步骤。"
+
+#: ../../install/emcc.rst:9
+msgid "Step 1: Install EMSDK"
+msgstr "步骤1：安装 EMSDK"
+
+#: ../../install/emcc.rst:11
+msgid ""
+"Emscripten is an LLVM-based compiler that compiles C/C++ source code to "
+"WebAssembly. We need to install emscripten for webgpu build."
+msgstr ""
+"Emscripten 是基于 LLVM 的编译器，它将 C/C++ 源代码编译为 WebAssembly。需要安装 emscripten 以进行 webgpu 构建。"
+
+#: ../../install/emcc.rst:14
+msgid ""
+"Please follow the installation instruction `here "
+"<https://emscripten.org/docs/getting_started/downloads.html#installation-"
+"instructions-using-the-emsdk-recommended>`__ to install the latest emsdk."
+msgstr ""
+"请按照 `此处 <https://emscripten.org/docs/getting_started/downloads.html#installation-instructions-using-the-emsdk-recommended>`__ 的安装说明安装最新的 emsdk。"
+
+#: ../../install/emcc.rst:16
+msgid ""
+"Source path/to/emsdk_env.sh so emcc is reachable from PATH and the "
+"command emcc works."
+msgstr ""
+"source path/to/emsdk_env.sh 以便 emcc 可以从 PATH 访问，并且命令 emcc 可以工作。"
+
+#: ../../install/emcc.rst:18
+msgid "Validate that emcc is accessible in shell"
+msgstr "验证 emcc 在 shell 中可访问"
+
+#: ../../install/emcc.rst:25
+msgid ""
+"We recently found that using the latest ``emcc`` version may run into "
+"issues during runtime. Use ``./emsdk install 3.1.56`` instead of "
+"``./emsdk install latest`` for now as a workaround."
+msgstr ""
+"最近发现使用最新的 ``emcc`` 版本可能会在运行时遇到问题。目前，使用 ``./emsdk install 3.1.56`` 而不是 ``./emsdk install latest`` 作为临时解决方案。"
+
+#: ../../install/emcc.rst:28
+msgid "The error may look like"
+msgstr "错误可能看起来像"
+
+#: ../../install/emcc.rst:37
+msgid "Step 2: Set TVM_SOURCE_DIR and MLC_LLM_SOURCE_DIR"
+msgstr "步骤 2：设置 TVM_SOURCE_DIR 和 MLC_LLM_SOURCE_DIR"
+
+#: ../../install/emcc.rst:39
+msgid ""
+"We need to set a path to a tvm source in order to build tvm runtime. Note"
+" that you do not need to build tvm unity from the source. The source here"
+" is only used to build the web runtime component. Set environment "
+"variable in your shell startup profile in to point to ``3rdparty/tvm`` "
+"(if preferred, you could also point to your own TVM address if you "
+"installed TVM from source)."
+msgstr ""
+"需要设置 tvm 源代码路径以构建 tvm 运行时。请注意，您不需要从源代码构建 tvm unity。"
+"这里的源代码仅用于构建 web 运行时组件。在您的 shell 启动配置文件中设置环境变量以指向 ``3rdparty/tvm`` "
+"（如果愿意，如果您从源代码安装了 TVM，也可以指向您自己的 TVM 地址）。"
+
+#: ../../install/emcc.rst:44
+msgid ""
+"Besides, we also need to set ``MLC_LLM_SOURCE_DIR`` so that we can locate"
+" ``mlc_wasm_runtime.bc`` when compiling a model library wasm."
+msgstr ""
+"此外，还需要设置 ``MLC_LLM_SOURCE_DIR``，以便在编译模型库 wasm 时可以定位 ``mlc_wasm_runtime.bc``。"
+
+#: ../../install/emcc.rst:53
+msgid "Step 3: Prepare Wasm Runtime"
+msgstr "步骤 3：准备 Wasm 运行时"
+
+#: ../../install/emcc.rst:55
+msgid ""
+"First, we need to obtain a copy of the mlc-llm source code for the setup "
+"script"
+msgstr ""
+"首先，需要获取一份 mlc-llm 源代码以进行设置脚本"
+
+#: ../../install/emcc.rst:62
+msgid "Now we can prepare wasm runtime using the script in mlc-llm repo"
+msgstr "现在可以使用 mlc-llm 仓库中的脚本准备 wasm 运行时"
+
+#: ../../install/emcc.rst:68
+msgid "We can then validate the outcome"
+msgstr "然后可以验证结果"
+
+#: ../../install/gpu.rst:2
+msgid "GPU Drivers and SDKs"
+msgstr "GPU 驱动程序和 SDKs"
+
+#: ../../install/gpu.rst:7
+msgid ""
+"MLC LLM is a universal deployment solution that allows efficient CPU/GPU "
+"code generation without AutoTVM-based performance tuning. This section "
+"focuses on generic GPU environment setup and troubleshooting."
+msgstr ""
+"MLC LLM 是通用部署解决方案，允许在没有基于 AutoTVM 的性能调优的情况下高效生成 CPU/GPU 代码。本节重点介绍通用 GPU 环境设置和故障排除。"
+
+#: ../../install/gpu.rst:10
+msgid "CUDA"
+msgstr ""
+
+#: ../../install/gpu.rst:12
+msgid "CUDA is required to compile and run models with CUDA backend."
+msgstr "CUDA 是使用 CUDA 后端编译和运行模型所必需的。"
+
+#: ../../install/gpu.rst:15 ../../install/gpu.rst:32 ../../install/gpu.rst:50
+#: ../../install/gpu.rst:143
+msgid "Installation"
+msgstr "安装"
+
+#: ../../install/gpu.rst:17
+msgid ""
+"If you have a NVIDIA GPU and you want to use models compiled with CUDA "
+"backend, you should install CUDA, which can be downloaded from `here "
+"<https://developer.nvidia.com/cuda-downloads>`__."
+msgstr ""
+"如果您有 NVIDIA GPU 并且想使用使用 CUDA 后端编译的模型，您应该安装 CUDA，可以从 `此处 <https://developer.nvidia.com/cuda-downloads>`__ 下载。"
+
+#: ../../install/gpu.rst:22 ../../install/gpu.rst:39 ../../install/gpu.rst:70
+#: ../../install/gpu.rst:187
+msgid "Validate Installation"
+msgstr "验证安装"
+
+#: ../../install/gpu.rst:24
+msgid ""
+"To verify you have correctly installed CUDA runtime and NVIDIA driver, "
+"run ``nvidia-smi`` in command line and see if you can get the GPU "
+"information."
+msgstr ""
+"要验证您是否正确安装了 CUDA 运行时和 NVIDIA 驱动程序，请在命令行中运行 ``nvidia-smi`` 并查看是否可以获取 GPU 信息。"
+
+#: ../../install/gpu.rst:27
+msgid "ROCm"
+msgstr ""
+
+#: ../../install/gpu.rst:29
+msgid "ROCm is required to compile and run models with ROCm backend."
+msgstr "ROCm 是使用 ROCm 后端编译和运行模型所必需的。"
+
+#: ../../install/gpu.rst:34
+msgid ""
+"Right now MLC LLM only supports ROCm 6.1/6.2. If you have AMD GPU and you"
+" want to use models compiled with ROCm backend, you should install ROCm "
+"from `here <https://rocm.docs.amd.com/projects/install-on-"
+"linux/en/docs-6.2.0/install/quick-start.html>`__."
+msgstr ""
+"目前 MLC LLM 仅支持 ROCm 6.1/6.2。如果您有 AMD GPU 并且想使用使用 ROCm 后端编译的模型，"
+"您应该从 `此处 <https://rocm.docs.amd.com/projects/install-on-linux/en/docs-6.2.0/install/quick-start.html>`__ 安装 ROCm。"
+
+#: ../../install/gpu.rst:41
+msgid ""
+"To verify you have correctly installed ROCm, run ``rocm-smi`` in command "
+"line. If you see the list of AMD devices printed out in a table, it means"
+" the ROCm is correctly installed."
+msgstr ""
+"要验证您是否正确安装了 ROCm，请在命令行中运行 ``rocm-smi``。如果您看到 AMD 设备列表以表格形式打印出来，这意味着 ROCm 已正确安装。"
+
+#: ../../install/gpu.rst:47
+msgid "Vulkan Driver"
+msgstr "Vulkan 驱动"
+
+#: ../../install/gpu.rst:52
+msgid ""
+"To run pre-trained models (e.g. pulled from MLC-AI's Hugging Face "
+"repository) compiled with Vulkan backend, you are expected to install "
+"Vulkan driver on your machine."
+msgstr ""
+"要运行使用 Vulkan 后端编译的预训练模型（例如从 MLC-AI 的 Hugging Face 仓库拉取的模型），您需要在您的机器上安装 Vulkan 驱动程序。"
+
+#: ../../install/gpu.rst:54
+msgid ""
+"Please check `this page <https://www.vulkan.org/tools#vulkan-gpu-"
+"resources>`__ and find the Vulkan driver according to your GPU vendor."
+msgstr ""
+"请查看 `此页面 <https://www.vulkan.org/tools#vulkan-gpu-resources>`__ 并根据您的 GPU 供应商找到 Vulkan 驱动程序。"
+
+#: ../../install/gpu.rst:59
+msgid "AMD Radeon and Radeon PRO"
+msgstr "AMD Radeon 和 Radeon PRO"
+
+#: ../../install/gpu.rst:61
+msgid ""
+"For AMD Radeon and Radeon PRO users, please download AMD's drivers from "
+"official website (`Linux <https://www.amd.com/en/support/linux-"
+"drivers>`__ / `Windows <https://www.amd.com/en/support>`__). For Linux "
+"users, after you installed the ``amdgpu-install`` package, you can follow"
+" the instructions in its `documentation <https://amdgpu-"
+"install.readthedocs.io/en/latest/install-script.html>`__ to install the "
+"driver. We recommend you installing ROCr OpenCL and PRO Vulkan "
+"(proprietary) for best performance, which can be done by running the "
+"following command:"
+msgstr ""
+"对于 AMD Radeon 和 Radeon PRO 用户，请从官方网站下载 AMD 的驱动程序"
+"（`Linux <https://www.amd.com/en/support/linux-drivers>`__ / `Windows <https://www.amd.com/en/support>`__）。"
+"对于 Linux 用户，在安装了 ``amdgpu-install`` 包后，您可以按照其 `文档 <https://amdgpu-install.readthedocs.io/en/latest/install-script.html>`__ 中的说明安装驱动程序。"
+"建议您安装 ROCr OpenCL 和 PRO Vulkan（专有）以获得最佳性能，这可以通过运行以下命令完成："
+
+#: ../../install/gpu.rst:72
+msgid ""
+"To verify whether Vulkan installation is successful or not, you are "
+"encouraged to install ``vulkaninfo``, below are the instructions to "
+"install ``vulkaninfo`` on different platforms:"
+msgstr ""
+"要验证 Vulkan 安装是否成功，建议安装 ``vulkaninfo``，以下是在不同平台上安装 ``vulkaninfo`` 的说明："
+
+#: ../../install/gpu.rst:100
+msgid ""
+"After installation, you can run ``vulkaninfo`` in command line and see if"
+" you can get the GPU information."
+msgstr ""
+"安装后，您可以在命令行中运行 ``vulkaninfo`` 并查看是否可以获取 GPU 信息。"
+
+#: ../../install/gpu.rst:103
+msgid ""
+"WSL support for Windows is work-in-progress at the moment. Please do not "
+"use WSL on Windows to run Vulkan."
+msgstr ""
+"Windows 的 WSL 支持目前正在进行中。请不要在 Windows 上使用 WSL 来运行 Vulkan。"
+
+#: ../../install/gpu.rst:106
+msgid "Vulkan SDK"
+msgstr ""
+
+#: ../../install/gpu.rst:108
+msgid ""
+"Vulkan SDK is required for compiling models to Vulkan backend. To build "
+"TVM Unity compiler from source, you will need to install Vulkan SDK as a "
+"dependency, but our :doc:`pre-built wheels <../install/mlc_llm>` already "
+"ships with Vulkan SDK."
+msgstr ""
+"Vulkan SDK 是将模型编译到 Vulkan 后端所必需的。"
+"要从源代码构建 TVM Unity 编译器，您需要安装 Vulkan SDK 作为依赖项，但 :doc:`预构建轮子 <../install/mlc_llm>` 已经附带了 Vulkan SDK。"
+
+#: ../../install/gpu.rst:110
+msgid "Check Vulkan SDK installation guide according to your platform:"
+msgstr "根据您的平台查看Vulkan SDK安装指南："
+
+#: ../../install/gpu.rst:114 ../../install/mlc_llm.rst:118
+#: ../../install/tvm.rst:103
+msgid "Windows"
+msgstr ""
+
+#: ../../install/gpu.rst:116
+msgid ""
+"`Getting Started with the Windows Tarball Vulkan SDK "
+"<https://vulkan.lunarg.com/doc/sdk/latest/windows/getting_started.html>`__"
+msgstr ""
+"开始使用 Windows 版 Tarball 格式的 Vulkan SDK"
+"<https://vulkan.lunarg.com/doc/sdk/latest/windows/getting_started.html>`__"
+
+#: ../../install/gpu.rst:118 ../../install/mlc_llm.rst:24
+#: ../../install/tvm.rst:31
+msgid "Linux"
+msgstr ""
+
+#: ../../install/gpu.rst:120
+msgid ""
+"For Ubuntu user, please check `Getting Started with the Ubuntu Vulkan SDK"
+" "
+"<https://vulkan.lunarg.com/doc/sdk/latest/linux/getting_started_ubuntu.html>`__"
+msgstr ""
+"对于 Ubuntu 用户，请查看 `开始使用Ubuntu版Vulkan SDK"
+" "
+"<https://vulkan.lunarg.com/doc/sdk/latest/linux/getting_started_ubuntu.html>`__"
+
+#: ../../install/gpu.rst:123
+msgid ""
+"For other Linux distributions, please check `Getting Started with the "
+"Linux Tarball Vulkan SDK "
+"<https://vulkan.lunarg.com/doc/sdk/latest/linux/getting_started.html>`__"
+msgstr ""
+"对于其他 Linux 发行版，请查看 `开始使用 Linux 版 Tarball 格式的 Vulkan SDK "
+"<https://vulkan.lunarg.com/doc/sdk/latest/linux/getting_started.html>`__"
+
+#: ../../install/gpu.rst:126
+msgid "Mac"
+msgstr ""
+
+#: ../../install/gpu.rst:128
+msgid ""
+"`Getting Started with the macOS Vulkan SDK "
+"<https://vulkan.lunarg.com/doc/sdk/latest/mac/getting_started.html>`__"
+msgstr ""
+"`开始使用macOS版Vulkan SDK "
+"<https://vulkan.lunarg.com/doc/sdk/latest/mac/getting_started.html>`__"
+
+#: ../../install/gpu.rst:130
+msgid ""
+"Please refer to installation and setup page for next steps to build TVM-"
+"Unity from source."
+msgstr ""
+"请参考安装和设置页面以获取从源代码构建 TVM-Unity 的后续步骤。"
+
+#: ../../install/gpu.rst:133
+msgid "OpenCL SDK"
+msgstr ""
+
+#: ../../install/gpu.rst:135
+msgid ""
+"OpenCL SDK is only required when you want to build your own models for "
+"OpenCL backend. Please refer to `OpenCL's Github Repository "
+"<https://github.com/KhronosGroup/OpenCL-SDK>`__ for installation guide of"
+" OpenCL-SDK."
+msgstr ""
+"仅当您希望为 OpenCL 后端构建自己的模型时，才需要 OpenCL SDK。请参考 `OpenCL 的 GitHub 仓库 "
+"<https://github.com/KhronosGroup/OpenCL-SDK>`__ 以获取OpenCL-SDK的安装指南。"
+
+#: ../../install/gpu.rst:138
+msgid "Orange Pi 5 (RK3588 based SBC)"
+msgstr "Orange Pi 5（基于 RK3588 的 SBC）"
+
+#: ../../install/gpu.rst:140
+msgid ""
+"OpenCL SDK and Mali GPU driver is required to compile and run models for "
+"OpenCL backend."
+msgstr ""
+"编译和运行 OpenCL 后端的模型需要 OpenCL SDK 和 Mali GPU 驱动程序。"
+
+#: ../../install/gpu.rst:145
+msgid ""
+"Download and install the Ubuntu 22.04 for your board from `here "
+"<https://github.com/Joshua-Riek/ubuntu-rockchip/releases/tag/v1.22>`__"
+msgstr ""
+"从 `此处 <https://github.com/Joshua-Riek/ubuntu-rockchip/releases/tag/v1.22>`__ 下载并为您的主板安装Ubuntu 22.04。"
+
+#: ../../install/gpu.rst:147
+msgid "Download and install ``libmali-g610.so``"
+msgstr "下载并安装 ``libmali-g610.so``"
+
+#: ../../install/gpu.rst:153
+msgid ""
+"Check if file ``mali_csffw.bin`` exist under path ``/lib/firmware``, if "
+"not download it with command:"
+msgstr ""
+"检查路径 ``/lib/firmware`` 下是否存在文件 ``mali_csffw.bin``，如果不存在，请使用以下命令下载："
+
+#: ../../install/gpu.rst:159
+msgid "Download OpenCL ICD loader and manually add libmali to ICD"
+msgstr "下载 OpenCL ICD 加载器并手动将 libmali 添加到 ICD"
+
+#: ../../install/gpu.rst:168
+msgid "Download and install ``libOpenCL``"
+msgstr "下载并安装 ``libOpenCL``"
+
+#: ../../install/gpu.rst:174
+msgid "Download and install dependencies for Mali OpenCL"
+msgstr "下载并安装  Mali OpenCL 的依赖"
+
+#: ../../install/gpu.rst:180
+msgid "Download and install clinfo to check if OpenCL successfully installed"
+msgstr "下载并安装 clinfo 以检查 OpenCL 是否成功安装。"
+
+#: ../../install/gpu.rst:189
+msgid ""
+"To verify you have correctly installed OpenCL runtime and Mali GPU "
+"driver, run ``clinfo`` in command line and see if you can get the GPU "
+"information. You are expect to see the following information:"
+msgstr ""
+"要验证您是否正确安装了 OpenCL 运行时和 Mali GPU 驱动程序，请在命令行中运行 ``clinfo``，并查看是否能够获取 GPU 信息。您应该会看到以下信息："
+
+#: ../../install/mlc_llm.rst:4
+msgid "Install MLC LLM Python Package"
+msgstr "安装 MLC LLM Python 包"
+
+#: ../../install/mlc_llm.rst:10
+msgid ""
+"MLC LLM Python Package can be installed directly from a prebuilt "
+"developer package, or built from source."
+msgstr ""
+"MLC LLM Python 包可以直接从预构建的开发包安装，也可以从源代码构建。"
+
+#: ../../install/mlc_llm.rst:13 ../../install/tvm.rst:22
+msgid "Option 1. Prebuilt Package"
+msgstr "选项 1：预构建包"
+
+#: ../../install/mlc_llm.rst:15
+msgid ""
+"We provide nightly built pip wheels for MLC-LLM via pip. Select your "
+"operating system/compute platform and run the command in your terminal:"
+msgstr ""
+"通过 pip 提供 MLC-LLM 的 nightly 预构建包。请选择您的操作系统/计算平台，并在终端中运行以下命令："
+
+#: ../../install/mlc_llm.rst:19
+msgid ""
+"❗ Whenever using Python, it is highly recommended to use **conda** to "
+"manage an isolated Python environment to avoid missing dependencies, "
+"incompatible versions, and package conflicts. Please make sure your conda"
+" environment has Python and pip installed."
+msgstr ""
+"❗ 每当使用 Python 时，强烈建议使用 **conda** 来管理独立的 Python 环境，以避免缺少依赖、版本不兼容和包冲突的问题。请确保您的 conda 环境中已安装 Python 和 pip。"
+
+#: ../../install/mlc_llm.rst:28 ../../install/tvm.rst:35
+msgid "CPU"
+msgstr ""
+
+#: ../../install/mlc_llm.rst:35 ../../install/tvm.rst:42
+msgid "CUDA 12.2"
+msgstr ""
+
+#: ../../install/mlc_llm.rst:42 ../../install/tvm.rst:49
+msgid "CUDA 12.3"
+msgstr ""
+
+#: ../../install/mlc_llm.rst:49 ../../install/tvm.rst:56
+msgid "ROCm 6.1"
+msgstr ""
+
+#: ../../install/mlc_llm.rst:56 ../../install/tvm.rst:63
+msgid "ROCm 6.2"
+msgstr ""
+
+#: ../../install/mlc_llm.rst:63 ../../install/tvm.rst:70
+msgid "Vulkan"
+msgstr ""
+
+#: ../../install/mlc_llm.rst:65
+msgid ""
+"Supported in all Linux packages. Checkout the following instructions to "
+"install the latest vulkan loader to avoid vulkan not found issue."
+msgstr ""
+"所有 Linux 包均支持。请查看以下说明以安装最新的 Vulkan 加载器，以避免出现 Vulkan 未找到的问题。"
+
+#: ../../install/mlc_llm.rst:73
+msgid "We need git-lfs in the system, you can install it via"
+msgstr "需要在系统中安装 git-lfs，您可以通过以下命令安装："
+
+#: ../../install/mlc_llm.rst:79 ../../install/tvm.rst:76
+msgid ""
+"If encountering issues with GLIBC not found, please install the latest "
+"glibc in conda:"
+msgstr ""
+"如果遇到 GLIBC 未找到的问题，请在 conda 中安装最新版本的 glibc："
+
+#: ../../install/mlc_llm.rst:85
+msgid ""
+"Besides, we would recommend using Python 3.11; so if you are creating a "
+"new environment, you could use the following command:"
+msgstr ""
+"此外，建议使用 Python 3.11；因此，如果您正在创建新环境，可以使用以下命令："
+
+#: ../../install/mlc_llm.rst:92 ../../install/tvm.rst:82
+msgid "macOS"
+msgstr ""
+
+#: ../../install/mlc_llm.rst:96 ../../install/tvm.rst:86
+msgid "CPU + Metal"
+msgstr ""
+
+#: ../../install/mlc_llm.rst:105 ../../install/tvm.rst:95
+msgid ""
+"Always check if conda is installed properly in macOS using the command "
+"below:"
+msgstr ""
+"始终使用以下命令检查 macOS 中是否已正确安装 conda："
+
+#: ../../install/mlc_llm.rst:111
+msgid ""
+"It should return \"osx-64\" for Mac with Intel chip, and \"osx-arm64\" "
+"for Mac with Apple chip. We need git-lfs in the system, you can install "
+"it via"
+msgstr ""
+"对于使用 Intel 芯片的 Mac，它应返回 \"osx-64\"，而对于使用 Apple 芯片的 Mac，则应返回 \"osx-arm64\"。"
+"需要在系统中安装 git-lfs，您可以通过以下命令安装："
+
+#: ../../install/mlc_llm.rst:122 ../../install/tvm.rst:107
+msgid "CPU + Vulkan"
+msgstr ""
+
+#: ../../install/mlc_llm.rst:130
+msgid ""
+"Please make sure your conda environment comes with python and pip. Make "
+"sure you also install the following packages, vulkan loader, clang, git "
+"and git-lfs to enable proper automatic download and jit compilation."
+msgstr ""
+"请确保您的 conda 环境中已安装 Python 和 pip。同时，请确保安装以下包：vulkan 加载器、clang、git 和 git-lfs，以启用正确的自动下载和即时编译功能。"
+
+#: ../../install/mlc_llm.rst:139 ../../install/tvm.rst:122
+msgid "If encountering the error below:"
+msgstr "如果遇到以下错误："
+
+#: ../../install/mlc_llm.rst:145 ../../install/tvm.rst:128
+msgid ""
+"It is likely `zstd`, a dependency to LLVM, was missing. Please use the "
+"command below to get it installed:"
+msgstr ""
+"这可能是由于缺少 LLVM 的依赖项 `zstd`。请使用以下命令安装它："
+
+#: ../../install/mlc_llm.rst:152
+msgid "Then you can verify installation in command line:"
+msgstr "然后您可以在命令行中验证安装："
+
+#: ../../install/mlc_llm.rst:164 ../../install/tvm.rst:137
+msgid "Option 2. Build from Source"
+msgstr "选项 2：从源代码构建"
+
+#: ../../install/mlc_llm.rst:166
+msgid ""
+"We also provide options to build mlc runtime libraries ``mlc_llm`` from "
+"source. This step is useful when you want to make modification or obtain "
+"a specific version of mlc runtime."
+msgstr ""
+"还提供了从源代码构建 mlc 运行时库 ``mlc_llm`` 的选项。当您希望进行修改或获取特定版本的 mlc 运行时，此步骤非常有用。"
+
+#: ../../install/mlc_llm.rst:170
+msgid ""
+"**Step 1. Set up build dependency.** To build from source, you need to "
+"ensure that the following build dependencies are satisfied:"
+msgstr ""
+"**步骤 1：设置构建依赖项。** 要从源代码构建，您需要确保满足以下构建依赖项："
+
+#: ../../install/mlc_llm.rst:172 ../../install/tvm.rst:145
+msgid "CMake >= 3.24"
+msgstr ""
+
+#: ../../install/mlc_llm.rst:173 ../../install/tvm.rst:148
+msgid "Git"
+msgstr ""
+
+#: ../../install/mlc_llm.rst:174
+msgid ""
+"`Rust and Cargo <https://www.rust-lang.org/tools/install>`_, required by "
+"Hugging Face's tokenizer"
+msgstr ""
+"`Rust 和 Cargo <https://www.rust-lang.org/tools/install>`_，Hugging Face 的分词器需要。"
+
+#: ../../install/mlc_llm.rst:175
+msgid "One of the GPU runtimes:"
+msgstr "GPU 运行时之一："
+
+#: ../../install/mlc_llm.rst:177
+msgid "CUDA >= 11.8 (NVIDIA GPUs)"
+msgstr ""
+
+#: ../../install/mlc_llm.rst:178
+msgid "Metal (Apple GPUs)"
+msgstr ""
+
+#: ../../install/mlc_llm.rst:179
+msgid "Vulkan (NVIDIA, AMD, Intel GPUs)"
+msgstr ""
+
+#: ../../install/mlc_llm.rst:181
+msgid "Set up build dependencies in Conda"
+msgstr "在 Conda 中设置构建依赖项"
+
+#: ../../install/mlc_llm.rst:196
+msgid ""
+"For runtime, :doc:`TVM Unity </install/tvm>` compiler is not a dependency"
+" for MLCChat CLI or Python API. Only TVM's runtime is required, which is "
+"automatically included in `3rdparty/tvm <https://github.com/mlc-ai/mlc-"
+"llm/tree/main/3rdparty>`_. However, if you would like to compile your own"
+" models, you need to follow :doc:`TVM Unity </install/tvm>`."
+msgstr ""
+"对于运行时，:doc:`TVM Unity </install/tvm>` 编译器不是 MLCChat CLI 或 Python API 的依赖项。"
+"只需要 TVM 的运行时，它已自动包含在 `3rdparty/tvm <https://github.com/mlc-ai/mlc-llm/tree/main/3rdparty>`_ 中。"
+"但是，如果您希望编译自己的模型，则需要按照 :doc:`TVM Unity </install/tvm>` 进行操作。"
+
+#: ../../install/mlc_llm.rst:199
+msgid ""
+"**Step 2. Configure and build.** A standard git-based workflow is "
+"recommended to download MLC LLM, after which you can specify build "
+"requirements with our lightweight config generation tool:"
+msgstr ""
+"**步骤 2：配置和构建。** 建议使用基于 git 的标准工作流程来下载 MLC LLM，之后您可以使用我们的轻量级配置生成工具指定构建要求："
+
+#: ../../install/mlc_llm.rst:201
+msgid "Configure and build"
+msgstr "配置和构建"
+
+#: ../../install/mlc_llm.rst:214 ../../install/tvm.rst:221
+msgid ""
+"If you are using CUDA and your compute capability is above 80, then it is"
+" require to build with ``set(USE_FLASHINFER ON)``. Otherwise, you may run"
+" into ``Cannot find PackedFunc`` issue during runtime."
+msgstr ""
+"如果您使用的是 CUDA 且计算能力高于 80，则需要使用 ``set(USE_FLASHINFER ON)`` 进行构建。否则，在运行时可能会遇到 ``Cannot find PackedFunc`` 问题。"
+
+#: ../../install/mlc_llm.rst:218 ../../install/tvm.rst:225
+msgid ""
+"To check your CUDA compute capability, you can use ``nvidia-smi --query-"
+"gpu=compute_cap --format=csv``."
+msgstr ""
+"要检查您的 CUDA 计算能力，可以使用 ``nvidia-smi --query-gpu=compute_cap --format=csv``。"
+
+#: ../../install/mlc_llm.rst:220
+msgid ""
+"**Step 3. Install via Python.** We recommend that you install ``mlc_llm``"
+" as a Python package, giving you access to ``mlc_llm.compile``, "
+"``mlc_llm.MLCEngine``, and the CLI. There are two ways to do so:"
+msgstr ""
+"**步骤 3：通过 Python 安装。** 我们建议您将 ``mlc_llm`` 安装为 Python 包，这样您就可以使用 ``mlc_llm.compile``、``mlc_llm.MLCEngine`` 和 CLI。有两种方法可以做到这一点："
+
+#: ../../install/mlc_llm.rst:239
+msgid ""
+"**Step 4. Validate installation.** You may validate if MLC libarires and "
+"mlc_llm CLI is compiled successfully using the following command:"
+msgstr ""
+"**步骤 4：验证安装。** 您可以使用以下命令验证 MLC 库和 mlc_llm CLI 是否成功编译："
+
+#: ../../install/mlc_llm.rst:249
+msgid ""
+"Finally, you can verify installation in command line. You should see the "
+"path you used to build from source with:"
+msgstr ""
+"最后，您可以在命令行中验证安装。您应该会看到用于从源代码构建的路径："
+
+#: ../../install/tvm.rst:4
+msgid "Install TVM Unity Compiler"
+msgstr "安装 TVM Unity 编译器"
+
+#: ../../install/tvm.rst:10
+msgid ""
+"`TVM Unity <https://discuss.tvm.apache.org/t/establish-tvm-unity-"
+"connection-a-technical-strategy/13344>`__, the latest development in "
+"Apache TVM, is required to build MLC LLM. Its features include:"
+msgstr ""
+"`TVM Unity <https://discuss.tvm.apache.org/t/establish-tvm-unity-connection-a-technical-strategy/13344>`__，"
+"Apache TVM 的最新开发成果，是构建 MLC LLM 所必需的。其功能包括："
+
+#: ../../install/tvm.rst:12
+msgid "High-performance CPU/GPU code generation instantly without tuning;"
+msgstr "无需调优即可即时生成高性能 CPU/GPU 代码；"
+
+#: ../../install/tvm.rst:13
+msgid "Dynamic shape and symbolic shape tracking by design;"
+msgstr "通过设计实现动态形状和符号形状跟踪；"
+
+#: ../../install/tvm.rst:14
+msgid "Supporting both inference and training;"
+msgstr "支持推理和训练；"
+
+#: ../../install/tvm.rst:15
+msgid ""
+"Productive python-first compiler implementation. As a concrete example, "
+"MLC LLM compilation is implemented in pure python using its API."
+msgstr ""
+"高效的 Python 优先编译器实现。作为具体示例，MLC LLM 编译是使用其 API 在纯 Python 中实现的。"
+
+#: ../../install/tvm.rst:17
+msgid ""
+"TVM Unity can be installed directly from a prebuilt developer package, or"
+" built from source."
+msgstr ""
+"TVM Unity 可以直接从预构建的开发包安装，也可以从源代码构建。"
+
+#: ../../install/tvm.rst:24
+msgid "A nightly prebuilt Python package of Apache TVM Unity is provided."
+msgstr "提供了 Apache TVM Unity 的 nightly 预构建 Python 包。"
+
+#: ../../install/tvm.rst:27
+msgid ""
+"❗ Whenever using Python, it is highly recommended to use **conda** to "
+"manage an isolated Python environment to avoid missing dependencies, "
+"incompatible versions, and package conflicts."
+msgstr ""
+"❗ 每当使用 Python 时，强烈建议使用 **conda** 来管理独立的 Python 环境，以避免缺少依赖、版本不兼容和包冲突的问题。"
+
+#: ../../install/tvm.rst:72
+msgid "Supported in all Linux packages."
+msgstr "所有 Linux 包均支持。"
+
+#: ../../install/tvm.rst:101
+msgid ""
+"It should return \"osx-64\" for Mac with Intel chip, and \"osx-arm64\" "
+"for Mac with Apple chip."
+msgstr ""
+"对于使用 Intel 芯片的 Mac，它应返回  \"osx-64\"，而对于使用 Apple 芯片的 Mac，则应返回 \"osx-arm64\"。"
+
+#: ../../install/tvm.rst:115
+msgid ""
+"Make sure you also install vulkan loader and clang to avoid vulkan not "
+"found error or clang not found(needed for jit compile)"
+msgstr ""
+"请确保同时安装 vulkan 加载器和 clang，以避免出现 vulkan 未找到错误或 clang 未找到（jit 编译需要）的问题。"
+
+#: ../../install/tvm.rst:139
+msgid ""
+"While it is generally recommended to always use the prebuilt TVM Unity, "
+"if you require more customization, you may need to build it from source. "
+"**NOTE.** this should only be attempted if you are familiar with the "
+"intricacies of C++, CMake, LLVM, Python, and other related systems."
+msgstr ""
+"虽然通常建议始终使用预构建的 TVM Unity，但如果您需要更多自定义，则可能需要从源代码构建。"
+"**注意：** 只有在您熟悉 C++、CMake、LLVM、Python 和其他相关系统的复杂性时，才应尝试此操作。"
+
+#: ../../install/tvm.rst:143
+msgid ""
+"**Step 1. Set up build dependency.** To build from source, you need to "
+"ensure that the following build dependencies are met:"
+msgstr ""
+"**步骤 1：设置构建依赖项。** 要从源代码构建，您需要确保满足以下构建依赖项："
+
+#: ../../install/tvm.rst:146
+msgid ""
+"LLVM >= 15 - For please install LLVM>=17 for ROCm 6.1 and LLVM>=18 for "
+"ROCm 6.2."
+msgstr ""
+"LLVM >= 15 - 对于 ROCm 6.1，请安装 LLVM>=17；对于 ROCm 6.2，请安装 LLVM>=18。"
+
+#: ../../install/tvm.rst:149
+msgid "(Optional) CUDA >= 11.8 (targeting NVIDIA GPUs)"
+msgstr "（可选）CUDA >= 11.8（针对 NVIDIA GPU）"
+
+#: ../../install/tvm.rst:150
+msgid "(Optional) Metal (targeting Apple GPUs such as M1 and M2)"
+msgstr "（可选）Metal（针对 Apple GPU，如 M1 和 M2）"
+
+#: ../../install/tvm.rst:151
+msgid "(Optional) Vulkan (targeting NVIDIA, AMD, Intel and mobile GPUs)"
+msgstr "（可选）Vulkan（针对 NVIDIA、AMD、Intel 和移动 GPU）"
+
+#: ../../install/tvm.rst:152
+msgid "(Optional) OpenCL (targeting NVIDIA, AMD, Intel and mobile GPUs)"
+msgstr "（可选）OpenCL（针对 NVIDIA、AMD、Intel 和移动 GPU）"
+
+#: ../../install/tvm.rst:155
+msgid ""
+"To target NVIDIA GPUs, either CUDA or Vulkan is required (CUDA is "
+"recommended);"
+msgstr ""
+"要针对 NVIDIA GPU，需要 CUDA 或 Vulkan（推荐使用 CUDA）；"
+
+#: ../../install/tvm.rst:156
+msgid "For AMD and Intel GPUs, Vulkan is necessary;"
+msgstr "对于 AMD 和 Intel GPU，Vulkan 是必需的；"
+
+#: ../../install/tvm.rst:157
+msgid ""
+"When targeting Apple (macOS, iOS, iPadOS), Metal is a mandatory "
+"dependency;"
+msgstr ""
+"当针对 Apple（macOS、iOS、iPadOS）时，Metal 是必需的依赖项；"
+
+#: ../../install/tvm.rst:158
+msgid "Some Android devices only support OpenCL, but most of them support Vulkan."
+msgstr "一些 Android 设备仅支持 OpenCL，但大多数设备支持 Vulkan。"
+
+#: ../../install/tvm.rst:160
+msgid ""
+"To easiest way to manage dependency is via conda, which maintains a set "
+"of toolchains including LLVM across platforms. To create the environment "
+"of those build dependencies, one may simply use:"
+msgstr ""
+"管理依赖项的最简单方法是通过 conda，它维护了一组跨平台的工具链，包括 LLVM。要创建这些构建依赖项的环境，只需使用："
+
+#: ../../install/tvm.rst:162
+msgid "Set up build dependencies in conda"
+msgstr "在 conda 中设置构建依赖项"
+
+#: ../../install/tvm.rst:176
+msgid ""
+"**Step 2. Configure and build.** Standard git-based workflow are "
+"recommended to download Apache TVM Unity, and then specify build "
+"requirements in ``config.cmake``:"
+msgstr ""
+"**步骤 2：配置和构建。** 建议使用基于 git 的标准工作流程来下载 Apache TVM Unity，然后在 ``config.cmake`` 中指定构建要求："
+
+#: ../../install/tvm.rst:178
+msgid "Download TVM Unity from GitHub"
+msgstr "从 GitHub 下载 TVM Unity"
+
+#: ../../install/tvm.rst:189
+msgid ""
+"We are temporarily using `mlc-ai/relax <https://github.com/mlc-"
+"ai/relax>`_ instead, which comes with several temporary outstanding "
+"changes that we will upstream to Apache TVM's `unity branch "
+"<https://github.com/apache/tvm/tree/unity>`_."
+msgstr ""
+"暂时使用 `mlc-ai/relax <https://github.com/mlc-ai/relax>`_，"
+"它包含一些我们将上游到 Apache TVM 的 `unity 分支 <https://github.com/apache/tvm/tree/unity>`_ 的临时重要更改。"
+
+#: ../../install/tvm.rst:191
+msgid ""
+"We want to specifically tweak the following flags by appending them to "
+"the end of the configuration file:"
+msgstr ""
+"希望通过将它们附加到配置文件的末尾来专门调整以下标志："
+
+#: ../../install/tvm.rst:193
+msgid "Configure build in ``config.cmake``"
+msgstr "在 ``config.cmake`` 中配置构建"
+
+#: ../../install/tvm.rst:212
+msgid ""
+"``HIDE_PRIVATE_SYMBOLS`` is a configuration option that enables the "
+"``-fvisibility=hidden`` flag. This flag helps prevent potential symbol "
+"conflicts between TVM and PyTorch. These conflicts arise due to the "
+"frameworks shipping LLVMs of different versions."
+msgstr ""
+"``HIDE_PRIVATE_SYMBOLS`` 配置选项，用于启用 ``-fvisibility=hidden`` 标志。"
+"此标志有助于防止 TVM 和 PyTorch 之间潜在的符号冲突。这些冲突是由于框架附带了不同版本的 LLVM 而引起的。"
+
+#: ../../install/tvm.rst:214
+msgid ""
+"`CMAKE_BUILD_TYPE "
+"<https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html>`_ "
+"controls default compilation flag:"
+msgstr ""
+"`CMAKE_BUILD_TYPE <https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html>`_ 控制默认编译标志："
+
+#: ../../install/tvm.rst:216
+msgid "``Debug`` sets ``-O0 -g``"
+msgstr "``Debug`` 设置 ``-O0 -g``"
+
+#: ../../install/tvm.rst:217
+msgid "``RelWithDebInfo`` sets ``-O2 -g -DNDEBUG`` (recommended)"
+msgstr "``RelWithDebInfo`` 设置 ``-O2 -g -DNDEBUG`` （推荐）"
+
+#: ../../install/tvm.rst:218
+msgid "``Release`` sets ``-O3 -DNDEBUG``"
+msgstr "``Release`` 设置 ``-O3 -DNDEBUG``"
+
+#: ../../install/tvm.rst:227
+msgid ""
+"Once ``config.cmake`` is edited accordingly, kick off build with the "
+"commands below:"
+msgstr ""
+"一旦 ``config.cmake`` 被相应地编辑，请使用以下命令启动构建："
+
+#: ../../install/tvm.rst:229
+msgid "Build ``libtvm`` using cmake and cmake"
+msgstr "使用 cmake 和 cmake 构建 ``libtvm``"
+
+#: ../../install/tvm.rst:234
+msgid ""
+"A success build should produce ``libtvm`` and ``libtvm_runtime`` under "
+"``/path-tvm-unity/build/`` directory."
+msgstr ""
+"成功的构建应该在 ``/path-tvm-unity/build/`` 目录下生成 ``libtvm`` 和 ``libtvm_runtime``。"
+
+#: ../../install/tvm.rst:236
+msgid ""
+"Leaving the build environment ``tvm-build-venv``, there are two ways to "
+"install the successful build into your environment:"
+msgstr ""
+"离开构建环境 ``tvm-build-venv`` 后，有两种方法可以将成功的构建安装到您的环境中："
+
+#: ../../install/tvm.rst:258
+msgid "Validate TVM Installation"
+msgstr "验证 TVM 安装"
+
+#: ../../install/tvm.rst:260
+msgid ""
+"Using a compiler infrastructure with multiple language bindings could be "
+"error-prone. Therefore, it is highly recommended to validate TVM Unity "
+"installation before use."
+msgstr ""
+"使用具有多种语言绑定的编译器基础结构可能会容易出错。因此，强烈建议在使用前验证 TVM Unity 安装。"
+
+#: ../../install/tvm.rst:263
+msgid ""
+"**Step 1. Locate TVM Python package.** The following command can help "
+"confirm that TVM is properly installed as a python package and provide "
+"the location of the TVM python package:"
+msgstr ""
+"**步骤 1：定位 TVM Python 包。** 以下命令可以帮助确认 TVM 是否已正确安装为 Python 包，并提供 TVM Python 包的位置："
+
+#: ../../install/tvm.rst:270
+msgid ""
+"**Step 2. Confirm which TVM library is used.** When maintaining multiple "
+"build or installation of TVM, it becomes important to double check if the"
+" python package is using the proper ``libtvm`` with the following "
+"command:"
+msgstr ""
+"**步骤 2：确认使用的 TVM 库。** 当维护多个 TVM 构建或安装时，双重检查 Python 包是否使用正确的 ``libtvm`` 变得非常重要，可以使用以下命令："
+
+#: ../../install/tvm.rst:277
+msgid ""
+"**Step 3. Reflect TVM build option.** Sometimes when downstream "
+"application fails, it could likely be some mistakes with a wrong TVM "
+"commit, or wrong build flags. To find it out, the following commands will"
+" be helpful:"
+msgstr ""
+"**步骤 3：反射 TVM 构建选项。** 有时当下游应用程序失败时，很可能是由于错误的 TVM 提交或错误的构建标志造成的。要找出原因，以下命令将很有帮助："
+
+#: ../../install/tvm.rst:295
+msgid ""
+"``GIT_COMMIT_HASH`` indicates the exact commit of the TVM build, and it "
+"can be found on GitHub via ``https://github.com/mlc-"
+"ai/relax/commit/$GIT_COMMIT_HASH``."
+msgstr ""
+"``GIT_COMMIT_HASH`` 指示 TVM 构建的确切提交，可以通过 ``https://github.com/mlc-ai/relax/commit/$GIT_COMMIT_HASH`` 在 GitHub 上找到。"
+
+#: ../../install/tvm.rst:297
+msgid ""
+"**Step 4. Check device detection.** Sometimes it could be helpful to "
+"understand if TVM could detect your device at all with the following "
+"commands:"
+msgstr ""
+"**步骤 4：检查设备检测。** 有时了解 TVM 是否能够检测到您的设备可能会有所帮助，可以使用以下命令："
+
+#: ../../install/tvm.rst:308
+msgid ""
+"Please note that the commands above verify the presence of an actual "
+"device on the local machine for the TVM runtime (not the compiler) to "
+"execute properly. However, TVM compiler can perform compilation tasks "
+"without requiring a physical device. As long as the necessary toolchain, "
+"such as NVCC, is available, TVM supports cross-compilation even in the "
+"absence of an actual device."
+msgstr ""
+"请注意，上述命令验证了本地机器上是否存在实际设备，以便 TVM 运行时（而不是编译器）能够正确执行。"
+"但是，TVM 编译器可以在不需要物理设备的情况下执行编译任务。只要必要的工具链（例如 NVCC）可用，即使没有实际设备，TVM 也支持交叉编译。"

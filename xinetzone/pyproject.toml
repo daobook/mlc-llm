@@ -1,0 +1,78 @@
+[project]
+name = "mlc_llm"
+dynamic = ["version"]
+description = "道可道，非恒道"
+authors = [
+    {name = "xinetzone", email = "735613050@qq.com"},
+]
+requires-python = ">=3.11"
+readme = "../README.md"
+license = {file = "../LICENSE"}
+maintainers = [
+  {name = "xinetzone", email = "735613050@qq.com"},
+]
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/daobook/mlc-llm"
+Documentation = "https://tvm-book.readthedocs.io/"
+
+[project.optional-dependencies]
+dev = [
+  # "taolib[flows]",
+  # "mlc-python",
+  "scipy>=1.9.3",
+  "toml",
+  "jaxlib",
+  "xgboost",
+  "pickleshare",
+  "graphviz",
+  "cloudpickle",
+  "synr",
+  "attrs",
+  "decorator",
+  "psutil",
+  "onnx",
+  "shortuuid",
+  "pydantic",
+  "uvicorn",
+  "fastapi",
+  "openai",
+  "prompt_toolkit",
+  "safetensors",
+  "tiktoken",
+]
+
+doc = [
+  "sphinx-tabs",
+  "sphinx-rtd-theme",
+  "sphinx",
+  "sphinx-toolbox",
+  "tlcpack-sphinx-addon",
+  "sphinxcontrib_httpdomain",
+  "sphinxcontrib-napoleon",
+  "sphinx-reredirects",
+  "torch",
+]
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.build]
+package-dir = "../python"
+# includes = ["../build/tvm/*.so"]
+excludes = ["old/", "doc", "locales", ".gitignore"]
+
+[tool.pdm.version]
+source = "file"
+path = "../version.py"
+
+# [tool.pdm.scripts]
+# mlc_llm = "mlc_llm.__main__:main" # 命令行脚本
+
+[project.scripts]
+mycli = "mlc_llm.__main__:main" # 命令行脚本

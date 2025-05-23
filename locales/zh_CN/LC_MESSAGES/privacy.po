@@ -1,0 +1,31 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023-2024, MLC LLM Contributors
+# This file is distributed under the same license as the mlc-llm package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mlc-llm 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-03 18:39+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../privacy.rst:2
+msgid "MLC Chat App Privacy"
+msgstr "MLC 聊天应用隐私"
+
+#: ../../privacy.rst:4
+msgid ""
+"MLC Chat run all generation locally. All data stays in users' device and "
+"is not collected by the app."
+msgstr ""
+"MLC 聊天应用在本地运行所有生成过程。所有数据都保留在用户的设备上，不会被应用收集。"
