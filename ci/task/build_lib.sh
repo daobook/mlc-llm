@@ -9,6 +9,10 @@ export CCACHE_NOHASHDIR=1
 export CCACHE_DIR=/ccache
 
 # Temporary workaround to install ccache.
+if [[ ${GPU} != metal ]]; then
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+fi
 conda install -c conda-forge ccache
 
 if [[ ${GPU} != metal ]]; then
@@ -49,4 +53,4 @@ fi
 
 cat config.cmake
 
-cmake .. && make -j${NUM_THREADS}
+cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 .. && make -j${NUM_THREADS}
