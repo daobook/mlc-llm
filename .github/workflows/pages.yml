@@ -45,7 +45,7 @@ jobs:
           apt-get update && sudo apt-get upgrade
           pip install --upgrade pip
           cd xinetzone
-          pip install taolib[flows] sentencepiece
+          pip install taolib[flows] sentencepiece ninja
           invoke install
           invoke doc
       - name: Setup Pages

@@ -12,9 +12,9 @@ def make(ctx):
     cmd = "cd .. && mkdir -p build && cd build"
     # generate build configuration
     # cmd += f"&&{sys.executable} ../cmake/gen_cmake_config.py"
-    cmd += f"&&cp ../cmake/config.cmake ."
+    cmd += f"&&cp ../xinetzone/config.cmake ."
     # build mlc_llm libraries
-    cmd += "&&cmake .. && cmake --build . --parallel $(nproc) && cd .."
+    cmd += "&&cmake -G Ninja .. && cmake --build . --parallel $(nproc) && cd .."
     ctx.run(cmd)
 
 @task
