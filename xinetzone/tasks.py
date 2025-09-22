@@ -3,7 +3,7 @@ if not hasattr(inspect, 'getargspec'): # 修复
     inspect.getargspec = inspect.getfullargspec
 import sys
 from invoke import task
-from taolib.flows.tasks import sites
+from taolib.doc import sites
 
 # @task
 # def make(ctx):
