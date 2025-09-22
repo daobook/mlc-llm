@@ -1,0 +1,2794 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023-2024, MLC LLM Contributors
+# This file is distributed under the same license as the mlc-llm package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mlc-llm 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-03 18:39+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../deploy/android.rst:4
+msgid "Android SDK"
+msgstr ""
+
+#: ../../deploy/android.rst:8 ../../deploy/cli.rst:10
+#: ../../deploy/ide_integration.rst:8 ../../deploy/ios.rst:8
+#: ../../deploy/python_engine.rst:12 ../../deploy/rest.rst:8
+#: ../../deploy/webllm.rst:8
+msgid "Table of Contents"
+msgstr "目录"
+
+#: ../../deploy/android.rst:11
+msgid "Demo App"
+msgstr ""
+
+#: ../../deploy/android.rst:13
+msgid "The demo APK below is built for Samsung S23 with Snapdragon 8 Gen 2 chip."
+msgstr "下面的演示 APK 是为搭载骁龙 8 Gen 2 芯片的三星 S23 构建的。"
+
+#: ../../deploy/android.rst:20
+msgid "Prerequisite"
+msgstr "准备"
+
+#: ../../deploy/android.rst:22
+msgid ""
+"**Rust** (`install <https://www.rust-lang.org/tools/install>`__) is "
+"needed to cross-compile HuggingFace tokenizers to Android. Make sure "
+"rustc, cargo, and rustup are available in ``$PATH``."
+msgstr ""
+"**Rust** (`安装 <https://www.rust-lang.org/tools/install>`__) 是必要的，用于将 HuggingFace 分词器交叉编译到 Android。确保 rustc、cargo 和 rustup 在 ``$PATH`` 中可用。"
+
+#: ../../deploy/android.rst:24
+msgid ""
+"**Android Studio** (`install <https://developer.android.com/studio>`__) "
+"with NDK and CMake. To install NDK and CMake, on the Android Studio "
+"welcome page, click \"Projects → SDK Manager → SDK Tools\". If you have "
+"already installed NDK in your development environment, please update your"
+" NDK to avoid build android package fail(`#2696 <https://github.com/mlc-"
+"ai/mlc-llm/issues/2696>`__). The current demo Android APK is built with "
+"NDK 27.0.11718014. Once you have installed or updated the NDK, set up the"
+" following environment variables:"
+msgstr ""
+"**Android Studio**  (`安装 <https://developer.android.com/studio>`__) 需要安装 NDK 和 CMake。"
+"要安装 NDK 和 CMake，在 Android Studio 欢迎页面，点击  \"Projects → SDK Manager → SDK Tools\"。"
+"如果您已经在开发环境中安装了 NDK，请更新您的 NDK 以避免构建 Android 包失败(`#2696 <https://github.com/mlc-ai/mlc-llm/issues/2696>`__)。"
+"当前的演示 Android APK 是用 NDK 27.0.11718014 构建的。一旦您安装或更新了 NDK，请设置以下环境变量："
+
+#: ../../deploy/android.rst:27
+msgid ""
+"``ANDROID_NDK`` so that "
+"``$ANDROID_NDK/build/cmake/android.toolchain.cmake`` is available."
+msgstr ""
+"``ANDROID_NDK`` 以便 ``$ANDROID_NDK/build/cmake/android.toolchain.cmake`` 可用。"
+
+#: ../../deploy/android.rst:28
+msgid "``TVM_NDK_CC`` that points to NDK's clang compiler."
+msgstr "``TVM_NDK_CC`` 指向NDK的clang编译器。"
+
+#: ../../deploy/android.rst:42
+msgid ""
+"**JDK**, such as OpenJDK >= 17, to compile Java bindings of TVM Unity "
+"runtime. We strongly recommend setting the ``JAVA_HOME`` to the JDK "
+"bundled with Android Studio. e.g. ``export "
+"JAVA_HOME=/Applications/Android\\ Studio.app/Contents/jbr/Contents/Home``"
+" for macOS. ``export JAVA_HOME=/opt/android-studio/jbr`` for Linux. Using"
+" Android Studio's JBR bundle as recommended `here "
+"https://developer.android.com/build/jdks` will reduce the chances of "
+"potential errors in JNI compilation. Set up the following environment "
+"variable:"
+msgstr ""
+"**JDK**，如OpenJDK >= 17，用于编译TVM Unity运行时的Java绑定。强烈建议将 ``JAVA_HOME`` 设置为Android Studio捆绑的JDK。"
+"例如，对于macOS，``export JAVA_HOME=/Applications/Android\\ Studio.app/Contents/jbr/Contents/Home``。对于Linux，``export JAVA_HOME=/opt/android-studio/jbr``。"
+"按照 `这里 <https://developer.android.com/build/jdks>` 的推荐使用Android Studio的JBR捆绑包将减少JNI编译中潜在错误的机会。设置以下环境变量："
+
+#: ../../deploy/android.rst:51
+msgid ""
+"``export JAVA_HOME=/path/to/java_home`` you can then cross check and make"
+" sure ``$JAVA_HOME/bin/java`` exists."
+msgstr ""
+"``export JAVA_HOME=/path/to/java_home`` 然后您可以交叉检查并确保 ``$JAVA_HOME/bin/java`` 存在。"
+
+#: ../../deploy/android.rst:53
+msgid ""
+"Please ensure that the JDK versions for Android Studio and JAVA_HOME are "
+"the same."
+msgstr ""
+"请确保Android Studio和JAVA_HOME的JDK版本相同。"
+
+#: ../../deploy/android.rst:55
+msgid ""
+"**TVM Unity runtime** is placed under `3rdparty/tvm <https://github.com"
+"/mlc-ai/mlc-llm/tree/main/3rdparty>`__ in MLC LLM, so there is no need to"
+" install anything extra. Set up the following environment variable:"
+msgstr ""
+"**TVM Unity运行时** 位于MLC LLM的 `3rdparty/tvm <https://github.com/mlc-ai/mlc-llm/tree/main/3rdparty>`__ 下，因此无需额外安装任何东西。设置以下环境变量："
+
+#: ../../deploy/android.rst:57
+msgid "``export TVM_SOURCE_DIR=/path/to/mlc-llm/3rdparty/tvm``."
+msgstr ""
+
+#: ../../deploy/android.rst:59
+msgid ""
+"Please follow :doc:`/install/mlc_llm` to obtain a binary build of mlc_llm"
+" package. Note that this is independent from mlc-llm source code that we "
+"use for android package build in the following up section. Once you "
+"installed this package, you do not need to build mlc llm from source."
+msgstr ""
+"请按照 :doc:`/install/mlc_llm` 获取mlc_llm包的二进制构建。请注意，这与我们用于Android包构建的mlc-llm源代码是独立的。一旦您安装了这个包，您就不需要从源代码构建mlc llm。"
+
+#: ../../deploy/android.rst:64
+msgid ""
+"❗ Whenever using Python, it is highly recommended to use **conda** to "
+"manage an isolated Python environment to avoid missing dependencies, "
+"incompatible versions, and package conflicts."
+msgstr ""
+"❗ 每当使用Python时，强烈建议使用 **conda** 来管理隔离的Python环境，以避免缺少依赖、版本不兼容和包冲突。"
+
+#: ../../deploy/android.rst:66
+msgid ""
+"Check if **environment variable** are properly set as the last check. One"
+" way to ensure this is to place them in ``$HOME/.zshrc``, "
+"``$HOME/.bashrc`` or environment management tools."
+msgstr ""
+"检查 **环境变量** 是否已正确设置为最后的检查。确保这一点的一种方法是将它们放在 ``$HOME/.zshrc``、``$HOME/.bashrc`` 或环境管理工具中。"
+
+#: ../../deploy/android.rst:77
+msgid "Additional Guides for Windows Users"
+msgstr "Windows用户的额外指南"
+
+#: ../../deploy/android.rst:79
+msgid ""
+"Building under Windows for Android is still experimental; please make "
+"sure you first finish the above guides, then read and follow the "
+"instructions in this section If you are using Windows, make sure you use "
+"conda to install cmake and Ninja."
+msgstr ""
+"在Windows下为Android构建仍然是实验性的；请确保您首先完成了上述指南，然后阅读并遵循本节中的说明。如果您使用的是Windows，请确保使用conda安装cmake和Ninja。"
+
+#: ../../deploy/android.rst:87
+msgid ""
+"Windows Java findings have issues with environment variables that come "
+"with space. Make sure you get a copy of Java in a path without space. The"
+" simplest way to do that is to copy the Android Studio's JBR bundle to a "
+"directory without any space. If your Android studio's installation is at "
+"``C:\\Program Files\\Android\\Android Studio\\`` you can try to do the "
+"following"
+msgstr ""
+"Windows Java发现带有空格的环境变量存在问题。请确保您获取的Java副本位于没有空格的路径中。"
+"最简单的方法是将Android Studio的JBR捆绑包复制到没有任何空格的目录中。"
+"如果您的Android Studio安装在 ``C:\\Program Files\\Android\\Android Studio\\``，您可以尝试执行以下操作"
+
+#: ../../deploy/android.rst:98
+msgid "You can continue the next steps after you have set these steps correctly."
+msgstr "你可以在正确设置这些步骤后继续接下来的步骤。"
+
+#: ../../deploy/android.rst:101
+msgid "Build Android App from Source"
+msgstr "从源代码构建安卓应用"
+
+#: ../../deploy/android.rst:103 ../../deploy/ios.rst:26
+msgid "This section shows how we can build the app from the source."
+msgstr "本节展示了如何从源代码构建应用程序。"
+
+#: ../../deploy/android.rst:106 ../../deploy/ios.rst:29
+msgid "Step 1. Install Build Dependencies"
+msgstr "第一步：安装构建依赖项"
+
+#: ../../deploy/android.rst:108
+msgid ""
+"First and foremost, please clone the `MLC LLM GitHub repository "
+"<https://github.com/mlc-ai/mlc-llm>`_. After cloning, go to the "
+"``android/`` directory."
+msgstr ""
+"首先，请克隆 `MLC LLM GitHub 仓库 <https://github.com/mlc-ai/mlc-llm>`_。克隆完成后，进入 ``android/`` 目录。"
+
+#: ../../deploy/android.rst:122 ../../deploy/ios.rst:55
+msgid "Step 2. Build Runtime and Model Libraries"
+msgstr "第二步：构建运行时和模型库"
+
+#: ../../deploy/android.rst:124
+msgid ""
+"The models to be built for the Android app are specified in ``MLCChat"
+"/mlc-package-config.json``: in the ``model_list``, ``model`` points to "
+"the Hugging Face repository which"
+msgstr ""
+"为安卓应用程序构建的模型在 ``MLCChat/mlc-package-config.json`` 中指定：在 ``model_list`` 中，``model`` 指向 Hugging Face 仓库，该仓库..."
+
+#: ../../deploy/android.rst:127
+msgid ""
+"``model`` points to the Hugging Face repository which contains the pre-"
+"converted model weights. The Android app will download model weights from"
+" the Hugging Face URL."
+msgstr ""
+"``model`` 指向包含预转换模型权重的 Hugging Face 仓库。安卓应用程序将从 Hugging Face 的 URL 下载模型权重。"
+
+#: ../../deploy/android.rst:128 ../../deploy/ios.rst:61
+msgid "``model_id`` is a unique model identifier."
+msgstr "``model_id`` 是模型的唯一标识符。"
+
+#: ../../deploy/android.rst:129 ../../deploy/ios.rst:62
+msgid ""
+"``estimated_vram_bytes`` is an estimation of the vRAM the model takes at "
+"runtime."
+msgstr ""
+"``estimated_vram_bytes`` 是对模型在运行时占用的 vRAM 的估计。"
+
+#: ../../deploy/android.rst:130 ../../deploy/ios.rst:63
+msgid ""
+"``\"bundle_weight\": true`` means the model weights of the model will be "
+"bundled into the app when building."
+msgstr ""
+"``\"bundle_weight\": true`` 表示在构建时，模型的权重将被捆绑到应用程序中。"
+
+#: ../../deploy/android.rst:131 ../../deploy/ios.rst:64
+msgid "``overrides`` specifies some model config parameter overrides."
+msgstr "``overrides`` 指定了一些模型配置参数的覆盖值。"
+
+#: ../../deploy/android.rst:134 ../../deploy/ios.rst:67
+msgid "We have a one-line command to build and prepare all the model libraries:"
+msgstr "有一行命令可以构建并准备所有模型库："
+
+#: ../../deploy/android.rst:142 ../../deploy/ios.rst:75
+msgid "This command mainly executes the following two steps:"
+msgstr "该命令主要执行以下两个步骤："
+
+#: ../../deploy/android.rst:144 ../../deploy/ios.rst:77
+msgid ""
+"**Compile models.** We compile each model in ``model_list`` of ``MLCChat"
+"/mlc-package-config.json`` into a binary model library."
+msgstr ""
+"**编译模型。** 将 ``MLCChat/mlc-package-config.json`` 中 ``model_list`` 的每个模型编译成二进制模型库。"
+
+#: ../../deploy/android.rst:145 ../../deploy/ios.rst:78
+msgid ""
+"**Build runtime and tokenizer.** In addition to the model itself, a "
+"lightweight runtime and tokenizer are required to actually run the LLM."
+msgstr ""
+"**构建运行时和分词器。** 除了模型本身外，还需要轻量级的运行时和分词器来实际运行大语言模型。"
+
+#: ../../deploy/android.rst:147
+msgid ""
+"The command creates a ``./dist/`` directory that contains the runtime and"
+" model build output. Please make sure all the following files exist in "
+"``./dist/``."
+msgstr ""
+"该命令会创建包含运行时和模型构建输出的 ``./dist/`` 目录。请确保以下所有文件都存在于 ``./dist/`` 中。"
+
+#: ../../deploy/android.rst:170
+msgid ""
+"The model execution logic in mobile GPUs is incorporated into "
+"``libtvm4j_runtime_packed.so``, while ``tvm4j_core.jar`` is a lightweight"
+" (~60 kb) `Java binding "
+"<https://tvm.apache.org/docs/reference/api/javadoc/>`_ to it. "
+"``dist/lib/mlc4j`` is a gradle subproject that you should include in your"
+" app so the Android project can reference the mlc4j (MLC LLM java "
+"library). This library packages the dependent model libraries and "
+"necessary runtime to execute the model."
+msgstr ""
+"移动 GPU 中的模型执行逻辑被整合到 ``libtvm4j_runtime_packed.so`` 中，而 ``tvm4j_core.jar`` 是轻量级（约 60 kb）的 "
+"`Java 绑定 <https://tvm.apache.org/docs/reference/api/javadoc/>`_。``dist/lib/mlc4j`` 是 gradle 子项目，"
+"您应将其包含在您的应用程序中，以便 Android 项目可以引用 mlc4j（MLC LLM Java 库）。该库打包了依赖的模型库和运行模型所需的运行时。"
+
+#: ../../deploy/android.rst:184 ../../deploy/ios.rst:100
+msgid ""
+"We leverage a local JIT cache to avoid repetitive compilation of the same"
+" input. However, sometimes it is helpful to force rebuild when we have a "
+"new compiler update or when something goes wrong with the cached library."
+" You can do so by setting the environment variable "
+"``MLC_JIT_POLICY=REDO``"
+msgstr ""
+"利用本地 JIT 缓存来避免重复编译相同的输入。"
+"然而，有时当我们有新的编译器更新或缓存库出现问题时，强制重新构建是有帮助的。您可以通过设置环境变量 ``MLC_JIT_POLICY=REDO`` 来实现这一点。"
+
+#: ../../deploy/android.rst:195
+msgid "Step 3. Build Android App"
+msgstr "第三步：构建安卓应用程序"
+
+#: ../../deploy/android.rst:197
+msgid ""
+"Open folder ``./android/MLCChat`` as an Android Studio Project. Connect "
+"your Android device to your machine. In the menu bar of Android Studio, "
+"click **\"Build → Make Project\"**. Once the build is finished, click "
+"**\"Run → Run 'app'\"** and you will see the app launched on your phone."
+msgstr ""
+"打开文件夹 ``./android/MLCChat`` 作为 Android Studio 项目。将您的安卓设备连接到计算机。"
+"在 Android Studio 的菜单栏中，点击 **\"Build → Make Project\"**。构建完成后，点击 **\"Run → Run 'app'\"**，您将看到应用程序在手机上启动。"
+
+#: ../../deploy/android.rst:203
+msgid ""
+"❗ This app cannot be run in an emulator and thus a physical phone is "
+"required, because MLC LLM needs an actual mobile GPU to meaningfully run "
+"at an accelerated speed."
+msgstr ""
+"❗ 此应用程序无法在模拟器中运行，因此需要一部实体手机，因为 MLC LLM 需要实际的移动 GPU 才能以加速的速度有意义地运行。"
+
+#: ../../deploy/android.rst:207 ../../deploy/ios.rst:170
+msgid "Customize the App"
+msgstr "自定义 App"
+
+#: ../../deploy/android.rst:209
+msgid ""
+"We can customize the models built in the Android app by customizing "
+"`MLCChat/mlc-package-config.json <https://github.com/mlc-ai/mlc-"
+"llm/blob/main/android/MLCChat/mlc-package-config.json>`_. We introduce "
+"each field of the JSON file here."
+msgstr ""
+"可以通过自定义 `MLCChat/mlc-package-config.json <https://github.com/mlc-ai/mlc-llm/blob/main/android/MLCChat/mlc-package-config.json>`_ 来定制安卓应用程序中构建的模型。"
+"在此介绍 JSON 文件的每个字段。"
+
+#: ../../deploy/android.rst:212 ../../deploy/ios.rst:175
+msgid ""
+"Each entry in ``\"model_list\"`` of the JSON file has the following "
+"fields:"
+msgstr ""
+"JSON 文件的 ``\"model_list\"`` 中的每个条目包含以下字段："
+
+#: ../../deploy/android.rst:214 ../../deploy/ios.rst:177
+msgid "``model``"
+msgstr ""
+
+#: ../../deploy/android.rst:215
+msgid ""
+"(Required) The path to the MLC-converted model to be built into the app. "
+"It is a Hugging Face URL (e.g., ``\"model\": \"HF://mlc-"
+"ai/phi-2-q4f16_1-MLC\"```) that contains the pre-converted model weights."
+msgstr ""
+"（必填）要构建到应用程序中的 MLC 转换模型的路径。它是 Hugging Face URL（例如 ``\"model\": \"HF://mlc-ai/phi-2-q4f16_1-MLC\"```），其中包含预转换的模型权重。"
+
+#: ../../deploy/android.rst:219 ../../deploy/ios.rst:184
+msgid "``model_id``"
+msgstr ""
+
+#: ../../deploy/android.rst:220 ../../deploy/ios.rst:185
+msgid ""
+"(Required) A unique local identifier to identify the model. It can be an "
+"arbitrary one."
+msgstr ""
+"（必需）用于标识模型的唯一本地标识符。它可以是任意值。"
+
+#: ../../deploy/android.rst:223 ../../deploy/ios.rst:188
+msgid "``estimated_vram_bytes``"
+msgstr ""
+
+#: ../../deploy/android.rst:224 ../../deploy/ios.rst:189
+msgid "(Required) Estimated requirements of vRAM to run the model."
+msgstr "（必需）运行模型所需的 vRAM 估计值。"
+
+#: ../../deploy/android.rst:226 ../../deploy/ios.rst:191
+msgid "``bundle_weight``"
+msgstr ""
+
+#: ../../deploy/android.rst:227
+msgid ""
+"(Optional) A boolean flag indicating whether to bundle model weights into"
+" the app. See :ref:`android-bundle-model-weights` below."
+msgstr ""
+"（可选）布尔标志，指示是否将模型权重捆绑到应用程序中。请参阅下面的 :ref:`android-bundle-model-weights`。"
+
+#: ../../deploy/android.rst:229 ../../deploy/ios.rst:194
+msgid "``overrides``"
+msgstr ""
+
+#: ../../deploy/android.rst:230 ../../deploy/ios.rst:195
+msgid ""
+"(Optional) A dictionary to override the default model context window size"
+" (to limit the KV cache size) and prefill chunk size (to limit the model "
+"temporary execution memory). Example:"
+msgstr ""
+"（可选）字典，用于覆盖默认的模型上下文窗口大小（以限制 KV 缓存大小）和预填充块大小（以限制模型的临时执行内存）。例如："
+
+#: ../../deploy/android.rst:250 ../../deploy/ios.rst:215
+msgid "``model_lib``"
+msgstr ""
+
+#: ../../deploy/android.rst:251 ../../deploy/ios.rst:216
+msgid ""
+"(Optional) A string specifying the system library prefix to use for the "
+"model. Usually this is used when you want to build multiple model "
+"variants with the same architecture into the app. **This field does not "
+"affect any app functionality.** The "
+"``\"model_lib_path_for_prepare_libs\"`` introduced below is also related."
+" Example:"
+msgstr ""
+"（可选）字符串，指定用于模型的系统库前缀。通常，当您希望将具有相同架构的多个模型变体构建到应用程序中时，会使用此字段。**此字段不会影响任何应用程序功能。** 下面介绍的 ``\"model_lib_path_for_prepare_libs\"`` 也与此相关。例如："
+
+#: ../../deploy/android.rst:272 ../../deploy/ios.rst:237
+msgid ""
+"Besides ``model_list`` in ``MLCChat/mlc-package-config.json``, you can "
+"also **optionally** specify a dictionary of "
+"``\"model_lib_path_for_prepare_libs\"``, **if you want to use model "
+"libraries that are manually compiled**. The keys of this dictionary "
+"should be the ``model_lib`` that specified in model list, and the values "
+"of this dictionary are the paths (absolute, or relative) to the manually "
+"compiled model libraries. The model libraries specified in "
+"``\"model_lib_path_for_prepare_libs\"`` will be built into the app when "
+"running ``mlc_llm package``. Example:"
+msgstr ""
+"除了 ``MLCChat/mlc-package-config.json`` 中的 ``model_list`` 外，您还可以 **选择性地** 指定 ``\"model_lib_path_for_prepare_libs\"`` 字典，**如果您希望使用手动编译的模型库**。"
+"此字典的键应为模型列表中指定的 ``model_lib``，而字典的值是手动编译的模型库的路径（绝对路径或相对路径）。"
+"在运行 ``mlc_llm package`` 时，``\"model_lib_path_for_prepare_libs\"`` 中指定的模型库将被构建到应用程序中。例如："
+
+#: ../../deploy/android.rst:300
+msgid "Bundle Model Weights"
+msgstr "捆绑模型权重"
+
+#: ../../deploy/android.rst:302
+msgid ""
+"Instructions have been provided to build an Android App with MLC LLM in "
+"previous sections, but it requires run-time weight downloading from "
+"HuggingFace, as configured in ``MLCChat/mlc-package-config.json``. "
+"However, it could be desirable to bundle weights together into the app to"
+" avoid downloading over the network. In this section, we provide a simple"
+" ADB-based walkthrough that hopefully helps with further development."
+msgstr ""
+"前面的部分已经提供了使用 MLC LLM 构建安卓应用程序的说明，但根据 ``MLCChat/mlc-package-config.json`` 中的配置，它需要从 HuggingFace 下载运行时权重。"
+"然而，将权重捆绑到应用程序中以避免通过网络下载可能是更理想的选择。在本节中，我们提供了基于 ADB 的简单教程，希望能对进一步开发有所帮助。"
+
+#: ../../deploy/android.rst:308
+msgid ""
+"**Enable weight bundle**. Set the field ``\"bundle_weight\": true`` for "
+"any model you want to bundle weights in ``MLCChat/mlc-package-"
+"config.json``, and run ``mlc_llm package`` again. Below is an example:"
+msgstr ""
+"**启用权重捆绑**。对于您希望在 ``MLCChat/mlc-package-config.json`` 中捆绑权重的任何模型，设置字段 ``\"bundle_weight\": true``，然后再次运行 ``mlc_llm package``。以下是示例："
+
+#: ../../deploy/android.rst:327 ../../deploy/ios.rst:137
+msgid "The outcome of running ``mlc_llm package`` should be as follows:"
+msgstr "运行 ``mlc_llm package`` 的结果应如下所示："
+
+#: ../../deploy/android.rst:338
+msgid ""
+"**Generating APK**. Enter Android Studio, and click **\"Build → Generate "
+"Signed Bundle/APK\"** to build an APK for release. If it is the first "
+"time you generate an APK, you will need to create a key according to `the"
+" official guide from Android "
+"<https://developer.android.com/studio/publish/app-signing#generate-"
+"key>`_. This APK will be placed under ``android/MLCChat/app/release/app-"
+"release.apk``."
+msgstr ""
+"**生成 APK**。进入 Android Studio，点击 **\"Build → Generate Signed Bundle/APK\"** 以构建用于发布的 APK。"
+"如果这是您第一次生成 APK，您需要根据 `Android 官方指南 <https://developer.android.com/studio/publish/app-signing#generate-key>`_ 创建密钥。"
+"此 APK 将放置在 ``android/MLCChat/app/release/app-release.apk`` 下。"
+
+#: ../../deploy/android.rst:341
+msgid ""
+"**Install ADB and USB debugging**. Enable \"USB debugging\" in the "
+"developer mode in your phone settings. In \"SDK manager - SDK Tools\", "
+"install `Android SDK Platform-Tools "
+"<https://developer.android.com/studio/releases/platform-tools>`_. Add the"
+" path to platform-tool path to the environment variable ``PATH`` (on "
+"macOS, it is ``$HOME/Library/Android/sdk/platform-tools``). Run the "
+"following commands, and if ADB is installed correctly, your phone will "
+"appear as a device:"
+msgstr ""
+"**安装 ADB 并启用 USB 调试**。在手机设置的开发者模式中启用“USB 调试”。在“SDK 管理器 - SDK 工具”中，安装 `Android SDK 平台工具 <https://developer.android.com/studio/releases/platform-tools>`_。"
+"将平台工具的路径添加到环境变量 ``PATH`` 中（在 macOS 上，路径为 ``$HOME/Library/Android/sdk/platform-tools``）。运行以下命令，如果 ADB 安装正确，您的手机将显示为设备："
+
+#: ../../deploy/android.rst:350
+msgid ""
+"**Install the APK and weights to your phone**. Run the commands below to "
+"install the app, and push the local weights to the app data directory on "
+"your device. Once it finishes, you can start the MLCChat app on your "
+"device. The models with ``bundle_weight`` set to true will have their "
+"weights already on device."
+msgstr ""
+"**将 APK 和权重安装到您的手机**。运行以下命令以安装应用程序，并将本地权重推送到设备上的应用程序数据目录。完成后，您可以在设备上启动 MLCChat 应用程序。将 ``bundle_weight`` 设置为 true 的模型的权重将已经存在于设备上。"
+
+#: ../../deploy/cli.rst:4
+msgid "CLI"
+msgstr ""
+
+#: ../../deploy/cli.rst:6
+msgid ""
+"MLC Chat CLI is the command line tool to run MLC-compiled LLMs out of the"
+" box interactively."
+msgstr ""
+"MLC Chat CLI 是命令行工具，用于开箱即用地交互式运行 MLC 编译的大语言模型。"
+
+#: ../../deploy/cli.rst:13 ../../deploy/rest.rst:14
+msgid "Install MLC-LLM Package"
+msgstr "安装 MLC-LLM 包"
+
+#: ../../deploy/cli.rst:15
+msgid ""
+"Chat CLI is a part of the MLC-LLM package. To use the chat CLI, first "
+"install MLC LLM by following the instructions :ref:`here <install-mlc-"
+"packages>`. Once you have install the MLC-LLM package, you can run the "
+"following command to check if the installation was successful:"
+msgstr ""
+"Chat CLI 是 MLC-LLP 包的一部分。要使用 Chat CLI，首先按照 :ref:`此处 <install-mlc-packages>` 的说明安装 MLC LLM。安装 MLC-LLM 包后，您可以运行以下命令来检查安装是否成功："
+
+#: ../../deploy/cli.rst:23 ../../deploy/rest.rst:22
+msgid "You should see serve help message if the installation was successful."
+msgstr "如果安装成功，您应该会看到服务帮助信息。"
+
+#: ../../deploy/cli.rst:26 ../../deploy/rest.rst:25
+msgid "Quick Start"
+msgstr "快速上手"
+
+#: ../../deploy/cli.rst:28
+msgid ""
+"This section provides a quick start guide to work with MLC-LLM chat CLI. "
+"To launch the CLI session, run the following command:"
+msgstr ""
+"本节提供了使用 MLC-LLM Chat CLI 的快速入门指南。要启动 CLI 会话，请运行以下命令："
+
+#: ../../deploy/cli.rst:35
+msgid ""
+"where ``MODEL`` is the model folder after compiling with :ref:`MLC-LLM "
+"build process <compile-model-libraries>`. Information about other "
+"arguments can be found in the next section."
+msgstr ""
+"其中 ``MODEL`` 是使用 :ref:`MLC-LLM 构建过程 <compile-model-libraries>` 编译后的模型文件夹。有关其他参数的信息可以在下一部分找到。"
+
+#: ../../deploy/cli.rst:37
+msgid ""
+"Once the chat CLI is ready, you can enter the prompt to interact with the"
+" model."
+msgstr ""
+"一旦 Chat CLI 准备就绪，您可以输入提示与模型进行交互。"
+
+#: ../../deploy/cli.rst:56 ../../deploy/rest.rst:57
+msgid "Run CLI with Multi-GPU"
+msgstr "使用多 GPU 运行 CLI"
+
+#: ../../deploy/cli.rst:58 ../../deploy/rest.rst:59
+msgid ""
+"If you want to enable tensor parallelism to run LLMs on multiple GPUs, "
+"please specify argument ``--overrides \"tensor_parallel_shards=$NGPU\"``."
+" For example,"
+msgstr ""
+"如果您希望启用张量并行以在多个 GPU 上运行大语言模型，请指定参数 ``--overrides \"tensor_parallel_shards=$NGPU\"``。例如，"
+
+#: ../../deploy/cli.rst:66
+msgid "The ``mlc_llm chat`` Command"
+msgstr "``mlc_llm chat`` 命令"
+
+#: ../../deploy/cli.rst:68
+msgid "We provide the list of chat CLI interface for reference."
+msgstr "提供了 Chat CLI 接口的列表以供参考。"
+
+#: ../../deploy/cli.rst:75 ../../deploy/rest.rst:91
+msgid ""
+"MODEL                  The model folder after compiling with MLC-LLM "
+"build process. The parameter"
+msgstr ""
+"MODEL                  使用 MLC-LLM 构建过程编译后的模型文件夹。该参数"
+
+#: ../../deploy/cli.rst:76 ../../deploy/rest.rst:92
+msgid ""
+"can either be the model name with its quantization scheme (e.g. ``Llama-2"
+"-7b-chat-hf-q4f16_1``), or a full path to the model folder. In the former"
+" case, we will use the provided name to search for the model folder over "
+"possible paths."
+msgstr ""
+"可以是带有量化方案的模型名称（例如 ``Llama-2-7b-chat-hf-q4f16_1``），也可以是模型文件夹的完整路径。在前一种情况下，我们将使用提供的名称在可能的路径中搜索模型文件夹。"
+
+#: ../../deploy/cli.rst:81 ../../deploy/rest.rst:97
+msgid ""
+"A field to specify the full path to the model library file to use (e.g. a"
+" ``.so`` file)."
+msgstr ""
+"字段，用于指定要使用的模型库文件的完整路径（例如 ``.so`` 文件）。"
+
+#: ../../deploy/cli.rst:82 ../../deploy/rest.rst:98
+msgid ""
+"The description of the device to run on. User should provide a string in "
+"the form of ``device_name:device_id`` or ``device_name``, where "
+"``device_name`` is one of ``cuda``, ``metal``, ``vulkan``, ``rocm``, "
+"``opencl``, ``auto`` (automatically detect the local device), and "
+"``device_id`` is the device id to run on. The default value is ``auto``, "
+"with the device id set to 0 for default."
+msgstr ""
+"运行设备的描述。用户应提供格式为 ``device_name:device_id`` 或 ``device_name`` 的字符串，其中 ``device_name`` 是 ``cuda``、``metal``、``vulkan``、``rocm``、``opencl``、``auto`` （自动检测本地设备）之一，``device_id`` 是要运行的设备 ID。默认值为 ``auto``，设备 ID 默认为 0。"
+
+#: ../../deploy/cli.rst:87
+msgid ""
+"Model configuration override. Supports overriding "
+"``context_window_size``, ``prefill_chunk_size``, ``sliding_window_size``,"
+" ``attention_sink_size``, and ``tensor_parallel_shards``. The overrides "
+"could be explicitly specified via details knobs, e.g. --overrides "
+"``context_window_size=1024;prefill_chunk_size=128``."
+msgstr ""
+"模型配置覆盖。支持覆盖 ``context_window_size``、``prefill_chunk_size``、``sliding_window_size``、``attention_sink_size`` 和 ``tensor_parallel_shards``。可以通过详细参数显式指定覆盖，例如 --overrides ``context_window_size=1024;prefill_chunk_size=128``。"
+
+#: ../../deploy/ide_integration.rst:4
+msgid "IDE Integration"
+msgstr "IDE 集成"
+
+#: ../../deploy/ide_integration.rst:10
+msgid ""
+"MLC LLM has now support for code completion on multiple IDEs. This means "
+"you can easily integrate an LLM with coding capabilities with your IDE "
+"through the MLC LLM :ref:`deploy-rest-api`. Here we provide a step-by-"
+"step guide on how to do this."
+msgstr ""
+"MLC LLM 现在支持在多个 IDE 上进行代码补全。这意味着您可以通过 MLC LLM 的 :ref:`deploy-rest-api` 轻松将具有编码能力的大语言模型集成到您的 IDE 中。这里我们提供了如何实现这一点的逐步指南。"
+
+#: ../../deploy/ide_integration.rst:13
+msgid "Convert Your Model Weights"
+msgstr "转换模型权重"
+
+#: ../../deploy/ide_integration.rst:15
+msgid ""
+"To run a model with MLC LLM in any platform, you need to convert your "
+"model weights to the MLC format (e.g. `CodeLlama-7b-hf-q4f16_1-MLC "
+"<https://huggingface.co/mlc-ai/CodeLlama-7b-hf-q4f16_1-MLC>`__). You can "
+"always refer to :ref:`convert-weights-via-MLC` for in-depth details on "
+"how to convert your model weights. If you are using your own model "
+"weights, i.e., you finetuned the model on your personal codebase, it is "
+"important to follow these steps to convert the respective weights "
+"properly. However, it is also possible to download precompiled weights "
+"from the original models, available in the MLC format. See the full list "
+"of all precompiled weights `here <https://huggingface.co/mlc-ai>`__."
+msgstr ""
+"要在任何平台上使用 MLC LLM 运行模型，您需要将模型权重转换为 MLC 格式（例如 `CodeLlama-7b-hf-q4f16_1-MLC <https://huggingface.co/mlc-ai/CodeLlama-7b-hf-q4f16_1-MLC>`__）。"
+"您可以随时参考 :ref:`convert-weights-via-MLC` 以获取有关如何转换模型权重的详细说明。如果您使用的是自己的模型权重，即您在个人代码库上微调了模型，那么按照这些步骤正确转换相应的权重非常重要。"
+"然而，也可以从原始模型下载预编译的权重，这些权重以 MLC 格式提供。查看所有预编译权重的完整列表 `此处 <https://huggingface.co/mlc-ai>`__。"
+
+#: ../../deploy/ide_integration.rst:17 ../../deploy/ide_integration.rst:31
+#: ../../deploy/ide_integration.rst:45 ../../deploy/ide_integration.rst:109
+msgid "**Example:**"
+msgstr "**示例**"
+
+#: ../../deploy/ide_integration.rst:27
+msgid "Compile Your Model"
+msgstr "编译模型"
+
+#: ../../deploy/ide_integration.rst:29
+msgid ""
+"Compiling the model architecture is the crucial step to optimize "
+"inference for a given platform. However, compilation relies on multiple "
+"settings that will impact the runtime. This configuration is specified "
+"inside the ``mlc-chat-config.json`` file, which can be generated by the "
+"``gen_config`` command. You can learn more about the ``gen_config`` "
+"command `here </docs/compilation/compile_models.html#generate-mlc-chat-"
+"config>`__."
+msgstr ""
+"编译模型架构是优化给定平台推理的关键步骤。然而，编译依赖于多个会影响运行时的设置。此配置在 ``mlc-chat-config.json`` 文件中指定，该文件可以通过 ``gen_config`` 命令生成。"
+"您可以了解更多关于 ``gen_config`` 命令的信息 `此处 </docs/compilation/compile_models.html#generate-mlc-chat-config>`__。"
+
+#: ../../deploy/ide_integration.rst:41
+msgid ""
+"Make sure to set the ``--conv-template`` flag to ``LM``. This template is"
+" specifically tailored to perform vanilla LLM completion, generally "
+"adopted by code completion models."
+msgstr ""
+"请确保将 ``--conv-template`` 标志设置为 ``LM``。此模板专门用于执行普通的 LLM 补全，通常被代码补全模型采用。"
+
+#: ../../deploy/ide_integration.rst:43
+msgid ""
+"After generating the MLC model configuration file, we are all set to "
+"compile and create the model library. You can learn more about the "
+"``compile`` command `here </docs/compilation/compile_models.html#compile-"
+"model-library>`__"
+msgstr ""
+"生成 MLC 模型配置文件后，我们就可以编译并创建模型库了。您可以了解更多关于 ``compile`` 命令的信息 `此处 </docs/compilation/compile_models.html#compile-model-library>`__。"
+
+#: ../../deploy/ide_integration.rst:49
+msgid "Linux - CUDA"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:57
+msgid "Metal"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:59
+msgid "For M-chip Mac:"
+msgstr "对于 M 芯片的 Mac："
+
+#: ../../deploy/ide_integration.rst:67
+msgid "Cross-Compiling for Intel Mac on M-chip Mac:"
+msgstr "在 M 芯片的 Mac 上为 Intel Mac 进行交叉编译："
+
+#: ../../deploy/ide_integration.rst:75
+msgid "For Intel Mac:"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:83
+msgid "Vulkan"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:85
+msgid "For Linux:"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:93
+msgid "For Windows:"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:102
+msgid ""
+"The generated model library can be shared across multiple model variants,"
+" as long as the architecture and number of parameters does not change, "
+"e.g., same architecture, but different weights (your finetuned model)."
+msgstr ""
+"生成的模型库可以在多个模型变体之间共享，只要架构和参数数量不变，例如相同的架构但不同的权重（您的微调模型）。"
+
+#: ../../deploy/ide_integration.rst:105
+msgid "Setting up the Inference Entrypoint"
+msgstr "设置推理入口点"
+
+#: ../../deploy/ide_integration.rst:107
+msgid ""
+"You can now locally deploy your compiled model with the MLC serve module."
+" To find more details about the MLC LLM API visit our :ref:`deploy-rest-"
+"api` page."
+msgstr ""
+"您现在可以使用 MLC serve 模块在本地部署编译后的模型。要了解更多关于 MLC LLM API 的详细信息，请访问我们的 :ref:`deploy-rest-api` 页面。"
+
+#: ../../deploy/ide_integration.rst:118
+msgid "Configure the IDE Extension"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:120
+msgid ""
+"After deploying the LLM we can easily connect the IDE with the MLC Rest "
+"API. In this guide, we will be using the Hugging Face Code Completion "
+"extension `llm-ls <https://github.com/huggingface/llm-ls>`__ which has "
+"support across multiple IDEs (e.g., `vscode "
+"<https://github.com/huggingface/llm-vscode>`__, `intellij "
+"<https://github.com/huggingface/llm-intellij>`__ and `nvim "
+"<https://github.com/huggingface/llm.nvim>`__) to connect to an external "
+"OpenAI compatible API (i.e., our MLC LLM :ref:`deploy-rest-api`)."
+msgstr ""
+"部署 LLM 后，我们可以轻松地将 IDE 与 MLC Rest API 连接。在本指南中，我们将使用 Hugging Face 代码补全扩展 `llm-ls <https://github.com/huggingface/llm-ls>`__，"
+"它支持多个 IDE（例如 `vscode <https://github.com/huggingface/llm-vscode>`__、`intellij <https://github.com/huggingface/llm-intellij>`__ "
+"和 `nvim <https://github.com/huggingface/llm.nvim>`__）以连接到外部 OpenAI 兼容 API（即我们的 MLC LLM :ref:`deploy-rest-api`）。"
+
+#: ../../deploy/ide_integration.rst:122
+msgid ""
+"After installing the extension on your IDE, open the ``settings.json`` "
+"extension configuration file:"
+msgstr ""
+"在您的 IDE 上安装扩展后，打开 ``settings.json`` 扩展配置文件："
+
+#: ../../deploy/ide_integration.rst:124
+msgid "settings.json"
+msgstr ""
+
+#: ../../deploy/ide_integration.rst:131
+msgid ""
+"Then, make sure to replace the following settings with the respective "
+"values:"
+msgstr ""
+"然后，确保将以下设置替换为相应的值："
+
+#: ../../deploy/ide_integration.rst:139
+msgid ""
+"This will enable the extension to send OpenAI compatible requests to the "
+"MLC Serve API. Also, feel free to tune the API parameters. Please refer "
+"to our :ref:`deploy-rest-api` documentation for more details about these "
+"API parameters."
+msgstr ""
+"这将使扩展能够向 MLC Serve API 发送 OpenAI 兼容请求。此外，您可以随意调整 API 参数。请参阅 :ref:`deploy-rest-api` 文档以获取有关这些 API 参数的更多详细信息。"
+
+#: ../../deploy/ide_integration.rst:158
+msgid ""
+"The llm-ls extension supports a variety of different model code "
+"completion templates. Choose the one that best matches your model, i.e., "
+"the template with the correct tokenizer and Fill in the Middle tokens."
+msgstr ""
+"llm-ls 扩展支持多种不同的模型代码补全模板。选择最适合您模型的模板，即具有正确分词器和中间填充标记的模板。"
+
+#: ../../deploy/ide_integration.rst:160
+msgid "llm-ls templates"
+msgstr "llm-ls 模板"
+
+#: ../../deploy/ide_integration.rst:167
+msgid ""
+"After everything is all set, the extension will be ready to use the "
+"responses from the MLC Serve API to provide off-the-shelf code completion"
+" on your IDE."
+msgstr ""
+"一切设置完成后，扩展将准备好使用来自 MLC Serve API 的响应，在您的 IDE 上提供开箱即用的代码补全功能。"
+
+#: ../../deploy/ide_integration.rst:169
+msgid "IDE Code Completion"
+msgstr "IDE 代码补全"
+
+#: ../../deploy/ide_integration.rst:177
+msgid "Conclusion"
+msgstr "结论"
+
+#: ../../deploy/ide_integration.rst:179
+msgid ""
+"Please, let us know if you have any questions. Feel free to open an issue"
+" on the `MLC LLM repo <https://github.com/mlc-ai/mlc-llm/issues>`__!"
+msgstr ""
+"如果您有任何问题，请告诉我们。欢迎在 `MLC LLM 仓库 <https://github.com/mlc-ai/mlc-llm/issues>`__ 上提出问题！"
+
+#: ../../deploy/ios.rst:4
+msgid "iOS Swift SDK"
+msgstr ""
+
+#: ../../deploy/ios.rst:10
+msgid ""
+"The MLC LLM iOS app can be installed in two ways: through the pre-built "
+"package or by building from the source. If you are an iOS user looking to"
+" try out the models, the pre-built package is recommended. If you are a "
+"developer seeking to integrate new features into the package, building "
+"the iOS package from the source is required."
+msgstr ""
+"MLC LLM iOS 应用程序可以通过两种方式安装：通过预构建的包或从源代码构建。如果您是希望尝试模型的 iOS 用户，推荐使用预构建的包。如果您是开发者，希望将新功能集成到包中，则需要从源代码构建 iOS 包。"
+
+#: ../../deploy/ios.rst:15
+msgid "Use Pre-built iOS App"
+msgstr "使用预构建的 iOS 应用程序"
+
+#: ../../deploy/ios.rst:16
+msgid ""
+"The MLC Chat app is now available in App Store at no cost. You can "
+"download and explore it by simply clicking the button below:"
+msgstr ""
+"MLC Chat 应用程序现已免费登陆 App Store。您只需点击下方按钮即可下载并探索其功能："
+
+#: ../../deploy/ios.rst:24
+msgid "Build iOS App from Source"
+msgstr "从源代码构建 iOS 应用程序"
+
+#: ../../deploy/ios.rst:31
+msgid ""
+"First and foremost, please clone the `MLC LLM GitHub repository "
+"<https://github.com/mlc-ai/mlc-llm>`_. After cloning, go to the ``ios/`` "
+"directory."
+msgstr ""
+"首先，请克隆 `MLC LLM GitHub 仓库 <https://github.com/mlc-ai/mlc-llm>`_。克隆完成后，进入 ``ios/`` 目录。"
+
+#: ../../deploy/ios.rst:42
+msgid ""
+"Please follow :doc:`/install/mlc_llm` to obtain a binary build of mlc_llm"
+" package. Note that this is independent from the above source code that "
+"we use for iOS package build. You do not need to build mlc_llm for your "
+"host and we can use the prebuilt package for that purpose."
+msgstr ""
+"请按照 :doc:`/install/mlc_llm` 的说明获取 mlc_llm 包的二进制构建版本。请注意，这与用于 iOS 包构建的上述源代码是独立的。您无需为主机环境构建 mlc_llm，我们可以直接使用预构建的包来实现这一目的。"
+
+#: ../../deploy/ios.rst:46
+msgid "We also need to have the following build dependencies:"
+msgstr "还需要具备以下构建依赖项："
+
+#: ../../deploy/ios.rst:48
+msgid "CMake >= 3.24,"
+msgstr ""
+
+#: ../../deploy/ios.rst:49
+msgid "Git and Git-LFS,"
+msgstr ""
+
+#: ../../deploy/ios.rst:50
+msgid ""
+"`Rust and Cargo <https://www.rust-lang.org/tools/install>`_, which are "
+"required by Hugging Face's tokenizer."
+msgstr ""
+"`Rust 和 Cargo <https://www.rust-lang.org/tools/install>`_，这是 Hugging Face 分词器所必需的。"
+
+#: ../../deploy/ios.rst:57
+msgid ""
+"The models to be built for the iOS app are specified in ``MLCChat/mlc-"
+"package-config.json``: in the ``model_list``,"
+msgstr ""
+"为 iOS 应用程序构建的模型在 ``MLCChat/mlc-package-config.json`` 文件中指定，具体位于 ``model_list`` 部分："
+
+#: ../../deploy/ios.rst:60
+msgid ""
+"``model`` points to the Hugging Face repository which contains the pre-"
+"converted model weights. The iOS app will download model weights from the"
+" Hugging Face URL."
+msgstr ""
+"``model`` 指向包含预转换模型权重的 Hugging Face 仓库。iOS 应用程序将从该 Hugging Face URL 下载模型权重。"
+
+#: ../../deploy/ios.rst:80
+msgid ""
+"The command creates a ``./dist/`` directory that contains the runtime and"
+" model build output. Please make sure ``dist/`` follows the structure "
+"below, except the optional model weights."
+msgstr ""
+"该命令会创建包含运行时和模型构建输出的 ``./dist/`` 目录。请确保 ``dist/`` 遵循以下结构（除可选的模型权重外）："
+
+#: ../../deploy/ios.rst:112
+msgid "Step 3. (Optional) Bundle model weights into the app"
+msgstr "步骤 3. （可选）将模型权重打包到应用程序中"
+
+#: ../../deploy/ios.rst:114
+msgid ""
+"By default, we download the model weights from Hugging Face when running "
+"the app. **As an option,**, we bundle model weights into the app: set the"
+" field ``\"bundle_weight\": true`` for any model you want to bundle "
+"weights in ``MLCChat/mlc-package-config.json``, and run ``mlc_llm "
+"package`` again. Below is an example:"
+msgstr ""
+"默认情况下，在运行应用程序时会从 Hugging Face 下载模型权重。**作为可选方案**，可以将模型权重打包到应用程序中："
+"在 ``MLCChat/mlc-package-config.json`` 中，为您希望打包权重的模型设置 ``\"bundle_weight\": true``，然后再次运行 ``mlc_llm package``。以下是示例："
+
+#: ../../deploy/ios.rst:150
+msgid "Step 4. Build iOS App"
+msgstr "步骤 4. 构建 iOS 应用程序"
+
+#: ../../deploy/ios.rst:152
+msgid ""
+"Open ``./ios/MLCChat/MLCChat.xcodeproj`` using Xcode. Note that you will "
+"need an Apple Developer Account to use Xcode, and you may be prompted to "
+"use your own developer team credential and product bundle identifier."
+msgstr ""
+"使用 Xcode 打开 ``./ios/MLCChat/MLCChat.xcodeproj``。请注意，您需要 Apple 开发者账户才能使用 Xcode，系统可能会提示您使用自己的开发者团队凭证和产品包标识符。"
+
+#: ../../deploy/ios.rst:156
+msgid ""
+"Ensure that all the necessary dependencies and configurations are "
+"correctly set up in the Xcode project."
+msgstr ""
+"确保 Xcode 项目中所有必要的依赖项和配置均已正确设置。"
+
+#: ../../deploy/ios.rst:159
+msgid ""
+"Once you have made the necessary changes, build the iOS app using Xcode. "
+"If you have an Apple Silicon Mac, you can select target \"My Mac "
+"(designed for iPad)\" to run on your Mac. You can also directly run it on"
+" your iPad or iPhone."
+msgstr ""
+"完成必要的更改后，使用 Xcode 构建 iOS 应用程序。如果您使用的是 Apple Silicon Mac，可以选择目标“我的 Mac（专为 iPad 设计）”以在 Mac 上运行。您也可以直接在 iPad 或 iPhone 上运行。"
+
+#: ../../deploy/ios.rst:172
+msgid ""
+"We can customize the models built in the iOS app by customizing `MLCChat"
+"/mlc-package-config.json <https://github.com/mlc-ai/mlc-"
+"llm/blob/main/ios/MLCChat/mlc-package-config.json>`_. We introduce each "
+"field of the JSON file here."
+msgstr ""
+"可以通过自定义 `MLCChat/mlc-package-config.json <https://github.com/mlc-ai/mlc-llm/blob/main/ios/MLCChat/mlc-package-config.json>`_ 来定制 iOS 应用程序中构建的模型。以下我们将介绍该 JSON 文件的每个字段。"
+
+#: ../../deploy/ios.rst:178
+msgid "(Required) The path to the MLC-converted model to be built into the app."
+msgstr "（必填）要构建到应用程序中的 MLC 转换模型的路径。"
+
+#: ../../deploy/ios.rst:180
+msgid ""
+"It can be either a Hugging Face URL (e.g., ``\"model\": \"HF://mlc-"
+"ai/phi-2-q4f16_1-MLC\"```), or a path to a local model directory which "
+"contains converted model weights (e.g., ``\"model\": \"../dist/gemma-2b-"
+"q4f16_1\"``). Please check out :ref:`convert-weights-via-MLC` if you want"
+" to build local model into the app."
+msgstr ""
+"它可以是 Hugging Face URL（例如 ``\"model\": \"HF://mlc-ai/phi-2-q4f16_1-MLC\"``），也可以是包含转换后模型权重的本地模型目录路径（例如 ``\"model\": \"../dist/gemma-2b-q4f16_1\"``）。"
+"如果您希望将本地模型构建到应用程序中，请查看 :ref:`convert-weights-via-MLC`。"
+
+#: ../../deploy/ios.rst:182
+msgid ""
+"*Note: the local path (if relative) is relative to the* ``ios/`` "
+"*directory.*"
+msgstr ""
+"*注意：本地路径（如果是相对路径）是相对于* ``ios/`` *目录的。*"
+
+#: ../../deploy/ios.rst:192
+msgid ""
+"(Optional) A boolean flag indicating whether to bundle model weights into"
+" the app. See :ref:`ios-bundle-model-weights`."
+msgstr ""
+"（可选）布尔标志，指示是否将模型权重打包到应用程序中。请参阅 :ref:`ios-bundle-model-weights`。"
+
+#: ../../deploy/ios.rst:264
+msgid "Bring Your Own Model"
+msgstr "引入您自己的模型"
+
+#: ../../deploy/ios.rst:266
+msgid ""
+"This section introduces how to build your own model into the iOS app. We "
+"use the example of `NeuralHermes "
+"<https://huggingface.co/mlabonne/NeuralHermes-2.5-Mistral-7B>`_ model, "
+"which a variant of Mistral model."
+msgstr ""
+"本节介绍如何将您自己的模型构建到 iOS 应用程序中。以 `NeuralHermes <https://huggingface.co/mlabonne/NeuralHermes-2.5-Mistral-7B>`_ 模型为例，它是 Mistral 模型的变体。"
+
+#: ../../deploy/ios.rst:271 ../../deploy/webllm.rst:137
+msgid ""
+"This section largely replicates :ref:`convert-weights-via-MLC`. See that "
+"page for more details. Note that the weights are shared across all "
+"platforms in MLC."
+msgstr ""
+"本节大部分内容复制自 :ref:`convert-weights-via-MLC`。请参阅该页面以获取更多详细信息。请注意，权重在 MLC 中跨所有平台共享。"
+
+#: ../../deploy/ios.rst:275 ../../deploy/webllm.rst:259
+msgid "**Step 1. Clone from HF and convert_weight**"
+msgstr "**第一步：从 HF 克隆并转换权重**"
+
+#: ../../deploy/ios.rst:277 ../../deploy/webllm.rst:143
+msgid ""
+"You can be under the mlc-llm repo, or your own working directory. Note "
+"that all platforms can share the same compiled/quantized weights. See "
+":ref:`compile-command-specification` for specification of "
+"``convert_weight``."
+msgstr ""
+"您可以在 mlc-llm 仓库下，或您自己的工作目录中。请注意，所有平台可以共享相同的编译/量化权重。有关 ``convert_weight`` 的规范，请参阅 :ref:`compile-command-specification`。"
+
+#: ../../deploy/ios.rst:294
+msgid "**Step 2. Generate MLC Chat Config**"
+msgstr "**步骤 2. 生成 MLC Chat 配置文件**"
+
+#: ../../deploy/ios.rst:296 ../../deploy/webllm.rst:162
+msgid ""
+"Use ``mlc_llm gen_config`` to generate ``mlc-chat-config.json`` and "
+"process tokenizers. See :ref:`compile-command-specification` for "
+"specification of ``gen_config``."
+msgstr ""
+"使用 ``mlc_llm gen_config`` 生成 ``mlc-chat-config.json`` 并处理分词器。有关 ``gen_config`` 的规范，请参阅 :ref:`compile-command-specification`。"
+
+#: ../../deploy/ios.rst:305
+msgid ""
+"For the ``conv-template``, `conversation_template.py <https://github.com"
+"/mlc-ai/mlc-llm/blob/main/python/mlc_llm/conversation_template.py>`__ "
+"contains a full list of conversation templates that MLC provides."
+msgstr ""
+"对于 ``conv-template``，`conversation_template.py <https://github.com/mlc-ai/mlc-llm/blob/main/python/mlc_llm/conversation_template.py>`__ 包含了 MLC 提供的完整对话模板列表。"
+
+#: ../../deploy/ios.rst:308
+msgid ""
+"If the model you are adding requires a new conversation template, you "
+"would need to add your own. Follow `this PR <https://github.com/mlc-ai"
+"/mlc-llm/pull/2163>`__ as an example. We look up the template to use with"
+" the ``conv_template`` field in ``mlc-chat-config.json``."
+msgstr ""
+"如果您添加的模型需要新的对话模板，您需要自行添加。请参考 `此 PR <https://github.com/mlc-ai/mlc-llm/pull/2163>`__ 作为示例。通过 ``mlc-chat-config.json`` 中的 ``conv_template`` 字段查找要使用的模板。"
+
+#: ../../deploy/ios.rst:312
+msgid "For more details, please see :ref:`configure-mlc-chat-json`."
+msgstr "更多详情，请参阅 :ref:`configure-mlc-chat-json`。"
+
+#: ../../deploy/ios.rst:314
+msgid "**Step 3. Upload weights to HF**"
+msgstr "**步骤 3. 将权重上传至 HF**"
+
+#: ../../deploy/ios.rst:327
+msgid ""
+"After successfully following all steps, you should end up with a "
+"Huggingface repo similar to `NeuralHermes-2.5-Mistral-7B-q3f16_1-MLC "
+"<https://huggingface.co/mlc-ai/NeuralHermes-2.5-Mistral-7B-"
+"q3f16_1-MLC>`__, which includes the converted/quantized weights, the "
+"``mlc-chat-config.json``, and tokenizer files."
+msgstr ""
+"成功完成所有步骤后，您应该会得到类似于 `NeuralHermes-2.5-Mistral-7B-q3f16_1-MLC <https://huggingface.co/mlc-ai/NeuralHermes-2.5-Mistral-7B-q3f16_1-MLC>`__ 的 Huggingface 仓库，"
+"其中包含转换/量化后的权重、``mlc-chat-config.json`` 配置文件以及分词器文件。"
+
+#: ../../deploy/ios.rst:332
+msgid "**Step 4. Register in Model List**"
+msgstr "**步骤 4. 在模型列表中注册**"
+
+#: ../../deploy/ios.rst:334
+msgid ""
+"Finally, we add the model into the ``model_list`` of `MLCChat/mlc-"
+"package-config.json <https://github.com/mlc-ai/mlc-"
+"llm/blob/main/ios/MLCChat/mlc-package-config.json>`_ by specifying the "
+"Hugging Face link as ``model``:"
+msgstr ""
+"最后，将模型添加到 `MLCChat/mlc-package-config.json <https://github.com/mlc-ai/mlc-llm/blob/main/ios/MLCChat/mlc-package-config.json>`_ 的 ``model_list`` 中，通过指定 Hugging Face 链接作为 ``model``："
+
+#: ../../deploy/ios.rst:351
+msgid ""
+"Now, go through :ref:`ios-build-runtime-and-model-libraries` and :ref"
+":`ios-build-app` again. The app will use the ``NeuralHermes-Mistral`` "
+"model you just added."
+msgstr ""
+"现在，再次按照 :ref:`ios-build-runtime-and-model-libraries` 和 :ref:`ios-build-app` 的步骤操作。应用程序将使用您刚刚添加的 ``NeuralHermes-Mistral`` 模型。"
+
+#: ../../deploy/ios.rst:356
+msgid "Build Apps with MLC Swift API"
+msgstr "使用 MLC Swift API 构建应用程序"
+
+#: ../../deploy/ios.rst:358
+msgid ""
+"We also provide a Swift package that you can use to build your own app. "
+"The package is located under ``ios/MLCSwift``."
+msgstr ""
+"还提供了 Swift 包，您可以使用它来构建自己的应用程序。该包位于 ``ios/MLCSwift`` 目录下。"
+
+#: ../../deploy/ios.rst:361
+msgid ""
+"First, create ``mlc-package-config.json`` in your project folder. You do "
+"so by copying the files in MLCChat folder. Run ``mlc_llm package``. This "
+"will give us the necessary libraries under ``/path/to/project/dist``."
+msgstr ""
+"首先，在您的项目文件夹中创建 ``mlc-package-config.json``。您可以通过复制 MLCChat 文件夹中的文件来完成此操作。然后运行 ``mlc_llm package``。这将在 ``/path/to/project/dist`` 下生成必要的库。"
+
+#: ../../deploy/ios.rst:365
+msgid ""
+"Under \"Build phases\", add ``/path/to/project/dist/bundle`` this will "
+"copying this folder into your app to include bundled weights and configs."
+msgstr ""
+"在“构建阶段”下，添加 ``/path/to/project/dist/bundle``，这将把此文件夹复制到您的应用程序中，以包含捆绑的权重和配置。"
+
+#: ../../deploy/ios.rst:367
+msgid ""
+"Add ``ios/MLCSwift`` package to your app in Xcode. Under \"Frameworks, "
+"Libraries, and Embedded Content\", click add package dependencies and add"
+" local package that points to ``ios/MLCSwift``."
+msgstr ""
+"在 Xcode 中，将 ``ios/MLCSwift`` 包添加到您的应用程序中。在“框架、库和嵌入内容”下，点击添加包依赖项，并添加指向 ``ios/MLCSwift`` 的本地包。"
+
+#: ../../deploy/ios.rst:370
+msgid "Finally, we need to add the libraries dependencies. Under build settings:"
+msgstr "最后，需要添加库依赖项。在构建设置下："
+
+#: ../../deploy/ios.rst:372
+msgid "Add library search path ``/path/to/project/dist/lib``."
+msgstr "添加库搜索路径 ``/path/to/project/dist/lib``。"
+
+#: ../../deploy/ios.rst:373
+msgid "Add the following items to \"other linker flags\"."
+msgstr "将以下项目添加到“其他链接器标志”中。"
+
+#: ../../deploy/ios.rst:385
+msgid ""
+"You can then import the `MLCSwift` package into your app. The following "
+"code shows an illustrative example of how to use the chat module."
+msgstr ""
+"然后，您可以将 `MLCSwift` 包导入到您的应用程序中。以下代码展示了如何使用聊天模块的示例。"
+
+#: ../../deploy/ios.rst:412
+msgid ""
+"Checkout `MLCEngineExample <https://github.com/mlc-ai/mlc-"
+"llm/blob/main/ios/MLCEngineExample>`_ for a minimal starter example."
+msgstr ""
+"查看 `MLCEngineExample <https://github.com/mlc-ai/mlc-llm/blob/main/ios/MLCEngineExample>`_ 以获取最小的入门示例。"
+
+#: ../../deploy/mlc_chat_config.rst:4
+msgid "Customize MLC Chat Config"
+msgstr "自定义 MLC Chat 配置"
+
+#: ../../deploy/mlc_chat_config.rst:6
+msgid ""
+"``mlc-chat-config.json`` is required for both compile-time and runtime, "
+"hence serving two purposes:"
+msgstr ""
+"``mlc-chat-config.json`` 在编译时和运行时都是必需的，因此有两个用途："
+
+#: ../../deploy/mlc_chat_config.rst:8
+msgid ""
+"Specify how we compile a model (shown in :ref:`compile-model-libraries`),"
+" and"
+msgstr ""
+"指定我们如何编译模型（如 :ref:`compile-model-libraries` 所示），以及"
+
+#: ../../deploy/mlc_chat_config.rst:9
+msgid "Specify conversation behavior in runtime."
+msgstr "在运行时指定对话行为。"
+
+#: ../../deploy/mlc_chat_config.rst:11
+msgid ""
+"**This page focuses on the second purpose.** We explain the components of"
+" a chat configuration and how to customize them by modifying the file. "
+"Additionally, the runtimes also provide APIs to optionally override some "
+"of the configurations."
+msgstr ""
+"**本页重点介绍第二个目的。** 解释了聊天配置的组成部分，以及如何通过修改文件来自定义这些部分。此外，运行时环境还提供了 API，可以选择性地覆盖某些配置。"
+
+#: ../../deploy/mlc_chat_config.rst:15
+msgid ""
+"In runtime, this file is stored under the directory of each compiled "
+"model (e.g. `RedPajama chat config <https://huggingface.co/mlc-ai/mlc-"
+"chat-RedPajama-INCITE-Chat-3B-v1-q4f16_1/blob/main/mlc-chat-"
+"config.json>`__)."
+msgstr ""
+"在运行时，该文件存储在每个编译模型的目录下"
+"（例如 `RedPajama 聊天配置 <https://huggingface.co/mlc-ai/mlc-chat-RedPajama-INCITE-Chat-3B-v1-q4f16_1/blob/main/mlc-chat-config.json>`__）。"
+
+#: ../../deploy/mlc_chat_config.rst:22
+msgid "Structure of MLCChat Configuration"
+msgstr "MLCChat 配置结构"
+
+#: ../../deploy/mlc_chat_config.rst:24
+msgid "Below is the ``mlc-chat-config.json`` file corresponding to Llama2 model:"
+msgstr "以下是 Llama2 模型对应的 ``mlc-chat-config.json`` 文件："
+
+#: ../../deploy/mlc_chat_config.rst:70
+msgid ""
+"Fields in the first part of ``mlc-chat-config.json`` (e.g. ``context-"
+"window-size``) is only for compile-time. Changing them during runtime may"
+" lead to unexpected behavior."
+msgstr ""
+"``mlc-chat-config.json`` 文件的第一部分中的字段（例如 ``context-window-size``）仅用于编译时。在运行时更改这些字段可能会导致意外行为。"
+
+#: ../../deploy/mlc_chat_config.rst:73
+msgid ""
+"**As shown above, the file is divided into three parts. We focus on the "
+"third part, which can be customized to change the behavior of the "
+"model.**"
+msgstr ""
+"**如上所示，该文件分为三个部分。重点关注第三部分，可以通过自定义这部分来改变模型的行为。**"
+
+#: ../../deploy/mlc_chat_config.rst:76
+msgid "``conv_template``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:78
+msgid ""
+"Legacy ``mlc-chat-config.json`` may specify a string for this field to "
+"look up a registered conversation template. It will be deprecated in the "
+"future. Re-generate config using the latest version of mlc_llm to make "
+"sure this field is a complete JSON object."
+msgstr ""
+"旧版的 ``mlc-chat-config.json`` 可能会为该字段指定字符串以查找已注册的对话模板。"
+"这种做法将在未来被弃用。请使用最新版本的 mlc_llm 重新生成配置，以确保该字段是完整的 JSON 对象。"
+
+#: ../../deploy/mlc_chat_config.rst:82
+msgid ""
+"The conversation template that this chat uses. For more information, "
+"please refer to :ref:`conversation structure <struct-conv>`."
+msgstr ""
+"该聊天使用的对话模板。更多信息，请参阅 :ref:`对话结构 <struct-conv>`。"
+
+#: ../../deploy/mlc_chat_config.rst:84
+msgid "``temperature``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:85
+msgid ""
+"The temperature applied to logits before sampling. The default value is "
+"``0.7``. A higher temperature encourages more diverse outputs, while a "
+"lower temperature produces more deterministic outputs."
+msgstr ""
+"采样前应用于 logits 的温度值。默认值为 ``0.7``。较高的温度值会鼓励更多样化的输出，而较低的温度值则会产生更确定性的输出。"
+
+#: ../../deploy/mlc_chat_config.rst:87
+msgid "``repetition_penalty``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:88
+msgid ""
+"The repetition penalty controls the likelihood of the model generating "
+"repeated texts. The default value is set to ``1.0``, indicating that no "
+"repetition penalty is applied. Increasing the value reduces the "
+"likelihood of repeat text generation. However, setting a high "
+"``repetition_penalty`` may result in the model generating meaningless "
+"texts. The ideal choice of repetition penalty may vary among models."
+msgstr ""
+"重复惩罚控制模型生成重复文本的可能性。默认值设置为 ``1.0``，表示不应用重复惩罚。增加该值会减少生成重复文本的可能性。"
+"然而，设置过高的 ``repetition_penalty`` 可能会导致模型生成无意义的文本。理想的重复惩罚值可能因模型而异。"
+
+#: ../../deploy/mlc_chat_config.rst:90
+msgid ""
+"For more details on how repetition penalty controls text generation, "
+"please check out the `CTRL paper "
+"<https://arxiv.org/pdf/1909.05858.pdf>`_."
+msgstr ""
+"有关重复惩罚如何控制文本生成的更多详细信息，请查看 `CTRL 论文 <https://arxiv.org/pdf/1909.05858.pdf>`_。"
+
+#: ../../deploy/mlc_chat_config.rst:92
+msgid "``top_p``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:93
+msgid ""
+"This parameter determines the set of tokens from which we sample during "
+"decoding. The default value is set to ``0.95``. At each step, we select "
+"tokens from the minimal set that has a cumulative probability exceeding "
+"the ``top_p`` parameter."
+msgstr ""
+"该参数决定了在解码过程中采样的 token 集合。默认值设置为 ``0.95``。在每一步中，从累积概率超过 ``top_p`` 参数的最小集合中选择 token。"
+
+#: ../../deploy/mlc_chat_config.rst:95
+msgid ""
+"For additional information on top-p sampling, please refer to this `blog "
+"post <https://huggingface.co/blog/how-to-generate#top-p-nucleus-"
+"sampling>`_."
+msgstr ""
+"有关 top-p 采样的更多信息，请参阅这篇 `博客文章 <https://huggingface.co/blog/how-to-generate#top-p-nucleus-sampling>`_。"
+
+#: ../../deploy/mlc_chat_config.rst:101
+msgid "Conversation Structure"
+msgstr "对话结构"
+
+#: ../../deploy/mlc_chat_config.rst:103
+msgid ""
+"MLC-LLM provided a set of pre-defined conversation templates, which you "
+"can directly use by specifying ``--conv-template [name]`` when generating"
+" config. Below is a list (not complete) of supported conversation "
+"templates:"
+msgstr ""
+"MLC-LLM 提供了一组预定义的对话模板，您可以在生成配置时通过指定 ``--conv-template [name]`` 直接使用。以下是支持的对话模板列表（不完全）："
+
+#: ../../deploy/mlc_chat_config.rst:107
+msgid "``llama-2``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:108
+msgid "``mistral_default``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:109
+msgid "``chatml``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:110
+msgid "``phi-2``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:111
+msgid "..."
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:113
+msgid ""
+"Please refer to `conversation_template <https://github.com/mlc-ai/mlc-"
+"llm/blob/main/python/mlc_llm/conversation_template>`_ directory for the "
+"full list of supported templates and their implementations."
+msgstr ""
+"请参阅 `conversation_template <https://github.com/mlc-ai/mlc-llm/blob/main/python/mlc_llm/conversation_template>`_ 目录以获取支持的模板及其实现的完整列表。"
+
+#: ../../deploy/mlc_chat_config.rst:115
+msgid ""
+"Below is a generic structure of a JSON conversation configuration (we use"
+" vicuna as an example):"
+msgstr ""
+"以下是 JSON 对话配置的通用结构（以 vicuna 为例）："
+
+#: ../../deploy/mlc_chat_config.rst:153
+msgid "``name``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:154
+msgid "Name of the conversation."
+msgstr "对话的名称。"
+
+#: ../../deploy/mlc_chat_config.rst:155
+msgid "``system_template``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:156
+msgid ""
+"The system prompt template, it optionally contains the system message "
+"placeholder, and the placeholder will be replaced with the system message"
+" below."
+msgstr ""
+"系统提示模板，它可以选择性地包含系统消息占位符，该占位符将被下面的系统消息替换。"
+
+#: ../../deploy/mlc_chat_config.rst:159
+msgid "``system_message``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:160
+msgid "The content of the system prompt (without the template format)."
+msgstr "系统提示的内容（不包含模板格式）。"
+
+#: ../../deploy/mlc_chat_config.rst:161
+msgid "``system_prefix_token_ids``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:162
+msgid ""
+"The system token ids to be prepended at the beginning of tokenized "
+"generated prompt."
+msgstr ""
+"系统 token ids，将在生成的 tokenized 提示的开头添加。"
+
+#: ../../deploy/mlc_chat_config.rst:164
+msgid "``roles``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:165
+msgid "The conversation roles"
+msgstr "对话角色"
+
+#: ../../deploy/mlc_chat_config.rst:166
+msgid "``role_templates``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:167
+msgid ""
+"The roles prompt template, it optionally contains the defaults message "
+"placeholders and will be replaced by actual content"
+msgstr ""
+"角色提示模板，它可以选择性地包含默认消息占位符，并将被实际内容替换。"
+
+#: ../../deploy/mlc_chat_config.rst:169
+msgid "``messages``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:170
+msgid ""
+"The conversation history messages. Each message is a pair of strings, "
+"denoting \"(role, content)\". The content can be None."
+msgstr ""
+"对话历史消息。每条消息是一对字符串，表示 \"(角色, 内容)\"。内容可以为空。"
+
+#: ../../deploy/mlc_chat_config.rst:173
+msgid "``seps``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:174
+msgid ""
+"An array of strings indicating the separators to be used after a user "
+"message and a model message respectively."
+msgstr ""
+"字符串数组，分别指示在用户消息和模型消息后使用的分隔符。"
+
+#: ../../deploy/mlc_chat_config.rst:176
+msgid "``role_content_sep``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:177
+msgid "The separator between the role and the content in a message."
+msgstr "消息中角色和内容之间的分隔符。"
+
+#: ../../deploy/mlc_chat_config.rst:178
+msgid "``role_empty_sep``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:179
+msgid "The separator between the role and empty contents."
+msgstr "角色和空内容之间的分隔符。"
+
+#: ../../deploy/mlc_chat_config.rst:180
+msgid "``stop_str``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:181
+msgid ""
+"When the ``stop_str`` is encountered, the model will stop generating "
+"output."
+msgstr ""
+"当遇到 ``stop_str`` 时，模型将停止生成输出。"
+
+#: ../../deploy/mlc_chat_config.rst:182
+msgid "``stop_token_ids``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:183
+msgid "A list of token IDs that act as stop tokens."
+msgstr "作为停止 token 的 token ID 列表。"
+
+#: ../../deploy/mlc_chat_config.rst:184
+msgid "``function_string``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:185
+msgid "The function calling string."
+msgstr "函数调用字符串。"
+
+#: ../../deploy/mlc_chat_config.rst:186
+msgid "``use_function_calling``"
+msgstr ""
+
+#: ../../deploy/mlc_chat_config.rst:187
+msgid ""
+"Whether using function calling or not, helps check for output message "
+"format in API call."
+msgstr ""
+"是否使用函数调用，有助于在 API 调用中检查输出消息格式。"
+
+#: ../../deploy/mlc_chat_config.rst:190
+msgid ""
+"Given a conversation template, the corresponding prompt generated out "
+"from it is in the following format:"
+msgstr ""
+"给定对话模板，生成的相应提示格式如下："
+
+#: ../../deploy/python_engine.rst:4
+msgid "Python API"
+msgstr ""
+
+#: ../../deploy/python_engine.rst:7
+msgid "This page introduces the Python API with MLCEngine in MLC LLM."
+msgstr "本页介绍了 MLC LLM 中 MLCEngine 的 Python API。"
+
+#: ../../deploy/python_engine.rst:14
+msgid ""
+"MLC LLM provides Python API through classes :class:`mlc_llm.MLCEngine` "
+"and :class:`mlc_llm.AsyncMLCEngine` which **support full OpenAI API "
+"completeness** for easy integration into other Python projects."
+msgstr ""
+"MLC LLM 通过类 :class:`mlc_llm.MLCEngine` 和 :class:`mlc_llm.AsyncMLCEngine` 提供 Python API，**支持完整的 OpenAI API 兼容性**，便于集成到其他 Python 项目中。"
+
+#: ../../deploy/python_engine.rst:17
+msgid ""
+"This page introduces how to use the engines in MLC LLM. The Python API is"
+" a part of the MLC-LLM package, which we have prepared pre-built pip "
+"wheels via the :ref:`installation page <install-mlc-packages>`."
+msgstr ""
+"本页介绍了如何在 MLC LLM 中使用引擎。Python API 是 MLC-LLM 包的一部分，已通过 :ref:`安装页面 <install-mlc-packages>` 准备了预构建的 pip 安装包。"
+
+#: ../../deploy/python_engine.rst:23
+msgid "Verify Installation"
+msgstr "验证安装"
+
+#: ../../deploy/python_engine.rst:29
+msgid ""
+"You are expected to see the output of ``<class "
+"'mlc_llm.serve.engine.MLCEngine'>``."
+msgstr ""
+"您应该会看到 ``<class 'mlc_llm.serve.engine.MLCEngine'>`` 的输出。"
+
+#: ../../deploy/python_engine.rst:31
+msgid ""
+"If the command above results in error, follow :ref:`install-mlc-packages`"
+" to install prebuilt pip packages or build MLC LLM from source."
+msgstr ""
+"如果上述命令导致错误，请按照 :ref:`install-mlc-packages` 安装预构建的 pip 包或从源代码构建 MLC LLM。"
+
+#: ../../deploy/python_engine.rst:36
+msgid "Run MLCEngine"
+msgstr "运行 MLCEngine"
+
+#: ../../deploy/python_engine.rst:38
+msgid ""
+":class:`mlc_llm.MLCEngine` provides the interface of OpenAI chat "
+"completion synchronously. :class:`mlc_llm.MLCEngine` does not batch "
+"concurrent request due to the synchronous design, and please use "
+":ref:`AsyncMLCEngine <python-engine-async-llm-engine>` for request "
+"batching process."
+msgstr ""
+":class:`mlc_llm.MLCEngine` 提供了同步的 OpenAI 聊天补全接口。"
+"由于同步设计，:class:`mlc_llm.MLCEngine` 不会批量处理并发请求，请使用 :ref:`AsyncMLCEngine <python-engine-async-llm-engine>` 进行请求批量处理。"
+
+#: ../../deploy/python_engine.rst:42
+msgid ""
+"**Stream Response.** In :ref:`quick-start` and :ref:`introduction-to-mlc-"
+"llm`, we introduced the basic use of :class:`mlc_llm.MLCEngine`."
+msgstr ""
+"**流式响应。** 在 :ref:`quick-start` 和 :ref:`introduction-to-mlc-llm` 中，介绍了 :class:`mlc_llm.MLCEngine` 的基本用法。"
+
+#: ../../deploy/python_engine.rst:65
+msgid ""
+"This code example first creates an :class:`mlc_llm.MLCEngine` instance "
+"with the 8B Llama-3 model. **We design the Python API** "
+":class:`mlc_llm.MLCEngine` **to align with OpenAI API**, which means you "
+"can use :class:`mlc_llm.MLCEngine` in the same way of using `OpenAI's "
+"Python package <https://github.com/openai/openai-python?tab=readme-ov-"
+"file#usage>`_ for both synchronous and asynchronous generation."
+msgstr ""
+"此代码示例首先使用 8B Llama-3 模型创建了 :class:`mlc_llm.MLCEngine` 实例。"
+"**设计的 Python API** :class:`mlc_llm.MLCEngine` **与 OpenAI API 对齐**，"
+"这意味着您可以以与使用 `OpenAI 的 Python 包 <https://github.com/openai/openai-python?tab=readme-ov-file#usage>`_ "
+"相同的方式使用 :class:`mlc_llm.MLCEngine` 进行同步和异步生成。"
+
+#: ../../deploy/python_engine.rst:71
+msgid ""
+"**Non-stream Response.** The code example above uses the synchronous chat"
+" completion interface and iterate over all the stream responses. If you "
+"want to run without streaming, you can run"
+msgstr ""
+"**非流式响应。** 上面的代码示例使用了同步聊天补全接口并遍历所有流式响应。如果您想在不使用流式的情况下运行，可以运行"
+
+#: ../../deploy/python_engine.rst:84 ../../deploy/python_engine.rst:186
+msgid ""
+"Please refer to `OpenAI's Python package <https://github.com/openai"
+"/openai-python?tab=readme-ov-file#usage>`_ and `OpenAI chat completion "
+"API <https://platform.openai.com/docs/api-reference/chat/create>`_ for "
+"the complete chat completion interface."
+msgstr ""
+"请参阅 `OpenAI 的 Python 包 <https://github.com/openai/openai-python?tab=readme-ov-file#usage>`_ "
+"和 `OpenAI 聊天补全 API <https://platform.openai.com/docs/api-reference/chat/create>`_ 以获取完整的聊天补全接口。"
+
+#: ../../deploy/python_engine.rst:90
+msgid ""
+"If you want to enable tensor parallelism to run LLMs on multiple GPUs, "
+"please specify argument ``model_config_overrides`` in MLCEngine "
+"constructor. For example,"
+msgstr ""
+"如果您想在多个 GPU 上启用张量并行来运行 LLM，请在 MLCEngine 构造函数中指定参数 ``model_config_overrides``。例如，"
+
+#: ../../deploy/python_engine.rst:109
+msgid "Run AsyncMLCEngine"
+msgstr "运行 AsyncMLCEngine"
+
+#: ../../deploy/python_engine.rst:111
+msgid ""
+":class:`mlc_llm.AsyncMLCEngine` provides the interface of OpenAI chat "
+"completion with asynchronous features. **We recommend using** "
+":class:`mlc_llm.AsyncMLCEngine` **to batch concurrent request for better "
+"throughput.**"
+msgstr ""
+":class:`mlc_llm.AsyncMLCEngine` 提供了具有异步功能的 OpenAI 聊天补全接口。**建议使用** :class:`mlc_llm.AsyncMLCEngine` **来批量处理并发请求以获得更好的吞吐量。**"
+
+#: ../../deploy/python_engine.rst:115
+msgid ""
+"**Stream Response.** The core use of :class:`mlc_llm.AsyncMLCEngine` for "
+"stream responses is as follows."
+msgstr ""
+"**流式响应。** :class:`mlc_llm.AsyncMLCEngine` 用于流式响应的核心用法如下。"
+
+#: ../../deploy/python_engine.rst:174
+msgid ""
+"**Non-stream Response.** Similarly, :class:`mlc_llm.AsyncEngine` provides"
+" the non-stream response interface."
+msgstr ""
+"**非流式响应。** 同样，:class:`mlc_llm.AsyncEngine` 提供了非流式响应接口。"
+
+#: ../../deploy/python_engine.rst:192
+msgid ""
+"If you want to enable tensor parallelism to run LLMs on multiple GPUs, "
+"please specify argument ``model_config_overrides`` in AsyncMLCEngine "
+"constructor. For example,"
+msgstr ""
+"如果您想在多个 GPU 上启用张量并行来运行 LLM，请在 AsyncMLCEngine 构造函数中指定参数 ``model_config_overrides``。例如，"
+
+#: ../../deploy/python_engine.rst:209
+msgid "Engine Mode"
+msgstr "Engine 模式"
+
+#: ../../deploy/python_engine.rst:211
+msgid ""
+"To ease the engine configuration, the constructors of "
+":class:`mlc_llm.MLCEngine` and :class:`mlc_llm.AsyncMLCEngine` have an "
+"optional argument ``mode``, which falls into one of the three options "
+"``\"local\"``, ``\"interactive\"`` or ``\"server\"``. The default mode is"
+" ``\"local\"``."
+msgstr ""
+"为了简化引擎配置，:class:`mlc_llm.MLCEngine` 和 :class:`mlc_llm.AsyncMLCEngine` 的构造函数有可选参数 ``mode``，"
+"它可以是 ``\"local\"``、``\"interactive\"`` 或 ``\"server\"`` 三种选项之一。默认模式是 ``\"local\"``。"
+
+#: ../../deploy/python_engine.rst:216
+msgid ""
+"Each mode denotes a pre-defined configuration of the engine to satisfy "
+"different use cases. The choice of the mode controls the request "
+"concurrency of the engine, as well as engine's KV cache token capacity "
+"(or in other words, the maximum number of tokens that the engine's KV "
+"cache can hold), and further affects the GPU memory usage of the engine."
+msgstr ""
+"每种模式表示引擎的预定义配置，以满足不同的用例。"
+"模式的选择控制引擎的请求并发性，以及引擎的 KV 缓存 token 容量（换句话说，引擎的 KV 缓存可以容纳的最大 token 数量），并进一步影响引擎的 GPU 内存使用。"
+
+#: ../../deploy/python_engine.rst:222
+msgid "In short,"
+msgstr "简而言之，"
+
+#: ../../deploy/python_engine.rst:224
+msgid ""
+"mode ``\"local\"`` uses low request concurrency and low KV cache "
+"capacity, which is suitable for cases where **concurrent requests are not"
+" too many, and the user wants to save GPU memory usage**."
+msgstr ""
+"模式 ``\"local\"`` 使用低请求并发性和低 KV 缓存容量，适用于 **并发请求不多，并且用户希望节省 GPU 内存使用** 的情况。"
+
+#: ../../deploy/python_engine.rst:225
+msgid ""
+"mode ``\"interactive\"`` uses 1 as the request concurrency and low KV "
+"cache capacity, which is designed for **interactive use cases** such as "
+"chats and conversations."
+msgstr ""
+"模式 ``\"interactive\"`` 使用 1 作为请求并发性和低 KV 缓存容量，专为 **交互式用例** （如聊天和对话）设计。"
+
+#: ../../deploy/python_engine.rst:226
+msgid ""
+"mode ``\"server\"`` uses as much request concurrency and KV cache "
+"capacity as possible. This mode aims to **fully utilize the GPU memory "
+"for large server scenarios** where concurrent requests may be many."
+msgstr ""
+"模式 ``\"server\"`` 使用尽可能多的请求并发性和 KV 缓存容量。此模式旨在 **充分利用 GPU 内存，适用于并发请求可能较多的大型服务器场景**。"
+
+#: ../../deploy/python_engine.rst:228
+msgid ""
+"**For system benchmark, please select mode** ``\"server\"``. Please refer"
+" to :ref:`python-engine-api-reference` for detailed documentation of the "
+"engine mode."
+msgstr ""
+"**对于系统基准测试，请选择模式** ``\"server\"``。请参阅 :ref:`python-engine-api-reference` 以获取引擎模式的详细文档。"
+
+#: ../../deploy/python_engine.rst:233
+msgid "Deploy Your Own Model with Python API"
+msgstr "使用 Python API 部署您自己的模型"
+
+#: ../../deploy/python_engine.rst:235
+msgid ""
+"The :ref:`introduction page <introduction-deploy-your-own-model>` "
+"introduces how we can deploy our own models with MLC LLM. This section "
+"introduces how you can use the model weights you convert and the model "
+"library you build in :class:`mlc_llm.MLCEngine` and "
+":class:`mlc_llm.AsyncMLCEngine`."
+msgstr ""
+":ref:`介绍页面 <introduction-deploy-your-own-model>` 介绍了如何使用 MLC LLM 部署自己的模型。"
+"本节介绍如何在 :class:`mlc_llm.MLCEngine` 和 :class:`mlc_llm.AsyncMLCEngine` 中使用您转换的模型权重和构建的模型库。"
+
+#: ../../deploy/python_engine.rst:240
+msgid ""
+"We use the `Phi-2 <https://huggingface.co/microsoft/phi-2>`_ as the "
+"example model."
+msgstr ""
+"以 `Phi-2 <https://huggingface.co/microsoft/phi-2>`_ 作为示例模型。"
+
+#: ../../deploy/python_engine.rst:242
+msgid ""
+"**Specify Model Weight Path.** Assume you have converted the model "
+"weights for your own model, you can construct a "
+":class:`mlc_llm.MLCEngine` as follows:"
+msgstr ""
+"**指定模型权重路径。** 假设您已经转换了自己的模型权重，您可以按如下方式构建 :class:`mlc_llm.MLCEngine`："
+
+#: ../../deploy/python_engine.rst:253
+msgid ""
+"**Specify Model Library Path.** Further, if you build the model library "
+"on your own, you can use it in :class:`mlc_llm.MLCEngine` by passing the "
+"library path through argument ``model_lib``."
+msgstr ""
+"**指定模型库路径。** 此外，如果您自己构建了模型库，可以通过参数 ``model_lib`` 传递库路径，在 :class:`mlc_llm.MLCEngine` 中使用它。"
+
+#: ../../deploy/python_engine.rst:265
+msgid "The same applies to :class:`mlc_llm.AsyncMLCEngine`."
+msgstr "这同样适用于 :class:`mlc_llm.AsyncMLCEngine`。"
+
+#: ../../deploy/python_engine.rst:271
+msgid "API Reference"
+msgstr "API 参考"
+
+#: ../../deploy/python_engine.rst:273
+msgid ""
+"The :class:`mlc_llm.MLCEngine` and :class:`mlc_llm.AsyncMLCEngine` "
+"classes provide the following constructors."
+msgstr ""
+":class:`mlc_llm.MLCEngine` 和 :class:`mlc_llm.AsyncMLCEngine` 类提供了以下构造函数。"
+
+#: ../../deploy/python_engine.rst:275
+msgid ""
+"The MLCEngine and AsyncMLCEngine have full OpenAI API completeness. "
+"Please refer to `OpenAI's Python package <https://github.com/openai"
+"/openai-python?tab=readme-ov-file#usage>`_ and `OpenAI chat completion "
+"API <https://platform.openai.com/docs/api-reference/chat/create>`_ for "
+"the complete chat completion interface."
+msgstr ""
+"MLCEngine 和 AsyncMLCEngine 具有完整的 OpenAI API 兼容性。请参阅 `OpenAI 的 Python 包 <https://github.com/openai/openai-python?tab=readme-ov-file#usage>`_ "
+"和 `OpenAI 聊天补全 API <https://platform.openai.com/docs/api-reference/chat/create>`_ 以获取完整的聊天补全接口。"
+
+#: ../../deploy/rest.rst:4
+msgid "REST API"
+msgstr ""
+
+#: ../../deploy/rest.rst:10
+#, python-format
+msgid ""
+"We provide `REST API <https://www.ibm.com/topics/rest-"
+"apis#:~:text=the%20next%20step-,What%20is%20a%20REST%20API%3F,representational%20state%20transfer%20architectural%20style.>`_"
+" for a user to interact with MLC-LLM in their own programs."
+msgstr ""
+"提供了 `REST API <https://www.ibm.com/topics/rest-apis#:~:text=the%20next%20step-,What%20is%20a%20REST%20API%3F,representational%20state%20transfer%20architectural%20style.>`_，"
+"供用户在自己的程序中与 MLC-LLM 进行交互。"
+
+#: ../../deploy/rest.rst:16
+msgid ""
+"SERVE is a part of the MLC-LLM package, installation instruction for "
+"which can be found :ref:`here <install-mlc-packages>`. Once you have "
+"install the MLC-LLM package, you can run the following command to check "
+"if the installation was successful:"
+msgstr ""
+"SERVE 是 MLC-LLM 包的一部分，其安装说明可以在 :ref:`这里 <install-mlc-packages>` 找到。安装 MLC-LLM 包后，您可以运行以下命令来检查安装是否成功："
+
+#: ../../deploy/rest.rst:27
+msgid ""
+"This section provides a quick start guide to work with MLC-LLM REST API. "
+"To launch a server, run the following command:"
+msgstr ""
+"本节提供了使用 MLC-LLM REST API 的快速入门指南。要启动服务器，请运行以下命令："
+
+#: ../../deploy/rest.rst:33
+msgid ""
+"where ``MODEL`` is the model folder after compiling with :ref:`MLC-LLM "
+"build process <compile-model-libraries>`. Information about other "
+"arguments can be found under :ref:`Launch the server "
+"<rest_launch_server>` section."
+msgstr ""
+"其中 ``MODEL`` 是使用 :ref:`MLC-LLM 构建过程 <compile-model-libraries>` 编译后的模型文件夹。有关其他参数的信息可以在 :ref:`启动服务器 <rest_launch_server>` 部分找到。"
+
+#: ../../deploy/rest.rst:35
+msgid ""
+"Once you have launched the Server, you can use the API in your own "
+"program to send requests. Below is an example of using the API to "
+"interact with MLC-LLM in Python without Streaming (suppose the server is "
+"running on ``http://127.0.0.1:8080/``):"
+msgstr ""
+"启动服务器后，您可以在自己的程序中使用 API 发送请求。以下是在 Python 中使用 API 与 MLC-LLM 交互的示例（假设服务器运行在 ``http://127.0.0.1:8080/``）："
+
+#: ../../deploy/rest.rst:72
+msgid "Launch the Server"
+msgstr "启动服务器"
+
+#: ../../deploy/rest.rst:74
+msgid ""
+"To launch the MLC Server for MLC-LLM, run the following command in your "
+"terminal."
+msgstr ""
+"要启动 MLC-LLM 的 MLC 服务器，请在终端中运行以下命令。"
+
+#: ../../deploy/rest.rst:103
+msgid ""
+"The engine mode in MLC LLM. We provide three preset modes: ``local``, "
+"``interactive`` and ``server``. The default mode is ``local``."
+msgstr ""
+"MLC LLM 中的引擎模式。提供了三种预设模式：``local``、``interactive`` 和 ``server``。默认模式是 ``local``。"
+
+#: ../../deploy/rest.rst:107
+msgid ""
+"The choice of mode decides the values of \"max_num_sequence\", "
+"\"max_total_sequence_length\" and \"prefill_chunk_size\" when they are "
+"not explicitly specified."
+msgstr ""
+"模式的选择决定了未明确指定时 \"max_num_sequence\"、\"max_total_sequence_length\" 和 \"prefill_chunk_size\" 的值。"
+
+#: ../../deploy/rest.rst:110
+msgid ""
+"1. Mode \"local\" refers to the local server deployment which has low "
+"request concurrency. So the max batch size will be set to 4, and max "
+"total sequence length and prefill chunk size are set to the context "
+"window size (or sliding window size) of the model."
+msgstr ""
+"1. 模式 \"local\" 指的是本地服务器部署，请求并发性较低。因此，最大批处理大小将设置为 4，最大总序列长度和预填充块大小将设置为模型的上下文窗口大小（或滑动窗口大小）。"
+
+#: ../../deploy/rest.rst:115
+msgid ""
+"2. Mode \"interactive\" refers to the interactive use of server, which "
+"has at most 1 concurrent request. So the max batch size will be set to 1,"
+" and max total sequence length and prefill chunk size are set to the "
+"context window size (or sliding window size) of the model."
+msgstr ""
+"2. 模式 \"interactive\" 指的是服务器的交互式使用，最多有 1 个并发请求。因此，最大批处理大小将设置为 1，最大总序列长度和预填充块大小将设置为模型的上下文窗口大小（或滑动窗口大小）。"
+
+#: ../../deploy/rest.rst:120
+msgid ""
+"3. Mode \"server\" refers to the large server use case which may handle "
+"many concurrent request and want to use GPU memory as much as possible. "
+"In this mode, we will automatically infer the largest possible max batch "
+"size and max total sequence length."
+msgstr ""
+"3. 模式 \"server\" 指的是大型服务器用例，可能会处理许多并发请求，并希望尽可能使用 GPU 内存。在此模式下，将自动推断出最大可能的批处理大小和最大总序列长度。"
+
+#: ../../deploy/rest.rst:125
+msgid ""
+"You can manually specify arguments \"max_num_sequence\", "
+"\"max_total_seq_length\" and \"prefill_chunk_size\" via ``--overrides`` "
+"to override the automatic inferred values. For example: ``--overrides "
+"\"max_num_sequence=32;max_total_seq_length=4096\"``."
+msgstr ""
+"您可以通过 ``--overrides`` 手动指定参数 \"max_num_sequence\"、\"max_total_seq_length\" 和 \"prefill_chunk_size\" 来覆盖自动推断的值。"
+"例如：``--overrides \"max_num_sequence=32;max_total_seq_length=4096\"``。"
+
+#: ../../deploy/rest.rst:128
+msgid ""
+"The model paths and (optional) model library paths of additional models "
+"(other than the main model)."
+msgstr ""
+"附加模型（除主模型外）的模型路径和（可选的）模型库路径。"
+
+#: ../../deploy/rest.rst:131
+msgid ""
+"When engine is enabled with speculative decoding, additional models are "
+"needed. **We only support one additional model for speculative decoding "
+"now.** The way of specifying the additional model is: ``--additional-"
+"models model_path_1`` or ``--additional-models "
+"model_path_1,model_lib_1``."
+msgstr ""
+"当引擎启用推测解码时，需要附加模型。**现在只支持附加模型用于推测解码。** "
+"指定附加模型的方式是：``--additional-models model_path_1`` 或 ``--additional-models model_path_1,model_lib_1``。"
+
+#: ../../deploy/rest.rst:137
+msgid ""
+"When the model lib of a model is not given, JIT model compilation will be"
+" activated to compile the model automatically."
+msgstr ""
+"当未提供模型的模型库时，将激活 JIT 模型编译以自动编译模型。"
+
+#: ../../deploy/rest.rst:139
+msgid "The speculative decoding mode. Right now four options are supported:"
+msgstr "推测解码模式。目前支持四种选项："
+
+#: ../../deploy/rest.rst:141
+msgid "``disable``, where speculative decoding is not enabled,"
+msgstr "``disable``，未启用推测解码，"
+
+#: ../../deploy/rest.rst:143
+msgid ""
+"``small_draft``, denoting the normal speculative decoding (small draft) "
+"style,"
+msgstr ""
+"``small_draft``，表示正常的推测解码（小草案）风格，"
+
+#: ../../deploy/rest.rst:145
+msgid "``eagle``, denoting the eagle-style speculative decoding."
+msgstr "``eagle``，表示 eagle 风格的推测解码。"
+
+#: ../../deploy/rest.rst:147
+msgid "``medusa``, denoting the medusa-style speculative decoding."
+msgstr "``medusa``，指的是 medusa 风格的推测解码。"
+
+#: ../../deploy/rest.rst:148
+msgid "Overriding extra configurable fields of EngineConfig."
+msgstr "覆盖 EngineConfig 的可配置额外字段。"
+
+#: ../../deploy/rest.rst:150
+msgid ""
+"Supporting fields that can be be overridden: ``tensor_parallel_shards``, "
+"``max_num_sequence``, ``max_total_seq_length``, ``prefill_chunk_size``, "
+"``max_history_size``, ``gpu_memory_utilization``, ``spec_draft_length``, "
+"``prefix_cache_max_num_recycling_seqs``, ``context_window_size``, "
+"``sliding_window_size``, ``attention_sink_size``."
+msgstr ""
+"支持可被覆盖的字段包括：``tensor_parallel_shards`` （张量并行分片数）、
+``max_num_sequence`` （最大序列数量）、``max_total_seq_length`` （最大总序列长度）、
+``prefill_chunk_size`` （预填充块大小）、``max_history_size`` （最大历史大小）、
+``gpu_memory_utilization`` （GPU内存利用率）、``spec_draft_length`` （推测草稿长度）、
+``prefix_cache_max_num_recycling_seqs`` （前缀缓存最大回收序列数）、
+``context_window_size`` （上下文窗口大小）、``sliding_window_size`` （滑动窗口大小）、
+``attention_sink_size`` （注意力汇聚大小）。"
+
+#: ../../deploy/rest.rst:155
+msgid ""
+"Please check out the documentation of EngineConfig in "
+"``mlc_llm/serve/config.py`` for detailed docstring of each field. "
+"Example: ``--overrides "
+"\"max_num_sequence=32;max_total_seq_length=4096;tensor_parallel_shards=2\"``"
+msgstr ""
+"请查阅 ``mlc_llm/serve/config.py`` 中 EngineConfig 的文档，以获取每个字段的详细说明。"
+"示例：``--overrides "
+"\"max_num_sequence=32;max_total_seq_length=4096;tensor_parallel_shards=2\"``"
+
+#: ../../deploy/rest.rst:158
+msgid "A boolean indicating if to enable event logging for requests."
+msgstr "布尔值，指示是否启用请求的事件日志记录功能。"
+
+#: ../../deploy/rest.rst:159
+msgid "The host at which the server should be started, defaults to ``127.0.0.1``."
+msgstr "服务器应启动的主机，默认为 ``127.0.0.1``。"
+
+#: ../../deploy/rest.rst:160
+msgid "The port on which the server should be started, defaults to ``8000``."
+msgstr "服务器应启动的端口，默认为 ``8000``。"
+
+#: ../../deploy/rest.rst:161
+msgid ""
+"A flag to indicate whether the server should allow credentials. If set, "
+"the server will include the ``CORS`` header in the response"
+msgstr ""
+"标志，指示服务器是否应允许凭据。如果设置，服务器将在响应中包含 ``CORS`` 头。"
+
+#: ../../deploy/rest.rst:163
+msgid ""
+"Specifies the allowed origins. It expects a JSON list of strings, with "
+"the default value being ``[\"*\"]``, allowing all origins."
+msgstr ""
+"指定允许的来源。它需要字符串的 JSON 列表，默认值为 ``[\"*\"]``，允许所有来源。"
+
+#: ../../deploy/rest.rst:164
+msgid ""
+"Specifies the allowed methods. It expects a JSON list of strings, with "
+"the default value being ``[\"*\"]``, allowing all methods."
+msgstr ""
+"指定允许的方法。它需要字符串的 JSON 列表，默认值为 ``[\"*\"]``，允许所有方法。"
+
+#: ../../deploy/rest.rst:165
+msgid ""
+"Specifies the allowed headers. It expects a JSON list of strings, with "
+"the default value being ``[\"*\"]``, allowing all headers."
+msgstr ""
+"指定允许的头部。它需要字符串的 JSON 列表，默认值为 ``[\"*\"]``，允许所有头部。"
+
+#: ../../deploy/rest.rst:167
+msgid ""
+"You can access ``http://127.0.0.1:PORT/docs`` (replace ``PORT`` with the "
+"port number you specified) to see the list of supported endpoints."
+msgstr ""
+"您可以访问 ``http://127.0.0.1:PORT/docs`` （将 ``PORT`` 替换为您指定的端口号）以查看支持的端点列表。"
+
+#: ../../deploy/rest.rst:171
+msgid "API Endpoints"
+msgstr "API 端点"
+
+#: ../../deploy/rest.rst:173
+msgid "The REST API provides the following endpoints:"
+msgstr "REST API 提供以下端点："
+
+#: ../../deploy/rest.rst:179
+msgid "Get a list of models available for MLC-LLM."
+msgstr "获取可用于 MLC-LLM 的模型列表。"
+
+#: ../../deploy/rest.rst:181 ../../deploy/rest.rst:307
+msgid "**Example**"
+msgstr "**示例**"
+
+#: ../../deploy/rest.rst:203
+msgid ""
+"Get a response from MLC-LLM using a prompt, either with or without "
+"streaming."
+msgstr ""
+"使用提示从 MLC-LLM 获取响应，可选择是否使用流式传输。"
+
+#: ../../deploy/rest.rst:205
+msgid "**Chat Completion Request Object**"
+msgstr "**聊天补全请求对象**"
+
+#: ../../deploy/rest.rst:207
+msgid ""
+"**messages** (*List[ChatCompletionMessage]*, required): A sequence of "
+"messages that have been exchanged in the conversation so far. Each "
+"message in the conversation is represented by a `ChatCompletionMessage` "
+"object, which includes the following fields:"
+msgstr ""
+"**messages** (*List[ChatCompletionMessage]*, 必填): 到目前为止在对话中交换的消息序列。对话中的每条消息由 `ChatCompletionMessage` 对象表示，该对象包含以下字段："
+
+#: ../../deploy/rest.rst:208
+msgid ""
+"**content** (*Optional[Union[str, List[Dict[str, str]]]]*): The text "
+"content of the message or structured data in case of tool-generated "
+"messages."
+msgstr ""
+"**content** (*Optional[Union[str, List[Dict[str, str]]]]*): 消息的文本内容，或在工具生成消息的情况下的结构化数据。"
+
+#: ../../deploy/rest.rst:209
+msgid ""
+"**role** (*Literal[\"system\", \"user\", \"assistant\", \"tool\"]*): The "
+"role of the message sender, indicating whether the message is from the "
+"system, user, assistant, or a tool."
+msgstr ""
+"**role** (*Literal[\"system\", \"user\", \"assistant\", \"tool\"]*): 消息发送者的角色，指示消息是来自系统、用户、助手还是工具。"
+
+#: ../../deploy/rest.rst:210
+msgid ""
+"**name** (*Optional[str]*): An optional name for the sender of the "
+"message."
+msgstr ""
+"**name** (*Optional[str]*): 消息发送者的可选名称。"
+
+#: ../../deploy/rest.rst:211
+msgid ""
+"**tool_calls** (*Optional[List[ChatToolCall]]*): A list of calls to "
+"external tools or functions made within this message, applicable when the"
+" role is `tool`."
+msgstr ""
+"**tool_calls** (*Optional[List[ChatToolCall]]*): 在此消息中对外部工具或函数的调用列表，适用于角色为 `tool` 的情况。"
+
+#: ../../deploy/rest.rst:212
+msgid ""
+"**tool_call_id** (*Optional[str]*): A unique identifier for the tool "
+"call, relevant when integrating external tools or services."
+msgstr ""
+"**tool_call_id** (*Optional[str]*): 工具调用的唯一标识符，在集成外部工具或服务时相关。"
+
+#: ../../deploy/rest.rst:214
+msgid ""
+"**model** (*str*, required): The model to be used for generating "
+"responses."
+msgstr ""
+"**model** (*str*, 必填): 用于生成响应的模型。"
+
+#: ../../deploy/rest.rst:216
+msgid ""
+"**frequency_penalty** (*float*, optional, default=0.0): Positive values "
+"penalize new tokens based on their existing frequency in the text so far,"
+" decreasing the model’s likelihood to repeat tokens."
+msgstr ""
+"**frequency_penalty** (*float*, 可选, 默认=0.0): 正值根据新标记在文本中的现有频率对其进行惩罚，从而降低模型重复标记的可能性。"
+
+#: ../../deploy/rest.rst:218
+msgid ""
+"**presence_penalty** (*float*, optional, default=0.0): Positive values "
+"penalize new tokens if they are already present in the text so far, "
+"decreasing the model’s likelihood to repeat tokens."
+msgstr ""
+"**presence_penalty** (*float*, 可选, 默认=0.0): 正值对新标记进行惩罚，如果它们已经存在于文本中，从而降低模型重复标记的可能性。"
+
+#: ../../deploy/rest.rst:220
+msgid ""
+"**logprobs** (*bool*, optional, default=False): Indicates whether to "
+"include log probabilities for each token in the response."
+msgstr ""
+"**logprobs** (*bool*, 可选, 默认=False): 指示是否在响应中包含每个标记的对数概率。"
+
+#: ../../deploy/rest.rst:222
+msgid ""
+"**top_logprobs** (*int*, optional, default=0): An integer ranging from 0 "
+"to 20. It determines the number of tokens, most likely to appear at each "
+"position, to be returned. Each token is accompanied by a log probability."
+" If this parameter is used, 'logprobs' must be set to true."
+msgstr ""
+"**top_logprobs** (*int*, 可选, 默认=0): 范围从 0 到 20 的整数。它确定在每个位置最可能出现的标记数量，并返回这些标记。每个标记都附带一个对数概率。如果使用此参数，必须将 'logprobs' 设置为 true。"
+
+#: ../../deploy/rest.rst:224
+msgid ""
+"**logit_bias** (*Optional[Dict[int, float]]*): Allows specifying biases "
+"for or against specific tokens during generation."
+msgstr ""
+"**logit_bias** (*Optional[Dict[int, float]]*): 允许在生成过程中指定对特定标记的偏好或偏见。"
+
+#: ../../deploy/rest.rst:226
+msgid ""
+"**max_tokens** (*Optional[int]*): The maximum number of tokens to "
+"generate in the response(s)."
+msgstr ""
+"**max_tokens** (*Optional[int]*): 在响应中生成的最大标记数。"
+
+#: ../../deploy/rest.rst:228
+msgid ""
+"**n** (*int*, optional, default=1): Number of responses to generate for "
+"the given prompt."
+msgstr ""
+"**n** (*int*, 可选, 默认=1): 为给定提示生成的响应数量。"
+
+#: ../../deploy/rest.rst:230
+msgid ""
+"**seed** (*Optional[int]*): A seed for deterministic generation. Using "
+"the same seed and inputs will produce the same output."
+msgstr ""
+"**seed** (*Optional[int]*): 用于确定性生成的种子。使用相同的种子和输入将产生相同的输出。"
+
+#: ../../deploy/rest.rst:232
+msgid ""
+"**stop** (*Optional[Union[str, List[str]]]*): One or more strings that, "
+"if encountered, will cause generation to stop."
+msgstr ""
+"**stop** (*Optional[Union[str, List[str]]]*): 一个或多个字符串，如果遇到这些字符串，将导致生成停止。"
+
+#: ../../deploy/rest.rst:234
+msgid ""
+"**stream** (*bool*, optional, default=False): If `True`, responses are "
+"streamed back as they are generated."
+msgstr ""
+"**stream** (*bool*, 可选, 默认=False): 如果为 `True`，响应将在生成时流式传输回客户端。"
+
+#: ../../deploy/rest.rst:236
+msgid ""
+"**temperature** (*float*, optional, default=1.0): Controls the randomness"
+" of the generation. Lower values lead to less random completions."
+msgstr ""
+"**temperature** (*float*, 可选, 默认=1.0): 控制生成的随机性。较低的值会导致更少随机的完成。"
+
+#: ../../deploy/rest.rst:238
+msgid ""
+"**top_p** (*float*, optional, default=1.0): Nucleus sampling parameter "
+"that controls the diversity of the generated responses."
+msgstr ""
+"**top_p** (*float*, 可选, 默认=1.0): 控制生成响应多样性的核心采样参数。"
+
+#: ../../deploy/rest.rst:240
+msgid ""
+"**tools** (*Optional[List[ChatTool]]*): Specifies external tools or "
+"functions that can be called as part of the chat."
+msgstr ""
+"**tools** (*Optional[List[ChatTool]]*): 指定可以作为聊天一部分调用的外部工具或函数。"
+
+#: ../../deploy/rest.rst:242
+msgid ""
+"**tool_choice** (*Optional[Union[Literal[\"none\", \"auto\"], Dict]]*): "
+"Controls how tools are selected for use in responses."
+msgstr ""
+"**tool_choice** (*Optional[Union[Literal[\"none\", \"auto\"], Dict]]*): 控制如何选择工具以用于响应中。"
+
+#: ../../deploy/rest.rst:244
+msgid ""
+"**user** (*Optional[str]*): An optional identifier for the user "
+"initiating the request."
+msgstr ""
+"**user** (*Optional[str]*): 发起请求的用户的可选标识符。"
+
+#: ../../deploy/rest.rst:246
+msgid ""
+"**response_format** (*RequestResponseFormat*, optional): Specifies the "
+"format of the response. Can be either \"text\" or \"json_object\", with "
+"optional schema definition for JSON responses."
+msgstr ""
+"**response_format** (*RequestResponseFormat*, 可选): 指定响应的格式。可以是 \"text\" 或 \"json_object\"，对于 JSON 响应，还可以选择定义模式。"
+
+#: ../../deploy/rest.rst:248
+msgid "**Returns**"
+msgstr ""
+
+#: ../../deploy/rest.rst:250
+msgid ""
+"If `stream` is `False`, a `ChatCompletionResponse` object containing the "
+"generated response(s)."
+msgstr ""
+"如果 `stream` 为 `False`，则返回包含生成响应的 `ChatCompletionResponse` 对象。"
+
+#: ../../deploy/rest.rst:251
+msgid ""
+"If `stream` is `True`, a stream of `ChatCompletionStreamResponse` "
+"objects, providing a real-time feed of generated responses."
+msgstr ""
+"如果 `stream` 为 `True`，则返回 `ChatCompletionStreamResponse` 对象流，提供生成响应的实时反馈。"
+
+#: ../../deploy/rest.rst:254
+msgid "**ChatCompletionResponseChoice**"
+msgstr ""
+
+#: ../../deploy/rest.rst:256
+msgid ""
+"**finish_reason** (*Optional[Literal[\"stop\", \"length\", "
+"\"tool_calls\", \"error\"]]*, optional): The reason the completion "
+"process was terminated. It can be due to reaching a stop condition, the "
+"maximum length, output of tool calls, or an error."
+msgstr ""
+"**finish_reason** (*Optional[Literal[\"stop\", \"length\", \"tool_calls\", \"error\"]]*, 可选): 完成过程终止的原因。可能是由于达到停止条件、最大长度、工具调用输出或错误。"
+
+#: ../../deploy/rest.rst:258 ../../deploy/rest.rst:268
+msgid ""
+"**index** (*int*, required, default=0): Indicates the position of this "
+"choice within the list of choices."
+msgstr ""
+"**index** (*int*, 必填, 默认=0): 指示此选项在选项列表中的位置。"
+
+#: ../../deploy/rest.rst:260
+msgid ""
+"**message** (*ChatCompletionMessage*, required): The message part of the "
+"chat completion, containing the content of the chat response."
+msgstr ""
+"**message** (*ChatCompletionMessage*, 必填): 聊天完成的消息部分，包含聊天响应的内容。"
+
+#: ../../deploy/rest.rst:262 ../../deploy/rest.rst:272
+msgid ""
+"**logprobs** (*Optional[LogProbs]*, optional): Optionally includes log "
+"probabilities for each output token"
+msgstr ""
+"**logprobs** (*Optional[LogProbs]*, 可选): 可选地包含每个输出标记的对数概率。"
+
+#: ../../deploy/rest.rst:264
+msgid "**ChatCompletionStreamResponseChoice**"
+msgstr ""
+
+#: ../../deploy/rest.rst:266
+msgid ""
+"**finish_reason** (*Optional[Literal[\"stop\", \"length\", "
+"\"tool_calls\"]]*, optional): Specifies why the streaming completion "
+"process ended. Valid reasons are \"stop\", \"length\", and "
+"\"tool_calls\"."
+msgstr ""
+"**finish_reason** (*Optional[Literal[\"stop\", \"length\", \"tool_calls\"]]*, 可选): 指定流式完成过程结束的原因。有效原因包括 \"stop\"、\"length\" 和 \"tool_calls\"。"
+
+#: ../../deploy/rest.rst:270
+msgid ""
+"**delta** (*ChatCompletionMessage*, required): Represents the incremental"
+" update or addition to the chat completion message in the stream."
+msgstr ""
+"**delta** (*ChatCompletionMessage*, 必填): 表示流中聊天完成消息的增量更新或添加。"
+
+#: ../../deploy/rest.rst:274
+msgid "**ChatCompletionResponse**"
+msgstr ""
+
+#: ../../deploy/rest.rst:276
+msgid ""
+"**id** (*str*, required): A unique identifier for the chat completion "
+"session."
+msgstr ""
+"**id** (*str*, 必填): 聊天完成会话的唯一标识符。"
+
+#: ../../deploy/rest.rst:278
+msgid ""
+"**choices** (*List[ChatCompletionResponseChoice]*, required): A "
+"collection of `ChatCompletionResponseChoice` objects, representing the "
+"potential responses generated by the model."
+msgstr ""
+"**choices** (*List[ChatCompletionResponseChoice]*, 必填): 一组 `ChatCompletionResponseChoice` 对象，表示模型生成的潜在响应。"
+
+#: ../../deploy/rest.rst:280
+msgid ""
+"**created** (*int*, required, default=current time): The UNIX timestamp "
+"representing when the response was generated."
+msgstr ""
+"**created** (*int*, 必填, 默认=当前时间): 表示响应生成时间的 UNIX 时间戳。"
+
+#: ../../deploy/rest.rst:282
+msgid ""
+"**model** (*str*, required): The name of the model used to generate the "
+"chat completions."
+msgstr ""
+"**model** (*str*, 必填): 用于生成聊天完成的模型名称。"
+
+#: ../../deploy/rest.rst:284
+msgid ""
+"**system_fingerprint** (*str*, required): A system-generated fingerprint "
+"that uniquely identifies the computational environment."
+msgstr ""
+"**system_fingerprint** (*str*, 必填): 系统生成的指纹，唯一标识计算环境。"
+
+#: ../../deploy/rest.rst:286
+msgid ""
+"**object** (*Literal[\"chat.completion\"]*, required, "
+"default=\"chat.completion\"): A string literal indicating the type of "
+"object, here always \"chat.completion\"."
+msgstr ""
+"**object** (*Literal[\"chat.completion\"]*, 必填, 默认=\"chat.completion\"): 表示对象类型的字符串字面量，此处始终为 \"chat.completion\"。"
+
+#: ../../deploy/rest.rst:288
+msgid ""
+"**usage** (*UsageInfo*, required, default=empty `UsageInfo` object): "
+"Contains information about the API usage for this specific request."
+msgstr ""
+"**usage** (*UsageInfo*, 必填, 默认=空的 `UsageInfo` 对象): 包含此特定请求的 API 使用情况信息。"
+
+#: ../../deploy/rest.rst:290
+msgid "**ChatCompletionStreamResponse**"
+msgstr ""
+
+#: ../../deploy/rest.rst:292
+msgid ""
+"**id** (*str*, required): A unique identifier for the streaming chat "
+"completion session."
+msgstr ""
+"**id** (*str*, 必填): 流式聊天完成会话的唯一标识符。"
+
+#: ../../deploy/rest.rst:294
+msgid ""
+"**choices** (*List[ChatCompletionStreamResponseChoice]*, required): A "
+"list of `ChatCompletionStreamResponseChoice` objects, each representing a"
+" part of the streaming chat response."
+msgstr ""
+"**choices** (*List[ChatCompletionStreamResponseChoice]*, 必填): 一组 `ChatCompletionStreamResponseChoice` 对象，每个对象表示流式聊天响应的一部分。"
+
+#: ../../deploy/rest.rst:296
+msgid ""
+"**created** (*int*, required, default=current time): The creation time of"
+" the streaming response, represented as a UNIX timestamp."
+msgstr ""
+"**created** (*int*, 必填, 默认=当前时间): 流式响应的创建时间，表示为 UNIX 时间戳。"
+
+#: ../../deploy/rest.rst:298
+msgid ""
+"**model** (*str*, required): Specifies the model that was used for "
+"generating the streaming chat completions."
+msgstr ""
+"**model** (*str*, 必填): 指定用于生成流式聊天完成的模型。"
+
+#: ../../deploy/rest.rst:300
+msgid ""
+"**system_fingerprint** (*str*, required): A unique identifier for the "
+"system generating the streaming completions."
+msgstr ""
+"**system_fingerprint** (*str*, 必填): 生成流式完成的系统的唯一标识符。"
+
+#: ../../deploy/rest.rst:302
+msgid ""
+"**object** (*Literal[\"chat.completion.chunk\"]*, required, "
+"default=\"chat.completion.chunk\"): A literal indicating that this object"
+" represents a chunk of a streaming chat completion."
+msgstr ""
+"**object** (*Literal[\"chat.completion.chunk\"]*, 必填, 默认=\"chat.completion.chunk\"): 字面量，表示此对象代表流式聊天完成的块。"
+
+#: ../../deploy/rest.rst:309
+msgid ""
+"Below is an example of using the API to interact with MLC-LLM in Python "
+"with Streaming."
+msgstr ""
+"以下是使用 API 与 MLC-LLM 进行交互的 Python 示例，包含流式传输。"
+
+#: ../../deploy/rest.rst:334
+msgid ""
+"There is also support for function calling similar to OpenAI "
+"(https://platform.openai.com/docs/guides/function-calling). Below is an "
+"example on how to use function calling in Python."
+msgstr ""
+"还支持类似于 OpenAI 的函数调用功能（https://platform.openai.com/docs/guides/function-calling）。以下是如何在 Python 中使用函数调用的示例。"
+
+#: ../../deploy/rest.rst:381
+msgid ""
+"Function Calling with streaming is also supported. Below is an example on"
+" how to use function calling with streaming in Python."
+msgstr ""
+"还支持流式传输的函数调用。以下是如何在 Python 中使用流式传输的函数调用的示例。"
+
+#: ../../deploy/rest.rst:435
+msgid ""
+"The API is a uniform interface that supports multiple languages. You can "
+"also utilize these functionalities in languages other than Python."
+msgstr ""
+"该 API 是统一的接口，支持多种语言。您也可以在 Python 以外的语言中使用这些功能。"
+
+#: ../../deploy/webllm.rst:4
+msgid "WebLLM Javascript SDK"
+msgstr ""
+
+#: ../../deploy/webllm.rst:10
+msgid ""
+"`WebLLM <https://www.npmjs.com/package/@mlc-ai/web-llm>`_ is a high-"
+"performance in-browser LLM inference engine, aiming to be the backend of "
+"AI-powered web applications and agents."
+msgstr ""
+"`WebLLM <https://www.npmjs.com/package/@mlc-ai/web-llm>`_ 是高性能的浏览器内 LLM 推理引擎，旨在成为 AI 驱动的 Web 应用程序和代理的后端。"
+
+#: ../../deploy/webllm.rst:13
+msgid ""
+"It provides a specialized runtime for the web backend of MLCEngine, "
+"leverages `WebGPU <https://www.w3.org/TR/webgpu/>`_ for local "
+"acceleration, offers OpenAI-compatible API, and provides built-in support"
+" for web workers to separate heavy computation from the UI flow."
+msgstr ""
+"它为 MLCEngine 的 Web 后端提供了专门的运行时，利用 `WebGPU <https://www.w3.org/TR/webgpu/>`_ 进行本地加速，提供与 OpenAI 兼容的 API，并内置支持 Web Workers 以将繁重的计算与 UI 流程分离。"
+
+#: ../../deploy/webllm.rst:17
+msgid ""
+"Please checkout the `WebLLM repo <https://github.com/mlc-ai/web-llm>`__ "
+"on how to use WebLLM to build web application in Javascript/Typescript. "
+"Here we only provide a high-level idea and discuss how to use MLC-LLM to "
+"compile your own model to run with WebLLM."
+msgstr ""
+"请查看 `WebLLM 仓库 <https://github.com/mlc-ai/web-llm>`__ 了解如何使用 WebLLM 在 Javascript/Typescript 中构建 Web 应用程序。这里我们仅提供高层次的概念，并讨论如何使用 MLC-LLM 编译您自己的模型以与 WebLLM 一起运行。"
+
+#: ../../deploy/webllm.rst:22
+msgid "Getting Started"
+msgstr "快速入门"
+
+#: ../../deploy/webllm.rst:24
+msgid ""
+"To get started, try out `WebLLM Chat <https://chat.webllm.ai/>`__, which "
+"provides a great example of integrating WebLLM into a full web "
+"application."
+msgstr ""
+"要开始使用，请尝试 `WebLLM Chat <https://chat.webllm.ai/>`__，它提供了将 WebLLM 集成到完整 Web 应用程序中的绝佳示例。"
+
+#: ../../deploy/webllm.rst:27
+msgid ""
+"A WebGPU-compatible browser is needed to run WebLLM-powered web "
+"applications. You can download the latest Google Chrome and use `WebGPU "
+"Report <https://webgpureport.org/>`__ to verify the functionality of "
+"WebGPU on your browser."
+msgstr ""
+"运行 WebLLM 驱动的 Web 应用程序需要支持 WebGPU 的浏览器。您可以下载最新的 Google Chrome 并使用 `WebGPU Report <https://webgpureport.org/>`__ 来验证浏览器上的 WebGPU 功能。"
+
+#: ../../deploy/webllm.rst:31
+msgid ""
+"WebLLM is available as an `npm package <https://www.npmjs.com/package"
+"/@mlc-ai/web-llm>`_ and is also CDN-delivered. Try a simple chatbot "
+"example in `this JSFiddle example "
+"<https://jsfiddle.net/neetnestor/4nmgvsa2/>`__ without setup."
+msgstr ""
+"WebLLM 可通过 `npm 包 <https://www.npmjs.com/package/@mlc-ai/web-llm>`_ 获取，也可以通过 CDN 提供。在 `这个 JSFiddle 示例 <https://jsfiddle.net/neetnestor/4nmgvsa2/>`__ 中尝试简单的聊天机器人示例，无需设置。"
+
+#: ../../deploy/webllm.rst:35
+msgid ""
+"You can also checkout `existing examples <https://github.com/mlc-ai/web-"
+"llm/tree/main/examples>`__ on more advanced usage of WebLLM such as JSON "
+"mode, streaming, and more."
+msgstr ""
+"您还可以查看 `现有示例 <https://github.com/mlc-ai/web-llm/tree/main/examples>`__，了解 WebLLM 的更高级用法，例如 JSON 模式、流式传输等。"
+
+#: ../../deploy/webllm.rst:39
+msgid "Model Records in WebLLM"
+msgstr "WebLLM 中的模型记录"
+
+#: ../../deploy/webllm.rst:41
+msgid ""
+"Each of the model in `WebLLM Chat <https://chat.webllm.ai>`__ is "
+"registered as an instance of ``ModelRecord`` and can be accessed at "
+"`webllm.prebuiltAppConfig.model_list <https://github.com/mlc-ai/web-"
+"llm/blob/main/src/config.ts#L293>`__."
+msgstr ""
+"`WebLLM Chat <https://chat.webllm.ai>`__ 中的每个模型都注册为 ``ModelRecord`` 的实例，可以在 `webllm.prebuiltAppConfig.model_list <https://github.com/mlc-ai/web-llm/blob/main/src/config.ts#L293>`__ 中访问。"
+
+#: ../../deploy/webllm.rst:45
+msgid ""
+"Looking at the most straightforward example `get-started "
+"<https://github.com/mlc-ai/web-llm/blob/main/examples/get-"
+"started/src/get_started.ts>`__, there are two ways to run a model."
+msgstr ""
+"查看最简单的示例 `get-started <https://github.com/mlc-ai/web-llm/blob/main/examples/get-started/src/get_started.ts>`__，有两种运行模型的方法。"
+
+#: ../../deploy/webllm.rst:48
+msgid ""
+"One can either use the prebuilt model by simply calling ``reload()`` with"
+" the ``model_id``:"
+msgstr ""
+"可以通过简单地使用 ``model_id`` 调用 ``reload()`` 来使用预构建的模型："
+
+#: ../../deploy/webllm.rst:55
+msgid "Or one can specify their own model to run by creating a model record:"
+msgstr "或者可以通过创建模型记录来指定要运行的自己的模型："
+
+#: ../../deploy/webllm.rst:78
+msgid ""
+"Looking at the code above, we find that, just like any other platforms "
+"supported by MLC-LLM, to run a model on WebLLM, you need:"
+msgstr ""
+"查看上面的代码，发现，就像 MLC-LLM 支持的其他平台一样，要在 WebLLM 上运行模型，您需要："
+
+#: ../../deploy/webllm.rst:81
+msgid ""
+"**Model weights** converted to MLC format (e.g. `Llama-3-8B-Instruct-"
+"q4f32_1-MLC <https://huggingface.co/mlc-ai/Llama-3-8B-Instruct-"
+"q4f32_1-MLC/tree/main>`_.): downloaded through the url "
+"``ModelRecord.model``"
+msgstr ""
+"**模型权重** 转换为 MLC 格式（例如 `Llama-3-8B-Instruct-q4f32_1-MLC <https://huggingface.co/mlc-ai/Llama-3-8B-Instruct-q4f32_1-MLC/tree/main>`_.): 通过 ``ModelRecord.model`` 的 URL 下载。"
+
+#: ../../deploy/webllm.rst:83
+msgid ""
+"**Model library** that comprises the inference logic (see repo `binary-"
+"mlc-llm-libs <https://github.com/mlc-ai/binary-mlc-llm-libs/tree/main"
+"/web-llm-models>`__): downloaded through the url "
+"``ModelRecord.model_lib``."
+msgstr ""
+"**模型库** 包含推理逻辑（参见仓库 `binary-mlc-llm-libs <https://github.com/mlc-ai/binary-mlc-llm-libs/tree/main/web-llm-models>`__): 通过 ``ModelRecord.model_lib`` 的 URL 下载。"
+
+#: ../../deploy/webllm.rst:85
+msgid ""
+"In sections below, we walk you through two examples on how to add your "
+"own model besides the ones in `webllm.prebuiltAppConfig.model_list "
+"<https://github.com/mlc-ai/web-llm/blob/main/src/config.ts#L293>`__. "
+"Before proceeding, please verify installation of ``mlc_llm`` and ``tvm``."
+msgstr ""
+"在下面的部分中，将带您了解两个示例，展示如何在 `webllm.prebuiltAppConfig.model_list <https://github.com/mlc-ai/web-llm/blob/main/src/config.ts#L293>`__ 之外添加您自己的模型。在继续之前，请确保已安装 ``mlc_llm`` 和 ``tvm``。"
+
+#: ../../deploy/webllm.rst:90
+msgid "Verify Installation for Adding Models"
+msgstr "验证添加模型的安装"
+
+#: ../../deploy/webllm.rst:92
+msgid "**Step 1. Verify mlc_llm**"
+msgstr "**步骤 1. 验证 mlc_llm**"
+
+#: ../../deploy/webllm.rst:94
+msgid ""
+"We use the python package ``mlc_llm`` to compile models. This can be "
+"installed by following :ref:`install-mlc-packages`, either by building "
+"from source, or by installing the prebuilt package. Verify ``mlc_llm`` "
+"installation in command line via:"
+msgstr ""
+"使用 python 包 ``mlc_llm`` 来编译模型。可以通过以下方式安装：:ref:`install-mlc-packages`，无论是从源代码构建，还是安装预构建的包。通过以下命令验证 ``mlc_llm`` 的安装："
+
+#: ../../deploy/webllm.rst:105
+msgid ""
+"If it runs into error ``command not found: mlc_llm``, try ``python -m "
+"mlc_llm --help``."
+msgstr ""
+"如果出现错误 ``command not found: mlc_llm``，请尝试 ``python -m mlc_llm --help``。"
+
+#: ../../deploy/webllm.rst:107
+msgid "**Step 2. Verify TVM**"
+msgstr "**步骤 2. 验证 TVM**"
+
+#: ../../deploy/webllm.rst:109
+msgid ""
+"To compile models, you also need to follow :ref:`install-tvm-unity`. Here"
+" we verify ``tvm`` quickly with command line (for full verification, see "
+":ref:`tvm-unity-validate`):"
+msgstr ""
+"要编译模型，您还需要按照 :ref:`install-tvm-unity` 进行操作。这里通过命令行快速验证 ``tvm`` （完整验证请参见 :ref:`tvm-unity-validate`）："
+
+#: ../../deploy/webllm.rst:121
+msgid "Bring Your Own Model Variant"
+msgstr "引入您自己的模型变体"
+
+#: ../../deploy/webllm.rst:123
+msgid ""
+"In cases where the model you are adding is simply a variant of an "
+"existing model, we only need to convert weights and reuse existing model "
+"library. For instance:"
+msgstr ""
+"在您添加的模型仅仅是现有模型的变体的情况下，只需要转换权重并重用现有的模型库。例如："
+
+#: ../../deploy/webllm.rst:126
+msgid "Adding ``OpenMistral`` when MLC supports ``Mistral``"
+msgstr "在 MLC 支持 ``Mistral`` 时添加 ``OpenMistral``"
+
+#: ../../deploy/webllm.rst:127
+msgid ""
+"Adding a ``Llama3`` fine-tuned on a domain-specific task when MLC "
+"supports ``Llama3``"
+msgstr ""
+"在 MLC 支持 ``Llama3`` 时添加在特定领域任务上微调的 ``Llama3``"
+
+#: ../../deploy/webllm.rst:130
+msgid ""
+"In this section, we walk you through adding ``WizardMath-"
+"7B-V1.1-q4f16_1`` to the `get-started <https://github.com/mlc-ai/web-"
+"llm/tree/main/examples/get-started>`__ example. According to the model's "
+"``config.json`` on `its Huggingface repo <https://huggingface.co/WizardLM"
+"/WizardMath-7B-V1.1/blob/main/config.json>`_, it reuses the Mistral model"
+" architecture."
+msgstr ""
+"在本节中，我们将带您了解如何将 ``WizardMath-7B-V1.1-q4f16_1`` 添加到 `get-started <https://github.com/mlc-ai/web-llm/tree/main/examples/get-started>`__ 示例中。"
+"根据 `其 Huggingface 仓库 <https://huggingface.co/WizardLM/WizardMath-7B-V1.1/blob/main/config.json>`_ 中的 ``config.json``，它重用了 Mistral 模型架构。"
+
+#: ../../deploy/webllm.rst:141
+msgid "**Step 1 Clone from HF and convert_weight**"
+msgstr "**步骤 1 从 HF 克隆并转换权重**"
+
+#: ../../deploy/webllm.rst:160
+msgid "**Step 2 Generate MLC Chat Config**"
+msgstr "**步骤 2 生成 MLC Chat 配置文件**"
+
+#: ../../deploy/webllm.rst:171
+msgid ""
+"For the ``conv-template``, `conversation_template.py <https://github.com"
+"/mlc-ai/mlc-llm/tree/main/python/mlc_llm/conversation_template>`__ "
+"contains a full list of conversation templates that MLC provides. You can"
+" also manually modify the ``mlc-chat-config.json`` to add your customized"
+" conversation template."
+msgstr ""
+"对于 ``conv-template``，`conversation_template.py <https://github.com/mlc-ai/mlc-llm/tree/main/python/mlc_llm/conversation_template>`__ 包含了 MLC 提供的完整对话模板列表。"
+"您也可以手动修改 ``mlc-chat-config.json`` 以添加自定义的对话模板。"
+
+#: ../../deploy/webllm.rst:175
+msgid "**Step 3 Upload weights to HF**"
+msgstr "**步骤 3 将权重上传至 HF**"
+
+#: ../../deploy/webllm.rst:188
+msgid ""
+"After successfully following all steps, you should end up with a "
+"Huggingface repo similar to `WizardMath-7B-V1.1-q4f16_1-MLC "
+"<https://huggingface.co/mlc-ai/WizardMath-7B-V1.1-q4f16_1-MLC>`__, which "
+"includes the converted/quantized weights, the ``mlc-chat-config.json``, "
+"and tokenizer files."
+msgstr ""
+"成功完成所有步骤后，您应该会得到类似于 `WizardMath-7B-V1.1-q4f16_1-MLC <https://huggingface.co/mlc-ai/WizardMath-7B-V1.1-q4f16_1-MLC>`__ 的 Huggingface 仓库，"
+"其中包含转换/量化后的权重、``mlc-chat-config.json`` 配置文件以及分词器文件。"
+
+#: ../../deploy/webllm.rst:193
+msgid "**Step 4 Register as a ModelRecord**"
+msgstr "**步骤 4 注册为 ModelRecord**"
+
+#: ../../deploy/webllm.rst:195
+msgid ""
+"Finally, we modify the code snippet for `get-started <https://github.com"
+"/mlc-ai/web-llm/blob/main/examples/get-started/src/get_started.ts>`__ "
+"pasted above."
+msgstr ""
+"最后，修改上面粘贴的 `get-started <https://github.com/mlc-ai/web-llm/blob/main/examples/get-started/src/get_started.ts>`__ 代码片段。"
+
+#: ../../deploy/webllm.rst:199
+msgid ""
+"We simply specify the Huggingface link as ``model``, while reusing the "
+"``model_lib`` for ``Mistral-7B``."
+msgstr ""
+"只需将 Huggingface 链接指定为 ``model``，同时重用 ``Mistral-7B`` 的 ``model_lib``。"
+
+#: ../../deploy/webllm.rst:224
+msgid ""
+"Now, running the ``get-started`` example will use the ``WizardMath`` "
+"model you just added. See `get-started's README <https://github.com/mlc-"
+"ai/web-llm/tree/main/examples/get-started#webllm-get-started-app>`__ on "
+"how to run it."
+msgstr ""
+"现在，运行 ``get-started`` 示例将使用您刚刚添加的 ``WizardMath`` 模型。请参阅 `get-started 的 README <https://github.com/mlc-ai/web-llm/tree/main/examples/get-started#webllm-get-started-app>`__ 了解如何运行它。"
+
+#: ../../deploy/webllm.rst:230
+msgid "Bring Your Own Model Library"
+msgstr "引入您自己的模型库"
+
+#: ../../deploy/webllm.rst:232 ../../deploy/webllm.rst:279
+msgid "A model library is specified by:"
+msgstr "模型库由以下内容指定："
+
+#: ../../deploy/webllm.rst:234
+msgid "The model architecture (e.g. ``llama-3``, ``gpt-neox``, ``phi-3``)"
+msgstr "模型架构（例如 ``llama-3``、``gpt-neox``、``phi-3``）"
+
+#: ../../deploy/webllm.rst:235 ../../deploy/webllm.rst:282
+msgid "Quantization (e.g. ``q4f16_1``, ``q0f32``)"
+msgstr "量化（例如 ``q4f16_1``、``q0f32``）"
+
+#: ../../deploy/webllm.rst:236
+msgid ""
+"Metadata (e.g. ``context_window_size``, ``sliding_window_size``, "
+"``prefill-chunk-size``), which affects memory planning (currently only "
+"``prefill-chunk-size`` affects the compiled model)"
+msgstr ""
+"元数据（例如 ``context_window_size``、``sliding_window_size``、``prefill-chunk-size``），这会影响内存规划（目前只有 ``prefill-chunk-size`` 会影响编译后的模型）"
+
+#: ../../deploy/webllm.rst:237 ../../deploy/webllm.rst:284
+msgid "Platform (e.g. ``cuda``, ``webgpu``, ``iOS``)"
+msgstr "平台（例如 ``cuda``、``webgpu``、``iOS``）"
+
+#: ../../deploy/webllm.rst:239
+msgid ""
+"In cases where the model you want to run is not compatible with the "
+"provided MLC prebuilt model libraries (e.g. having a different "
+"quantization, a different metadata spec, or even a different model "
+"architecture), you need to build your own model library."
+msgstr ""
+"在您要运行的模型与提供的 MLC 预构建模型库不兼容的情况下（例如具有不同的量化、不同的元数据规范，甚至不同的模型架构），您需要构建自己的模型库。"
+
+#: ../../deploy/webllm.rst:244
+msgid ""
+"In this section, we walk you through adding ``RedPajama-INCITE-Chat-"
+"3B-v1`` to the `get-started <https://github.com/mlc-ai/web-"
+"llm/tree/main/examples/get-started>`__ example."
+msgstr ""
+"在本节中，将带您了解如何将 ``RedPajama-INCITE-Chat-3B-v1`` 添加到 `get-started <https://github.com/mlc-ai/web-llm/tree/main/examples/get-started>`__ 示例中。"
+
+#: ../../deploy/webllm.rst:247
+msgid ""
+"This section largely replicates :ref:`compile-model-libraries`. See that "
+"page for more details, specifically the ``WebGPU`` option."
+msgstr ""
+"本节在很大程度上复制了 :ref:`compile-model-libraries`。有关更多详细信息，请参阅该页面，特别是 ``WebGPU`` 选项。"
+
+#: ../../deploy/webllm.rst:250
+msgid "**Step 0. Install dependencies**"
+msgstr "**步骤 0. 安装依赖项**"
+
+#: ../../deploy/webllm.rst:252
+msgid ""
+"To compile model libraries for webgpu, you need to :ref:`build mlc_llm "
+"from source <mlcchat_build_from_source>`. Besides, you also need to "
+"follow :ref:`install-web-build`. Otherwise, it would run into error:"
+msgstr ""
+"要为 webgpu 编译模型库，您需要 :ref:`从源代码构建 mlc_llm <mlcchat_build_from_source>`。此外，您还需要按照 :ref:`install-web-build` 进行操作。否则，会出现以下错误："
+
+#: ../../deploy/webllm.rst:261
+msgid ""
+"You can be under the mlc-llm repo, or your own working directory. Note "
+"that all platforms can share the same compiled/quantized weights."
+msgstr ""
+"您可以在 mlc-llm 仓库下，或者您自己的工作目录下进行操作。请注意，所有平台可以共享相同的编译/量化权重。"
+
+#: ../../deploy/webllm.rst:277
+msgid "**Step 2. Generate mlc-chat-config and compile**"
+msgstr "**步骤 2. 生成 mlc-chat-config 并编译**"
+
+#: ../../deploy/webllm.rst:281
+msgid "The model architecture (e.g. ``llama-2``, ``gpt-neox``)"
+msgstr "模型架构（例如 ``llama-2``、``gpt-neox``）"
+
+#: ../../deploy/webllm.rst:283
+msgid ""
+"Metadata (e.g. ``context_window_size``, ``sliding_window_size``, "
+"``prefill-chunk-size``), which affects memory planning"
+msgstr ""
+"元数据（例如 ``context_window_size``、``sliding_window_size``、``prefill-chunk-size``），这会影响内存规划"
+
+#: ../../deploy/webllm.rst:286
+msgid ""
+"All these knobs are specified in ``mlc-chat-config.json`` generated by "
+"``gen_config``."
+msgstr ""
+"所有这些选项都在 ``gen_config`` 生成的 ``mlc-chat-config.json`` 中指定。"
+
+#: ../../deploy/webllm.rst:299
+msgid ""
+"When compiling larger models like ``Llama-3-8B``, you may want to add "
+"``--prefill_chunk_size 1024`` to decrease memory usage. Otherwise, during"
+" runtime, you may run into issues like:"
+msgstr ""
+"在编译较大的模型（如 ``Llama-3-8B``）时，您可能希望添加 ``--prefill_chunk_size 1024`` 以减少内存使用。否则，在运行时可能会遇到以下问题："
+
+#: ../../deploy/webllm.rst:308
+msgid "**Step 3. Distribute model library and model weights**"
+msgstr "**步骤 3. 分发模型库和模型权重**"
+
+#: ../../deploy/webllm.rst:310
+msgid "After following the steps above, you should end up with:"
+msgstr "完成上述步骤后，您应该得到以下内容："
+
+#: ../../deploy/webllm.rst:326
+msgid ""
+"Upload the ``RedPajama-INCITE-Chat-3B-v1-q4f16_1-webgpu.wasm`` to a "
+"github repository (for us, it is in `binary-mlc-llm-libs "
+"<https://github.com/mlc-ai/binary-mlc-llm-libs>`__). Then upload the "
+"``RedPajama-INCITE-Chat-3B-v1-q4f16_1-MLC`` to a Huggingface repo:"
+msgstr ""
+"将 ``RedPajama-INCITE-Chat-3B-v1-q4f16_1-webgpu.wasm`` 上传到 github 仓库（对于我们来说，它在 `binary-mlc-llm-libs <https://github.com/mlc-ai/binary-mlc-llm-libs>`__ 中）。"
+"然后将 ``RedPajama-INCITE-Chat-3B-v1-q4f16_1-MLC`` 上传到 Huggingface 仓库："
+
+#: ../../deploy/webllm.rst:341
+msgid ""
+"This would result in something like `RedPajama-INCITE-Chat-"
+"3B-v1-q4f16_1-MLC <https://huggingface.co/mlc-ai/RedPajama-INCITE-Chat-"
+"3B-v1-q4f16_1-MLC/tree/main>`_."
+msgstr ""
+"这将生成类似于 `RedPajama-INCITE-Chat-3B-v1-q4f16_1-MLC <https://huggingface.co/mlc-ai/RedPajama-INCITE-Chat-3B-v1-q4f16_1-MLC/tree/main>`_ 的内容。"
+
+#: ../../deploy/webllm.rst:344
+msgid "**Step 4. Register as a ModelRecord**"
+msgstr "**步骤 4. 注册为 ModelRecord**"
+
+#: ../../deploy/webllm.rst:346
+msgid ""
+"Finally, we are able to run the model we added in WebLLM's `get-started "
+"<https://github.com/mlc-ai/web-llm/tree/main/examples/get-started>`__:"
+msgstr ""
+"最后，能够在 WebLLM 的 `get-started <https://github.com/mlc-ai/web-llm/tree/main/examples/get-started>`__ 中运行我们添加的模型："
+
+#: ../../deploy/webllm.rst:368
+msgid ""
+"Now, running the ``get-started`` example will use the ``RedPajama`` model"
+" you just added. See `get-started's README <https://github.com/mlc-ai"
+"/web-llm/tree/main/examples/get-started#webllm-get-started-app>`__ on how"
+" to run it."
+msgstr ""
+"现在，运行 ``get-started`` 示例将使用您刚刚添加的 ``RedPajama`` 模型。"
+"请参阅 `get-started 的 README <https://github.com/mlc-ai/web-llm/tree/main/examples/get-started#webllm-get-started-app>`__ 了解如何运行它。"

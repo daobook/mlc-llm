@@ -1,0 +1,1429 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023-2024, MLC LLM Contributors
+# This file is distributed under the same license as the mlc-llm package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mlc-llm 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-03 18:39+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../compilation/compile_models.rst:4
+msgid "Compile Model Libraries"
+msgstr "编译模型库"
+
+#: ../../compilation/compile_models.rst:6
+msgid "To run a model with MLC LLM in any platform, we need:"
+msgstr "要在任何平台上使用 MLC LLM 运行模型，需要："
+
+#: ../../compilation/compile_models.rst:8
+msgid ""
+"**Model weights** converted to MLC format (e.g. `RedPajama-INCITE-Chat-"
+"3B-v1-q4f16_1-MLC <https://huggingface.co/mlc-ai/RedPajama-INCITE-Chat-"
+"3B-v1-q4f16_1-MLC/tree/main>`__.)"
+msgstr ""
+"**模型权重** 转换为 MLC 格式（例如 `RedPajama-INCITE-Chat-"
+"3B-v1-q4f16_1-MLC <https://huggingface.co/mlc-ai/RedPajama-INCITE-Chat-"
+"3B-v1-q4f16_1-MLC/tree/main>`__  。）"
+
+#: ../../compilation/compile_models.rst:9
+msgid "**Model library** that comprises the inference logic"
+msgstr "**模型库** 包含推理逻辑"
+
+#: ../../compilation/compile_models.rst:11
+msgid ""
+"This page describes how to compile a model library with MLC LLM. Model "
+"compilation optimizes the model inference for a given platform, allowing "
+"users bring their own new model architecture, use different quantization "
+"modes, and customize the overall model optimization flow."
+msgstr ""
+"本页描述了如何使用 MLC LLM 编译模型库。模型编译针对给定平台优化模型推理，允许用户引入自己的新模型架构，使用不同的量化模式，并自定义整体模型优化流程。"
+
+#: ../../compilation/compile_models.rst:18
+msgid "Notably, in many cases you do not need to explicit call compile."
+msgstr "值得注意的是，在许多情况下，您不需要显式调用编译。"
+
+#: ../../compilation/compile_models.rst:20
+msgid ""
+"If you are using the Python API, you can skip specifying ``model_lib`` "
+"and the system will JIT compile the library."
+msgstr ""
+"如果您使用的是Python API，您可以跳过指定 ``model_lib``，系统将即时编译库。"
+
+#: ../../compilation/compile_models.rst:23
+msgid ""
+"If you are building iOS/android package, checkout :ref:`package-"
+"libraries-and-weights`, which provides a simpler high-level command that "
+"leverages the compile behind the scheme."
+msgstr ""
+"如果您正在构建iOS/Android包，请查看 :ref:`package-libraries-and-weights`，它提供了更简单的高级命令，利用方案背后的编译。"
+
+#: ../../compilation/compile_models.rst:27
+msgid ""
+"This page is still helpful to understand the compilation flow behind the "
+"scheme, or be used to explicit create model libraries. We compile "
+"``RedPajama-INCITE-Chat-3B-v1`` with ``q4f16_1`` as an example for all "
+"platforms."
+msgstr ""
+"本页面仍然有助于理解该方案背后的编译流程，或用于显式创建模型库。以 ``RedPajama-INCITE-Chat-3B-v1`` 为例，使用 ``q4f16_1`` 为所有平台进行编译。"
+
+#: ../../compilation/compile_models.rst:32
+#: ../../compilation/convert_weights.rst:20
+msgid ""
+"Before you proceed, make sure you followed :ref:`install-tvm-unity`, a "
+"required backend to compile models with MLC LLM."
+msgstr ""
+"在继续之前，请确保你已经按照 :ref:`install-tvm-unity` 的说明安装了 TVM Unity，这是使用 MLC LLM 编译模型所需的后端。"
+
+#: ../../compilation/compile_models.rst:35
+#: ../../compilation/convert_weights.rst:23
+msgid ""
+"Please also follow the instructions in :ref:`deploy-cli` / :ref:`deploy-"
+"python-engine` to obtain the CLI app / Python API that can be used to "
+"chat with the compiled model."
+msgstr ""
+"请同时按照 :ref:`deploy-cli` / :ref:`deploy-python-engine` 中的说明获取 CLI 应用程序 / Python API，以便与编译后的模型进行聊天。"
+
+#: ../../compilation/compile_models.rst:41
+#: ../../compilation/convert_weights.rst:29
+msgid "Table of Contents"
+msgstr "目录"
+
+#: ../../compilation/compile_models.rst:44
+msgid "0. Verify Installation"
+msgstr "0. 验证安装"
+
+#: ../../compilation/compile_models.rst:46
+#: ../../compilation/convert_weights.rst:36
+msgid "**Step 1. Verify mlc_llm**"
+msgstr "**步骤 1. 验证 mlc_llm**"
+
+#: ../../compilation/compile_models.rst:48
+#: ../../compilation/convert_weights.rst:38
+msgid ""
+"We use the python package ``mlc_llm`` to compile models. This can be "
+"installed by following :ref:`install-mlc-packages`, either by building "
+"from source, or by installing the prebuilt package. Verify ``mlc_llm`` "
+"installation in command line via:"
+msgstr ""
+"使用 Python 包 ``mlc_llm`` 来编译模型。可以通过 :ref:`install-mlc-packages` 安装该包，无论是从源码构建还是安装预构建的包。可以通过以下命令在命令行中验证 ``mlc_llm`` 的安装："
+
+#: ../../compilation/compile_models.rst:59
+#: ../../compilation/convert_weights.rst:49
+msgid ""
+"If it runs into error ``command not found: mlc_llm``, try ``python -m "
+"mlc_llm --help``."
+msgstr ""
+"如果遇到错误提示 ``command not found: mlc_llm``，可以尝试运行 ``python -m mlc_llm --help``。"
+
+#: ../../compilation/compile_models.rst:61
+#: ../../compilation/convert_weights.rst:51
+msgid "**Step 2. Verify TVM**"
+msgstr "**步骤 2. 验证 TVM**"
+
+#: ../../compilation/compile_models.rst:63
+#: ../../compilation/convert_weights.rst:53
+msgid ""
+"To compile models, you also need to follow :ref:`install-tvm-unity`. Here"
+" we verify ``tvm`` quickly with command line (for full verification, see "
+":ref:`tvm-unity-validate`):"
+msgstr ""
+"要编译模型，你还需要按照 :ref:`install-tvm-unity` 的说明安装 TVM Unity。这里通过命令行快速验证 ``tvm`` （完整验证请参阅 :ref:`tvm-unity-validate`）："
+
+#: ../../compilation/compile_models.rst:72
+#: ../../compilation/convert_weights.rst:63
+msgid "1. Clone from HF and convert_weight"
+msgstr "1. 从 Hugging Face 克隆并转换权重"
+
+#: ../../compilation/compile_models.rst:74
+msgid ""
+"This replicates :ref:`convert-weights-via-MLC`, see that page for more "
+"details."
+msgstr ""
+"这一步复现了 :ref:`convert-weights-via-MLC` 的过程，更多详细信息请参阅该页面。"
+
+#: ../../compilation/compile_models.rst:76
+msgid ""
+"You can be under the mlc-llm repo, or your own working directory. Note "
+"that all platforms can share the same compiled/quantized weights."
+msgstr ""
+"你可以在 `mlc-llm` 仓库下操作，也可以在自己的工作目录中进行。请注意，所有平台可以共享相同的编译/量化权重。"
+
+#: ../../compilation/compile_models.rst:93
+msgid "2. Generate mlc-chat-config and compile"
+msgstr "2. 生成 mlc-chat-config 并编译"
+
+#: ../../compilation/compile_models.rst:95
+msgid "A model library is specified by:"
+msgstr "模型库由以下内容指定："
+
+#: ../../compilation/compile_models.rst:97
+msgid "The model architecture (e.g. ``llama-2``, ``gpt-neox``)"
+msgstr "模型架构（例如 ``llama-2``、``gpt-neox``）"
+
+#: ../../compilation/compile_models.rst:98
+msgid "Quantization (e.g. ``q4f16_1``, ``q0f32``)"
+msgstr "量化方式（例如 ``q4f16_1``、``q0f32``）"
+
+#: ../../compilation/compile_models.rst:99
+msgid ""
+"Metadata (e.g. ``context_window_size``, ``sliding_window_size``, "
+"``prefill-chunk-size``), which affects memory planning"
+msgstr ""
+"元数据（例如 ``context_window_size``、``sliding_window_size``、``prefill-chunk-size``），这些会影响内存规划"
+
+#: ../../compilation/compile_models.rst:100
+msgid "Platform (e.g. ``cuda``, ``webgpu``, ``iOS``)"
+msgstr "平台（例如 ``cuda``、``webgpu``、``iOS``）"
+
+#: ../../compilation/compile_models.rst:102
+msgid ""
+"All these knobs are specified in ``mlc-chat-config.json`` generated by "
+"``gen_config``."
+msgstr ""
+"所有这些选项都在 ``gen_config`` 生成的 ``mlc-chat-config.json`` 文件中指定。"
+
+#: ../../compilation/compile_models.rst:111
+#: ../../compilation/compile_models.rst:275
+msgid "Linux - CUDA"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:124
+#: ../../compilation/compile_models.rst:311
+#: ../../compilation/compile_models.rst:488
+#: ../../compilation/compile_models.rst:634
+#: ../../compilation/compile_models.rst:774
+msgid "Metal"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:126
+#: ../../compilation/compile_models.rst:490
+#: ../../compilation/compile_models.rst:636
+#: ../../compilation/compile_models.rst:776
+msgid "For M-chip Mac:"
+msgstr "对于 M 芯片 Mac："
+
+#: ../../compilation/compile_models.rst:138
+#: ../../compilation/compile_models.rst:501
+msgid "Cross-Compiling for Intel Mac on M-chip Mac:"
+msgstr "在 M 芯片 Mac 上为 Intel Mac 进行交叉编译："
+
+#: ../../compilation/compile_models.rst:150
+#: ../../compilation/compile_models.rst:513
+#: ../../compilation/compile_models.rst:648
+#: ../../compilation/compile_models.rst:786
+msgid "For Intel Mac:"
+msgstr "对于 Intel Mac："
+
+#: ../../compilation/compile_models.rst:163
+#: ../../compilation/compile_models.rst:348
+#: ../../compilation/compile_models.rst:524
+#: ../../compilation/compile_models.rst:659
+#: ../../compilation/compile_models.rst:795
+msgid "Vulkan"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:165
+#: ../../compilation/compile_models.rst:526
+#: ../../compilation/compile_models.rst:661
+#: ../../compilation/compile_models.rst:797
+msgid "For Linux:"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:177
+#: ../../compilation/compile_models.rst:537
+#: ../../compilation/compile_models.rst:672
+#: ../../compilation/compile_models.rst:806
+msgid "For Windows:"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:189
+#: ../../compilation/compile_models.rst:384
+msgid "iOS/iPadOS"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:191
+#: ../../compilation/compile_models.rst:569
+#: ../../compilation/compile_models.rst:714
+#: ../../compilation/compile_models.rst:843
+msgid "You need a Mac to compile models for it."
+msgstr "你需要 Mac 来为其编译模型。"
+
+#: ../../compilation/compile_models.rst:204
+msgid "If it runs into error"
+msgstr "如果遇到错误"
+
+#: ../../compilation/compile_models.rst:212
+msgid ""
+", please check and make sure you have Command Line Tools for Xcode "
+"installed correctly. You can use ``xcrun metal`` to validate: when it "
+"prints ``metal: error: no input files``, it means the Command Line Tools "
+"for Xcode is installed and can be found, and you can proceed with the "
+"model compiling."
+msgstr ""
+"请检查并确保你已经正确安装了 Command Line Tools for Xcode。你可以使用 ``xcrun metal`` 进行验证："
+"当它打印 ``metal: error: no input files`` 时，表示 Command Line Tools for Xcode 已安装且可以找到，你可以继续模型编译。"
+
+#: ../../compilation/compile_models.rst:215
+#: ../../compilation/compile_models.rst:403
+#: ../../compilation/compile_models.rst:580
+#: ../../compilation/compile_models.rst:726
+#: ../../compilation/compile_models.rst:853
+msgid "Android"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:227
+#: ../../compilation/compile_models.rst:422
+#: ../../compilation/compile_models.rst:548
+#: ../../compilation/compile_models.rst:683
+#: ../../compilation/compile_models.rst:815
+msgid "WebGPU"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:240
+#: ../../compilation/compile_models.rst:560
+#: ../../compilation/compile_models.rst:696
+#: ../../compilation/compile_models.rst:825
+msgid ""
+"To compile for webgpu, you need to build from source when installing "
+"``mlc_llm``. Besides, you also need to follow :ref:`install-web-build`. "
+"Otherwise, it would run into error"
+msgstr ""
+"要为 webgpu 编译，你需要在安装 ``mlc_llm`` 时从源码构建。此外，你还需要按照 :ref:`install-web-build` 的说明进行操作。否则，可能会遇到错误"
+
+#: ../../compilation/compile_models.rst:248
+#: ../../compilation/compile_models.rst:704
+#: ../../compilation/compile_models.rst:833
+msgid ""
+"For webgpu, when compiling larger models like ``Llama-2-7B``, you may "
+"want to add ``--prefill-chunk-size 1024`` or lower ``--context-window-"
+"size`` to decrease memory usage. Otherwise, you may run into issues like:"
+msgstr ""
+"对于 webgpu，在编译较大的模型（如 ``Llama-2-7B``）时，你可能需要添加 ``--prefill-chunk-size 1024`` 或降低 ``--context-window-size`` 以减少内存使用。否则，可能会遇到以下问题："
+
+#: ../../compilation/compile_models.rst:258
+msgid ""
+"For the ``conv-template``, `conversation_template.py <https://github.com"
+"/mlc-ai/mlc-llm/blob/main/python/mlc_llm/conversation_template.py>`__ "
+"contains a full list of conversation templates that MLC provides. If the "
+"model you are adding requires a new conversation template, you would need"
+" to add your own. Follow `this PR <https://github.com/mlc-ai/mlc-"
+"llm/pull/2163>`__ as an example. However, adding your own template would "
+"require you :ref:`build mlc_llm from source <mlcchat_build_from_source>` "
+"in order for it to be recognized by the runtime."
+msgstr ""
+"对于 ``conv-template``，`conversation_template.py <https://github.com/mlc-ai/mlc-llm/blob/main/python/mlc_llm/conversation_template.py>`__ 包含了 MLC 提供的完整对话模板列表。"
+"如果你添加的模型需要新的对话模板，你需要自行添加。"
+"可以参考 `这个 PR <https://github.com/mlc-ai/mlc-llm/pull/2163>`__ 作为示例。不过，添加自定义模板需要你 :ref:`从源码构建 mlc_llm <mlcchat_build_from_source>`，以便运行时能够识别它。"
+
+#: ../../compilation/compile_models.rst:265
+msgid "For more details, please see :ref:`configure-mlc-chat-json`."
+msgstr "更多详细信息，请参阅 :ref:`configure-mlc-chat-json`。"
+
+#: ../../compilation/compile_models.rst:268
+msgid "3. Verify output and chat"
+msgstr "3. 验证输出并进行聊天"
+
+#: ../../compilation/compile_models.rst:270
+msgid ""
+"By executing the compile command above, we generate the model weights, "
+"model lib, and a chat config. We can check the output with the commands "
+"below:"
+msgstr ""
+"通过执行上述编译命令，会生成模型权重、模型库和聊天配置文件。可以使用以下命令检查输出："
+
+#: ../../compilation/compile_models.rst:291
+#: ../../compilation/compile_models.rst:327
+#: ../../compilation/compile_models.rst:364
+msgid ""
+"We can now chat with the model using the command line interface (CLI) app"
+" or the Python API."
+msgstr ""
+"现在可以使用命令行界面（CLI）应用程序或 Python API 与模型进行聊天。"
+
+#: ../../compilation/compile_models.rst:400
+msgid ""
+"The model lib ``dist/libs/RedPajama-INCITE-Chat-"
+"3B-v1-q4f16_1-iphone.tar`` will be packaged as a static library into the "
+"iOS app. Checkout :ref:`deploy-ios` for more details."
+msgstr ""
+"模型库 ``dist/libs/RedPajama-INCITE-Chat-3B-v1-q4f16_1-iphone.tar`` 将作为静态库打包到 iOS 应用程序中。更多详细信息，请查看 :ref:`deploy-ios`。"
+
+#: ../../compilation/compile_models.rst:419
+msgid ""
+"The model lib ``dist/libs/RedPajama-INCITE-Chat-"
+"3B-v1-q4f16_1-android.tar`` will be packaged as a static library into the"
+" android app. Checkout :ref:`deploy-android` for more details."
+msgstr ""
+"模型库 ``dist/libs/RedPajama-INCITE-Chat-3B-v1-q4f16_1-android.tar`` 将作为静态库打包到 Android 应用程序中。更多详细信息，请查看 :ref:`deploy-android`。"
+
+#: ../../compilation/compile_models.rst:438
+msgid "To use this in WebGPU runtime, checkout :ref:`webllm-runtime`."
+msgstr "要在 WebGPU 运行时中使用此模型，请查看 :ref:`webllm-runtime`。"
+
+#: ../../compilation/compile_models.rst:441
+msgid "Compile Commands for More Models"
+msgstr "更多模型的编译命令"
+
+#: ../../compilation/compile_models.rst:443
+msgid ""
+"This section lists compile commands for more models that you can try out."
+" Note that this can be easily generalized to any model variant, as long "
+"as mlc-llm supports the architecture."
+msgstr ""
+"本节列出了更多模型的编译命令供你尝试。请注意，只要 mlc-llm 支持该架构，这些命令可以轻松推广到任何模型变体。"
+
+#: ../../compilation/compile_models.rst:448
+msgid "Model: Llama-2-7B"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:450
+msgid ""
+"Please `request for access <https://huggingface.co/meta-llama>`_ to the "
+"Llama-2 weights from Meta first. After granted access, first create "
+"directory ``dist/models`` and download the model to the directory. For "
+"example, you can run the following code:"
+msgstr ""
+"请先向 Meta `申请访问权限 <https://huggingface.co/meta-llama>`_ 以获取 Llama-2 权重。获得访问权限后，首先创建目录 ``dist/models`` 并将模型下载到该目录。例如，你可以运行以下代码："
+
+#: ../../compilation/compile_models.rst:461
+#: ../../compilation/compile_models.rst:606
+#: ../../compilation/compile_models.rst:749
+msgid ""
+"Then convert the HF weights into MLC-compatible weights. Note that all "
+"platforms can share the same compiled/quantized weights."
+msgstr ""
+"然后将 Hugging Face 权重转换为 MLC 兼容的权重。请注意，所有平台可以共享相同的编译/量化权重。"
+
+#: ../../compilation/compile_models.rst:468
+#: ../../compilation/compile_models.rst:614
+#: ../../compilation/compile_models.rst:756
+msgid ""
+"Afterwards, run the following command to generate mlc config and compile "
+"the model."
+msgstr ""
+"之后，运行以下命令生成 mlc 配置文件并编译模型。"
+
+#: ../../compilation/compile_models.rst:477
+#: ../../compilation/compile_models.rst:623
+#: ../../compilation/compile_models.rst:765
+msgid "Target: CUDA"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:567
+#: ../../compilation/compile_models.rst:712
+#: ../../compilation/compile_models.rst:841
+msgid "iPhone/iPad"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:591
+msgid "Mistral-7B-Instruct-v0.2"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:593
+msgid ""
+"Note that Mistral uses sliding window attention (SWA). Thus, instead of "
+"specifying ``context-window-size``, we specify ``sliding-window-size``."
+msgstr ""
+"请注意，Mistral 使用滑动窗口注意力机制（SWA）。因此，不指定 ``context-window-size``，而是指定 ``sliding-window-size``。"
+
+#: ../../compilation/compile_models.rst:596
+#: ../../compilation/compile_models.rst:739
+msgid ""
+"First create directory ``dist/models`` and download the model to the "
+"directory. For example, you can run the following code:"
+msgstr ""
+"首先创建目录 ``dist/models`` 并将模型下载到该目录。例如，你可以运行以下代码："
+
+#: ../../compilation/compile_models.rst:737
+msgid "Other models"
+msgstr "其他模型"
+
+#: ../../compilation/compile_models.rst:863
+msgid ""
+"For each model and each backend, the above only provides the most "
+"recommended build command (which is the most optimized). You can also try"
+" with different argument values (e.g., different quantization modes, "
+"context window size, etc.), whose build results affect runtime memory "
+"requirement, and it is possible that they may not run as fast and "
+"robustly as the provided one when running the model."
+msgstr ""
+"对于每个模型和每个后端，上述内容仅提供了最推荐的构建命令（这是最优化的）。"
+"你也可以尝试使用不同的参数值（例如，不同的量化模式、上下文窗口大小等），这些构建结果会影响运行时的内存需求，但在运行模型时，它们可能不如提供的命令那样快速和稳定。"
+
+#: ../../compilation/compile_models.rst:869
+msgid ""
+"Uing 3-bit quantization usually can be overly aggressive and only works "
+"for limited settings. If you encounter issues where the compiled model "
+"does not perform as expected, consider utilizing a higher number of bits "
+"for quantization (e.g., 4-bit quantization)."
+msgstr ""
+"使用 3 位量化通常可能过于激进，仅适用于有限的设置。如果你遇到编译后的模型表现不如预期的问题，请考虑使用更高位数的量化（例如 4 位量化）。"
+
+#: ../../compilation/compile_models.rst:873
+msgid ""
+"If you are interested in distributing the model besides local execution, "
+"please checkout :ref:`distribute-compiled-models`."
+msgstr ""
+"如果你除了本地执行外还对分发模型感兴趣，请查看 :ref:`distribute-compiled-models`。"
+
+#: ../../compilation/compile_models.rst:879
+msgid "Compile Command Specification"
+msgstr "编译命令规范"
+
+#: ../../compilation/compile_models.rst:881
+msgid ""
+"As you have seen in the section above, the model compilation is split "
+"into three steps: convert weights, generate ``mlc-chat-config.json``, and"
+" compile the model. This section describes the list of options that can "
+"be used during compilation."
+msgstr ""
+"正如您在上面的部分中所看到的，模型编译分为三个步骤：转换权重、生成 ``mlc-chat-config.json`` 和编译模型。本节描述了编译过程中可以使用的选项列表。"
+
+#: ../../compilation/compile_models.rst:886
+msgid "1. Convert Weight"
+msgstr "1. 转换权重"
+
+#: ../../compilation/compile_models.rst:888
+msgid "Weight conversion command follows the pattern below:"
+msgstr "权重转换命令遵循以下模式："
+
+#: ../../compilation/compile_models.rst:901
+#: ../../compilation/compile_models.rst:965
+msgid ""
+"Note that ``CONFIG`` is a positional argument. Arguments wrapped with ``["
+" ]`` are optional."
+msgstr ""
+"请注意，``CONFIG`` 是位置参数。用 ``[ ]`` 包裹的参数是可选的。"
+
+#: ../../compilation/compile_models.rst:903
+#: ../../compilation/compile_models.rst:967
+msgid "It can be one of the following:"
+msgstr "它可以是以下之一："
+
+#: ../../compilation/compile_models.rst:905
+#: ../../compilation/compile_models.rst:969
+msgid "Path to a HuggingFace model directory that contains a ``config.json`` or"
+msgstr "包含 ``config.json`` 的 HuggingFace 模型目录的路径，或"
+
+#: ../../compilation/compile_models.rst:906
+#: ../../compilation/compile_models.rst:970
+msgid "Path to ``config.json`` in HuggingFace format, or"
+msgstr "HuggingFace 格式的 ``config.json`` 的路径，或"
+
+#: ../../compilation/compile_models.rst:907
+#: ../../compilation/compile_models.rst:971
+msgid "The name of a pre-defined model architecture."
+msgstr "预定义模型架构的名称。"
+
+#: ../../compilation/compile_models.rst:909
+#: ../../compilation/compile_models.rst:973
+msgid ""
+"A ``config.json`` file in HuggingFace format defines the model "
+"architecture, including the vocabulary size, the number of layers, the "
+"hidden size, number of attention heads, etc. Example: "
+"https://huggingface.co/codellama/CodeLlama-7b-hf/blob/main/config.json."
+msgstr ""
+"HuggingFace 格式的 ``config.json`` 文件定义了模型架构，包括词汇表大小、层数、隐藏大小、注意力头数等。示例：https://huggingface.co/codellama/CodeLlama-7b-hf/blob/main/config.json。"
+
+#: ../../compilation/compile_models.rst:913
+#: ../../compilation/compile_models.rst:977
+msgid ""
+"A HuggingFace directory often contains a ``config.json`` which defines "
+"the model architecture, the non-quantized model weights in PyTorch or "
+"SafeTensor format, tokenizer configurations, as well as an optional "
+"``generation_config.json`` provides additional default configuration for "
+"text generation. Example: https://huggingface.co/codellama/CodeLlama-7b-"
+"hf/tree/main."
+msgstr ""
+"HuggingFace 目录通常包含一个定义模型架构的 ``config.json``、PyTorch 或 SafeTensor 格式的非量化模型权重、分词器配置，以及可选的 ``generation_config.json``，它提供了文本生成的额外默认配置。"
+"示例：https://huggingface.co/codellama/CodeLlama-7b-hf/tree/main。"
+
+#: ../../compilation/compile_models.rst:919
+#: ../../compilation/compile_models.rst:983
+msgid ""
+"For existing pre-defined model architecture, see ``MODEL_PRESETS`` `here "
+"<https://github.com/mlc-ai/mlc-"
+"llm/blob/main/python/mlc_llm/compiler/model/model.py>`_."
+msgstr ""
+"对于现有的预定义模型架构，请参见 `此处 <https://github.com/mlc-ai/mlc-llm/blob/main/python/mlc_llm/compiler/model/model.py>`_ 的 ``MODEL_PRESETS``。"
+
+#: ../../compilation/compile_models.rst:922
+#: ../../compilation/compile_models.rst:986
+msgid "The quantization mode we use to compile."
+msgstr "用于编译的量化模式。"
+
+#: ../../compilation/compile_models.rst:924
+#: ../../compilation/compile_models.rst:988
+#: ../../compilation/compile_models.rst:1047
+msgid ""
+"See :ref:`quantization_mode` for more information. Available options are:"
+" ``q0f16``, ``q0f32``, ``q3f16_1``, ``q4f16_1``, ``q4f32_1``, and "
+"``q4f16_awq``."
+msgstr ""
+"有关更多信息，请参阅 :ref:`quantization_mode`。可用选项包括：``q0f16``、``q0f32``、``q3f16_1``、``q4f16_1``、``q4f32_1`` 和 ``q4f16_awq``。"
+
+#: ../../compilation/compile_models.rst:928
+#: ../../compilation/compile_models.rst:992
+#: ../../compilation/compile_models.rst:1051
+msgid ""
+"We encourage you to use 4-bit quantization, as the text generated by "
+"3-bit quantized models may have bad quality depending on the model."
+msgstr ""
+"鼓励您使用 4 位量化，因为 3 位量化模型生成的文本质量可能较差，具体取决于模型。"
+
+#: ../../compilation/compile_models.rst:931
+#: ../../compilation/compile_models.rst:995
+msgid ""
+"Model architecture such as \"llama\". If not set, it is inferred from "
+"``config.json``."
+msgstr ""
+"模型架构，例如“llama”。如果未设置，则从 ``config.json`` 推断。"
+
+#: ../../compilation/compile_models.rst:933
+msgid ""
+"The device used to do quantization such as \"cuda\" or \"cuda:0\". Will "
+"detect from local available GPUs if not specified."
+msgstr ""
+"用于量化的设备，例如“cuda”或“cuda:0”。如果未指定，将从本地可用的 GPU 中检测。"
+
+#: ../../compilation/compile_models.rst:936
+msgid "The path to original model weight, infer from ``config`` if missing."
+msgstr "原始模型权重的路径，如果缺失则从 ``config`` 推断。"
+
+#: ../../compilation/compile_models.rst:938
+msgid "The format of source model weight, infer from ``config`` if missing."
+msgstr "源模型权重的格式，如果缺失则从 ``config`` 推断。"
+
+#: ../../compilation/compile_models.rst:940
+msgid ""
+"The output directory to save the quantized model weight. Will create "
+"``params_shard_*.bin`` and ```ndarray-cache.json``` in this directory."
+msgstr ""
+"保存量化模型权重的输出目录。将在此目录中创建 ``params_shard_*.bin`` 和 ```ndarray-cache.json```。"
+
+#: ../../compilation/compile_models.rst:944
+#: ../../compilation/convert_weights.rst:85
+msgid "2. Generate MLC Chat Config"
+msgstr "2. 生成 MLC Chat 配置文件"
+
+#: ../../compilation/compile_models.rst:946
+msgid ""
+"In order to compile a model, we first need to generate the ``mlc-chat-"
+"config.json``. This file contains specifications like ``context-window-"
+"size`` and ``sliding-window-size``, among others that can alter the model"
+" compiled. We also process tokenizers in this step."
+msgstr ""
+"为了编译模型，我们首先需要生成 ``mlc-chat-config.json``。该文件包含 ``context-window-size`` 和 ``sliding-window-size`` 等规范，以及其他可以改变模型编译的选项。还在这一步处理分词器。"
+
+#: ../../compilation/compile_models.rst:950
+msgid "Config generation command follows the pattern below:"
+msgstr "配置文件生成命令遵循以下模式："
+
+#: ../../compilation/compile_models.rst:997
+msgid ""
+"Conversation template. It depends on how the model is tuned. Use \"LM\" "
+"for vanilla base model For existing pre-defined templates, see "
+"``CONV_TEMPLATES`` `here <https://github.com/mlc-ai/mlc-"
+"llm/blob/main/python/mlc_llm/model/model.py>`_."
+msgstr ""
+"对话模板。它取决于模型的调优方式。对于普通的基模型，使用“LM”。对于现有的预定义模板，请参见 `此处 <https://github.com/mlc-ai/mlc-llm/blob/main/python/mlc_llm/model/model.py>`_ 的 ``CONV_TEMPLATES``。"
+
+#: ../../compilation/compile_models.rst:1001
+msgid ""
+"Option to provide the maximum sequence length supported by the model. "
+"This is usually explicitly shown as context length or context window in "
+"the model card. If this option is not set explicitly, by default, it will"
+" be determined by ``context_window_size`` or ``max_position_embeddings`` "
+"in ``config.json``, and the latter is usually inaccurate for some models."
+msgstr ""
+"提供模型支持的最大序列长度的选项。这通常在模型卡中明确显示为上下文长度或上下文窗口。"
+"如果未明确设置此选项，默认情况下，它将由 ``config.json`` 中的 ``context_window_size`` 或 ``max_position_embeddings`` 决定，后者对于某些模型通常不准确。"
+
+#: ../../compilation/compile_models.rst:1007
+msgid ""
+"(Experimental) The sliding window size in sliding window attention (SWA)."
+" This optional field overrides the ``sliding_window`` in ``config.json`` "
+"for those models that use SWA. Currently only useful when compiling "
+"mistral-based models. This flag subjects to future refactoring."
+msgstr ""
+"（实验性）滑动窗口注意力（SWA）中的滑动窗口大小。此可选字段会覆盖 ``config.json`` 中的 ``sliding_window``，适用于使用 SWA 的模型。目前仅在编译基于 mistral 的模型时有用。此标志可能会在未来进行重构。"
+
+#: ../../compilation/compile_models.rst:1012
+msgid ""
+"(Experimental) The chunk size during prefilling. By default, the chunk "
+"size is the same as ``context_window_size`` or ``sliding_window_size``. "
+"This flag subjects to future refactoring."
+msgstr ""
+"（实验性）预填充期间的块大小。默认情况下，块大小与 ``context_window_size`` 或 ``sliding_window_size`` 相同。此标志可能会在未来进行重构。"
+
+#: ../../compilation/compile_models.rst:1016
+msgid ""
+"Number of shards to split the model into in tensor parallelism multi-gpu "
+"inference."
+msgstr ""
+"在张量并行多 GPU 推理中将模型拆分的分片数量。"
+
+#: ../../compilation/compile_models.rst:1018
+msgid ""
+"The output directory for generated configurations, including `mlc-chat-"
+"config.json` and tokenizer configuration."
+msgstr ""
+"生成配置文件的输出目录，包括 `mlc-chat-config.json` 和分词器配置。"
+
+#: ../../compilation/compile_models.rst:1021
+msgid "3. Compile Model Library"
+msgstr "3. 编译模型库"
+
+#: ../../compilation/compile_models.rst:1023
+msgid ""
+"After generating ``mlc-chat-config.json``, we can compile the model into "
+"a model library (files ending in ``.so``, ``.tar``, etc. that contains "
+"the inference logic of a model)."
+msgstr ""
+"生成 ``mlc-chat-config.json`` 后，我们可以将模型编译为模型库（以 ``.so``、``.tar`` 等结尾的文件，其中包含模型的推理逻辑）。"
+
+#: ../../compilation/compile_models.rst:1026
+msgid "Model compilation command follows the pattern below:"
+msgstr "模型编译命令遵循以下模式："
+
+#: ../../compilation/compile_models.rst:1041
+msgid ""
+"Note that ``MODEL`` is a positional argument. Arguments wrapped with ``[ "
+"]`` are optional."
+msgstr ""
+"请注意，``MODEL`` 是位置参数。用 ``[ ]`` 包裹的参数是可选的。"
+
+#: ../../compilation/compile_models.rst:1043
+msgid ""
+"A path to ``mlc-chat-config.json``, or an MLC model directory that "
+"contains ``mlc-chat-config.json``."
+msgstr ""
+"``mlc-chat-config.json`` 的路径，或包含 ``mlc-chat-config.json`` 的 MLC 模型目录。"
+
+#: ../../compilation/compile_models.rst:1045
+msgid ""
+"The quantization mode we use to compile. If unprovided, will infer from "
+"``MODEL``."
+msgstr ""
+"用于编译的量化模式。如果未提供，将从 ``MODEL`` 推断。"
+
+#: ../../compilation/compile_models.rst:1054
+msgid ""
+"Model architecture such as \"llama\". If not set, it is inferred from "
+"``mlc-chat-config.json``."
+msgstr ""
+"模型架构，例如“llama”。如果未设置，则从 ``mlc-chat-config.json`` 推断。"
+
+#: ../../compilation/compile_models.rst:1056
+msgid ""
+"The GPU device to compile the model to. If not set, it is inferred from "
+"GPUs available locally."
+msgstr ""
+"编译模型的目标 GPU 设备。如果未设置，则从本地可用的 GPU 中推断。"
+
+#: ../../compilation/compile_models.rst:1058
+msgid ""
+"The host LLVM triple to compile the model to. If not set, it is inferred "
+"from the local CPU and OS. Examples of the LLVM triple:"
+msgstr ""
+"编译模型的目标主机 LLVM 三元组。如果未设置，则从本地 CPU 和操作系统推断。LLVM 三元组的示例："
+
+#: ../../compilation/compile_models.rst:1061
+msgid "iPhones: arm64-apple-ios;"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:1062
+msgid "ARM64 Android phones: aarch64-linux-android;"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:1063
+msgid "WebAssembly: wasm32-unknown-unknown-wasm;"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:1064
+msgid "Windows: x86_64-pc-windows-msvc;"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:1065
+msgid "ARM macOS: arm64-apple-darwin."
+msgstr ""
+
+#: ../../compilation/compile_models.rst:1067
+msgid ""
+"Optimization flags. MLC LLM maintains a predefined set of optimization "
+"flags, denoted as ``O0``, ``O1``, ``O2``, ``O3``, where ``O0`` means no "
+"optimization, ``O2`` means majority of them, and ``O3`` represents "
+"extreme optimization that could potentially break the system."
+msgstr ""
+"优化标志。MLC LLM 维护了一组预定义的优化标志，表示为 ``O0``、``O1``、``O2``、``O3``，其中 ``O0`` 表示无优化，``O2`` 表示大多数优化，``O3`` 表示可能破坏系统的极端优化。"
+
+#: ../../compilation/compile_models.rst:1072
+msgid ""
+"Meanwhile, optimization flags could be explicitly specified via details "
+"knobs, e.g. "
+"``--opt=\"cutlass_attn=1;cutlass_norm=0;cublas_gemm=0;cudagraph=0\"``."
+msgstr ""
+"同时，可以通过详细选项明确指定优化标志，例如 ``--opt=\"cutlass_attn=1;cutlass_norm=0;cublas_gemm=0;cudagraph=0\"``。"
+
+#: ../../compilation/compile_models.rst:1075
+msgid ""
+"Adding a prefix to all symbols exported. Similar to ``objcopy --prefix-"
+"symbols``. This is useful when compiling multiple models into a single "
+"library to avoid symbol conflicts. Different from objcopy, this takes no "
+"effect for shared library."
+msgstr ""
+"为所有导出的符号添加前缀。类似于 ``objcopy --prefix-symbols``。这在将多个模型编译到单个库中时非常有用，以避免符号冲突。与 objcopy 不同，这对共享库没有影响。"
+
+#: ../../compilation/compile_models.rst:1080
+msgid ""
+"The path to the output file. The suffix determines if the output file is "
+"a shared library or objects. Available suffixes:"
+msgstr ""
+"输出文件的路径。后缀决定输出文件是共享库还是对象。可用的后缀："
+
+#: ../../compilation/compile_models.rst:1083
+msgid "Linux: .so (shared), .tar (objects);"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:1084
+msgid "macOS: .dylib (shared), .tar (objects);"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:1085
+msgid "Windows: .dll (shared), .tar (objects);"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:1086
+msgid "Android, iOS: .tar (objects);"
+msgstr ""
+
+#: ../../compilation/compile_models.rst:1087
+msgid "Web: .wasm (web assembly)."
+msgstr ""
+
+#: ../../compilation/compile_models.rst:1089
+msgid ""
+"Model configuration override. Configurations to override ``mlc-chat-"
+"config.json``. Supports ``context_window_size``, ``prefill_chunk_size``, "
+"``sliding_window``, ``max_batch_size`` and ``tensor_parallel_shards``. "
+"Meanwhile, model config could be explicitly specified via details knobs, "
+"e.g. ``--overrides \"context_window_size=1024;prefill_chunk_size=128\"``."
+msgstr ""
+"模型配置覆盖。用于覆盖 ``mlc-chat-config.json`` 的配置。支持 ``context_window_size``、``prefill_chunk_size``、``sliding_window``、``max_batch_size`` 和 ``tensor_parallel_shards``。"
+"同时，模型配置可以通过详细的参数显式指定，例如 ``--overrides \"context_window_size=1024;prefill_chunk_size=128\"``。"
+
+#: ../../compilation/configure_quantization.rst:2
+msgid "Configure Quantization"
+msgstr "配置量化"
+
+#: ../../compilation/configure_quantization.rst:5
+msgid "Quantization Algorithm"
+msgstr "量化算法"
+
+#: ../../compilation/configure_quantization.rst:7
+msgid ""
+"The default quantization algorithm used in MLC-LLM is grouping "
+"quantization method discussed in the papers `The case for 4-bit "
+"precision: k-bit Inference Scaling Laws "
+"<https://arxiv.org/abs/2212.09720>`__ and `LUT-GEMM: Quantized Matrix "
+"Multiplication based on LUTs for Efficient Inference in Large-Scale "
+"Generative Language Models <https://arxiv.org/abs/2206.09557>`__."
+msgstr ""
+"MLC-LLM 中使用的默认量化算法是分组量化方法，该方法在论文 `The case for 4-bit precision: k-bit Inference Scaling Laws <https://arxiv.org/abs/2212.09720>`__ "
+"和 `LUT-GEMM: Quantized Matrix Multiplication based on LUTs for Efficient Inference in Large-Scale Generative Language Models <https://arxiv.org/abs/2206.09557>`__ 中讨论过。"
+
+#: ../../compilation/configure_quantization.rst:12
+msgid "Quantization Mode"
+msgstr "量化模式"
+
+#: ../../compilation/configure_quantization.rst:14
+msgid ""
+"In MLC-LLM we use a short code that indicates the quantization mode to "
+"use. MLC-LLM supports both weight-only quantization and weight-activation"
+" quantization."
+msgstr ""
+"在 MLC-LLM 中，使用简短的代码来表示要使用的量化模式。MLC-LLM 支持仅权重量化和权重-激活量化。"
+
+#: ../../compilation/configure_quantization.rst:17
+msgid ""
+"For the weight-only quantization, he format of the code is ``qAfB(_id)``,"
+" where ``A`` represents the number of bits for storing weights and ``B`` "
+"represents the number of bits for storing activations. The ``_id`` is an "
+"integer identifier to distinguish different quantization algorithms (e.g."
+" symmetric, non-symmetric, AWQ, etc)."
+msgstr ""
+"对于仅权重量化，代码的格式为 ``qAfB(_id)``，其中 ``A`` 表示存储权重的位数，``B`` 表示存储激活的位数。``_id`` 是整数标识符，用于区分不同的量化算法（例如对称量化、非对称量化、AWQ 等）。"
+
+#: ../../compilation/configure_quantization.rst:21
+msgid ""
+"Currently, available options are: ``q0f16``, ``q0f32``, ``q3f16_1``, "
+"``q4f16_1``, ``q4f32_1``, and ``q4f16_awq`` (not stable)."
+msgstr ""
+"目前可用的选项有：``q0f16``、``q0f32``、``q3f16_1``、``q4f16_1``、``q4f32_1`` 和 ``q4f16_awq`` （不稳定）。"
+
+#: ../../compilation/configure_quantization.rst:23
+msgid ""
+"For the weight-activation quantization, currently MLC-LLM supports FP8 "
+"quantization on CUDA. The available options are: ``e4m3_e4m3_f16`` and "
+"``e5m2_e5m2_f16``. In these modes, both weights and activations are "
+"quantized to FP8 format. The output of each layer is in higher precision "
+"(FP16) and then requantized to FP8."
+msgstr ""
+"对于权重-激活量化，目前 MLC-LLM 支持在 CUDA 上进行 FP8 量化。可用的选项有：``e4m3_e4m3_f16`` 和 ``e5m2_e5m2_f16``。"
+"在这些模式下，权重和激活都被量化为 FP8 格式。每一层的输出以更高的精度（FP16）计算，然后重新量化为 FP8。"
+
+#: ../../compilation/configure_quantization.rst:30
+msgid "Calibration"
+msgstr "校准"
+
+#: ../../compilation/configure_quantization.rst:32
+msgid ""
+"For ``e4m3_e4m3_f16`` quantization, we need to calibrate the quantization"
+" parameters for the activations. The calibration process is done by "
+"running the following command:"
+msgstr ""
+"对于 ``e4m3_e4m3_f16`` 量化，需要校准激活的量化参数。校准过程通过运行以下命令完成："
+
+#: ../../compilation/configure_quantization.rst:36
+msgid "1. Compile the calibration model"
+msgstr "1. 编译校准模型"
+
+#: ../../compilation/configure_quantization.rst:38
+msgid ""
+"We use the same compilation workflow to compile the model in calibration "
+"mode. The only difference is that we need to specify the quantization "
+"mode as ``e4m3_e4m3_f16_calibrate``."
+msgstr ""
+"使用相同的编译工作流程来编译校准模式下的模型。唯一的区别是需要将量化模式指定为 ``e4m3_e4m3_f16_calibrate``。"
+
+#: ../../compilation/configure_quantization.rst:58
+msgid "2. Run the calibration model"
+msgstr "2. 运行校准模型"
+
+#: ../../compilation/configure_quantization.rst:60
+msgid ""
+"We will run the calibration model on the dataset such as ShareGPT to "
+"collect the statistics of the activations. The calibration model will "
+"updates the quantization parameters in the weights file in-place. We turn"
+" off the cuda graph as it is not yet supported in the calibration "
+"process."
+msgstr ""
+"将在 ShareGPT 等数据集上运行校准模型，以收集激活的统计数据。校准模型将就地更新权重文件中的量化参数。关闭了 cuda graph，因为在校准过程中尚未支持该功能。"
+
+#: ../../compilation/configure_quantization.rst:75
+msgid "3. Compile the quantized model for inference."
+msgstr "3. 编译量化模型以进行推理。"
+
+#: ../../compilation/configure_quantization.rst:77
+msgid ""
+"After the calibration process, we can compile the model for inference. In"
+" this step, we only need to generate the configuration file using the "
+"desired quantization format and compile the model. Weights are already "
+"quantized and calibrated in the previous steps and do not need to be "
+"converted again."
+msgstr ""
+"在校准过程之后，可以编译模型以进行推理。在此步骤中，只需要使用所需的量化格式生成配置文件并编译模型。权重已经在之前的步骤中量化和校准，无需再次转换。"
+
+#: ../../compilation/convert_weights.rst:4
+msgid "Convert Model Weights"
+msgstr "转换模型权重"
+
+#: ../../compilation/convert_weights.rst:6
+msgid ""
+"To run a model with MLC LLM, we need to convert model weights into MLC "
+"format (e.g. `RedPajama-INCITE-Chat-3B-v1-q4f16_1-MLC "
+"<https://huggingface.co/mlc-ai/RedPajama-INCITE-Chat-"
+"3B-v1-q4f16_1-MLC/tree/main>`_.) This page walks us through the process "
+"of adding a model variant with ``mlc_llm convert_weight``, which takes a "
+"huggingface model as input and converts/quantizes into MLC-compatible "
+"weights."
+msgstr ""
+"要运行MLC LLM的模型，需要将模型权重转换为 MLC 格式"
+"（例如 `RedPajama-INCITE-Chat-3B-v1-q4f16_1-MLC <https://huggingface.co/mlc-ai/RedPajama-INCITE-Chat-3B-v1-q4f16_1-MLC/tree/main>`_）。"
+"本页指导通过使用 ``mlc_llm convert_weight`` 添加模型变体，它接受 Hugging Face 模型作为输入，并将其转换/量化为 MLC 兼容的权重。"
+
+#: ../../compilation/convert_weights.rst:11
+msgid ""
+"Specifically, we add RedPjama-INCITE-**Instruct**-3B-v1, while MLC "
+"already provides a model library for RedPjama-INCITE-**Chat**-3B-v1, "
+"which we can reuse."
+msgstr ""
+"具体来说，添加了 RedPjama-INCITE-**Instruct**-3B-v1，而 MLC 已经为 RedPjama-INCITE-**Chat**-3B-v1 提供了模型库，可以重用这个库。"
+
+#: ../../compilation/convert_weights.rst:14
+msgid "This can be extended to, e.g.:"
+msgstr "这可以扩展到例如："
+
+#: ../../compilation/convert_weights.rst:16
+msgid "Add ``OpenHermes-Mistral`` when MLC already supports Mistral"
+msgstr "当 MLC 已经支持 Mistral 时，添加 ``OpenHermes-Mistral``。"
+
+#: ../../compilation/convert_weights.rst:17
+msgid "Add ``Llama-2-uncensored`` when MLC already supports Llama-2"
+msgstr "当 MLC 已经支持 Llama-2 时，添加 ``Llama-2-uncensored``。"
+
+#: ../../compilation/convert_weights.rst:34
+msgid "0. Verify installation"
+msgstr "0. 验证安装"
+
+#: ../../compilation/convert_weights.rst:65
+msgid ""
+"You can be under the mlc-llm repo, or your own working directory. Note "
+"that all platforms can share the same compiled/quantized weights. See "
+":ref:`compile-command-specification` for specification of "
+"``convert_weight``."
+msgstr ""
+"你可以在 `mlc-llm` 仓库下，或者你自己的工作目录中操作。"
+"请注意，所有平台可以共享相同的编译/量化权重。有关 `convert_weight` 的详细说明，请参阅 :ref:`compile-command-specification`。"
+
+#: ../../compilation/convert_weights.rst:87
+msgid ""
+"Use ``mlc_llm gen_config`` to generate ``mlc-chat-config.json`` and "
+"process tokenizers. See :ref:`compile-command-specification` for "
+"specification of ``gen_config``."
+msgstr ""
+"使用 ``mlc_llm gen_config`` 命令生成 ``mlc-chat-config.json`` 配置文件并处理分词器。"
+"有关 ``gen_config`` 的具体说明，请参阅 :ref:`compile-command-specification`。"
+
+#: ../../compilation/convert_weights.rst:98
+msgid ""
+"The file ``mlc-chat-config.json`` is crucial in both model compilation "
+"and runtime chatting. Here we only care about the latter case."
+msgstr ""
+"文件 ``mlc-chat-config.json`` 在模型编译和运行时聊天中都至关重要。这里仅关注后者（运行时聊天）的情况。"
+
+#: ../../compilation/convert_weights.rst:101
+msgid ""
+"You can **optionally** customize ``dist/RedPajama-INCITE-Instruct-"
+"3B-v1-q4f16_1-MLC/mlc-chat-config.json`` (checkout :ref:`configure-mlc-"
+"chat-json` for more detailed instructions). You can also simply use the "
+"default configuration."
+msgstr ""
+"你可以 **选择性地** 自定义 ``dist/RedPajama-INCITE-Instruct-3B-v1-q4f16_1-MLC/mlc-chat-config.json`` 文件（查看 :ref:`configure-mlc-chat-json` 获取更详细的说明）。你也可以直接使用默认配置。"
+
+#: ../../compilation/convert_weights.rst:105
+msgid ""
+"`conversation_template <https://github.com/mlc-ai/mlc-"
+"llm/blob/main/python/mlc_llm/conversation_template>`__ directory contains"
+" a full list of conversation templates that MLC provides. If the model "
+"you are adding requires a new conversation template, you would need to "
+"add your own. Follow `this PR <https://github.com/mlc-ai/mlc-"
+"llm/pull/2163>`__ as an example. However, adding your own template would "
+"require you :ref:`build mlc_llm from source <mlcchat_build_from_source>` "
+"in order for it to be recognized by the runtime."
+msgstr ""
+"`conversation_template <https://github.com/mlc-ai/mlc-llm/blob/main/python/mlc_llm/conversation_template>`__ 目录包含了 MLC 提供的完整对话模板列表。如果你添加的模型需要新的对话模板，你需要自行添加。"
+"可以参考 `这个 PR <https://github.com/mlc-ai/mlc-llm/pull/2163>`__ 作为示例。不过，添加自定义模板需要你 :ref:`从源码构建 mlc_llm <mlcchat_build_from_source>`，以便运行时能够识别它。"
+
+#: ../../compilation/convert_weights.rst:112
+msgid "By now, you should have the following files."
+msgstr "至此，你应该已经拥有以下文件。"
+
+#: ../../compilation/convert_weights.rst:128
+msgid "(Optional) 3. Upload weights to HF"
+msgstr "（可选）3. 将权重上传至 Hugging Face"
+
+#: ../../compilation/convert_weights.rst:130
+msgid "Optionally, you can upload what we have to huggingface."
+msgstr "你可以选择将已有的内容上传至 Hugging Face。"
+
+#: ../../compilation/convert_weights.rst:143
+msgid ""
+"This would result in something like `RedPajama-INCITE-Chat-"
+"3B-v1-q4f16_1-MLC <https://huggingface.co/mlc-ai/RedPajama-INCITE-Chat-"
+"3B-v1-q4f16_1-MLC/tree/main>`_, but for **Instruct** instead of **Chat**."
+msgstr ""
+"这将生成类似于 `RedPajama-INCITE-Chat-3B-v1-q4f16_1-MLC <https://huggingface.co/mlc-ai/RedPajama-INCITE-Chat-3B-v1-q4f16_1-MLC/tree/main>`_ 的内容，但适用于 **Instruct** 模型而非 **Chat** 模型。"
+
+#: ../../compilation/convert_weights.rst:147
+msgid ""
+"Good job, you have successfully distributed the model you compiled. Next,"
+" we will talk about how we can consume the model weights in applications."
+msgstr ""
+"干得漂亮！你已经成功分发了你编译的模型。接下来，将讨论如何在应用程序中使用这些模型权重。"
+
+#: ../../compilation/convert_weights.rst:151
+msgid "Download the Distributed Models"
+msgstr "下载已分发的模型"
+
+#: ../../compilation/convert_weights.rst:153
+msgid ""
+"You can now use the existing mlc tools such as chat/serve/package with "
+"the converted weights."
+msgstr ""
+"你现在可以使用现有的 MLC 工具（如 chat/serve/package）来处理已转换的权重。"
+
+#: ../../compilation/define_new_models.rst:2
+msgid "Define New Model Architectures"
+msgstr "定义新的模型架构"
+
+#: ../../compilation/define_new_models.rst:4
+msgid "This page guides you how to add a new model architecture in MLC."
+msgstr "本页面将指导你如何在 MLC 中添加新的模型架构。"
+
+#: ../../compilation/define_new_models.rst:6
+msgid ""
+"This notebook (runnable in Colab) should contain all necessary "
+"information to add a model in MLC LLM: https://github.com/mlc-"
+"ai/notebooks/blob/main/mlc-"
+"llm/tutorial_add_new_model_architecture_in_tvm_nn_module.ipynb"
+msgstr ""
+"这个笔记本（可在 Colab 中运行）应包含在 MLC LLM 中添加模型所需的所有信息：https://github.com/mlc-ai/notebooks/blob/main/mlc-llm/tutorial_add_new_model_architecture_in_tvm_nn_module.ipynb"
+
+#: ../../compilation/define_new_models.rst:10
+msgid ""
+"In the notebook, we leverage ``tvm.nn.module`` to define a model in MLC "
+"LLM. We also use ``JIT`` (just-in-time compilation) to debug the "
+"implementation."
+msgstr ""
+"在笔记本中，利用 ``tvm.nn.module`` 在 MLC LLM 中定义模型。还使用 ``JIT`` （即时编译）来调试实现。"
+
+#: ../../compilation/define_new_models.rst:13
+msgid ""
+"You can also refer to the PRs below on specific examples of adding a "
+"model architecture in MLC LLM:"
+msgstr ""
+"你也可以参考以下 PR，了解在 MLC LLM 中添加模型架构的具体示例："
+
+#: ../../compilation/define_new_models.rst:15
+msgid "`GPTNeoX PR <https://github.com/mlc-ai/mlc-llm/pull/1408>`_"
+msgstr ""
+
+#: ../../compilation/define_new_models.rst:16
+msgid "`GPT-2 PR <https://github.com/mlc-ai/mlc-llm/pull/1314>`_"
+msgstr ""
+
+#: ../../compilation/define_new_models.rst:17
+msgid "`Mistral PR <https://github.com/mlc-ai/mlc-llm/pull/1230>`_"
+msgstr ""
+
+#: ../../compilation/define_new_models.rst:21
+msgid ""
+"When adding a model variant that has its architecture already supported "
+"in mlc-llm , you **only need to convert weights** (e.g. adding "
+"``CodeLlama`` when MLC supports ``llama-2``; adding ``OpenHermes "
+"Mistral`` when MLC supports ``mistral``). On the other hand, a new model "
+"architecture (or inference logic) requires more work (following the "
+"tutorial above)."
+msgstr ""
+"当添加模型变体，且其架构已在 mlc-llm 中支持时，你 **只需要转换权重** （例如，当 MLC 支持 ``llama-2`` 时添加 ``CodeLlama``；当 MLC 支持 ``mistral`` 时添加 ``OpenHermes Mistral``）。"
+"另一方面，新的模型架构（或推理逻辑）需要更多的工作（遵循上述教程）。"
+
+#: ../../compilation/package_libraries_and_weights.rst:4
+msgid "Package Libraries and Weights"
+msgstr "打包库和权重"
+
+#: ../../compilation/package_libraries_and_weights.rst:6
+msgid ""
+"When we want to build LLM applications with MLC LLM (e.g., iOS/Android "
+"apps), usually we need to build static model libraries and app binding "
+"libraries, and sometimes bundle model weights into the app. MLC LLM "
+"provides a tool for fast model library and weight packaging: ``mlc_llm "
+"package``."
+msgstr ""
+"当我们想要使用 MLC LLM 构建 LLM 应用程序（例如 iOS/Android 应用程序）时，通常需要构建静态模型库和应用程序绑定库，有时还需要将模型权重打包到应用程序中。MLC LLM 提供了工具用于快速打包模型库和权重：``mlc_llm package``。"
+
+#: ../../compilation/package_libraries_and_weights.rst:11
+msgid ""
+"This page briefly introduces how to use ``mlc_llm package`` for "
+"packaging. Tutorials :ref:`deploy-ios` and :ref:`deploy-android` contain "
+"detailed examples and instructions on using this packaging tool for iOS "
+"and Android deployment."
+msgstr ""
+"本页面简要介绍了如何使用 ``mlc_llm package`` 进行打包。教程 :ref:`deploy-ios` 和 :ref:`deploy-android` 包含了使用此打包工具进行 iOS 和 Android 部署的详细示例和说明。"
+
+#: ../../compilation/package_libraries_and_weights.rst:18
+msgid "Introduction"
+msgstr "简介"
+
+#: ../../compilation/package_libraries_and_weights.rst:20
+msgid ""
+"To use ``mlc_llm package``, we must clone the source code of `MLC LLM "
+"<https://github.com/mlc-ai/mlc-llm>`_ and `install the MLC LLM and TVM "
+"Unity package <https://llm.mlc.ai/docs/install/mlc_llm.html#option-1"
+"-prebuilt-package>`_. Depending on the app we build, there might be some "
+"other dependencies, which are described in corresponding :ref:`iOS "
+"<deploy-ios>` and :ref:`Android <deploy-android>` tutorials."
+msgstr ""
+"要使用 ``mlc_llm package``，必须克隆 `MLC LLM <https://github.com/mlc-ai/mlc-llm>`_ 的源代码并 `安装 MLC LLM 和 TVM Unity 包 <https://llm.mlc.ai/docs/install/mlc_llm.html#option-1-prebuilt-package>`_。"
+"根据构建的应用程序，可能还需要一些其他依赖项，这些在相应的 :ref:`iOS <deploy-ios>` 和 :ref:`Android <deploy-android>` 教程中有描述。"
+
+#: ../../compilation/package_libraries_and_weights.rst:25
+msgid "After cloning, the basic usage of ``mlc_llm package`` is as the following."
+msgstr "克隆完成后，``mlc_llm package`` 的基本用法如下。"
+
+#: ../../compilation/package_libraries_and_weights.rst:34
+msgid ""
+"**The package command reads from the JSON file** ``mlc-package-"
+"config.json`` **under the current directory.** The output of this command"
+" is a directory ``dist/``, which contains the packaged model libraries "
+"(under ``dist/lib/``) and weights (under ``dist/bundle/``). This "
+"directory contains all necessary data for the app build. Depending on the"
+" app we build, the internal structure of ``dist/lib/`` may be different."
+msgstr ""
+"**打包命令从当前目录下的 JSON 文件** ``mlc-package-config.json`` **中读取配置。"
+"** 该命令的输出是目录 ``dist/``，其中包含打包好的模型库（位于 ``dist/lib/`` 下）和权重（位于 ``dist/bundle/`` 下）。"
+"该目录包含了应用程序构建所需的所有数据。根据构建的应用程序，``dist/lib/`` 的内部结构可能会有所不同。"
+
+#: ../../compilation/package_libraries_and_weights.rst:48
+msgid "The input ``mlc-package-config.json`` file specifies"
+msgstr "输入文件 ``mlc-package-config.json`` 指定了以下内容："
+
+#: ../../compilation/package_libraries_and_weights.rst:50
+msgid ""
+"the device (e.g., iPhone or Android) to package model libraries and "
+"weights for,"
+msgstr ""
+"要打包模型库和权重的设备（例如 iPhone 或 Android），"
+
+#: ../../compilation/package_libraries_and_weights.rst:51
+msgid "the list of models to package."
+msgstr "要打包的模型列表。"
+
+#: ../../compilation/package_libraries_and_weights.rst:53
+msgid "Below is an example ``mlc-package-config.json`` file:"
+msgstr "以下是示例 ``mlc-package-config.json`` 文件："
+
+#: ../../compilation/package_libraries_and_weights.rst:80
+msgid ""
+"This example ``mlc-package-config.json`` specifies \"iphone\" as the "
+"target device. In the ``model_list``,"
+msgstr ""
+"这个示例 ``mlc-package-config.json`` 指定了目标设备为 \"iphone\"。在 ``model_list`` 中，"
+
+#: ../../compilation/package_libraries_and_weights.rst:83
+msgid ""
+"``model`` points to the Hugging Face repository which contains the pre-"
+"converted model weights. Apps will download model weights from the "
+"Hugging Face URL."
+msgstr ""
+"``model`` 指向包含预转换模型权重的 Hugging Face 仓库。应用程序将从 Hugging Face URL 下载模型权重。"
+
+#: ../../compilation/package_libraries_and_weights.rst:84
+msgid "``model_id`` is a unique model identifier."
+msgstr "``model_id`` 是唯一的模型标识符。"
+
+#: ../../compilation/package_libraries_and_weights.rst:85
+msgid ""
+"``estimated_vram_bytes`` is an estimation of the vRAM the model takes at "
+"runtime."
+msgstr ""
+"``estimated_vram_bytes`` 是对模型在运行时占用的 vRAM 的估计。"
+
+#: ../../compilation/package_libraries_and_weights.rst:86
+msgid ""
+"``\"bundle_weight\": true`` means the model weights of the model will be "
+"bundled into the app when building."
+msgstr ""
+"``\"bundle_weight\": true`` 表示在构建应用程序时，模型的权重将被打包到应用程序中。"
+
+#: ../../compilation/package_libraries_and_weights.rst:87
+msgid "``overrides`` specifies some model config parameter overrides."
+msgstr "``overrides`` 指定了一些模型配置参数的覆盖值。"
+
+#: ../../compilation/package_libraries_and_weights.rst:90
+msgid ""
+"Below is a more detailed specification of the ``mlc-package-config.json``"
+" file. Each entry in ``\"model_list\"`` of the JSON file has the "
+"following fields:"
+msgstr ""
+"以下是 ``mlc-package-config.json`` 文件的更详细规范。JSON 文件中的 ``\"model_list\"`` 每个条目包含以下字段："
+
+#: ../../compilation/package_libraries_and_weights.rst:93
+msgid "``model``"
+msgstr ""
+
+#: ../../compilation/package_libraries_and_weights.rst:94
+msgid "(Required) The path to the MLC-converted model to be built into the app."
+msgstr "（必填）要构建到应用程序中的 MLC 转换模型的路径。"
+
+#: ../../compilation/package_libraries_and_weights.rst:96
+msgid ""
+"Usually it is a Hugging Face URL (e.g., ``\"model\": \"HF://mlc-"
+"ai/phi-2-q4f16_1-MLC\"```) that contains the pre-converted model weights."
+" For iOS, it can also be a path to a local model directory which contains"
+" converted model weights (e.g., ``\"model\": \"../dist/gemma-2b-"
+"q4f16_1\"``). Please check out :ref:`convert-weights-via-MLC` if you want"
+" to build local model into the app."
+msgstr ""
+"通常它是 Hugging Face URL（例如 ``\"model\": \"HF://mlc-ai/phi-2-q4f16_1-MLC\"``），其中包含预转换的模型权重。"
+"对于 iOS，它也可以是一个包含转换后模型权重的本地模型目录路径（例如 ``\"model\": \"../dist/gemma-2b-q4f16_1\"``）。"
+"如果你想将本地模型构建到应用程序中，请查看 :ref:`convert-weights-via-MLC`。"
+
+#: ../../compilation/package_libraries_and_weights.rst:100
+msgid "``model_id``"
+msgstr ""
+
+#: ../../compilation/package_libraries_and_weights.rst:101
+msgid ""
+"(Required) A unique local identifier to identify the model. It can be an "
+"arbitrary one."
+msgstr ""
+"（必填）用于标识模型的唯一本地标识符。它可以是任意的。"
+
+#: ../../compilation/package_libraries_and_weights.rst:104
+msgid "``estimated_vram_bytes``"
+msgstr ""
+
+#: ../../compilation/package_libraries_and_weights.rst:105
+msgid "(Required) Estimated requirements of vRAM to run the model."
+msgstr "（必填）运行模型所需的 vRAM 估计值。"
+
+#: ../../compilation/package_libraries_and_weights.rst:107
+msgid "``bundle_weight``"
+msgstr ""
+
+#: ../../compilation/package_libraries_and_weights.rst:108
+msgid ""
+"(Optional) A boolean flag indicating whether to bundle model weights into"
+" the app. If this field is set to true, the ``mlc_llm package`` command "
+"will copy the model weights to ``dist/bundle/$model_id``."
+msgstr ""
+"（可选）布尔标志，指示是否将模型权重打包到应用程序中。如果此字段设置为 true，``mlc_llm package`` 命令将把模型权重复制到 ``dist/bundle/$model_id``。"
+
+#: ../../compilation/package_libraries_and_weights.rst:112
+msgid "``overrides``"
+msgstr ""
+
+#: ../../compilation/package_libraries_and_weights.rst:113
+msgid ""
+"(Optional) A dictionary to override the default model context window size"
+" (to limit the KV cache size) and prefill chunk size (to limit the model "
+"temporary execution memory). Example:"
+msgstr ""
+"（可选）字典，用于覆盖默认的模型上下文窗口大小（以限制 KV 缓存大小）和预填充块大小（以限制模型临时执行内存）。例如："
+
+#: ../../compilation/package_libraries_and_weights.rst:133
+msgid "``model_lib``"
+msgstr ""
+
+#: ../../compilation/package_libraries_and_weights.rst:134
+msgid ""
+"(Optional) A string specifying the system library prefix to use for the "
+"model. Usually this is used when you want to build multiple model "
+"variants with the same architecture into the app. **This field does not "
+"affect any app functionality.** The "
+"``\"model_lib_path_for_prepare_libs\"`` introduced below is also related."
+" Example:"
+msgstr ""
+"（可选）字符串，指定用于模型的系统库前缀。通常在你想要将具有相同架构的多个模型变体构建到应用程序中时使用。**此字段不会影响任何应用程序功能。** 下面介绍的 ``\"model_lib_path_for_prepare_libs\"`` 也与此相关。例如："
+
+#: ../../compilation/package_libraries_and_weights.rst:155
+msgid ""
+"Besides ``model_list`` in ``MLCChat/mlc-package-config.json``, you can "
+"also **optionally** specify a dictionary of "
+"``\"model_lib_path_for_prepare_libs\"``, **if you want to use model "
+"libraries that are manually compiled**. The keys of this dictionary "
+"should be the ``model_lib`` that specified in model list, and the values "
+"of this dictionary are the paths (absolute, or relative) to the manually "
+"compiled model libraries. The model libraries specified in "
+"``\"model_lib_path_for_prepare_libs\"`` will be built into the app when "
+"running ``mlc_llm package``. Example:"
+msgstr ""
+"除了 ``MLCChat/mlc-package-config.json`` 中的 ``model_list`` 外，你还可以 **选择性地** 指定 ``\"model_lib_path_for_prepare_libs\"`` 字典，**如果你想使用手动编译的模型库**。"
+"此字典的键应为模型列表中指定的 ``model_lib``，而值应为手动编译的模型库的路径（绝对路径或相对路径）。在运行 ``mlc_llm package`` 时，``\"model_lib_path_for_prepare_libs\"`` 中指定的模型库将被构建到应用程序中。例如："
+
+#: ../../compilation/package_libraries_and_weights.rst:181
+msgid "Compilation Cache"
+msgstr "编译缓存"
+
+#: ../../compilation/package_libraries_and_weights.rst:182
+msgid ""
+"``mlc_llm package`` leverage a local JIT cache to avoid repetitive "
+"compilation of the same input. It also leverages a local cache to "
+"download weights from remote. These caches are shared across the entire "
+"project. Sometimes it is helpful to force rebuild when we have a new "
+"compiler update or when something goes wrong with the cached library. You"
+" can do so by setting the environment variable ``MLC_JIT_POLICY=REDO``"
+msgstr ""
+"``mlc_llm package`` 利用本地 JIT 缓存来避免重复编译相同的输入。它还利用本地缓存从远程下载权重。这些缓存在整个项目中共享。"
+"有时，当有新的编译器更新或缓存库出现问题时，强制重新构建会很有帮助。你可以通过设置环境变量 ``MLC_JIT_POLICY=REDO`` 来实现这一点。"
+
+#: ../../compilation/package_libraries_and_weights.rst:193
+msgid "Arguments of ``mlc_llm package``"
+msgstr "``mlc_llm package`` 的参数"
+
+#: ../../compilation/package_libraries_and_weights.rst:195
+msgid "Command ``mlc_llm package`` can optionally take the arguments below:"
+msgstr "命令 ``mlc_llm package`` 可以选择性地接受以下参数："
+
+#: ../../compilation/package_libraries_and_weights.rst:197
+msgid "``--package-config``"
+msgstr ""
+
+#: ../../compilation/package_libraries_and_weights.rst:198
+msgid ""
+"A path to ``mlc-package-config.json`` which contains the device and model"
+" specification. By default, it is the ``mlc-package-config.json`` under "
+"the current directory."
+msgstr ""
+"指向包含设备和模型规范的 ``mlc-package-config.json`` 的路径。默认情况下，它是当前目录下的 ``mlc-package-config.json``。"
+
+#: ../../compilation/package_libraries_and_weights.rst:201
+msgid "``--mlc-llm-source-dir``"
+msgstr ""
+
+#: ../../compilation/package_libraries_and_weights.rst:202
+msgid ""
+"The path to MLC LLM source code (cloned from https://github.com/mlc-ai"
+"/mlc-llm). By default, it is the ``$MLC_LLM_SOURCE_DIR`` environment "
+"variable. If neither ``$MLC_LLM_SOURCE_DIR`` or ``--mlc-llm-source-dir`` "
+"is specified, error will be reported."
+msgstr ""
+"MLC LLM 源代码的路径（从 https://github.com/mlc-ai/mlc-llm 克隆）。默认情况下，它是 ``$MLC_LLM_SOURCE_DIR`` 环境变量。如果既没有指定 ``$MLC_LLM_SOURCE_DIR`` 也没有指定 ``--mlc-llm-source-dir``，则会报错。"
+
+#: ../../compilation/package_libraries_and_weights.rst:206
+msgid "``--output`` / ``-o``"
+msgstr ""
+
+#: ../../compilation/package_libraries_and_weights.rst:207
+msgid ""
+"The output directory of ``mlc_llm package`` command. By default, it is "
+"``dist/`` under the current directory."
+msgstr ""
+"``mlc_llm package`` 命令的输出目录。默认情况下，它是当前目录下的 ``dist/``。"
+
+#: ../../compilation/package_libraries_and_weights.rst:212
+msgid "Summary and What to Do Next"
+msgstr "总结与下一步"
+
+#: ../../compilation/package_libraries_and_weights.rst:214
+msgid ""
+"In this page, we introduced the ``mlc_llm package`` command for fast "
+"model library and weight packaging."
+msgstr ""
+"在本页面中，介绍了用于快速打包模型库和权重的 ``mlc_llm package`` 命令。"
+
+#: ../../compilation/package_libraries_and_weights.rst:216
+msgid ""
+"It takes input file ``mlc-package-config.json`` which contains the device"
+" and model specification for packaging."
+msgstr ""
+"它接受输入文件 ``mlc-package-config.json``，其中包含用于打包的设备和模型规范。"
+
+#: ../../compilation/package_libraries_and_weights.rst:217
+msgid ""
+"It outputs directory ``dist/``, which contains packaged libraries under "
+"``dist/lib/`` and model weights under ``dist/bundle/``."
+msgstr ""
+"它输出目录 ``dist/``，其中包含打包好的库（位于 ``dist/lib/`` 下）和模型权重（位于 ``dist/bundle/`` 下）。"
+
+#: ../../compilation/package_libraries_and_weights.rst:219
+msgid ""
+"Next, please feel free to check out the :ref:`iOS <deploy-ios>` and "
+":ref:`Android <deploy-android>` tutorials for detailed examples of using "
+"``mlc_llm package``."
+msgstr ""
+"接下来，请随意查看 :ref:`iOS <deploy-ios>` 和 :ref:`Android <deploy-android>` 教程，了解使用 ``mlc_llm package`` 的详细示例。"
